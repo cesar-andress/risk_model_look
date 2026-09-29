@@ -99,3 +99,51 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Delete the threat entirely (rejected); treat as established for JIT classifiers (rejected).
 - **Reversible:** Yes after JIT-specific IG baseline pilots.
 - **Gate affected:** XAI_GATE (future), NOVELTY_GATE (integrity check)
+
+## 2026-09-29T23:55:00+02:00 — Authoritative JIT-Fine upstream frozen
+
+- **Decision:** Use `jacknichao/JIT-Fine` revision `584799fdec6095ab75a45fd2a5f8db5b12163aa5` as authoritative replication source; treat `tianc43/JIT-FINE` as third-party mirror (identical `data.zip` blob).
+- **Reason:** Repo owned by Chao Ni (first author); created with FSE’22 materials; Crossref/ACM DOI verified.
+- **Alternatives considered:** Prefer mirror by search rank (rejected); clone without SHA freeze (rejected).
+- **Reversible:** Only if stronger author-issued archive (e.g. Zenodo) appears with contradictory content.
+- **Gate affected:** DATASET_PROVENANCE_GATE
+
+## 2026-09-29T23:55:00+02:00 — Canonical dataset spelling JIT-Defects4J
+
+- **Decision:** Manuscript prose uses **JIT-Defects4J**; preserve **JIT-Defect4J** only when quoting upstream README.
+- **Reason:** Paper spelling is JIT-Defects4J; README spelling differs but same artifact.
+- **Alternatives considered:** Always use README spelling (rejected).
+- **Reversible:** Yes for quoting policy; name itself is fixed by paper.
+- **Gate affected:** DATASET_PROVENANCE_GATE, PAPER_GATE
+
+## 2026-09-29T23:55:00+02:00 — Reuse author-provided split membership
+
+- **Decision:** Freeze train/valid/test membership from author pickles under `data/jitfine/`; do not regenerate a new split.
+- **Reason:** README/training commands reference materialized files; paper describes chronological 80/20; no checked-in generation script found.
+- **Alternatives considered:** Re-implement §6.1 split ourselves (rejected for compatibility risk).
+- **Reversible:** No for primary study once acquisition validates membership; secondary sensitivity analyses would need explicit new decision.
+- **Gate affected:** DATASET_PROVENANCE_GATE, TRAINING_GATE
+
+## 2026-09-29T23:55:00+02:00 — Line-label scope and localization subset
+
+- **Decision:** For JIT-Fine-compatible localization evaluation, treat added lines as primary (`--only_adds`); positive commit/line labels mean defect-inducing (`label==1`); evaluate line metrics on TP predicted buggy commits per upstream `run.py`.
+- **Reason:** Traced from paper task definition + `JITFine/concat/run.py` + line-label README.
+- **Alternatives considered:** Rank all changed lines including deletes by default (rejected for default compatibility).
+- **Reversible:** Ablations may include deletes later with explicit protocol note.
+- **Gate affected:** DATASET_PROVENANCE_GATE, XAI_GATE, ANALYSIS_GATE
+
+## 2026-09-29T23:55:00+02:00 — No raw redistribution without license
+
+- **Decision:** Classify code/dataset licenses as NONE_FOUND and redistribution as NOT_ESTABLISHED; never commit/mirror `data.zip` or raw extracts to our GitHub/Zenodo; point replicators upstream.
+- **Reason:** No LICENSE/COPYING at frozen revision; public download ≠ redistribution grant.
+- **Alternatives considered:** Assume public GitHub implies redistributable (rejected).
+- **Reversible:** Yes if explicit permission/license later established.
+- **Gate affected:** DATASET_PROVENANCE_GATE, RELEASE_GATE
+
+## 2026-09-29T23:55:00+02:00 — Defer archive inspection; do not download yet
+
+- **Decision:** Mark DATASET_PROVENANCE_GATE=PASS without downloading `data.zip`; leave ACQUISITION/SCHEMA sub-gates NOT_STARTED.
+- **Reason:** Provenance/semantics sufficiently documented from paper + remote code/docs + GitHub API metadata; pickle internals require acquisition phase.
+- **Alternatives considered:** Download now to finish schema (rejected by task gate).
+- **Reversible:** N/A (next gate opens acquisition).
+- **Gate affected:** DATASET_GATE

@@ -61,11 +61,12 @@ Do **not** invent missing author lists or DOIs.
 
 ### R6
 
-- Authors: Ni et al.
+- Authors: Chao Ni, Wei Wang, Kaiwen Yang, Xin Xia, Kui Liu, David Lo
 - Title: The best of both worlds: integrating semantic features with expert features for defect prediction and localization
-- Venue: ESEC/FSE 2022
-- DOI: **10.1145/3540250.3549165** (verified via secondary scholarly indexes / citation records in this audit; Crossref lookup recommended again before refs.bib insert)
-- Status: VERIFIED_PUBLISHER (DOI resolved); PRIMARY_SOURCE_REVIEW_NEEDED
+- Venue: ESEC/FSE 2022, pages 672–683
+- DOI: **10.1145/3540250.3549165** (verified Crossref works API + ACM DOI landing; author PDF https://kui-liu.github.io/papers/2022-ni-best.pdf inspected for dataset construction)
+- Replication: `jacknichao/JIT-Fine` @ `584799fdec6095ab75a45fd2a5f8db5b12163aa5` (AUTHORITATIVE; Chao Ni)
+- Status: VERIFIED_PUBLISHER; VERIFIED_PRIMARY_SOURCE (dataset provenance pass 2026-09-29). `refs.bib` not updated in this task.
 
 ### R7
 

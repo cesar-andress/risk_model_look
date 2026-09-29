@@ -1,0 +1,138 @@
+{
+  "dataset_name": "JIT-Defects4J",
+  "canonical_spelling": "JIT-Defects4J",
+  "alternate_spellings": [
+    "JIT-Defect4J"
+  ],
+  "spelling_notes": {
+    "paper_spelling": "JIT-Defects4J",
+    "replication_readme_spelling": "JIT-Defect4J",
+    "same_artifact": true,
+    "manuscript_policy": "Use JIT-Defects4J in prose; preserve JIT-Defect4J when quoting upstream README/filenames."
+  },
+  "defining_publication": {
+    "title": "The best of both worlds: integrating semantic features with expert features for defect prediction and localization",
+    "authors": [
+      "Chao Ni",
+      "Wei Wang",
+      "Kaiwen Yang",
+      "Xin Xia",
+      "Kui Liu",
+      "David Lo"
+    ],
+    "venue": "Proceedings of the 30th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2022)",
+    "pages": "672-683",
+    "year": 2022,
+    "doi": "10.1145/3540250.3549165",
+    "publisher": "ACM",
+    "published_print": "2022-11-07",
+    "published_online": "2022-11-09",
+    "open_access_pdf_author_page": "https://kui-liu.github.io/papers/2022-ni-best.pdf",
+    "institutional_record": "https://ink.library.smu.edu.sg/sis_research/7729"
+  },
+  "authoritative_repository": {
+    "owner": "jacknichao",
+    "repo": "JIT-Fine",
+    "url": "https://github.com/jacknichao/JIT-Fine",
+    "owner_display_name": "Chao Ni",
+    "owner_profile": "https://github.com/jacknichao",
+    "default_branch": "master",
+    "revision": "584799fdec6095ab75a45fd2a5f8db5b12163aa5",
+    "revision_timestamp": "2023-08-25T05:35:17Z",
+    "authoritative_status": "AUTHORITATIVE",
+    "rationale": "Owned by Chao Ni (first author); repository description links FSE'22 paper; created 2022-08-30 with replication materials; not a fork."
+  },
+  "related_repositories": [
+    {
+      "owner": "tianc43",
+      "repo": "JIT-FINE",
+      "url": "https://github.com/tianc43/JIT-FINE",
+      "revision_inspected": "8dff790ac2ec93067b50e8502de89d3e0030f960",
+      "authoritative_status": "THIRD_PARTY_MIRROR",
+      "notes": "Created 2023-12-22; not marked as GitHub fork but contains earlier jacknichao commits; data.zip Git blob SHA identical to authoritative repo; do not use as primary upstream."
+    }
+  ],
+  "archive": {
+    "path": "data.zip",
+    "remote_size_bytes": 75326372,
+    "remote_hash_type": "git_blob_sha1",
+    "remote_hash": "6cd2f45d97a7c430533cde382be6bf42d9ff3649",
+    "download_url_at_revision": "https://raw.githubusercontent.com/jacknichao/JIT-Fine/584799fdec6095ab75a45fd2a5f8db5b12163aa5/data.zip",
+    "introduced_in_commit": "4b78240bcd48d35cb3aabc02c65733a0b9a0e33f",
+    "introduced_at": "2022-08-30T11:37:56Z",
+    "downloaded": false,
+    "local_sha256": null,
+    "notes": "Git blob SHA-1 is NOT SHA-256. Local SHA-256 must be computed after acquisition."
+  },
+  "expected_files": {
+    "after_unzip_data_zip": [
+      "data/jitfine/changes_train.pkl",
+      "data/jitfine/features_train.pkl",
+      "data/jitfine/changes_valid.pkl",
+      "data/jitfine/features_valid.pkl",
+      "data/jitfine/changes_test.pkl",
+      "data/jitfine/features_test.pkl",
+      "data/jitfine/changes_complete_buggy_line_level.pkl"
+    ],
+    "additional_line_label_docs_in_repo_not_in_zip": [
+      "JITFine/labels for each line/readme.md",
+      "JITFine/labels for each line/buggy_changes_with_buggy_line.json"
+    ],
+    "inventory_confidence": "EXPECTED_FROM_README_AND_CODE_PATHS — NOT YET VALIDATED AGAINST ARCHIVE"
+  },
+  "split": {
+    "source": "AUTHOR_PROVIDED",
+    "paper_protocol_summary": "Per-project chronological sort; top 80% commits train, remaining 20% test; combine across projects (ESEC/FSE 2022 §6.1).",
+    "validation_file_provenance": "Materialized changes_valid.pkl / features_valid.pkl referenced by replication README; exact carve vs train REQUIRES_ACQUISITION_PHASE (no generation script found in repo).",
+    "train_files": [
+      "data/jitfine/changes_train.pkl",
+      "data/jitfine/features_train.pkl"
+    ],
+    "validation_files": [
+      "data/jitfine/changes_valid.pkl",
+      "data/jitfine/features_valid.pkl"
+    ],
+    "test_files": [
+      "data/jitfine/changes_test.pkl",
+      "data/jitfine/features_test.pkl"
+    ],
+    "line_label_file": "data/jitfine/changes_complete_buggy_line_level.pkl",
+    "generation_script": null,
+    "generation_seed": null,
+    "policy_for_our_study": "USE_AUTHOR_PROVIDED_SPLIT_MEMBERSHIP_AS_FROZEN"
+  },
+  "labels": {
+    "commit_positive_semantics": "Positive commit label means defect-inducing / buggy commit (JIT-DP). Paper: identifying defect-inducing commits. Code: label cast to int; defective when label==1.",
+    "commit_label_variable_names": [
+      "label"
+    ],
+    "commit_label_type_expected": "int binary {0,1}",
+    "line_positive_semantics": "Positive line label means defect-inducing / buggy line in the defect-introducing commit representation. Upstream line-label README exposes added_buggy_level per added line; evaluation code treats label==1 as buggy.",
+    "line_label_scope": "ADDED_LINES_PRIMARY_FOR_EVALUATION",
+    "line_label_scope_notes": "Paper constructs labels via bug-fixing deleted lines mapped to bug-inducing commits; unlabeled lines in BICs treated as clean. Replication eval uses --only_adds to restrict ranking/effort to added lines. Exact added_buggy_level coding REQUIRES_ACQUISITION_PHASE inspection of pickle/JSON.",
+    "line_label_variable_names": [
+      "added_buggy_level",
+      "label",
+      "changed_type"
+    ]
+  },
+  "license": {
+    "code": "NONE_FOUND",
+    "dataset": "NONE_FOUND",
+    "raw_redistribution": "NOT_ESTABLISHED",
+    "derived_redistribution": "NOT_ESTABLISHED",
+    "evidence": "No LICENSE/COPYING in jacknichao/JIT-Fine at frozen revision; GitHub license metadata null; paper does not state a dataset redistribution license in inspected text."
+  },
+  "verification_date": "2026-09-29",
+  "verification_sources": [
+    "https://doi.org/10.1145/3540250.3549165",
+    "https://api.crossref.org/works/10.1145/3540250.3549165",
+    "https://kui-liu.github.io/papers/2022-ni-best.pdf",
+    "https://github.com/jacknichao/JIT-Fine",
+    "https://raw.githubusercontent.com/jacknichao/JIT-Fine/584799fdec6095ab75a45fd2a5f8db5b12163aa5/README.md",
+    "https://raw.githubusercontent.com/jacknichao/JIT-Fine/584799fdec6095ab75a45fd2a5f8db5b12163aa5/JITFine/concat/run.py",
+    "https://raw.githubusercontent.com/jacknichao/JIT-Fine/584799fdec6095ab75a45fd2a5f8db5b12163aa5/JITFine/my_util.py",
+    "https://raw.githubusercontent.com/jacknichao/JIT-Fine/584799fdec6095ab75a45fd2a5f8db5b12163aa5/JITFine/labels%20for%20each%20line/readme.md",
+    "https://api.github.com/repos/jacknichao/JIT-Fine/contents/data.zip?ref=584799fdec6095ab75a45fd2a5f8db5b12163aa5"
+  ]
+}

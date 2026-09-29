@@ -9,7 +9,7 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-T0/T1 complete for environment; novelty audit complete. Next: dataset provenance gate (not started).
+DATASET provenance/semantics phase complete. Next: DATASET acquisition (download `data.zip` under frozen protocol) — not started.
 
 # Gate status
 
@@ -17,7 +17,10 @@ T0/T1 complete for environment; novelty audit complete. Next: dataset provenance
 |------|--------|
 | NOVELTY_GATE | PASS |
 | ENVIRONMENT_GATE | PASS |
-| DATASET_GATE | NOT_STARTED |
+| DATASET_GATE | IN_PROGRESS |
+| DATASET_PROVENANCE_GATE | PASS |
+| DATASET_ACQUISITION_GATE | NOT_STARTED |
+| DATASET_SCHEMA_VALIDATION_GATE | NOT_STARTED |
 | TOKEN_LINE_MAPPING_GATE | NOT_STARTED |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
@@ -28,37 +31,39 @@ T0/T1 complete for environment; novelty audit complete. Next: dataset provenance
 
 # Current task
 
-NOVELTY_GATE audit acceptance criteria executed. Do not advance DATASET_GATE in this task.
+DATASET_PROVENANCE_GATE completed. Do not start acquisition until orchestrator opens DATASET_ACQUISITION_GATE.
 
 # Completed work
 
 - Environment bootstrap + Qwen 4-bit smoke (prior task).
-- Systematic literature search log (Crossref, OpenAlex, arXiv, Semantic Scholar, DBLP, publisher/conference pages, Zenodo replication inspection).
-- Screening table for C1–C10 and near candidates.
-- Collision matrix + novelty map; faithfulness and architecture typologies separated.
-- Jacobian Scopes IG-baseline claim verified as PARTIAL/YES in LLM next-token setting.
-- Provisional novelty claim narrowed; broad “first …” framing dropped.
+- Systematic literature search / novelty audit (prior task); NOVELTY_GATE PASS.
+- JIT-Fine defining publication verified (DOI 10.1145/3540250.3549165).
+- Authoritative upstream frozen: `jacknichao/JIT-Fine@584799fdec6095ab75a45fd2a5f8db5b12163aa5`.
+- Remote `data.zip` identified without download (size + git blob SHA-1).
+- Author-provided split / line-label / localization-subset / license evidence documented.
+- Manifest + provenance report + schema contract + acquisition plan written.
 
 # Blockers
 
-- JIT-Defects4J authoritative URL / schema / label semantics / JIT-Fine split still TO VERIFY (DATASET_GATE).
-- JITEC full-text access incomplete (does not overturn PASS, but leaves UNKNOWN cells).
+- Archive not yet downloaded; pickle internals / counts / valid carve / SHA-256 deferred to acquisition.
+- Dataset/code redistribution license NOT_ESTABLISHED (blocks public raw redistribution, not local acquisition decision).
+- JITEC full-text access incomplete (novelty residual; unrelated to this gate).
 
 # Decisions frozen
 
 - Separate code and paper roots.
 - ENVIRONMENT_GATE remains PASS (not reopened).
+- NOVELTY_GATE remains PASS (not reopened).
 - Novelty framing must use compositional / intersection claim, not unqualified primacy.
-- XMENTOR “sign agreement” is not treated as equivalent to RQ3 D/E.
-- CoScoreX EASE transformer paper and CoScoreX ICSME RF paper are distinct studies.
+- Dataset: JIT-Defects4J from jacknichao/JIT-Fine frozen SHA; AUTHOR_PROVIDED split; added-lines primary for JIT-Fine-compatible localization eval; no raw redistribution without license.
 
 # Decisions pending
 
-- Dataset provenance and redistribution rights.
+- Whether/when to open DATASET_ACQUISITION_GATE.
 - Whether to include ApacheJIT / ReDef as secondary corpora.
 - Journal selection.
 - Public release timing.
 
 # Last updated
 
-2026-09-29T23:45:00+02:00
+2026-09-29T23:55:00+02:00

@@ -10,15 +10,41 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 
 ## PRIMARY DATASET
 
-- Name: JIT-Defects4J
-- Authoritative download location: **TO VERIFY FROM PRIMARY SOURCE**
-- Schema: **TO VERIFY FROM PRIMARY SOURCE**
-- Redistribution / license for packing raw data into this repo: **TO VERIFY** (raw data gitignored by default)
+- Name: **JIT-Defects4J** (canonical manuscript spelling; upstream README often writes JIT-Defect4J for the same artifact)
+- Defining publication: Ni et al., ESEC/FSE 2022, DOI **10.1145/3540250.3549165**
+- Authoritative upstream: `https://github.com/jacknichao/JIT-Fine` revision **`584799fdec6095ab75a45fd2a5f8db5b12163aa5`**
+- Authoritative archive: `data.zip` (remote size 75326372 bytes; git blob SHA-1 `6cd2f45d97a7c430533cde382be6bf42d9ff3649`; **not downloaded yet**)
+- Schema: expected contract in `docs/DATASET_SCHEMA_CONTRACT.md` — **NOT YET VALIDATED AGAINST ARCHIVE**
+- Redistribution / license for packing raw data into this repo: **NOT_ESTABLISHED** (no LICENSE found; raw data remains gitignored; do not mirror to GitHub/Zenodo)
 
 ## SPLIT
 
-- Intent: reproduce the JIT-Fine train / validation / test split.
-- Exact split files and hashes: **TO VERIFY FROM PRIMARY SOURCE**
+- Policy: **USE AUTHOR-PROVIDED SPLIT MEMBERSHIP AS FROZEN**
+- Source classification: **AUTHOR_PROVIDED**
+- Train: `data/jitfine/changes_train.pkl`, `data/jitfine/features_train.pkl`
+- Validation: `data/jitfine/changes_valid.pkl`, `data/jitfine/features_valid.pkl`
+- Test: `data/jitfine/changes_test.pkl`, `data/jitfine/features_test.pkl`
+- Line labels: `data/jitfine/changes_complete_buggy_line_level.pkl`
+- Paper protocol (§6.1): per-project chronological 80% train / 20% test; how `valid` is carved vs that description is **TO VERIFY AFTER ACQUISITION** (no generation script found)
+- Local SHA-256 of `data.zip` and pickle hashes: **TO VERIFY AFTER ACQUISITION**
+
+## LINE-LABEL SCOPE (FROZEN FOR JIT-FINE COMPATIBILITY)
+
+- Commit positive label: defect-inducing / buggy commit (`label == 1`)
+- Line positive label: buggy / defect-inducing line (`label == 1` in eval code)
+- Primary evaluation scope for localization compatibility: **added lines** (JIT-Fine `--only_adds`)
+- Deleted lines exist in change representation; default JIT-Fine localization eval excludes them when `--only_adds` is set
+- Exact `added_buggy_level` coding: **TO VERIFY AFTER ACQUISITION**
+
+## LOCALIZATION SUBSET (FROZEN INTENT)
+
+Reproduce JIT-Fine concat test subset semantics:
+
+- evaluate line metrics only when commit gold label == 1 **and** model predicts 1 **and** `[ADD]` appears in the tokenized input;
+- with `--only_adds`, rank/score only `changed_type == 'added'` lines;
+- see `docs/DATASET_PROVENANCE_REPORT.md` §11 for pseudocode
+
+Exact numeric replication against published Top-N requires reconciling paper Top-N prose vs code precision-at-k — **TO VERIFY AT METRICS GATE**
 
 ## PRIMARY INPUT FORMAT
 
@@ -130,13 +156,25 @@ Planned, subject to verification of applicability:
 - 95% bootstrap CI
 - 10,000 bootstrap resamples where computationally reasonable
 
-## MUST VERIFY FROM PRIMARY SOURCE BEFORE IMPLEMENTATION
+## MUST VERIFY BEFORE IMPLEMENTATION (REMAINING)
 
-- Exact line-label semantics in JIT-Defects4J
-- Whether evaluation is restricted exactly to added lines
-- Exact JIT-Fine metric definitions
-- Exact JITLine metric definitions
-- Exact JIT-Fine train/validation/test split
-- Exact published comparison numbers
+Provenance-resolved (see `docs/DATASET_PROVENANCE_REPORT.md`):
 
-Do not infer these from memory.
+- Defining publication + DOI
+- Authoritative upstream + frozen revision
+- Author-provided split file names + reuse policy
+- Commit / line label high-level semantics
+- JIT-Fine localization subset + `--only_adds` behavior
+- License search result (NOT_ESTABLISHED)
+
+Still required before/during later gates:
+
+- Archive download integrity (size + SHA-256) — DATASET_ACQUISITION_GATE
+- Pickle schema validation vs `DATASET_SCHEMA_CONTRACT.md` — DATASET_SCHEMA_VALIDATION_GATE
+- Exact `added_buggy_level` coding and deleted-line label presence in zip
+- Validation carve vs paper 80/20
+- Exact JIT-Fine metric code vs paper Top-N wording (metrics gate)
+- Exact JITLine metric definitions (R8 / baseline code)
+- Exact published comparison numbers from primary tables
+
+Do not infer unresolved items from memory.
