@@ -50,10 +50,23 @@ def test_required_files_exist() -> None:
     assert not missing, f"Missing files: {missing}"
 
 
-def test_novelty_gate_unresolved() -> None:
+def test_novelty_gate_resolved_pass() -> None:
     text = (ROOT / "docs/NOVELTY_GATE.md").read_text(encoding="utf-8")
-    assert "UNRESOLVED" in text
-    assert "NOT YET SAFE FOR THE PAPER" in text
+    status_block = text.split("## STATUS", 1)[1].split("##", 1)[0]
+    assert "**PASS**" in status_block
+    assert "**UNRESOLVED**" not in status_block
+    assert "PROVISIONAL DEFENSIBLE NOVELTY CLAIM" in text
+
+
+def test_novelty_audit_artifacts_exist() -> None:
+    required = [
+        "docs/literature_search_log.csv",
+        "docs/literature_screening.csv",
+        "docs/NOVELTY_COLLISION_MATRIX.md",
+        "docs/STATE_OF_ART_NOVELTY_MAP.md",
+    ]
+    missing = [p for p in required if not (ROOT / p).is_file()]
+    assert not missing, f"Missing novelty audit artifacts: {missing}"
 
 
 def test_gitignore_protects_sensitive_paths() -> None:

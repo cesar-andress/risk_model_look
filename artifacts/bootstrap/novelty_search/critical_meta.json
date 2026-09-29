@@ -1,0 +1,249 @@
+[
+  {
+    "id": "10.1145/3805760.3814916",
+    "source": "crossref",
+    "title": "A Preliminary Study on Explaining Risk of Code Changes using LLM-Based Prediction Models",
+    "type": "proceedings-article",
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          7,
+          5
+        ]
+      ]
+    },
+    "container": "Proceedings of the 3rd ACM International Conference on AI-Powered Software",
+    "author": [
+      "Liu",
+      "Jabre",
+      "Abreu",
+      "Carmichael",
+      "Murali",
+      "Patel",
+      "Ge",
+      "Sun",
+      "Zhang",
+      "Mockus",
+      "Khavari",
+      "Rigby",
+      "Nagappan"
+    ],
+    "abstract_present": false
+  },
+  {
+    "id": "10.1145/3793655.3793736",
+    "source": "crossref",
+    "title": "XMENTOR: A Rank-Aware Aggregation Approach for Human-Centered Explainable AI in Just-in-Time Software Defect Prediction",
+    "type": "proceedings-article",
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          4,
+          12
+        ]
+      ]
+    },
+    "container": "Proceedings of the 2026 IEEE/ACM Third International Conference on AI Foundation Models and Software Engineering",
+    "author": [
+      "Roy",
+      "Roy",
+      "Roy",
+      "Bassey"
+    ],
+    "abstract_present": false
+  },
+  {
+    "id": "10.1002/smr.70118",
+    "source": "crossref",
+    "title": "Enhance Expert\u2010Semantic Feature Extraction and Combine Feature Importance and Attention Scores for Just\u2010in\u2010Time Defect Prediction and Localization",
+    "type": "journal-article",
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          5
+        ]
+      ]
+    },
+    "container": "Journal of Software: Evolution and Process",
+    "author": [
+      "Zhao",
+      "Yuan",
+      "Gong",
+      "Huang"
+    ],
+    "abstract_present": true
+  },
+  {
+    "id": "10.1016/j.infsof.2026.108244",
+    "source": "crossref",
+    "title": "Towards integrating large model with small model for Just-in-Time Defect Prediction and Localization",
+    "type": "journal-article",
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          10
+        ]
+      ]
+    },
+    "container": "Information and Software Technology",
+    "author": [
+      "Huang",
+      "Chen",
+      "Chen",
+      "Liu"
+    ],
+    "abstract_present": false
+  },
+  {
+    "id": "10.1145/3664809",
+    "source": "crossref",
+    "title": "A Formal Explainer for Just-In-Time Defect Predictions",
+    "type": "journal-article",
+    "published": {
+      "date-parts": [
+        [
+          2024,
+          9,
+          30
+        ]
+      ]
+    },
+    "container": "ACM Transactions on Software Engineering and Methodology",
+    "author": [
+      "Yu",
+      "Fu",
+      "Ignatiev",
+      "Tantithamthavorn",
+      "Stuckey"
+    ],
+    "abstract_present": true
+  },
+  {
+    "id": "10.1016/j.jss.2024.112182",
+    "source": "crossref",
+    "title": "CfExplainer: Explainable just-in-time defect prediction based on counterfactuals",
+    "type": "journal-article",
+    "published": {
+      "date-parts": [
+        [
+          2024,
+          12
+        ]
+      ]
+    },
+    "container": "Journal of Systems and Software",
+    "author": [
+      "Yang",
+      "Zeng",
+      "Zhong",
+      "Xiao",
+      "Zheng",
+      "Qiu"
+    ],
+    "abstract_present": false
+  },
+  {
+    "id": "10.1007/s10994-025-06902-1",
+    "source": "crossref",
+    "title": "Evaluating line-level localization ability of learning-based code vulnerability detection models",
+    "type": "journal-article",
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          4
+        ]
+      ]
+    },
+    "container": "Machine Learning",
+    "author": [
+      "Pintore",
+      "Piras",
+      "Sotgiu",
+      "Pintor",
+      "Biggio"
+    ],
+    "abstract_present": true
+  },
+  {
+    "id": "2607.02782",
+    "source": "arxiv",
+    "hits": [
+      [
+        "http://arxiv.org/abs/2607.02782v1",
+        "A Preliminary Study on Explaining Risk of Code Changes using LLM-Based Prediction Models"
+      ]
+    ],
+    "n": 1
+  },
+  {
+    "id": "2511.21964",
+    "source": "arxiv",
+    "hits": [
+      [
+        "http://arxiv.org/abs/2511.21964v3",
+        "DRS-OSS: A Diff-Risk Scoring Tool for Continuous Integration Workflows"
+      ]
+    ],
+    "n": 1
+  },
+  {
+    "id": "2512.00231",
+    "source": "arxiv",
+    "hits": [
+      [
+        "http://arxiv.org/abs/2512.00231v1",
+        "CodeFlowLM: Incremental Just-In-Time Defect Prediction with Pretrained Language Models and Exploratory Insights into Defect Localization"
+      ]
+    ],
+    "n": 1
+  },
+  {
+    "id": "2602.22403",
+    "source": "arxiv",
+    "hits": [
+      [
+        "http://arxiv.org/abs/2602.22403v2",
+        "XMENTOR: A Rank-Aware Aggregation Approach for Human-Centered Explainable AI in Just-in-Time Software Defect Prediction"
+      ]
+    ],
+    "n": 1
+  },
+  {
+    "id": "2510.11202",
+    "source": "arxiv",
+    "hits": [
+      [
+        "http://arxiv.org/abs/2510.11202v1",
+        "Evaluating Line-level Localization Ability of Learning-based Code Vulnerability Detection Models"
+      ]
+    ],
+    "n": 1
+  },
+  {
+    "id": "2601.03089",
+    "source": "arxiv",
+    "hits": [
+      [
+        "http://arxiv.org/abs/2601.03089v2",
+        "Faithfulness Evaluation for Decoder-only LLM Attributions with Controlled Retained Information"
+      ]
+    ],
+    "n": 1
+  },
+  {
+    "id": "2601.16407",
+    "source": "arxiv",
+    "hits": [
+      [
+        "http://arxiv.org/abs/2601.16407v4",
+        "Jacobian Scopes: token-level causal attributions in LLMs"
+      ]
+    ],
+    "n": 1
+  }
+]

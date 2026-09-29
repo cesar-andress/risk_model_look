@@ -75,3 +75,27 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Leave PENDING despite PASS logs (rejected).
 - **Reversible:** Yes if a later machine fails the same smoke.
 - **Gate affected:** ENVIRONMENT_GATE
+
+## 2026-09-29T23:45:00+02:00 — NOVELTY_GATE marked PASS after systematic audit
+
+- **Decision:** Set NOVELTY_GATE=PASS; reject the broad provisional “first open comparison …” claim; adopt a compositional intersection claim.
+- **Reason:** No public-data direct collision of JIT explanation faithfulness (A) with RQ3-equivalent signed/occlusion polarity (B) was found among inspected sources up to 2026-09-29.
+- **Alternatives considered:** FAIL on XMENTOR “sign” (rejected: class B ≠ D/E); FAIL on EASE fidelity (rejected: not JIT commit-risk / not decoder-only); INCONCLUSIVE solely due to JITEC full-text gap (rejected: residual UNKNOWN does not establish A∧B).
+- **Reversible:** Yes if a later primary source demonstrates A∧B.
+- **Gate affected:** NOVELTY_GATE
+
+## 2026-09-29T23:45:00+02:00 — Near-collisions recorded as must-cite / must-differentiate
+
+- **Decision:** Treat R1, CodeFlowLM, JITEC, EASE 2026 transformer fidelity, XMENTOR, JIT-LSM, FoX, CfExplainer, and Pintore et al. as mandatory positioning literature; keep CoScoreX ICSME RF paper distinct from EASE transformer CoScoreX study.
+- **Reason:** Each overlaps one RQ or method family without covering the planned intersection.
+- **Alternatives considered:** Ignoring classical JIT XAI as “not LLM” (rejected: reviewers will ask).
+- **Reversible:** No (citation set can grow, not shrink without justification).
+- **Gate affected:** NOVELTY_GATE, PAPER_GATE
+
+## 2026-09-29T23:45:00+02:00 — Jacobian Scopes / IG null-baseline project note
+
+- **Decision:** Mark the plan’s IG-attention-sink warning as **PARTIAL support** from arXiv:2601.16407, not a JIT-specific empirical result.
+- **Reason:** Paper shows IG path integration with null baseline is distorted by attention sink and can worsen AOPC in decoder LLMs; domain is next-token attribution, not commit-risk classification.
+- **Alternatives considered:** Delete the threat entirely (rejected); treat as established for JIT classifiers (rejected).
+- **Reversible:** Yes after JIT-specific IG baseline pilots.
+- **Gate affected:** XAI_GATE (future), NOVELTY_GATE (integrity check)

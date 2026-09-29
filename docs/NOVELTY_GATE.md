@@ -2,52 +2,39 @@
 
 ## STATUS
 
-**UNRESOLVED**
+**PASS**
 
-Do not mark novelty as verified until the orchestrator provides a dated, auditable literature-search report.
+Audit completed: **2026-09-29**.  
+Literature cutoff: **2026-09-29**.  
+Artifacts: `docs/literature_search_log.csv`, `docs/literature_screening.csv`, `docs/NOVELTY_COLLISION_MATRIX.md`, `docs/STATE_OF_ART_NOVELTY_MAP.md`.
 
-## Project-note conflict (visible)
+## Collision rule applied
 
-The project notes currently contain two conflicting states:
+A **direct novelty collision** requires prior public work that evaluates **both**:
 
-1. A statement that a novelty check was performed on 2026-09-29.
-2. An explicit statement that a novelty search is still pending before experimental coding.
+1. explanation faithfulness for JIT defect / commit-risk prediction on **public** data; **and**
+2. signed / directional attribution equivalent to our RQ3 classes **D/E** (prediction change under removal/occlusion determining whether regions increase vs decrease risk; preferably line/hunk level).
 
-Until an auditable report resolves this, this gate remains **UNRESOLVED**.
+**Result:** no inspected source satisfies both conditions.
 
-## Provisional intended novelty claim
+## Critical candidates C1–C10
 
-**PROVISIONAL — NOT YET SAFE FOR THE PAPER**
+All classified in `docs/literature_screening.csv` (see also novelty map). None trigger FAIL.
 
-Approximate claim under consideration:
+Highest near-collisions: R1 (decoder attention + polarity gap, internal data), EASE 2026 (Comp/Suff method suite on non-JIT encoder models), JITEC/CodeFlowLM (public JIT-Defects4J localization without verified RQ2+RQ3).
 
-> An open and reproducible comparison of attention, gradient-based attribution, Integrated Gradients, and signed occlusion for decoder-only LLM commit-risk classifiers, evaluating localization, faithfulness, and attribution direction.
+## Project-note conflict resolution
 
-This text is recorded for gate control only. It must **not** be copied into the manuscript as an established contribution statement.
+Earlier notes both claimed a novelty check on 2026-09-29 **and** said a search was still pending. This gate supersedes both: an auditable search now exists; the old broad “first …” claim is **rejected** as unsafe.
 
-## Planned stopping condition
+## PROVISIONAL DEFENSIBLE NOVELTY CLAIM
 
-If a prior public study already evaluates **both**:
+Prior work separately studies attention highlighting for industrial decoder commit-risk models, public JIT line localization for encoder and prompted-LLM settings, and perturbation fidelity for encoder/encoder-decoder code models. This study targets their intersection: an open comparison of attention, gradient-based attribution, Integrated Gradients, and signed occlusion for fine-tuned decoder-only commit-risk classifiers on public line-labeled JIT data, jointly evaluating localization, prediction-perturbation faithfulness, and attribution polarity.
 
-1. faithfulness of explanations for decoder-only LLM JIT defect/risk classifiers; **and**
-2. signed/directional attribution or the equivalent polarity question;
+Avoid “first ever” / “no previous work” phrasing in the manuscript unless a later re-audit strengthens evidence.
 
-on public data,
+## Remaining risks (do not reopen ENVIRONMENT_GATE)
 
-then the current novelty framing must be reconsidered **before** substantial experiments continue.
-
-## This bootstrap task
-
-- Does **not** search the literature.
-- Does **not** declare the claim novel.
-- Allows infrastructure / environment work only.
-
-## Required resolution artifact (later)
-
-A dated literature-search report with:
-
-- search date
-- venues / indices queried
-- queries used
-- inclusion/exclusion notes
-- decision: proceed / reframe / stop
+- JITEC full text was not fully accessible; RQ2/RQ3 cells remain UNKNOWN rather than NO.
+- Continuous monitoring needed for Rigby/Mockus/Abreu public follow-ups to R1.
+- Reviewer conflation risks: transformer≠decoder-only LLM; XMENTOR sign agreement ≠ RQ3 polarity.

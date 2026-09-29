@@ -7,17 +7,15 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 - Code / replication repository: `/home/cesar/papers/risk_model_look/risk_model_look`
 - Paper / LaTeX: `/home/cesar/papers/risk_model_look/paper`
 
-These roots are independent artifacts of the same study. The manuscript is not inside the replication repository.
-
 # Current phase
 
-T0/T1 — bootstrap and environment (**acceptance checks executed**)
+T0/T1 complete for environment; novelty audit complete. Next: dataset provenance gate (not started).
 
 # Gate status
 
 | Gate | Status |
 |------|--------|
-| NOVELTY_GATE | UNRESOLVED |
+| NOVELTY_GATE | PASS |
 | ENVIRONMENT_GATE | PASS |
 | DATASET_GATE | NOT_STARTED |
 | TOKEN_LINE_MAPPING_GATE | NOT_STARTED |
@@ -30,44 +28,37 @@ T0/T1 — bootstrap and environment (**acceptance checks executed**)
 
 # Current task
 
-Bootstrap acceptance criteria: **completed for ENVIRONMENT_GATE**.
-
-Remaining hard stop before scientific experiments: resolve NOVELTY_GATE with a dated auditable literature-search report; then dataset provenance / token–line mapping gates.
+NOVELTY_GATE audit acceptance criteria executed. Do not advance DATASET_GATE in this task.
 
 # Completed work
 
-- Inspected both roots; preserved pre-existing code README and nested git history.
-- Created repository scaffold (`configs/`, `data/`, `docs/`, `results/`, `scripts/`, `src/*`, `tests/`, `artifacts/`).
-- Added hygiene `.gitignore`, `README.md`, `REPRODUCE.md`, protocol/ledger/gate docs.
-- Created `environment.yml` + uv fallback `.venv` (conda/mamba absent).
-- `pytest -q` PASS.
-- `scripts/smoke_qwen_4bit.py` PASS on RTX 4090 (genuine 4-bit NF4 Qwen2.5-Coder-7B-Instruct).
-- Minimal LaTeX scaffold under paper root; optional compile succeeded.
-- Recorded `docs/ENVIRONMENT_REPORT.md`.
+- Environment bootstrap + Qwen 4-bit smoke (prior task).
+- Systematic literature search log (Crossref, OpenAlex, arXiv, Semantic Scholar, DBLP, publisher/conference pages, Zenodo replication inspection).
+- Screening table for C1–C10 and near candidates.
+- Collision matrix + novelty map; faithfulness and architecture typologies separated.
+- Jacobian Scopes IG-baseline claim verified as PARTIAL/YES in LLM next-token setting.
+- Provisional novelty claim narrowed; broad “first …” framing dropped.
 
 # Blockers
 
-- NOVELTY_GATE remains UNRESOLVED (conflicting project-note states; no auditable search report provided to this agent).
-- JIT-Defects4J authoritative URL / schema / label semantics / JIT-Fine split: still TO VERIFY.
-- Do not start training or attribution until novelty + dataset gates clear.
+- JIT-Defects4J authoritative URL / schema / label semantics / JIT-Fine split still TO VERIFY (DATASET_GATE).
+- JITEC full-text access incomplete (does not overturn PASS, but leaves UNKNOWN cells).
 
 # Decisions frozen
 
 - Separate code and paper roots.
-- No dataset download in bootstrap.
-- Novelty not marked verified.
-- No journal template lock.
-- No public push/release in this phase.
-- No scientific attribution/training implementation yet.
+- ENVIRONMENT_GATE remains PASS (not reopened).
+- Novelty framing must use compositional / intersection claim, not unqualified primacy.
+- XMENTOR “sign agreement” is not treated as equivalent to RQ3 D/E.
+- CoScoreX EASE transformer paper and CoScoreX ICSME RF paper are distinct studies.
 
 # Decisions pending
 
-- Novelty gate resolution by orchestrator.
 - Dataset provenance and redistribution rights.
-- Final class-imbalance training strategy (validation-only).
+- Whether to include ApacheJIT / ReDef as secondary corpora.
 - Journal selection.
-- Public GitHub/Zenodo release timing.
+- Public release timing.
 
 # Last updated
 
-2026-09-29T23:24:30+02:00
+2026-09-29T23:45:00+02:00
