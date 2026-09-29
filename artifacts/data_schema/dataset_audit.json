@@ -1,0 +1,2096 @@
+{
+  "deserialization_isolation": "LIMITED_BWRAP_UNSHARE_NET",
+  "isolation_notes": [
+    "unshare -n not permitted on host",
+    "bwrap --unshare-net used for inspect_jitfine_schema.py",
+    "RestrictedUnpickler not claimed as strong security boundary",
+    "static pickle audit PASS for all seven files before deserialize"
+  ],
+  "changes": {
+    "train": {
+      "top_level": {
+        "python_type": "builtins.list",
+        "kind": "list",
+        "length": 4,
+        "element_types": {
+          "list": 4
+        },
+        "element_lengths_head": [
+          16374,
+          16374,
+          16374,
+          16374
+        ]
+      },
+      "layout": "tuple4_commit_ids_labels_msgs_codes",
+      "n": 16374,
+      "label_profile": {
+        "n": 16374,
+        "n_unique_keys_reported": 2,
+        "n_unique_total": 2,
+        "type_counts": {
+          "float": 16374
+        },
+        "value_counts": {
+          "0.0": 14984,
+          "1.0": 1390
+        }
+      },
+      "commit_id_types": {
+        "str": 16374
+      },
+      "commit_id_dup": {
+        "n": 16374,
+        "n_unique": 16374,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "commit_id_nullish": 0,
+      "message_null": 0,
+      "message_empty": 9,
+      "codes_element_types": {
+        "dict": 16374
+      },
+      "has_added_code_key_count": 16374,
+      "has_removed_code_key_count": 16374,
+      "has_file_path_key_count": 0,
+      "added_line_count_quantiles": {
+        "min": NaN,
+        "p25": NaN,
+        "median": NaN,
+        "mean": NaN,
+        "p75": NaN,
+        "p90": NaN,
+        "p95": NaN,
+        "p99": NaN,
+        "max": NaN,
+        "n": 0
+      },
+      "deleted_line_count_quantiles": {
+        "min": NaN,
+        "p25": NaN,
+        "median": NaN,
+        "mean": NaN,
+        "p75": NaN,
+        "p90": NaN,
+        "p95": NaN,
+        "p99": NaN,
+        "max": NaN,
+        "n": 0
+      },
+      "zero_added": 0,
+      "zero_deleted": 0,
+      "zero_both": 0
+    },
+    "valid": {
+      "top_level": {
+        "python_type": "builtins.list",
+        "kind": "list",
+        "length": 4,
+        "element_types": {
+          "list": 4
+        },
+        "element_lengths_head": [
+          5465,
+          5465,
+          5465,
+          5465
+        ]
+      },
+      "layout": "tuple4_commit_ids_labels_msgs_codes",
+      "n": 5465,
+      "label_profile": {
+        "n": 5465,
+        "n_unique_keys_reported": 2,
+        "n_unique_total": 2,
+        "type_counts": {
+          "float": 5465
+        },
+        "value_counts": {
+          "0.0": 4998,
+          "1.0": 467
+        }
+      },
+      "commit_id_types": {
+        "str": 5465
+      },
+      "commit_id_dup": {
+        "n": 5465,
+        "n_unique": 5465,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "commit_id_nullish": 0,
+      "message_null": 0,
+      "message_empty": 6,
+      "codes_element_types": {
+        "dict": 5465
+      },
+      "has_added_code_key_count": 5465,
+      "has_removed_code_key_count": 5465,
+      "has_file_path_key_count": 0,
+      "added_line_count_quantiles": {
+        "min": NaN,
+        "p25": NaN,
+        "median": NaN,
+        "mean": NaN,
+        "p75": NaN,
+        "p90": NaN,
+        "p95": NaN,
+        "p99": NaN,
+        "max": NaN,
+        "n": 0
+      },
+      "deleted_line_count_quantiles": {
+        "min": NaN,
+        "p25": NaN,
+        "median": NaN,
+        "mean": NaN,
+        "p75": NaN,
+        "p90": NaN,
+        "p95": NaN,
+        "p99": NaN,
+        "max": NaN,
+        "n": 0
+      },
+      "zero_added": 0,
+      "zero_deleted": 0,
+      "zero_both": 0
+    },
+    "test": {
+      "top_level": {
+        "python_type": "builtins.list",
+        "kind": "list",
+        "length": 4,
+        "element_types": {
+          "list": 4
+        },
+        "element_lengths_head": [
+          5480,
+          5480,
+          5480,
+          5480
+        ]
+      },
+      "layout": "tuple4_commit_ids_labels_msgs_codes",
+      "n": 5480,
+      "label_profile": {
+        "n": 5480,
+        "n_unique_keys_reported": 2,
+        "n_unique_total": 2,
+        "type_counts": {
+          "float": 5480
+        },
+        "value_counts": {
+          "0.0": 5005,
+          "1.0": 475
+        }
+      },
+      "commit_id_types": {
+        "str": 5480
+      },
+      "commit_id_dup": {
+        "n": 5480,
+        "n_unique": 5480,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "commit_id_nullish": 0,
+      "message_null": 0,
+      "message_empty": 1,
+      "codes_element_types": {
+        "dict": 5480
+      },
+      "has_added_code_key_count": 5480,
+      "has_removed_code_key_count": 5480,
+      "has_file_path_key_count": 0,
+      "added_line_count_quantiles": {
+        "min": NaN,
+        "p25": NaN,
+        "median": NaN,
+        "mean": NaN,
+        "p75": NaN,
+        "p90": NaN,
+        "p95": NaN,
+        "p99": NaN,
+        "max": NaN,
+        "n": 0
+      },
+      "deleted_line_count_quantiles": {
+        "min": NaN,
+        "p25": NaN,
+        "median": NaN,
+        "mean": NaN,
+        "p75": NaN,
+        "p90": NaN,
+        "p95": NaN,
+        "p99": NaN,
+        "max": NaN,
+        "n": 0
+      },
+      "zero_added": 0,
+      "zero_deleted": 0,
+      "zero_both": 0
+    }
+  },
+  "features": {
+    "train": {
+      "top_level": {
+        "python_type": "pandas.core.frame.DataFrame",
+        "kind": "DataFrame",
+        "shape": [
+          16374,
+          25
+        ],
+        "columns": [
+          "project",
+          "parent_hashes",
+          "commit_hash",
+          "author_name",
+          "author_email",
+          "author_date",
+          "author_date_unix_timestamp",
+          "commit_message",
+          "la",
+          "ld",
+          "fileschanged",
+          "nf",
+          "ns",
+          "nd",
+          "entropy",
+          "ndev",
+          "lt",
+          "nuc",
+          "age",
+          "exp",
+          "rexp",
+          "sexp",
+          "classification",
+          "fix",
+          "is_buggy_commit"
+        ],
+        "dtypes": {
+          "project": "object",
+          "parent_hashes": "object",
+          "commit_hash": "object",
+          "author_name": "object",
+          "author_email": "object",
+          "author_date": "object",
+          "author_date_unix_timestamp": "object",
+          "commit_message": "object",
+          "la": "object",
+          "ld": "object",
+          "fileschanged": "object",
+          "nf": "object",
+          "ns": "object",
+          "nd": "object",
+          "entropy": "object",
+          "ndev": "object",
+          "lt": "object",
+          "nuc": "object",
+          "age": "object",
+          "exp": "object",
+          "rexp": "object",
+          "sexp": "object",
+          "classification": "object",
+          "fix": "object",
+          "is_buggy_commit": "float64"
+        },
+        "index_type": "RangeIndex",
+        "index_unique": true,
+        "null_counts": {
+          "project": 0,
+          "parent_hashes": 0,
+          "commit_hash": 0,
+          "author_name": 0,
+          "author_email": 0,
+          "author_date": 0,
+          "author_date_unix_timestamp": 0,
+          "commit_message": 0,
+          "la": 0,
+          "ld": 0,
+          "fileschanged": 0,
+          "nf": 0,
+          "ns": 0,
+          "nd": 0,
+          "entropy": 0,
+          "ndev": 0,
+          "lt": 0,
+          "nuc": 0,
+          "age": 0,
+          "exp": 0,
+          "rexp": 0,
+          "sexp": 0,
+          "classification": 0,
+          "fix": 0,
+          "is_buggy_commit": 0
+        },
+        "schema_fingerprint": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605"
+      },
+      "layout": "DataFrame",
+      "columns": [
+        "project",
+        "parent_hashes",
+        "commit_hash",
+        "author_name",
+        "author_email",
+        "author_date",
+        "author_date_unix_timestamp",
+        "commit_message",
+        "la",
+        "ld",
+        "fileschanged",
+        "nf",
+        "ns",
+        "nd",
+        "entropy",
+        "ndev",
+        "lt",
+        "nuc",
+        "age",
+        "exp",
+        "rexp",
+        "sexp",
+        "classification",
+        "fix",
+        "is_buggy_commit"
+      ],
+      "id_candidates": [
+        "commit_hash",
+        "commit_message",
+        "is_buggy_commit"
+      ],
+      "primary_id_field": "commit_hash",
+      "id_dup": {
+        "n": 16374,
+        "n_unique": 16374,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "projects": {
+        "n": 16374,
+        "n_unique_keys_reported": 21,
+        "n_unique_total": 21,
+        "type_counts": {
+          "str": 16374
+        },
+        "value_counts": {
+          "'commons-math'": 2415,
+          "'commons-lang'": 1780,
+          "'commons-configuration'": 1102,
+          "'commons-collections'": 1093,
+          "'ant-ivy'": 1062,
+          "'commons-compress'": 977,
+          "'commons-io'": 684,
+          "'commons-net'": 672,
+          "'parquet-mr'": 671,
+          "'commons-vfs'": 665,
+          "'opennlp'": 651,
+          "'commons-digester'": 647,
+          "'commons-dbcp'": 621,
+          "'giraph'": 505,
+          "'commons-jcs'": 497,
+          "'commons-bcel'": 495,
+          "'commons-codec'": 456,
+          "'commons-beanutils'": 366,
+          "'commons-validator'": 358,
+          "'gora'": 331,
+          "'commons-scxml'": 326
+        }
+      },
+      "label_columns": [],
+      "time_columns": [
+        "author_date",
+        "author_date_unix_timestamp"
+      ],
+      "schema_fingerprint": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605"
+    },
+    "valid": {
+      "top_level": {
+        "python_type": "pandas.core.frame.DataFrame",
+        "kind": "DataFrame",
+        "shape": [
+          5465,
+          25
+        ],
+        "columns": [
+          "project",
+          "parent_hashes",
+          "commit_hash",
+          "author_name",
+          "author_email",
+          "author_date",
+          "author_date_unix_timestamp",
+          "commit_message",
+          "la",
+          "ld",
+          "fileschanged",
+          "nf",
+          "ns",
+          "nd",
+          "entropy",
+          "ndev",
+          "lt",
+          "nuc",
+          "age",
+          "exp",
+          "rexp",
+          "sexp",
+          "classification",
+          "fix",
+          "is_buggy_commit"
+        ],
+        "dtypes": {
+          "project": "object",
+          "parent_hashes": "object",
+          "commit_hash": "object",
+          "author_name": "object",
+          "author_email": "object",
+          "author_date": "object",
+          "author_date_unix_timestamp": "object",
+          "commit_message": "object",
+          "la": "object",
+          "ld": "object",
+          "fileschanged": "object",
+          "nf": "object",
+          "ns": "object",
+          "nd": "object",
+          "entropy": "object",
+          "ndev": "object",
+          "lt": "object",
+          "nuc": "object",
+          "age": "object",
+          "exp": "object",
+          "rexp": "object",
+          "sexp": "object",
+          "classification": "object",
+          "fix": "object",
+          "is_buggy_commit": "float64"
+        },
+        "index_type": "RangeIndex",
+        "index_unique": true,
+        "null_counts": {
+          "project": 0,
+          "parent_hashes": 0,
+          "commit_hash": 0,
+          "author_name": 0,
+          "author_email": 0,
+          "author_date": 0,
+          "author_date_unix_timestamp": 0,
+          "commit_message": 0,
+          "la": 0,
+          "ld": 0,
+          "fileschanged": 0,
+          "nf": 0,
+          "ns": 0,
+          "nd": 0,
+          "entropy": 0,
+          "ndev": 0,
+          "lt": 0,
+          "nuc": 0,
+          "age": 0,
+          "exp": 0,
+          "rexp": 0,
+          "sexp": 0,
+          "classification": 0,
+          "fix": 0,
+          "is_buggy_commit": 0
+        },
+        "schema_fingerprint": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605"
+      },
+      "layout": "DataFrame",
+      "columns": [
+        "project",
+        "parent_hashes",
+        "commit_hash",
+        "author_name",
+        "author_email",
+        "author_date",
+        "author_date_unix_timestamp",
+        "commit_message",
+        "la",
+        "ld",
+        "fileschanged",
+        "nf",
+        "ns",
+        "nd",
+        "entropy",
+        "ndev",
+        "lt",
+        "nuc",
+        "age",
+        "exp",
+        "rexp",
+        "sexp",
+        "classification",
+        "fix",
+        "is_buggy_commit"
+      ],
+      "id_candidates": [
+        "commit_hash",
+        "commit_message",
+        "is_buggy_commit"
+      ],
+      "primary_id_field": "commit_hash",
+      "id_dup": {
+        "n": 5465,
+        "n_unique": 5465,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "projects": {
+        "n": 5465,
+        "n_unique_keys_reported": 21,
+        "n_unique_total": 21,
+        "type_counts": {
+          "str": 5465
+        },
+        "value_counts": {
+          "'commons-math'": 805,
+          "'commons-lang'": 594,
+          "'commons-configuration'": 368,
+          "'commons-collections'": 365,
+          "'ant-ivy'": 354,
+          "'commons-compress'": 326,
+          "'commons-io'": 229,
+          "'parquet-mr'": 224,
+          "'commons-net'": 224,
+          "'commons-vfs'": 222,
+          "'opennlp'": 217,
+          "'commons-digester'": 216,
+          "'commons-dbcp'": 208,
+          "'giraph'": 169,
+          "'commons-jcs'": 167,
+          "'commons-bcel'": 165,
+          "'commons-codec'": 152,
+          "'commons-beanutils'": 122,
+          "'commons-validator'": 119,
+          "'gora'": 111,
+          "'commons-scxml'": 108
+        }
+      },
+      "label_columns": [],
+      "time_columns": [
+        "author_date",
+        "author_date_unix_timestamp"
+      ],
+      "schema_fingerprint": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605"
+    },
+    "test": {
+      "top_level": {
+        "python_type": "pandas.core.frame.DataFrame",
+        "kind": "DataFrame",
+        "shape": [
+          5480,
+          25
+        ],
+        "columns": [
+          "project",
+          "parent_hashes",
+          "commit_hash",
+          "author_name",
+          "author_email",
+          "author_date",
+          "author_date_unix_timestamp",
+          "commit_message",
+          "la",
+          "ld",
+          "fileschanged",
+          "nf",
+          "ns",
+          "nd",
+          "entropy",
+          "ndev",
+          "lt",
+          "nuc",
+          "age",
+          "exp",
+          "rexp",
+          "sexp",
+          "classification",
+          "fix",
+          "is_buggy_commit"
+        ],
+        "dtypes": {
+          "project": "object",
+          "parent_hashes": "object",
+          "commit_hash": "object",
+          "author_name": "object",
+          "author_email": "object",
+          "author_date": "object",
+          "author_date_unix_timestamp": "object",
+          "commit_message": "object",
+          "la": "object",
+          "ld": "object",
+          "fileschanged": "object",
+          "nf": "object",
+          "ns": "object",
+          "nd": "object",
+          "entropy": "object",
+          "ndev": "object",
+          "lt": "object",
+          "nuc": "object",
+          "age": "object",
+          "exp": "object",
+          "rexp": "object",
+          "sexp": "object",
+          "classification": "object",
+          "fix": "object",
+          "is_buggy_commit": "float64"
+        },
+        "index_type": "RangeIndex",
+        "index_unique": true,
+        "null_counts": {
+          "project": 0,
+          "parent_hashes": 0,
+          "commit_hash": 0,
+          "author_name": 0,
+          "author_email": 0,
+          "author_date": 0,
+          "author_date_unix_timestamp": 0,
+          "commit_message": 0,
+          "la": 0,
+          "ld": 0,
+          "fileschanged": 0,
+          "nf": 0,
+          "ns": 0,
+          "nd": 0,
+          "entropy": 0,
+          "ndev": 0,
+          "lt": 0,
+          "nuc": 0,
+          "age": 0,
+          "exp": 0,
+          "rexp": 0,
+          "sexp": 0,
+          "classification": 0,
+          "fix": 0,
+          "is_buggy_commit": 0
+        },
+        "schema_fingerprint": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605"
+      },
+      "layout": "DataFrame",
+      "columns": [
+        "project",
+        "parent_hashes",
+        "commit_hash",
+        "author_name",
+        "author_email",
+        "author_date",
+        "author_date_unix_timestamp",
+        "commit_message",
+        "la",
+        "ld",
+        "fileschanged",
+        "nf",
+        "ns",
+        "nd",
+        "entropy",
+        "ndev",
+        "lt",
+        "nuc",
+        "age",
+        "exp",
+        "rexp",
+        "sexp",
+        "classification",
+        "fix",
+        "is_buggy_commit"
+      ],
+      "id_candidates": [
+        "commit_hash",
+        "commit_message",
+        "is_buggy_commit"
+      ],
+      "primary_id_field": "commit_hash",
+      "id_dup": {
+        "n": 5480,
+        "n_unique": 5480,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "projects": {
+        "n": 5480,
+        "n_unique_keys_reported": 21,
+        "n_unique_total": 21,
+        "type_counts": {
+          "str": 5480
+        },
+        "value_counts": {
+          "'commons-math'": 806,
+          "'commons-lang'": 595,
+          "'commons-configuration'": 368,
+          "'commons-collections'": 365,
+          "'ant-ivy'": 355,
+          "'commons-compress'": 327,
+          "'commons-io'": 229,
+          "'parquet-mr'": 225,
+          "'commons-net'": 225,
+          "'commons-vfs'": 223,
+          "'opennlp'": 218,
+          "'commons-digester'": 216,
+          "'commons-dbcp'": 208,
+          "'giraph'": 170,
+          "'commons-jcs'": 167,
+          "'commons-bcel'": 165,
+          "'commons-codec'": 153,
+          "'commons-beanutils'": 123,
+          "'commons-validator'": 121,
+          "'gora'": 111,
+          "'commons-scxml'": 110
+        }
+      },
+      "label_columns": [],
+      "time_columns": [
+        "author_date",
+        "author_date_unix_timestamp"
+      ],
+      "schema_fingerprint": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605"
+    }
+  },
+  "line_labels": {
+    "top_level": {
+      "python_type": "pandas.core.frame.DataFrame",
+      "kind": "DataFrame",
+      "shape": [
+        26104,
+        6
+      ],
+      "columns": [
+        "commit_id",
+        "idx",
+        "changed_type",
+        "label",
+        "raw_changed_line",
+        "changed_line"
+      ],
+      "dtypes": {
+        "commit_id": "object",
+        "idx": "int64",
+        "changed_type": "object",
+        "label": "float64",
+        "raw_changed_line": "object",
+        "changed_line": "object"
+      },
+      "index_type": "RangeIndex",
+      "index_unique": true,
+      "null_counts": {
+        "commit_id": 0,
+        "idx": 0,
+        "changed_type": 0,
+        "label": 0,
+        "raw_changed_line": 0,
+        "changed_line": 0
+      },
+      "schema_fingerprint": "e9a8d042035d8ea546d9f4ecb393a76799eb0ef3acf7ed58d3413e0431a0af36"
+    },
+    "layout": "DataFrame",
+    "columns": [
+      "commit_id",
+      "idx",
+      "changed_type",
+      "label",
+      "raw_changed_line",
+      "changed_line"
+    ],
+    "dtypes": {
+      "commit_id": "object",
+      "idx": "int64",
+      "changed_type": "object",
+      "label": "float64",
+      "raw_changed_line": "object",
+      "changed_line": "object"
+    },
+    "low_card_profiles": {
+      "changed_type": {
+        "n": 26104,
+        "n_unique_keys_reported": 2,
+        "n_unique_total": 2,
+        "type_counts": {
+          "str": 26104
+        },
+        "value_counts": {
+          "'added'": 18615,
+          "'deleted'": 7489
+        }
+      }
+    },
+    "commit_id_field": "commit_id",
+    "n_unique_commits": 475,
+    "changed_type_profile": {
+      "n": 26104,
+      "n_unique_keys_reported": 2,
+      "n_unique_total": 2,
+      "type_counts": {
+        "str": 26104
+      },
+      "value_counts": {
+        "'added'": 18615,
+        "'deleted'": 7489
+      }
+    },
+    "label_profile": {
+      "n": 26104,
+      "n_unique_keys_reported": 2,
+      "n_unique_total": 2,
+      "type_counts": {
+        "float": 26104
+      },
+      "value_counts": {
+        "0.0": 24044,
+        "1.0": 2060
+      }
+    }
+  },
+  "changes_schema_compare": {
+    "train_vs_valid": "IDENTICAL_SCHEMA",
+    "train_vs_test": "IDENTICAL_SCHEMA",
+    "valid_vs_test": "IDENTICAL_SCHEMA",
+    "note": "same tuple4 layout and codes dict[set] structure; prior signature diffs were size-only"
+  },
+  "features_schema_compare": {
+    "train_vs_valid": "IDENTICAL_SCHEMA",
+    "train_vs_test": "IDENTICAL_SCHEMA",
+    "valid_vs_test": "IDENTICAL_SCHEMA",
+    "fingerprints": {
+      "train": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605",
+      "valid": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605",
+      "test": "835dc4186b3dc5059f62e2d0f73acdecd05eecc6fd16b3f3a02bc285827cd605"
+    }
+  },
+  "primary_key": {
+    "field": "commit_id_from_changes_tuple_position0",
+    "uniqueness": {
+      "train": {
+        "n": 16374,
+        "n_unique": 16374,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "valid": {
+        "n": 5465,
+        "n_unique": 5465,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "test": {
+        "n": 5480,
+        "n_unique": 5480,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      }
+    },
+    "note": "empirically from changes pickle; confirm against features.commit_hash"
+  },
+  "split_intersections": {
+    "train_valid": {
+      "count": 0,
+      "example_ids_hashed": []
+    },
+    "train_test": {
+      "count": 0,
+      "example_ids_hashed": []
+    },
+    "valid_test": {
+      "count": 0,
+      "example_ids_hashed": []
+    }
+  },
+  "split_counts": {
+    "by_split": [
+      {
+        "split": "train",
+        "n": 16374,
+        "positives": 1390,
+        "negatives": 14984,
+        "positive_rate": 0.08489068034689141
+      },
+      {
+        "split": "valid",
+        "n": 5465,
+        "positives": 467,
+        "negatives": 4998,
+        "positive_rate": 0.08545288197621226
+      },
+      {
+        "split": "test",
+        "n": 5480,
+        "positives": 475,
+        "negatives": 5005,
+        "positive_rate": 0.08667883211678833
+      }
+    ],
+    "n_total_author_split": 27319,
+    "positives_total": 2332,
+    "negatives_total": 24987
+  },
+  "changes_features_alignment": {
+    "train": {
+      "verdict": "EXACT_ALIGNMENT",
+      "changes_n": 16374,
+      "features_n": 16374,
+      "only_in_changes": 0,
+      "only_in_features": 0,
+      "label_consistency": null,
+      "features_primary_id_field": "commit_hash"
+    },
+    "valid": {
+      "verdict": "EXACT_ALIGNMENT",
+      "changes_n": 5465,
+      "features_n": 5465,
+      "only_in_changes": 0,
+      "only_in_features": 0,
+      "label_consistency": null,
+      "features_primary_id_field": "commit_hash"
+    },
+    "test": {
+      "verdict": "EXACT_ALIGNMENT",
+      "changes_n": 5480,
+      "features_n": 5480,
+      "only_in_changes": 0,
+      "only_in_features": 0,
+      "label_consistency": null,
+      "features_primary_id_field": "commit_hash"
+    }
+  },
+  "projects": {
+    "by_split": {
+      "train": {
+        "available": true,
+        "n_projects": 21,
+        "projects": {
+          "ant-ivy": {
+            "commits": 1062,
+            "positives": 199,
+            "positive_rate": 0.1873822975517891
+          },
+          "commons-bcel": {
+            "commits": 495,
+            "positives": 36,
+            "positive_rate": 0.07272727272727272
+          },
+          "commons-beanutils": {
+            "commits": 366,
+            "positives": 22,
+            "positive_rate": 0.060109289617486336
+          },
+          "commons-codec": {
+            "commits": 456,
+            "positives": 21,
+            "positive_rate": 0.046052631578947366
+          },
+          "commons-collections": {
+            "commits": 1093,
+            "positives": 30,
+            "positive_rate": 0.027447392497712716
+          },
+          "commons-compress": {
+            "commits": 977,
+            "positives": 106,
+            "positive_rate": 0.10849539406345957
+          },
+          "commons-configuration": {
+            "commits": 1102,
+            "positives": 93,
+            "positive_rate": 0.08439201451905626
+          },
+          "commons-dbcp": {
+            "commits": 621,
+            "positives": 34,
+            "positive_rate": 0.05475040257648953
+          },
+          "commons-digester": {
+            "commits": 647,
+            "positives": 11,
+            "positive_rate": 0.017001545595054096
+          },
+          "commons-io": {
+            "commits": 684,
+            "positives": 43,
+            "positive_rate": 0.06286549707602339
+          },
+          "commons-jcs": {
+            "commits": 497,
+            "positives": 52,
+            "positive_rate": 0.10462776659959759
+          },
+          "commons-lang": {
+            "commits": 1780,
+            "positives": 87,
+            "positive_rate": 0.04887640449438202
+          },
+          "commons-math": {
+            "commits": 2415,
+            "positives": 201,
+            "positive_rate": 0.08322981366459627
+          },
+          "commons-net": {
+            "commits": 672,
+            "positives": 70,
+            "positive_rate": 0.10416666666666667
+          },
+          "commons-scxml": {
+            "commits": 326,
+            "positives": 28,
+            "positive_rate": 0.08588957055214724
+          },
+          "commons-validator": {
+            "commits": 358,
+            "positives": 21,
+            "positive_rate": 0.05865921787709497
+          },
+          "commons-vfs": {
+            "commits": 665,
+            "positives": 68,
+            "positive_rate": 0.10225563909774436
+          },
+          "giraph": {
+            "commits": 505,
+            "positives": 97,
+            "positive_rate": 0.19207920792079208
+          },
+          "gora": {
+            "commits": 331,
+            "positives": 23,
+            "positive_rate": 0.06948640483383686
+          },
+          "opennlp": {
+            "commits": 651,
+            "positives": 54,
+            "positive_rate": 0.08294930875576037
+          },
+          "parquet-mr": {
+            "commits": 671,
+            "positives": 94,
+            "positive_rate": 0.14008941877794337
+          }
+        }
+      },
+      "valid": {
+        "available": true,
+        "n_projects": 21,
+        "projects": {
+          "ant-ivy": {
+            "commits": 354,
+            "positives": 66,
+            "positive_rate": 0.1864406779661017
+          },
+          "commons-bcel": {
+            "commits": 165,
+            "positives": 12,
+            "positive_rate": 0.07272727272727272
+          },
+          "commons-beanutils": {
+            "commits": 122,
+            "positives": 7,
+            "positive_rate": 0.05737704918032787
+          },
+          "commons-codec": {
+            "commits": 152,
+            "positives": 7,
+            "positive_rate": 0.046052631578947366
+          },
+          "commons-collections": {
+            "commits": 365,
+            "positives": 10,
+            "positive_rate": 0.0273972602739726
+          },
+          "commons-compress": {
+            "commits": 326,
+            "positives": 36,
+            "positive_rate": 0.11042944785276074
+          },
+          "commons-configuration": {
+            "commits": 368,
+            "positives": 31,
+            "positive_rate": 0.08423913043478261
+          },
+          "commons-dbcp": {
+            "commits": 208,
+            "positives": 12,
+            "positive_rate": 0.057692307692307696
+          },
+          "commons-digester": {
+            "commits": 216,
+            "positives": 4,
+            "positive_rate": 0.018518518518518517
+          },
+          "commons-io": {
+            "commits": 229,
+            "positives": 15,
+            "positive_rate": 0.06550218340611354
+          },
+          "commons-jcs": {
+            "commits": 167,
+            "positives": 18,
+            "positive_rate": 0.10778443113772455
+          },
+          "commons-lang": {
+            "commits": 594,
+            "positives": 29,
+            "positive_rate": 0.04882154882154882
+          },
+          "commons-math": {
+            "commits": 805,
+            "positives": 67,
+            "positive_rate": 0.08322981366459627
+          },
+          "commons-net": {
+            "commits": 224,
+            "positives": 23,
+            "positive_rate": 0.10267857142857142
+          },
+          "commons-scxml": {
+            "commits": 108,
+            "positives": 9,
+            "positive_rate": 0.08333333333333333
+          },
+          "commons-validator": {
+            "commits": 119,
+            "positives": 7,
+            "positive_rate": 0.058823529411764705
+          },
+          "commons-vfs": {
+            "commits": 222,
+            "positives": 23,
+            "positive_rate": 0.1036036036036036
+          },
+          "giraph": {
+            "commits": 169,
+            "positives": 33,
+            "positive_rate": 0.1952662721893491
+          },
+          "gora": {
+            "commits": 111,
+            "positives": 8,
+            "positive_rate": 0.07207207207207207
+          },
+          "opennlp": {
+            "commits": 217,
+            "positives": 18,
+            "positive_rate": 0.08294930875576037
+          },
+          "parquet-mr": {
+            "commits": 224,
+            "positives": 32,
+            "positive_rate": 0.14285714285714285
+          }
+        }
+      },
+      "test": {
+        "available": true,
+        "n_projects": 21,
+        "projects": {
+          "ant-ivy": {
+            "commits": 355,
+            "positives": 67,
+            "positive_rate": 0.18873239436619718
+          },
+          "commons-bcel": {
+            "commits": 165,
+            "positives": 12,
+            "positive_rate": 0.07272727272727272
+          },
+          "commons-beanutils": {
+            "commits": 123,
+            "positives": 8,
+            "positive_rate": 0.06504065040650407
+          },
+          "commons-codec": {
+            "commits": 153,
+            "positives": 8,
+            "positive_rate": 0.05228758169934641
+          },
+          "commons-collections": {
+            "commits": 365,
+            "positives": 10,
+            "positive_rate": 0.0273972602739726
+          },
+          "commons-compress": {
+            "commits": 327,
+            "positives": 36,
+            "positive_rate": 0.11009174311926606
+          },
+          "commons-configuration": {
+            "commits": 368,
+            "positives": 31,
+            "positive_rate": 0.08423913043478261
+          },
+          "commons-dbcp": {
+            "commits": 208,
+            "positives": 12,
+            "positive_rate": 0.057692307692307696
+          },
+          "commons-digester": {
+            "commits": 216,
+            "positives": 4,
+            "positive_rate": 0.018518518518518517
+          },
+          "commons-io": {
+            "commits": 229,
+            "positives": 15,
+            "positive_rate": 0.06550218340611354
+          },
+          "commons-jcs": {
+            "commits": 167,
+            "positives": 18,
+            "positive_rate": 0.10778443113772455
+          },
+          "commons-lang": {
+            "commits": 595,
+            "positives": 30,
+            "positive_rate": 0.05042016806722689
+          },
+          "commons-math": {
+            "commits": 806,
+            "positives": 67,
+            "positive_rate": 0.08312655086848635
+          },
+          "commons-net": {
+            "commits": 225,
+            "positives": 24,
+            "positive_rate": 0.10666666666666667
+          },
+          "commons-scxml": {
+            "commits": 110,
+            "positives": 10,
+            "positive_rate": 0.09090909090909091
+          },
+          "commons-validator": {
+            "commits": 121,
+            "positives": 8,
+            "positive_rate": 0.06611570247933884
+          },
+          "commons-vfs": {
+            "commits": 223,
+            "positives": 23,
+            "positive_rate": 0.1031390134529148
+          },
+          "giraph": {
+            "commits": 170,
+            "positives": 33,
+            "positive_rate": 0.19411764705882353
+          },
+          "gora": {
+            "commits": 111,
+            "positives": 8,
+            "positive_rate": 0.07207207207207207
+          },
+          "opennlp": {
+            "commits": 218,
+            "positives": 19,
+            "positive_rate": 0.0871559633027523
+          },
+          "parquet-mr": {
+            "commits": 225,
+            "positives": 32,
+            "positive_rate": 0.14222222222222222
+          }
+        }
+      }
+    },
+    "overall": {
+      "train_valid_test": [
+        "ant-ivy",
+        "commons-bcel",
+        "commons-beanutils",
+        "commons-codec",
+        "commons-collections",
+        "commons-compress",
+        "commons-configuration",
+        "commons-dbcp",
+        "commons-digester",
+        "commons-io",
+        "commons-jcs",
+        "commons-lang",
+        "commons-math",
+        "commons-net",
+        "commons-scxml",
+        "commons-validator",
+        "commons-vfs",
+        "giraph",
+        "gora",
+        "opennlp",
+        "parquet-mr"
+      ],
+      "n_overall": 21
+    }
+  },
+  "temporal_split": {
+    "by_split_availability": {
+      "train": {
+        "status": "PRESENT",
+        "time_column": [
+          "author_date",
+          "author_date_unix_timestamp"
+        ]
+      },
+      "valid": {
+        "status": "PRESENT",
+        "time_column": [
+          "author_date",
+          "author_date_unix_timestamp"
+        ]
+      },
+      "test": {
+        "status": "PRESENT",
+        "time_column": [
+          "author_date",
+          "author_date_unix_timestamp"
+        ]
+      }
+    },
+    "per_project": {
+      "ant-ivy": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-math": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "opennlp": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "parquet-mr": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "commons-lang": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "commons-net": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "commons-collections": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-beanutils": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-codec": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-compress": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "commons-configuration": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-digester": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-jcs": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "commons-io": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-scxml": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min"
+        ]
+      },
+      "commons-validator": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "commons-vfs": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "giraph": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "commons-bcel": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min"
+        ]
+      },
+      "commons-dbcp": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      },
+      "gora": {
+        "class": "OVERLAPPING_DATES",
+        "issues": [
+          "train_max_gt_valid_min",
+          "valid_max_gt_test_min",
+          "train_max_gt_test_min"
+        ]
+      }
+    },
+    "summary": {
+      "CHRONOLOGICALLY_ORDERED": 0,
+      "OVERLAPPING_DATES": 21,
+      "n_projects_checked": 21
+    }
+  },
+  "test_line_label_coverage": {
+    "all_test": {
+      "n": 5480,
+      "represented": 475,
+      "note": "line-label artifact contains only buggy test commits"
+    },
+    "positive_test": {
+      "n": 475,
+      "represented": 475,
+      "ge1_added": 475,
+      "ge1_positive_added_label": 475,
+      "added_but_zero_positive_label": 0,
+      "missing_from_line_label_artifact": 0,
+      "zero_added_in_changes": 0
+    },
+    "negative_test": {
+      "n": 5005,
+      "represented": 0,
+      "missing_from_line_label_artifact": 5005
+    }
+  },
+  "localization_populations": {
+    "L0_all_test": 5480,
+    "L1_gold_positive_test": 475,
+    "L2_gold_positive_with_ge1_added": 475,
+    "L3_gold_positive_in_line_label_artifact": 475,
+    "L4_gold_positive_with_ge1_positive_added_label": 475,
+    "LOCALIZATION_DENOMINATOR_DECISION": "OPEN",
+    "note": "JIT-Fine original eval further conditions on model-predicted positive; not applied here."
+  },
+  "duplicates": {
+    "commit_ids": {
+      "train": {
+        "n": 16374,
+        "n_unique": 16374,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "valid": {
+        "n": 5465,
+        "n_unique": 5465,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      },
+      "test": {
+        "n": 5480,
+        "n_unique": 5480,
+        "n_null": 0,
+        "n_duplicate_ids": 0,
+        "n_extra_rows_from_duplicates": 0
+      }
+    },
+    "change_content_hash_collisions": {
+      "train": {
+        "n_unique_hashes": 15958,
+        "n_hashes_with_multiplicity_gt1": 240
+      },
+      "valid": {
+        "n_unique_hashes": 5313,
+        "n_hashes_with_multiplicity_gt1": 55
+      },
+      "test": {
+        "n_unique_hashes": 5354,
+        "n_hashes_with_multiplicity_gt1": 39
+      }
+    }
+  },
+  "zero_add_empty": {
+    "train": {
+      "zero_added_pos": 0,
+      "zero_added_neg": 0,
+      "zero_deleted_pos": 0,
+      "zero_deleted_neg": 0,
+      "zero_both_pos": 0,
+      "zero_both_neg": 0
+    },
+    "valid": {
+      "zero_added_pos": 0,
+      "zero_added_neg": 0,
+      "zero_deleted_pos": 0,
+      "zero_deleted_neg": 0,
+      "zero_both_pos": 0,
+      "zero_both_neg": 0
+    },
+    "test": {
+      "zero_added_pos": 0,
+      "zero_added_neg": 0,
+      "zero_deleted_pos": 0,
+      "zero_deleted_neg": 0,
+      "zero_both_pos": 0,
+      "zero_both_neg": 0
+    }
+  },
+  "positives_line_label_status": {
+    "positives_in_any_split_and_ll": 475,
+    "with_ge1_positive_line": 0,
+    "with_zero_positive_line": 475
+  },
+  "change_line_label_commit_overlap": {
+    "train": {
+      "changes_commits": 16374,
+      "also_in_line_label": 0,
+      "missing_in_line_label": 16374
+    },
+    "valid": {
+      "changes_commits": 5465,
+      "also_in_line_label": 0,
+      "missing_in_line_label": 5465
+    },
+    "test": {
+      "changes_commits": 5480,
+      "also_in_line_label": 475,
+      "missing_in_line_label": 5005
+    }
+  },
+  "published_count_comparison": [
+    {
+      "claim": "21 Java projects",
+      "source": "Ni et al. ESEC/FSE 2022 \u00a74 / provenance report",
+      "published_value": 21,
+      "archive_value": 21,
+      "status": "MATCH"
+    },
+    {
+      "claim": "secondary literature ~27319 commits / 2332 defective",
+      "source": "DATASET_PROVENANCE_REPORT secondary citation note (not paper table total)",
+      "published_value": {
+        "commits": 27319,
+        "defective": 2332
+      },
+      "archive_value": {
+        "commits": 27319,
+        "defective": 2332
+      },
+      "status": "MATCH"
+    }
+  ],
+  "file_path_adequacy_for_rq4": {
+    "in_changes_codes": "NO",
+    "note": "see has_file_path_key_count in changes summaries",
+    "has_file_path_key_count_train": 0
+  },
+  "commit_label_fields": {
+    "changes_tuple_labels_type": "float",
+    "changes_tuple_labels_values": {
+      "0.0": "negative",
+      "1.0": "positive defect-inducing"
+    },
+    "features_column": "is_buggy_commit",
+    "features_dtype": "float64",
+    "features_values": {
+      "0.0": "negative",
+      "1.0": "positive"
+    },
+    "alignment": "EXACT match changes labels vs features.is_buggy_commit on inspected splits"
+  },
+  "change_representation_corrected": {
+    "commit_message": "YES (msgs list + features.commit_message)",
+    "file_paths_in_changes_codes": "NO",
+    "file_paths_in_features": "PARTIAL (fileschanged column present)",
+    "added_lines": "YES as set[str] in codes[i]['added_code']",
+    "deleted_lines": "YES as set[str] in codes[i]['removed_code']",
+    "context_lines": "NO",
+    "hunk_markers": "NO",
+    "line_numbers": "NO in changes; YES idx in line-label DataFrame",
+    "hunk_numbers": "NO",
+    "project_name": "YES in features.project",
+    "line_order": "NOT_PRESERVED in changes sets; PRESERVED by idx order in line-label rows"
+  },
+  "line_label_corrected": {
+    "codes_container_type": "dict[str,set[str]] with keys added_code, removed_code",
+    "added_code_element_type": "str",
+    "removed_code_element_type": "str",
+    "line_order_in_changes_pickle": "NOT_PRESERVED (Python set)",
+    "line_label_artifact_scope": "TEST_POSITIVE_COMMITS_ONLY",
+    "line_label_n_rows": 26104,
+    "line_label_n_commits": 475,
+    "changed_type_counts": {
+      "added": 18615,
+      "deleted": 7489
+    },
+    "label_value_counts_overall": {
+      "0.0": 24044,
+      "1.0": 2060
+    },
+    "label_value_counts_by_changed_type": {
+      "added": {
+        "0.0": 16555,
+        "1.0": 2060
+      },
+      "deleted": {
+        "0.0": 7489
+      }
+    },
+    "deleted_line_label_status": "YES_FIELD_PRESENT_ALL_ZERO_POSITIVES",
+    "deleted_positive_labels": 0,
+    "deleted_zero_labels": 7489,
+    "added_positive_labels": 2060,
+    "added_zero_labels": 16555,
+    "commits_with_ge1_positive_added_label": 475
+  },
+  "split_enrichment": {
+    "train": {
+      "n": 16374,
+      "positives": 1390,
+      "negatives": 14984,
+      "added_line_count_quantiles": {
+        "min": 0.0,
+        "p25": 3.0,
+        "median": 11.0,
+        "mean": 38.134053988029805,
+        "p75": 35.0,
+        "p90": 92.0,
+        "p95": 161.0,
+        "p99": 403.8100000000013,
+        "max": 6071.0,
+        "n": 16374
+      },
+      "deleted_line_count_quantiles": {
+        "min": 0.0,
+        "p25": 1.0,
+        "median": 3.0,
+        "mean": 17.383534872358616,
+        "p75": 11.0,
+        "p90": 36.0,
+        "p95": 71.0,
+        "p99": 237.54000000000087,
+        "max": 2788.0,
+        "n": 16374
+      },
+      "zero_added_total": 344,
+      "zero_deleted_total": 3408,
+      "zero_added_pos": 0,
+      "zero_added_neg": 344,
+      "zero_deleted_pos": 380,
+      "zero_deleted_neg": 3028,
+      "zero_both_pos": 0,
+      "zero_both_neg": 0,
+      "features_is_buggy_disagree_with_changes_label": 0,
+      "positive_in_line_label_artifact": 0,
+      "positive_missing_from_line_label_artifact": 1390,
+      "positive_ge1_added_in_changes": 1390,
+      "positive_zero_added_in_changes": 0,
+      "positive_ge1_positive_added_line_label": 0,
+      "positive_in_ll_but_zero_positive_line_label": 0,
+      "added_set_size_vs_ll_added_rows_checked": 0,
+      "added_set_size_vs_ll_added_rows_mismatches": 0,
+      "added_element_types_sample": {
+        "str": 498
+      },
+      "message_null": 0,
+      "message_empty": 9
+    },
+    "valid": {
+      "n": 5465,
+      "positives": 467,
+      "negatives": 4998,
+      "added_line_count_quantiles": {
+        "min": 0.0,
+        "p25": 2.0,
+        "median": 9.0,
+        "mean": 32.132296431838974,
+        "p75": 29.0,
+        "p90": 71.60000000000036,
+        "p95": 130.80000000000018,
+        "p99": 378.23999999999705,
+        "max": 1567.0,
+        "n": 5465
+      },
+      "deleted_line_count_quantiles": {
+        "min": 0.0,
+        "p25": 1.0,
+        "median": 3.0,
+        "mean": 15.258920402561756,
+        "p75": 10.0,
+        "p90": 31.600000000000364,
+        "p95": 59.0,
+        "p99": 206.0,
+        "max": 2130.0,
+        "n": 5465
+      },
+      "zero_added_total": 75,
+      "zero_deleted_total": 1049,
+      "zero_added_pos": 0,
+      "zero_added_neg": 75,
+      "zero_deleted_pos": 98,
+      "zero_deleted_neg": 951,
+      "zero_both_pos": 0,
+      "zero_both_neg": 0,
+      "features_is_buggy_disagree_with_changes_label": 0,
+      "positive_in_line_label_artifact": 0,
+      "positive_missing_from_line_label_artifact": 467,
+      "positive_ge1_added_in_changes": 467,
+      "positive_zero_added_in_changes": 0,
+      "positive_ge1_positive_added_line_label": 0,
+      "positive_in_ll_but_zero_positive_line_label": 0,
+      "added_set_size_vs_ll_added_rows_checked": 0,
+      "added_set_size_vs_ll_added_rows_mismatches": 0,
+      "added_element_types_sample": {
+        "str": 498
+      },
+      "message_null": 0,
+      "message_empty": 6
+    },
+    "test": {
+      "n": 5480,
+      "positives": 475,
+      "negatives": 5005,
+      "added_line_count_quantiles": {
+        "min": 0.0,
+        "p25": 3.0,
+        "median": 10.0,
+        "mean": 39.47828467153285,
+        "p75": 33.0,
+        "p90": 94.0,
+        "p95": 162.05000000000018,
+        "p99": 463.47000000000025,
+        "max": 2735.0,
+        "n": 5480
+      },
+      "deleted_line_count_quantiles": {
+        "min": 0.0,
+        "p25": 1.0,
+        "median": 3.0,
+        "mean": 20.29762773722628,
+        "p75": 13.0,
+        "p90": 40.0,
+        "p95": 82.05000000000018,
+        "p99": 321.84000000000015,
+        "max": 1985.0,
+        "n": 5480
+      },
+      "zero_added_total": 64,
+      "zero_deleted_total": 964,
+      "zero_added_pos": 0,
+      "zero_added_neg": 64,
+      "zero_deleted_pos": 95,
+      "zero_deleted_neg": 869,
+      "zero_both_pos": 0,
+      "zero_both_neg": 0,
+      "features_is_buggy_disagree_with_changes_label": 0,
+      "positive_in_line_label_artifact": 475,
+      "positive_missing_from_line_label_artifact": 0,
+      "positive_ge1_added_in_changes": 475,
+      "positive_zero_added_in_changes": 0,
+      "positive_ge1_positive_added_line_label": 475,
+      "positive_in_ll_but_zero_positive_line_label": 0,
+      "added_set_size_vs_ll_added_rows_checked": 475,
+      "added_set_size_vs_ll_added_rows_mismatches": 0,
+      "added_element_types_sample": {
+        "str": 498
+      },
+      "message_null": 0,
+      "message_empty": 1
+    }
+  },
+  "temporal_split_unix": {
+    "summary": {
+      "projects": 21,
+      "train_vs_test_CHRONOLOGICALLY_ORDERED": 10,
+      "train_vs_test_OVERLAPPING_DATES": 11,
+      "valid_wholly_between_train_and_test": 0
+    },
+    "per_project": {
+      "ant-ivy": {
+        "train_max_unix": 1234306005,
+        "valid_min_unix": 1202059522,
+        "valid_max_unix": 1334352586,
+        "test_min_unix": 1220386418,
+        "test_max_unix": 1518070656,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-bcel": {
+        "train_max_unix": 1439401165,
+        "valid_min_unix": 1419006006,
+        "valid_max_unix": 1440594813,
+        "test_min_unix": 1440516841,
+        "test_max_unix": 1549898763,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-beanutils": {
+        "train_max_unix": 1249349896,
+        "valid_min_unix": 1179643161,
+        "valid_max_unix": 1383412287,
+        "test_min_unix": 985670757,
+        "test_max_unix": 1539377245,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-codec": {
+        "train_max_unix": 1346275127,
+        "valid_min_unix": 1312596577,
+        "valid_max_unix": 1415627116,
+        "test_min_unix": 1346274167,
+        "test_max_unix": 1538217794,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-collections": {
+        "train_max_unix": 1262128338,
+        "valid_min_unix": 1252994262,
+        "valid_max_unix": 1384982015,
+        "test_min_unix": 987262738,
+        "test_max_unix": 1541703623,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-compress": {
+        "train_max_unix": 1420144642,
+        "valid_min_unix": 1370778543,
+        "valid_max_unix": 1486572890,
+        "test_min_unix": 1420665064,
+        "test_max_unix": 1541883355,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-configuration": {
+        "train_max_unix": 1373743288,
+        "valid_min_unix": 1227385016,
+        "valid_max_unix": 1400939587,
+        "test_min_unix": 1352136541,
+        "test_max_unix": 1539743106,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-dbcp": {
+        "train_max_unix": 1389613566,
+        "valid_min_unix": 1256487984,
+        "valid_max_unix": 1516137057,
+        "test_min_unix": 987268491,
+        "test_max_unix": 1551363146,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-digester": {
+        "train_max_unix": 1306595865,
+        "valid_min_unix": 1305475120,
+        "valid_max_unix": 1320489262,
+        "test_min_unix": 988849713,
+        "test_max_unix": 1503698008,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-io": {
+        "train_max_unix": 1330622280,
+        "valid_min_unix": 1228361423,
+        "valid_max_unix": 1397138899,
+        "test_min_unix": 1302435831,
+        "test_max_unix": 1541218878,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "commons-jcs": {
+        "train_max_unix": 1333220581,
+        "valid_min_unix": 1250113304,
+        "valid_max_unix": 1404050307,
+        "test_min_unix": 1399920716,
+        "test_max_unix": 1538681310,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-lang": {
+        "train_max_unix": 1311051483,
+        "valid_min_unix": 1296374479,
+        "valid_max_unix": 1428343126,
+        "test_min_unix": 1390496278,
+        "test_max_unix": 1538451697,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-math": {
+        "train_max_unix": 1335434568,
+        "valid_min_unix": 1318047660,
+        "valid_max_unix": 1384032726,
+        "test_min_unix": 1363704690,
+        "test_max_unix": 1518374786,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-net": {
+        "train_max_unix": 1301273655,
+        "valid_min_unix": 1268041963,
+        "valid_max_unix": 1397265006,
+        "test_min_unix": 1301535411,
+        "test_max_unix": 1538768200,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-scxml": {
+        "train_max_unix": 1230923835,
+        "valid_min_unix": 1186436283,
+        "valid_max_unix": 1390854625,
+        "test_min_unix": 1390863410,
+        "test_max_unix": 1539816771,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-validator": {
+        "train_max_unix": 1306528167,
+        "valid_min_unix": 1303167471,
+        "valid_max_unix": 1421276952,
+        "test_min_unix": 1420511829,
+        "test_max_unix": 1538218359,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "commons-vfs": {
+        "train_max_unix": 1333291635,
+        "valid_min_unix": 1159899924,
+        "valid_max_unix": 1375927761,
+        "test_min_unix": 1289158617,
+        "test_max_unix": 1541257014,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "giraph": {
+        "train_max_unix": 1379355088,
+        "valid_min_unix": 1357881473,
+        "valid_max_unix": 1434570472,
+        "test_min_unix": 1374354283,
+        "test_max_unix": 1541792555,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "gora": {
+        "train_max_unix": 1441377520,
+        "valid_min_unix": 1342767612,
+        "valid_max_unix": 1498141432,
+        "test_min_unix": 1400867770,
+        "test_max_unix": 1554589286,
+        "train_max_le_test_min": false,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "OVERLAPPING_DATES"
+      },
+      "opennlp": {
+        "train_max_unix": 1392996057,
+        "valid_min_unix": 1391095473,
+        "valid_max_unix": 1482281056,
+        "test_min_unix": 1421916823,
+        "test_max_unix": 1526989853,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      },
+      "parquet-mr": {
+        "train_max_unix": 1392397813,
+        "valid_min_unix": 1387143174,
+        "valid_max_unix": 1428437575,
+        "test_min_unix": 1413910460,
+        "test_max_unix": 1531123824,
+        "train_max_le_test_min": true,
+        "valid_wholly_between_train_and_test": false,
+        "class_train_vs_test": "CHRONOLOGICALLY_ORDERED"
+      }
+    },
+    "interpretation": "Paper \u00a76.1 describes per-project chronological 80/20 train/test. Author-provided valid split is not wholly between train and test for any project. train_max<=test_min holds for only a subset of projects under author_date_unix_timestamp."
+  }
+}

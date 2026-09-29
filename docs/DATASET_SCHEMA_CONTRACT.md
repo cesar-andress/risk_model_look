@@ -1,91 +1,76 @@
 # DATASET_SCHEMA_CONTRACT.md
 
-**STATUS: EXPECTED_FROM_UPSTREAM_DOCUMENTATION — NOT YET VALIDATED AGAINST ARCHIVE**
+**STATUS: VALIDATED_AGAINST_FROZEN_ARCHIVE** (fields below marked VALIDATED were empirically verified 2026-09-29)
 
-Derived from JIT-Fine README, line-label README, `JITFine/my_util.py`, `JITFine/concat/run.py`, and Ni et al. ESEC/FSE 2022 — without opening `data.zip`.
+Archive SHA-256: `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47`
 
----
-
-## Commit-level change pickle (`changes_{train,valid,test}.pkl`)
-
-Expected unpacked structure when loaded with `pandas.read_pickle` / tuple unpack in `TextDataset`:
-
-| Field | Expected type | Semantics | Evidence | Required by our study? | Future transformation |
-|-------|---------------|-----------|----------|------------------------|-----------------------|
-| commit_ids | sequence aligned with other lists | Commit identifier (hash) | `my_util.py` `commit_ids, labels, msgs, codes = ddata` | yes | map to stable commit ID |
-| labels | sequence of ints {0,1} | 1 = defect-inducing commit | `label = int(label)` | yes | keep binary |
-| msgs | sequence of strings | Commit message | tokenization of `msg` | yes | become `[MSG]` field |
-| codes / files | per-commit structure with `added_code`, `removed_code` | Changed line texts | `file_codes['added_code']`, `removed_code` | yes | map to `[ADD]`/`[DEL]`; may lack per-file path in this view — **UNCERTAIN** whether file path retained inside this pickle |
-
-**Uncertainty:** Whether `codes` is a single dict of lists or per-file nested structure **REQUIRES_ACQUISITION_PHASE**.
+Normalization is **not** implemented in this gate.
 
 ---
 
-## Expert feature pickle (`features_{train,valid,test}.pkl`)
+## changes_{train,valid,test}.pkl
 
-| Field | Expected type | Semantics | Evidence | Required? | Future transformation |
-|-------|---------------|-----------|----------|-----------|-----------------------|
-| commit_hash | string | Join key to changes | `features_data['commit_hash']` | yes | identity |
-| la, ld, nf, ns, nd, entropy, ndev, lt, nuc, age, exp, rexp, sexp, fix | numeric | Kamei-style expert features; `fix` cast via `float(bool(x))` | `manual_features_columns` | optional for M1 decoder-only path; useful for encoder baselines | scale as upstream or recompute |
+Top-level: `list` of 4 aligned sequences (**VALIDATED**).
 
----
+| Upstream name / position | Actual type | Semantics | Nullability | Our future field | Evidence |
+|--------------------------|-------------|-----------|-------------|------------------|----------|
+| `[0]` commit ids | `list[str]` | commit hash | none observed | `commit_id` | schema audit |
+| `[1]` labels | `list[float]` in `{0.0,1.0}` | defect-inducing if 1.0 | none | `commit_label` | profile |
+| `[2]` msgs | `list[str]` | commit message | empty possible | `commit_message` | present |
+| `[3]` codes | `list[dict]` | change payload | — | — | |
+| `codes[i]['added_code']` | `set[str]` | added line texts | empty set possible | `added_lines` (order TBD) | **VALIDATED** |
+| `codes[i]['removed_code']` | `set[str]` | deleted line texts | empty set possible | `deleted_lines` (order TBD) | **VALIDATED** |
 
-## Line-label pickle (`changes_complete_buggy_line_level.pkl`)
-
-From `commit_with_codes` loop:
-
-| Field | Expected type | Semantics | Evidence | Required? | Future transformation |
-|-------|---------------|-----------|----------|-----------|-----------------------|
-| commit_id | string | Commit hash | unpack `item` | yes | join |
-| idx | int/index | Line token/index alignment key | merge on `idx` | yes | map to our line IDs |
-| changed_type | string | e.g. `'added'` (and likely deleted) | `--only_adds` filter | yes | preserve |
-| label | int {0,1} | 1 = buggy line | metrics | yes | preserve |
-| raw_changed_line | string | Original line text | unpack | yes | identity for mapping |
-| changed_line | string | Possibly processed line | unpack | maybe | compare to raw |
+File path / hunk / line number inside `codes`: **NO** (**VALIDATED**).  
+Line order: **not preserved** in sets (**VALIDATED**).
 
 ---
 
-## Original line-level JSON schema (repo doc; not zip)
+## features_{train,valid,test}.pkl
 
-From `JITFine/labels for each line/readme.md`:
+Top-level: `pandas.DataFrame` (**VALIDATED**). Identical columns across splits.
 
-| Path | Semantics | Required? |
-|------|-----------|-----------|
-| project → commit → added[filepath] | Added lines per file | yes (documentation of origin) |
-| project → commit → deleted[filepath] | Deleted lines per file | yes |
-| project → commit → added_buggy_level[filepath] | Class of each **added** line | yes |
+| Upstream name | Actual type | Semantics | Our future field |
+|---------------|-------------|-----------|------------------|
+| project | object/str | project id | `project` |
+| commit_hash | object/str | primary key | `commit_id` |
+| author_date / author_date_unix_timestamp | object / numeric | timestamps | optional chronology checks |
+| commit_message | object | message | may duplicate msgs |
+| la, ld, nf, ns, nd, entropy, ndev, lt, nuc, age, exp, rexp, sexp | numeric | expert features | optional baselines |
+| fileschanged | object | file path info (PARTIAL for RQ4) | future path parsing |
+| fix | object/bool-like | fix indicator | optional |
+| classification | object | classification string | optional |
+| is_buggy_commit | float64 `{0.0,1.0}` | commit label | `commit_label` |
 
-**Uncertainty:** numeric/boolean coding of `added_buggy_level` **NOT YET VALIDATED**.
+---
+
+## changes_complete_buggy_line_level.pkl
+
+Top-level: `pandas.DataFrame` 26104×6 (**VALIDATED**).
+
+| Upstream name | Actual type | Semantics | Notes |
+|---------------|-------------|-----------|-------|
+| commit_id | object | commit hash | test positives only |
+| idx | int64 | line order index | use for order |
+| changed_type | object `added`/`deleted` | change kind | |
+| label | float64 `{0.0,1.0}` | buggy line if 1.0 | deleted never 1.0 |
+| raw_changed_line | object | original text | do not commit to git |
+| changed_line | object | processed text | do not commit to git |
+
+Nested `added_buggy_level`: **not present in this pickle** (that name is from upstream JSON docs).  
+Equivalent: filter `changed_type=='added'` and read `label`.
 
 ---
 
 ## Split artifacts
 
-| Artifact | Role |
-|----------|------|
-| changes_train.pkl / features_train.pkl | Author-provided train membership |
-| changes_valid.pkl / features_valid.pkl | Author-provided validation membership |
-| changes_test.pkl / features_test.pkl | Author-provided test membership |
-
-No regeneration contract until a generation script is found.
+Author-provided membership frozen. Counts VALIDATED in `docs/DATASET_EMPIRICAL_PROFILE.md`.
 
 ---
 
-## Evaluation-facing derived fields (not stored)
+## Open (not normalized yet)
 
-| Name | Semantics |
-|------|-----------|
-| `[ADD]` / `[DEL]` tokens | Special tokens added by tokenizer in JIT-Fine |
-| Attention-aligned line scores | Produced at test time from model attentions |
-| only_adds subset | Filter to `changed_type == 'added'` |
-
----
-
-## Validation checklist (acquisition phase)
-
-- [ ] Confirm tuple arity/types of `changes_*.pkl`
-- [ ] Confirm feature columns exactly match `manual_features_columns`
-- [ ] Confirm line pickle column order/types
-- [ ] Confirm `added_buggy_level` coding
-- [ ] Confirm file paths present somewhere or only flattened line lists
-- [ ] Confirm hunk identity absent/present
+- Stable line IDs
+- Recovering file paths per line
+- Restoring line order for changes sets via LL `idx` / other sources
+- LOCALIZATION_DENOMINATOR_DECISION

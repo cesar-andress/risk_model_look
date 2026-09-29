@@ -1,0 +1,568 @@
+{
+  "overall_static_pickle_risk": "PASS",
+  "files": [
+    {
+      "file": "data/jitfine/changes_train.pkl",
+      "size": 48948237,
+      "pickle_protocol": 4,
+      "opcode_count": 2106384,
+      "opcode_counts": {
+        "ADDITEMS": 29042,
+        "APPENDS": 69,
+        "BINFLOAT": 16374,
+        "BINUNICODE": 1259,
+        "EMPTY_DICT": 16374,
+        "EMPTY_LIST": 5,
+        "EMPTY_SET": 32748,
+        "FRAME": 747,
+        "LONG_BINGET": 49045,
+        "MARK": 45485,
+        "MEMOIZE": 974623,
+        "PROTO": 1,
+        "SETITEMS": 16374,
+        "SHORT_BINUNICODE": 924237,
+        "STOP": 1
+      },
+      "global_refs": [],
+      "modules_referenced": [],
+      "callables_referenced": [],
+      "has_stack_global": false,
+      "has_reduce": false,
+      "has_build": false,
+      "has_newobj": false,
+      "has_newobj_ex": false,
+      "has_ext": false,
+      "has_persid": false,
+      "suspicious_refs": [],
+      "unclear_refs": [],
+      "static_pickle_risk": "PASS",
+      "notes": []
+    },
+    {
+      "file": "data/jitfine/features_train.pkl",
+      "size": 11806742,
+      "pickle_protocol": 5,
+      "opcode_count": 687786,
+      "opcode_counts": {
+        "APPEND": 1,
+        "APPENDS": 399,
+        "BINGET": 16406,
+        "BININT": 6,
+        "BININT1": 27,
+        "BININT2": 3,
+        "BINUNICODE": 4976,
+        "BUILD": 9,
+        "BYTEARRAY8": 1,
+        "EMPTY_DICT": 10,
+        "EMPTY_LIST": 9,
+        "EMPTY_TUPLE": 2,
+        "FRAME": 179,
+        "LONG_BINGET": 83234,
+        "MARK": 416,
+        "MEMOIZE": 293535,
+        "NEWFALSE": 7,
+        "NEWOBJ": 2,
+        "NEWTRUE": 3,
+        "NONE": 13,
+        "PROTO": 1,
+        "REDUCE": 14,
+        "SETITEM": 1,
+        "SETITEMS": 8,
+        "SHORT_BINBYTES": 1,
+        "SHORT_BINUNICODE": 288481,
+        "STACK_GLOBAL": 10,
+        "STOP": 1,
+        "TUPLE": 9,
+        "TUPLE1": 7,
+        "TUPLE2": 6,
+        "TUPLE3": 9
+      },
+      "global_refs": [
+        {
+          "module": "pandas.core.frame",
+          "name": "DataFrame",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.internals.managers",
+          "name": "BlockManager",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.base",
+          "name": "_new_Index",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.multiarray",
+          "name": "_reconstruct",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy",
+          "name": "ndarray",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.range",
+          "name": "RangeIndex",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.numeric",
+          "name": "_frombuffer",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "builtins",
+          "name": "slice",
+          "opcode": "STACK_GLOBAL"
+        }
+      ],
+      "modules_referenced": [
+        "builtins",
+        "numpy",
+        "numpy.core.multiarray",
+        "numpy.core.numeric",
+        "pandas.core.frame",
+        "pandas.core.indexes.base",
+        "pandas.core.indexes.range",
+        "pandas.core.internals.managers"
+      ],
+      "callables_referenced": [
+        "builtins.slice",
+        "numpy.core.multiarray._reconstruct",
+        "numpy.core.numeric._frombuffer",
+        "numpy.ndarray",
+        "pandas.core.frame.DataFrame",
+        "pandas.core.indexes.base._new_Index",
+        "pandas.core.indexes.range.RangeIndex",
+        "pandas.core.internals.managers.BlockManager"
+      ],
+      "has_stack_global": true,
+      "has_reduce": true,
+      "has_build": true,
+      "has_newobj": true,
+      "has_newobj_ex": false,
+      "has_ext": false,
+      "has_persid": false,
+      "suspicious_refs": [],
+      "unclear_refs": [],
+      "static_pickle_risk": "PASS",
+      "notes": []
+    },
+    {
+      "file": "data/jitfine/changes_valid.pkl",
+      "size": 15041996,
+      "pickle_protocol": 4,
+      "opcode_count": 615240,
+      "opcode_counts": {
+        "ADDITEMS": 9817,
+        "APPENDS": 25,
+        "BINFLOAT": 5465,
+        "BINUNICODE": 354,
+        "EMPTY_DICT": 5465,
+        "EMPTY_LIST": 5,
+        "EMPTY_SET": 10930,
+        "FRAME": 230,
+        "LONG_BINGET": 15577,
+        "MARK": 15307,
+        "MEMOIZE": 281676,
+        "PROTO": 1,
+        "SETITEMS": 5465,
+        "SHORT_BINUNICODE": 264922,
+        "STOP": 1
+      },
+      "global_refs": [],
+      "modules_referenced": [],
+      "callables_referenced": [],
+      "has_stack_global": false,
+      "has_reduce": false,
+      "has_build": false,
+      "has_newobj": false,
+      "has_newobj_ex": false,
+      "has_ext": false,
+      "has_persid": false,
+      "suspicious_refs": [],
+      "unclear_refs": [],
+      "static_pickle_risk": "PASS",
+      "notes": []
+    },
+    {
+      "file": "data/jitfine/features_valid.pkl",
+      "size": 3976650,
+      "pickle_protocol": 5,
+      "opcode_count": 230001,
+      "opcode_counts": {
+        "APPEND": 1,
+        "APPENDS": 138,
+        "BINGET": 5497,
+        "BININT": 6,
+        "BININT1": 27,
+        "BININT2": 3,
+        "BINUNICODE": 1644,
+        "BUILD": 9,
+        "BYTEARRAY8": 1,
+        "EMPTY_DICT": 10,
+        "EMPTY_LIST": 9,
+        "EMPTY_TUPLE": 2,
+        "FRAME": 61,
+        "LONG_BINGET": 27656,
+        "MARK": 155,
+        "MEMOIZE": 98206,
+        "NEWFALSE": 7,
+        "NEWOBJ": 2,
+        "NEWTRUE": 3,
+        "NONE": 13,
+        "PROTO": 1,
+        "REDUCE": 14,
+        "SETITEM": 1,
+        "SETITEMS": 8,
+        "SHORT_BINBYTES": 1,
+        "SHORT_BINUNICODE": 96484,
+        "STACK_GLOBAL": 10,
+        "STOP": 1,
+        "TUPLE": 9,
+        "TUPLE1": 7,
+        "TUPLE2": 6,
+        "TUPLE3": 9
+      },
+      "global_refs": [
+        {
+          "module": "pandas.core.frame",
+          "name": "DataFrame",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.internals.managers",
+          "name": "BlockManager",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.base",
+          "name": "_new_Index",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.multiarray",
+          "name": "_reconstruct",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy",
+          "name": "ndarray",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.range",
+          "name": "RangeIndex",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.numeric",
+          "name": "_frombuffer",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "builtins",
+          "name": "slice",
+          "opcode": "STACK_GLOBAL"
+        }
+      ],
+      "modules_referenced": [
+        "builtins",
+        "numpy",
+        "numpy.core.multiarray",
+        "numpy.core.numeric",
+        "pandas.core.frame",
+        "pandas.core.indexes.base",
+        "pandas.core.indexes.range",
+        "pandas.core.internals.managers"
+      ],
+      "callables_referenced": [
+        "builtins.slice",
+        "numpy.core.multiarray._reconstruct",
+        "numpy.core.numeric._frombuffer",
+        "numpy.ndarray",
+        "pandas.core.frame.DataFrame",
+        "pandas.core.indexes.base._new_Index",
+        "pandas.core.indexes.range.RangeIndex",
+        "pandas.core.internals.managers.BlockManager"
+      ],
+      "has_stack_global": true,
+      "has_reduce": true,
+      "has_build": true,
+      "has_newobj": true,
+      "has_newobj_ex": false,
+      "has_ext": false,
+      "has_persid": false,
+      "suspicious_refs": [],
+      "unclear_refs": [],
+      "static_pickle_risk": "PASS",
+      "notes": []
+    },
+    {
+      "file": "data/jitfine/changes_test.pkl",
+      "size": 19619727,
+      "pickle_protocol": 4,
+      "opcode_count": 752715,
+      "opcode_counts": {
+        "ADDITEMS": 9945,
+        "APPENDS": 25,
+        "BINFLOAT": 5480,
+        "BINUNICODE": 699,
+        "EMPTY_DICT": 5480,
+        "EMPTY_LIST": 5,
+        "EMPTY_SET": 10960,
+        "FRAME": 300,
+        "LONG_BINGET": 15841,
+        "MARK": 15450,
+        "MEMOIZE": 350096,
+        "PROTO": 1,
+        "SETITEMS": 5480,
+        "SHORT_BINUNICODE": 332952,
+        "STOP": 1
+      },
+      "global_refs": [],
+      "modules_referenced": [],
+      "callables_referenced": [],
+      "has_stack_global": false,
+      "has_reduce": false,
+      "has_build": false,
+      "has_newobj": false,
+      "has_newobj_ex": false,
+      "has_ext": false,
+      "has_persid": false,
+      "suspicious_refs": [],
+      "unclear_refs": [],
+      "static_pickle_risk": "PASS",
+      "notes": []
+    },
+    {
+      "file": "data/jitfine/features_test.pkl",
+      "size": 4457349,
+      "pickle_protocol": 5,
+      "opcode_count": 231883,
+      "opcode_counts": {
+        "APPEND": 1,
+        "APPENDS": 138,
+        "BINGET": 5512,
+        "BININT": 6,
+        "BININT1": 27,
+        "BININT2": 3,
+        "BINUNICODE": 2044,
+        "BUILD": 9,
+        "BYTEARRAY8": 1,
+        "EMPTY_DICT": 10,
+        "EMPTY_LIST": 9,
+        "EMPTY_TUPLE": 2,
+        "FRAME": 68,
+        "LONG_BINGET": 26486,
+        "MARK": 155,
+        "MEMOIZE": 99721,
+        "NEWFALSE": 7,
+        "NEWOBJ": 2,
+        "NEWTRUE": 3,
+        "NONE": 13,
+        "PROTO": 1,
+        "REDUCE": 14,
+        "SETITEM": 1,
+        "SETITEMS": 8,
+        "SHORT_BINBYTES": 1,
+        "SHORT_BINUNICODE": 97599,
+        "STACK_GLOBAL": 10,
+        "STOP": 1,
+        "TUPLE": 9,
+        "TUPLE1": 7,
+        "TUPLE2": 6,
+        "TUPLE3": 9
+      },
+      "global_refs": [
+        {
+          "module": "pandas.core.frame",
+          "name": "DataFrame",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.internals.managers",
+          "name": "BlockManager",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.base",
+          "name": "_new_Index",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.multiarray",
+          "name": "_reconstruct",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy",
+          "name": "ndarray",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.range",
+          "name": "RangeIndex",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.numeric",
+          "name": "_frombuffer",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "builtins",
+          "name": "slice",
+          "opcode": "STACK_GLOBAL"
+        }
+      ],
+      "modules_referenced": [
+        "builtins",
+        "numpy",
+        "numpy.core.multiarray",
+        "numpy.core.numeric",
+        "pandas.core.frame",
+        "pandas.core.indexes.base",
+        "pandas.core.indexes.range",
+        "pandas.core.internals.managers"
+      ],
+      "callables_referenced": [
+        "builtins.slice",
+        "numpy.core.multiarray._reconstruct",
+        "numpy.core.numeric._frombuffer",
+        "numpy.ndarray",
+        "pandas.core.frame.DataFrame",
+        "pandas.core.indexes.base._new_Index",
+        "pandas.core.indexes.range.RangeIndex",
+        "pandas.core.internals.managers.BlockManager"
+      ],
+      "has_stack_global": true,
+      "has_reduce": true,
+      "has_build": true,
+      "has_newobj": true,
+      "has_newobj_ex": false,
+      "has_ext": false,
+      "has_persid": false,
+      "suspicious_refs": [],
+      "unclear_refs": [],
+      "static_pickle_risk": "PASS",
+      "notes": []
+    },
+    {
+      "file": "data/jitfine/changes_complete_buggy_line_level.pkl",
+      "size": 3203242,
+      "pickle_protocol": 5,
+      "opcode_count": 156148,
+      "opcode_counts": {
+        "APPEND": 2,
+        "APPENDS": 111,
+        "BINGET": 8501,
+        "BININT": 6,
+        "BININT1": 32,
+        "BININT2": 4,
+        "BINUNICODE": 2,
+        "BUILD": 10,
+        "BYTEARRAY8": 3,
+        "EMPTY_DICT": 12,
+        "EMPTY_LIST": 10,
+        "EMPTY_TUPLE": 2,
+        "FRAME": 45,
+        "LONG_BINGET": 44958,
+        "MARK": 133,
+        "MEMOIZE": 51153,
+        "NEWFALSE": 8,
+        "NEWOBJ": 2,
+        "NEWTRUE": 3,
+        "NONE": 14,
+        "PROTO": 1,
+        "REDUCE": 18,
+        "SETITEM": 1,
+        "SETITEMS": 10,
+        "SHORT_BINBYTES": 1,
+        "SHORT_BINUNICODE": 51055,
+        "STACK_GLOBAL": 10,
+        "STOP": 1,
+        "TUPLE": 12,
+        "TUPLE1": 10,
+        "TUPLE2": 8,
+        "TUPLE3": 10
+      },
+      "global_refs": [
+        {
+          "module": "pandas.core.frame",
+          "name": "DataFrame",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.internals.managers",
+          "name": "BlockManager",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.base",
+          "name": "_new_Index",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.multiarray",
+          "name": "_reconstruct",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy",
+          "name": "ndarray",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "pandas.core.indexes.range",
+          "name": "RangeIndex",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "numpy.core.numeric",
+          "name": "_frombuffer",
+          "opcode": "STACK_GLOBAL"
+        },
+        {
+          "module": "builtins",
+          "name": "slice",
+          "opcode": "STACK_GLOBAL"
+        }
+      ],
+      "modules_referenced": [
+        "builtins",
+        "numpy",
+        "numpy.core.multiarray",
+        "numpy.core.numeric",
+        "pandas.core.frame",
+        "pandas.core.indexes.base",
+        "pandas.core.indexes.range",
+        "pandas.core.internals.managers"
+      ],
+      "callables_referenced": [
+        "builtins.slice",
+        "numpy.core.multiarray._reconstruct",
+        "numpy.core.numeric._frombuffer",
+        "numpy.ndarray",
+        "pandas.core.frame.DataFrame",
+        "pandas.core.indexes.base._new_Index",
+        "pandas.core.indexes.range.RangeIndex",
+        "pandas.core.internals.managers.BlockManager"
+      ],
+      "has_stack_global": true,
+      "has_reduce": true,
+      "has_build": true,
+      "has_newobj": true,
+      "has_newobj_ex": false,
+      "has_ext": false,
+      "has_persid": false,
+      "suspicious_refs": [],
+      "unclear_refs": [],
+      "static_pickle_risk": "PASS",
+      "notes": []
+    }
+  ]
+}

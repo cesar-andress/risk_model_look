@@ -9,7 +9,7 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-DATASET acquisition complete (archive frozen, unextracted). Next: DATASET_SCHEMA_VALIDATION_GATE.
+DATASET schema validation complete. DATASET_GATE PASS. Next: TOKEN_LINE_MAPPING_GATE (not started).
 
 # Gate status
 
@@ -17,10 +17,10 @@ DATASET acquisition complete (archive frozen, unextracted). Next: DATASET_SCHEMA
 |------|--------|
 | NOVELTY_GATE | PASS |
 | ENVIRONMENT_GATE | PASS |
-| DATASET_GATE | IN_PROGRESS |
+| DATASET_GATE | PASS |
 | DATASET_PROVENANCE_GATE | PASS |
 | DATASET_ACQUISITION_GATE | PASS |
-| DATASET_SCHEMA_VALIDATION_GATE | NOT_STARTED |
+| DATASET_SCHEMA_VALIDATION_GATE | PASS |
 | TOKEN_LINE_MAPPING_GATE | NOT_STARTED |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
@@ -31,35 +31,34 @@ DATASET acquisition complete (archive frozen, unextracted). Next: DATASET_SCHEMA
 
 # Current task
 
-DATASET_ACQUISITION_GATE closed. Do not open schema validation until orchestrator starts that gate.
+DATASET_SCHEMA_VALIDATION_GATE closed. Do not implement build_dataset.py until orchestrator opens the next gate.
 
 # Completed work
 
-- Environment bootstrap + Qwen 4-bit smoke.
-- Novelty audit (NOVELTY_GATE PASS).
-- Dataset provenance freeze (DATASET_PROVENANCE_GATE PASS).
-- Downloaded and verified `data/raw/upstream/data.zip` (size + Git blob SHA-1 + SHA-256/512 + ZIP integrity/path-safety + inventory).
-- Acquisition script + unit tests; full pytest PASS.
+- Environment, novelty, provenance, acquisition gates.
+- Extracted seven JIT-Fine members; static pickle PASS; schema/split/line-label audit complete.
+- Empirical profile: 27319 commits / 2332 positives / 21 projects; L0–L4 measured.
 
 # Blockers
 
-- Schema/pickle inspection not started (intentional).
-- Dataset/code redistribution license NOT_ESTABLISHED.
+- LOCALIZATION_DENOMINATOR_DECISION still OPEN.
+- Change lines stored as sets (order not preserved) — mapping design needed next.
+- Line-label artifact covers test positives only.
 
 # Decisions frozen
 
-- Separate code and paper roots.
-- ENVIRONMENT / NOVELTY / DATASET_PROVENANCE gates remain PASS (not reopened).
-- Local archive path: `data/raw/upstream/data.zip`; SHA-256 `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47`.
-- No raw redistribution; archive unextracted; no pickle executed at acquisition.
+- Author split membership frozen (no cross-split commit overlap).
+- Commit/line labels are float `{0.0,1.0}`.
+- Primary key = commit hash.
+- No raw redistribution; extracted pickles gitignored.
 
 # Decisions pending
 
-- Controlled extraction + schema validation protocol.
-- Whether to include ApacheJIT / ReDef as secondary corpora.
-- Journal selection.
-- Public release timing.
+- LOCALIZATION_DENOMINATOR_DECISION
+- Line-order / file-path recovery strategy for explanations
+- ApacheJIT / ReDef secondary corpora
+- Journal selection
 
 # Last updated
 
-2026-09-29T23:53:00+02:00
+2026-09-30T00:05:00+02:00

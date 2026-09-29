@@ -23,9 +23,9 @@ Authoritative detail lives in:
 | Local path | `data/raw/upstream/data.zip` (gitignored) |
 | SHA-256 | `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47` |
 | Git blob SHA-1 | `6cd2f45d97a7c430533cde382be6bf42d9ff3649` (match) |
-| Schema verified | **No** (acquisition only; schema gate not started) |
-| Label semantics verified | **Yes at documentation level** (archive coding still pending schema gate) |
-| Split files | AUTHOR_PROVIDED paths present in ZIP inventory under `data/jitfine/`; contents not inspected |
+| Schema verified | **Yes** (DATASET_SCHEMA_VALIDATION_GATE PASS) |
+| Label semantics verified | **Yes** (float {0.0,1.0}; line-label test-pos only) |
+| Split files | AUTHOR_PROVIDED; train 16374 / valid 5465 / test 5480; intersections empty |
 
 ## Planned secondary datasets (optional; not started)
 

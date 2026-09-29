@@ -1,0 +1,15 @@
+metric,value
+layout,DataFrame
+n_rows,26104
+n_commits,475
+scope,TEST_POSITIVE_COMMITS_ONLY
+deleted_label_status,YES_FIELD_PRESENT_ALL_ZERO_POSITIVES
+added_label_1,2060
+added_label_0,16555
+deleted_label_1,0
+deleted_label_0,7489
+L0,5480
+L1,475
+L2,475
+L3,475
+L4,475

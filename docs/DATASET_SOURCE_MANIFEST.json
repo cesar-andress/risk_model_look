@@ -70,10 +70,10 @@
     "zip_integrity": "PASS",
     "zip_path_safety": "PASS",
     "archive_entry_count": 99,
-    "archive_extracted": false,
-    "schema_validated": false,
+    "archive_extracted": "partial_seven_jitfine_members_only",
+    "schema_validated": true,
     "acquisition_report": "artifacts/data_acquisition/acquisition_report.json",
-    "notes": "Git blob SHA-1 is NOT SHA-256. Local SHA-256 established after verified acquisition. Pickle contents not inspected."
+    "notes": "Seven JIT-Fine members extracted for schema audit; other ZIP members not extracted. Pickles inspected under LIMITED_BWRAP_UNSHARE_NET."
   },
   "expected_files": {
     "after_unzip_data_zip": [
@@ -89,12 +89,12 @@
       "JITFine/labels for each line/readme.md",
       "JITFine/labels for each line/buggy_changes_with_buggy_line.json"
     ],
-    "inventory_confidence": "CONFIRMED_PRESENT_IN_ZIP_CENTRAL_DIRECTORY — CONTENTS NOT OPENED"
+    "inventory_confidence": "EXTRACTED_AND_SCHEMA_VALIDATED"
   },
   "split": {
     "source": "AUTHOR_PROVIDED",
-    "paper_protocol_summary": "Per-project chronological sort; top 80% commits train, remaining 20% test; combine across projects (ESEC/FSE 2022 §6.1).",
-    "validation_file_provenance": "Materialized changes_valid.pkl / features_valid.pkl referenced by replication README; exact carve vs train REQUIRES_ACQUISITION_PHASE (no generation script found in repo).",
+    "paper_protocol_summary": "Per-project chronological sort; top 80% commits train, remaining 20% test; combine across projects (ESEC/FSE 2022 \u00a76.1).",
+    "validation_file_provenance": "Materialized author files; valid not chronologically between train and test under author_date_unix_timestamp (0/21 projects).",
     "train_files": [
       "data/jitfine/changes_train.pkl",
       "data/jitfine/features_train.pkl"
@@ -117,14 +117,17 @@
     "commit_label_variable_names": [
       "label"
     ],
-    "commit_label_type_expected": "int binary {0,1}",
+    "commit_label_type_expected": "float binary {0.0,1.0} (also features.is_buggy_commit)",
     "line_positive_semantics": "Positive line label means defect-inducing / buggy line in the defect-introducing commit representation. Upstream line-label README exposes added_buggy_level per added line; evaluation code treats label==1 as buggy.",
-    "line_label_scope": "ADDED_LINES_PRIMARY_FOR_EVALUATION",
-    "line_label_scope_notes": "Paper constructs labels via bug-fixing deleted lines mapped to bug-inducing commits; unlabeled lines in BICs treated as clean. Replication eval uses --only_adds to restrict ranking/effort to added lines. Exact added_buggy_level coding REQUIRES_ACQUISITION_PHASE inspection of pickle/JSON.",
+    "line_label_scope": "ADDED_LINES_CARRY_POSITIVES; DELETED_LABELLED_0; ARTIFACT_TEST_POS_ONLY",
+    "line_label_scope_notes": "Empirically: changes_complete_buggy_line_level.pkl is a DataFrame of test positives only; label float 0.0/1.0; deleted rows all 0.0; no nested added_buggy_level in this pickle.",
     "line_label_variable_names": [
-      "added_buggy_level",
+      "commit_id",
+      "idx",
+      "changed_type",
       "label",
-      "changed_type"
+      "raw_changed_line",
+      "changed_line"
     ]
   },
   "license": {
@@ -145,5 +148,78 @@
     "https://raw.githubusercontent.com/jacknichao/JIT-Fine/584799fdec6095ab75a45fd2a5f8db5b12163aa5/JITFine/my_util.py",
     "https://raw.githubusercontent.com/jacknichao/JIT-Fine/584799fdec6095ab75a45fd2a5f8db5b12163aa5/JITFine/labels%20for%20each%20line/readme.md",
     "https://api.github.com/repos/jacknichao/JIT-Fine/contents/data.zip?ref=584799fdec6095ab75a45fd2a5f8db5b12163aa5"
-  ]
+  ],
+  "extracted_members": {
+    "data/jitfine/changes_train.pkl": {
+      "sha256": "088898f4c87a59dfeaaabdbc48488b7e224ea7109ee453d0e8d244146b715f85",
+      "sha512": "b7e0b0199587e9417bba4ad182c86f7093a9bd306cf4ed78417487309287c668f0c33bb3d2a76577b0b4fdb7d44ab1f05dc0c63b91198f837e5a64f8a08f2fd9",
+      "uncompressed_size": 48948237,
+      "crc32": "50e57ec2"
+    },
+    "data/jitfine/features_train.pkl": {
+      "sha256": "0b9992d77cd07f45a71bd327a3d408ed3f0ab7a907ffdc10f9916a8f226dc42a",
+      "sha512": "769ec5c33c827867f5ae64bc5495cbdc9312e92612c4a8c836cd2e93aa0da82f98143266e72511c221907a85a9061fdb6da0ff6eecc5a0cd481921cebf64934a",
+      "uncompressed_size": 11806742,
+      "crc32": "7b66a077"
+    },
+    "data/jitfine/changes_valid.pkl": {
+      "sha256": "dc9bb8f3390b74b5329a2186332466c22d78e71047521c56f1d8b598147c723b",
+      "sha512": "6082a387331639b964bf8b337d3c0c837589f52b771dc5bbdc4ec34fd1e78ca4f21226e879a3b9e1f58764338f5047d71e008ed198ae5e6ff3e34b4c3677c5bc",
+      "uncompressed_size": 15041996,
+      "crc32": "146d200b"
+    },
+    "data/jitfine/features_valid.pkl": {
+      "sha256": "e2ee48d5cd9e7f59bea726d4f6a71ef58712ae58d3388d8195a798369cf0d2cf",
+      "sha512": "148b90228730f93ee61346d382eb6afff09e023999861327dc32068453d1fe8e1260c0fbbca7d67ff8dd7b1cb7ba084c722feace4c16b8ab4f9d415fc0c62f5e",
+      "uncompressed_size": 3976650,
+      "crc32": "c46fb14b"
+    },
+    "data/jitfine/changes_test.pkl": {
+      "sha256": "23107219e63648b6516d74ff73b1e696c5e8eb368f6766c10e88d61dadb0809d",
+      "sha512": "472dd942171633f685de1df7abcf0979bda84f8048390a5f72072a9a2d5d80575fe5b0283effd4c9afe8c7d5ea805f0d5521ae0f82d1158709e19d838bc4b579",
+      "uncompressed_size": 19619727,
+      "crc32": "10ab60e0"
+    },
+    "data/jitfine/features_test.pkl": {
+      "sha256": "136eebbb1c1719bffbfed8f0d686e3c015c5756a7b3c43d6f700a07687ab58fa",
+      "sha512": "0d09b05fc756ac2dcf16f71cd31006da8245477466729ed3da3eb767cd4a116b58fcdb3997eda0ebcd4ed62ec1391ed2b83f41d68dbcdfd4f88b05bd8aa40ecf",
+      "uncompressed_size": 4457349,
+      "crc32": "c89b94f5"
+    },
+    "data/jitfine/changes_complete_buggy_line_level.pkl": {
+      "sha256": "479b61b138280105573cd4ea38ea6d656850e29f378e9aa63f1c86d195e6e88a",
+      "sha512": "977983cdfc980d9b8934344f30a24d4ba6a576753b96418960db7978b9594e00f11c94ff5205fca9e1d53c81dfe4e4184dffd3952ba40ff04e7eb0af00280da0",
+      "uncompressed_size": 3203242,
+      "crc32": "1160cd38"
+    }
+  },
+  "schema_validation_timestamp": "2026-09-29T22:10:00Z",
+  "schema_validation_status": "PASS",
+  "primary_key": "commit_hash",
+  "split_counts": {
+    "train": 16374,
+    "valid": 5465,
+    "test": 5480,
+    "total": 27319,
+    "positives_total": 2332
+  },
+  "label_values": {
+    "commit": {
+      "0.0": 24987,
+      "1.0": 2332,
+      "python_type": "float"
+    },
+    "is_buggy_commit": "features column float64"
+  },
+  "line_label_values": {
+    "label": {
+      "0.0": 24044,
+      "1.0": 2060
+    },
+    "changed_type": {
+      "added": 18615,
+      "deleted": 7489
+    },
+    "scope": "TEST_POSITIVE_COMMITS_ONLY"
+  }
 }

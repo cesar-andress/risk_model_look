@@ -171,3 +171,35 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Treat public GitHub bytes as redistributable (rejected).
 - **Reversible:** Yes if explicit license/permission later established.
 - **Gate affected:** DATASET_ACQUISITION_GATE, RELEASE_GATE
+
+## 2026-09-30T00:05:00+02:00 — Schema validation PASS; freeze empirical facts
+
+- **Decision:** Mark DATASET_SCHEMA_VALIDATION_GATE=PASS and DATASET_GATE=PASS after seven-member extract + static pickle PASS + empirical audit.
+- **Reason:** Commit IDs unique; split intersections empty; changes/features exact alignment; labels float {0.0,1.0}; line-label DataFrame usable for all 475 test positives (L4=475); published 27319/2332/21 MATCH.
+- **Alternatives considered:** FAIL on chronological mismatch (rejected: DOCUMENTATION MISMATCH, not ID leakage).
+- **Reversible:** No for measured counts without re-audit.
+- **Gate affected:** DATASET_SCHEMA_VALIDATION_GATE, DATASET_GATE
+
+## 2026-09-30T00:05:00+02:00 — Primary key and label coding frozen
+
+- **Decision:** Primary key = `commit_hash` / changes commit-id string; commit and line labels are float `{0.0,1.0}` with 1.0 positive.
+- **Reason:** Empirically unique; matches features.is_buggy_commit.
+- **Alternatives considered:** project+commit composite (unnecessary for uniqueness).
+- **Reversible:** Only if later artifact revision contradicts.
+- **Gate affected:** DATASET_SCHEMA_VALIDATION_GATE
+
+## 2026-09-30T00:05:00+02:00 — Line-label scope and quirks recorded
+
+- **Decision:** Record that line-label pickle covers test positives only; deleted rows labeled 0.0 never 1.0; changes `added_code`/`removed_code` are sets (order not preserved).
+- **Reason:** Empirically measured; impacts future token-line mapping and train/valid localization.
+- **Alternatives considered:** Treating deleted as unlabeled (rejected: field present).
+- **Reversible:** N/A (factual).
+- **Gate affected:** DATASET_SCHEMA_VALIDATION_GATE, TOKEN_LINE_MAPPING_GATE
+
+## 2026-09-30T00:05:00+02:00 — LOCALIZATION_DENOMINATOR_DECISION remains OPEN
+
+- **Decision:** Do not freeze RQ1 denominator; keep OPEN despite L0–L4 counts and JIT-Fine predicted-positive conditioning.
+- **Reason:** Orchestrator must choose evaluation population explicitly.
+- **Alternatives considered:** Silently adopt JIT-Fine TP-only subset (rejected).
+- **Reversible:** Yes when orchestrator decides.
+- **Gate affected:** ANALYSIS_GATE, XAI_GATE

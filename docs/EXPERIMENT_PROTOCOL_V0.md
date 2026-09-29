@@ -25,27 +25,39 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - Validation: `data/jitfine/changes_valid.pkl`, `data/jitfine/features_valid.pkl`
 - Test: `data/jitfine/changes_test.pkl`, `data/jitfine/features_test.pkl`
 - Line labels: `data/jitfine/changes_complete_buggy_line_level.pkl`
-- Archive acquisition: **complete** — local `data/raw/upstream/data.zip`; SHA-256 `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47`; Git blob SHA-1 verified; ZIP inventory confirms the seven `data/jitfine/` members above (contents not opened).
-- Paper protocol (§6.1): per-project chronological 80% train / 20% test; how `valid` is carved vs that description is **TO VERIFY AT SCHEMA VALIDATION**
-- Pickle schemas / row counts: **TO VERIFY AT SCHEMA VALIDATION**
+- Archive acquisition: **complete** — local `data/raw/upstream/data.zip`; SHA-256 `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47`; Git blob SHA-1 verified; seven `data/jitfine/` members extracted and schema-validated.
+- Measured sizes: train **16374**, valid **5465**, test **5480**, total **27319**; positives **2332** (train 1390 / valid 467 / test 475)
+- Projects: **21** (all present in each split)
+- Commit label coding: float `{0.0,1.0}` (`is_buggy_commit` / changes labels)
+- Line-label artifact: DataFrame; float `{0.0,1.0}`; **test positives only**; deleted labels all `0.0`
+- Change lines: `added_code`/`removed_code` as **`set[str]`** (order not preserved)
+- Cross-split commit intersections: **0**
+- L0–L4 (test): 5480 / 475 / 475 / 475 / 475
+- Paper protocol (§6.1) chronological train≤test: only **10/21** projects under unix timestamps; valid not between train/test (**DOCUMENTATION MISMATCH**)
+- **LOCALIZATION_DENOMINATOR_DECISION: OPEN**
+- Pickle schemas / row-level exports: not for git; see `docs/DATASET_EMPIRICAL_PROFILE.md`
 
 ## LINE-LABEL SCOPE (FROZEN FOR JIT-FINE COMPATIBILITY)
 
-- Commit positive label: defect-inducing / buggy commit (`label == 1`)
-- Line positive label: buggy / defect-inducing line (`label == 1` in eval code)
+- Commit positive label: defect-inducing / buggy commit (`label` / `is_buggy_commit` == `1.0`)
+- Line positive label: buggy line (`label` == `1.0` on line-label DataFrame)
+- Line-label file covers **test gold-positive commits only** (n=475)
+- Deleted lines are labeled `0.0` (never `1.0`) in this artifact
 - Primary evaluation scope for localization compatibility: **added lines** (JIT-Fine `--only_adds`)
-- Deleted lines exist in change representation; default JIT-Fine localization eval excludes them when `--only_adds` is set
-- Exact `added_buggy_level` coding: **TO VERIFY AFTER ACQUISITION**
+- Changes pickle stores added/deleted texts as **sets** (order not preserved); use line-label `idx` for ordered lines where available
 
-## LOCALIZATION SUBSET (FROZEN INTENT)
+## LOCALIZATION SUBSET (FROZEN INTENT + OPEN DENOMINATOR)
 
-Reproduce JIT-Fine concat test subset semantics:
+Measured test populations (do not silently drop):
 
-- evaluate line metrics only when commit gold label == 1 **and** model predicts 1 **and** `[ADD]` appears in the tokenized input;
-- with `--only_adds`, rank/score only `changed_type == 'added'` lines;
-- see `docs/DATASET_PROVENANCE_REPORT.md` §11 for pseudocode
+- L0=5480, L1=475, L2=475, L3=475, L4=475
 
-Exact numeric replication against published Top-N requires reconciling paper Top-N prose vs code precision-at-k — **TO VERIFY AT METRICS GATE**
+Reproduce JIT-Fine concat test subset only when explicitly comparing to JIT-Fine published localization numbers:
+
+- gold label == 1 **and** model predicts 1 **and** `[ADD]` in tokens;
+- with `--only_adds`, score only added lines
+
+**LOCALIZATION_DENOMINATOR_DECISION: OPEN** for this study’s primary RQ1 population.
 
 ## PRIMARY INPUT FORMAT
 
