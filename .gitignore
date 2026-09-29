@@ -112,6 +112,7 @@ nohup.out
 # --- Raw datasets (license / redistribution not assumed) ---
 data/raw/**
 !data/raw/.gitkeep
+!data/raw/README.md
 
 # Keep processed tree shape; ignore heavy derived blobs by default
 data/processed/**

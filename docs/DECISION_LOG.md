@@ -147,3 +147,27 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Download now to finish schema (rejected by task gate).
 - **Reversible:** N/A (next gate opens acquisition).
 - **Gate affected:** DATASET_GATE
+
+## 2026-09-29T23:53:00+02:00 — Acquire frozen JIT-Fine data.zip
+
+- **Decision:** Download `data.zip` from `jacknichao/JIT-Fine@584799fdec6095ab75a45fd2a5f8db5b12163aa5` to `data/raw/upstream/data.zip`; establish SHA-256 `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47`; verify Git blob SHA-1 `6cd2f45d97a7c430533cde382be6bf42d9ff3649`.
+- **Reason:** DATASET_ACQUISITION_GATE opened; immutable identity required before schema work.
+- **Alternatives considered:** Nested revision subdirectory from earlier plan draft (superseded by gate-mandated flat path); mirror fallback (unnecessary — authoritative URL succeeded).
+- **Reversible:** No for the frozen local bytes without a new acquisition decision.
+- **Gate affected:** DATASET_ACQUISITION_GATE
+
+## 2026-09-29T23:53:00+02:00 — Leave archive unextracted; defer pickle
+
+- **Decision:** Do not extract `data.zip`; do not execute pickle/pandas/joblib/torch loads; schema remains unvalidated.
+- **Reason:** Acquisition gate forbids extraction and pickle execution; schema is a separate gate.
+- **Alternatives considered:** Peek pickles for early counts (rejected).
+- **Reversible:** Yes under DATASET_SCHEMA_VALIDATION_GATE with controlled protocol.
+- **Gate affected:** DATASET_ACQUISITION_GATE, DATASET_SCHEMA_VALIDATION_GATE
+
+## 2026-09-29T23:53:00+02:00 — Redistribution policy unchanged after download
+
+- **Decision:** Keep code/dataset licenses NONE_FOUND and redistribution NOT_ESTABLISHED; keep raw archive gitignored; do not upload to Zenodo/GitHub.
+- **Reason:** Download does not grant redistribution rights.
+- **Alternatives considered:** Treat public GitHub bytes as redistributable (rejected).
+- **Reversible:** Yes if explicit license/permission later established.
+- **Gate affected:** DATASET_ACQUISITION_GATE, RELEASE_GATE

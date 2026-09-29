@@ -25,8 +25,9 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - Validation: `data/jitfine/changes_valid.pkl`, `data/jitfine/features_valid.pkl`
 - Test: `data/jitfine/changes_test.pkl`, `data/jitfine/features_test.pkl`
 - Line labels: `data/jitfine/changes_complete_buggy_line_level.pkl`
-- Paper protocol (§6.1): per-project chronological 80% train / 20% test; how `valid` is carved vs that description is **TO VERIFY AFTER ACQUISITION** (no generation script found)
-- Local SHA-256 of `data.zip` and pickle hashes: **TO VERIFY AFTER ACQUISITION**
+- Archive acquisition: **complete** — local `data/raw/upstream/data.zip`; SHA-256 `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47`; Git blob SHA-1 verified; ZIP inventory confirms the seven `data/jitfine/` members above (contents not opened).
+- Paper protocol (§6.1): per-project chronological 80% train / 20% test; how `valid` is carved vs that description is **TO VERIFY AT SCHEMA VALIDATION**
+- Pickle schemas / row counts: **TO VERIFY AT SCHEMA VALIDATION**
 
 ## LINE-LABEL SCOPE (FROZEN FOR JIT-FINE COMPATIBILITY)
 

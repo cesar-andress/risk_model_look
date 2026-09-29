@@ -19,11 +19,13 @@ Authoritative detail lives in:
 | Authoritative source URL | `https://github.com/jacknichao/JIT-Fine` @ `584799fdec6095ab75a45fd2a5f8db5b12163aa5` |
 | Archive | `data.zip` (75326372 bytes; git blob SHA-1 `6cd2f45d97a7c430533cde382be6bf42d9ff3649`) |
 | License / redistribution | NONE_FOUND / NOT_ESTABLISHED — do not commit or mirror raw archive |
-| Local path (planned) | `data/raw/upstream/jacknichao_JIT-Fine_584799fdec6095/` (gitignored) |
-| Download performed | **No** |
-| Schema verified | **No** (expected contract only) |
-| Label semantics verified | **Yes at documentation level** (archive coding still pending) |
-| Split files | AUTHOR_PROVIDED paths documented; contents not yet inspected |
+| Download performed | **Yes** (2026-09-29T21:51:51Z UTC); unextracted |
+| Local path | `data/raw/upstream/data.zip` (gitignored) |
+| SHA-256 | `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47` |
+| Git blob SHA-1 | `6cd2f45d97a7c430533cde382be6bf42d9ff3649` (match) |
+| Schema verified | **No** (acquisition only; schema gate not started) |
+| Label semantics verified | **Yes at documentation level** (archive coding still pending schema gate) |
+| Split files | AUTHOR_PROVIDED paths present in ZIP inventory under `data/jitfine/`; contents not inspected |
 
 ## Planned secondary datasets (optional; not started)
 

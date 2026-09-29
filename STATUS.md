@@ -9,7 +9,7 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-DATASET provenance/semantics phase complete. Next: DATASET acquisition (download `data.zip` under frozen protocol) — not started.
+DATASET acquisition complete (archive frozen, unextracted). Next: DATASET_SCHEMA_VALIDATION_GATE.
 
 # Gate status
 
@@ -19,7 +19,7 @@ DATASET provenance/semantics phase complete. Next: DATASET acquisition (download
 | ENVIRONMENT_GATE | PASS |
 | DATASET_GATE | IN_PROGRESS |
 | DATASET_PROVENANCE_GATE | PASS |
-| DATASET_ACQUISITION_GATE | NOT_STARTED |
+| DATASET_ACQUISITION_GATE | PASS |
 | DATASET_SCHEMA_VALIDATION_GATE | NOT_STARTED |
 | TOKEN_LINE_MAPPING_GATE | NOT_STARTED |
 | PILOT_GATE | NOT_STARTED |
@@ -31,39 +31,35 @@ DATASET provenance/semantics phase complete. Next: DATASET acquisition (download
 
 # Current task
 
-DATASET_PROVENANCE_GATE completed. Do not start acquisition until orchestrator opens DATASET_ACQUISITION_GATE.
+DATASET_ACQUISITION_GATE closed. Do not open schema validation until orchestrator starts that gate.
 
 # Completed work
 
-- Environment bootstrap + Qwen 4-bit smoke (prior task).
-- Systematic literature search / novelty audit (prior task); NOVELTY_GATE PASS.
-- JIT-Fine defining publication verified (DOI 10.1145/3540250.3549165).
-- Authoritative upstream frozen: `jacknichao/JIT-Fine@584799fdec6095ab75a45fd2a5f8db5b12163aa5`.
-- Remote `data.zip` identified without download (size + git blob SHA-1).
-- Author-provided split / line-label / localization-subset / license evidence documented.
-- Manifest + provenance report + schema contract + acquisition plan written.
+- Environment bootstrap + Qwen 4-bit smoke.
+- Novelty audit (NOVELTY_GATE PASS).
+- Dataset provenance freeze (DATASET_PROVENANCE_GATE PASS).
+- Downloaded and verified `data/raw/upstream/data.zip` (size + Git blob SHA-1 + SHA-256/512 + ZIP integrity/path-safety + inventory).
+- Acquisition script + unit tests; full pytest PASS.
 
 # Blockers
 
-- Archive not yet downloaded; pickle internals / counts / valid carve / SHA-256 deferred to acquisition.
-- Dataset/code redistribution license NOT_ESTABLISHED (blocks public raw redistribution, not local acquisition decision).
-- JITEC full-text access incomplete (novelty residual; unrelated to this gate).
+- Schema/pickle inspection not started (intentional).
+- Dataset/code redistribution license NOT_ESTABLISHED.
 
 # Decisions frozen
 
 - Separate code and paper roots.
-- ENVIRONMENT_GATE remains PASS (not reopened).
-- NOVELTY_GATE remains PASS (not reopened).
-- Novelty framing must use compositional / intersection claim, not unqualified primacy.
-- Dataset: JIT-Defects4J from jacknichao/JIT-Fine frozen SHA; AUTHOR_PROVIDED split; added-lines primary for JIT-Fine-compatible localization eval; no raw redistribution without license.
+- ENVIRONMENT / NOVELTY / DATASET_PROVENANCE gates remain PASS (not reopened).
+- Local archive path: `data/raw/upstream/data.zip`; SHA-256 `9e5ca1a393b70ee7e87c410b162005958775f3f3732f9f83da9dd24a7dfe2b47`.
+- No raw redistribution; archive unextracted; no pickle executed at acquisition.
 
 # Decisions pending
 
-- Whether/when to open DATASET_ACQUISITION_GATE.
+- Controlled extraction + schema validation protocol.
 - Whether to include ApacheJIT / ReDef as secondary corpora.
 - Journal selection.
 - Public release timing.
 
 # Last updated
 
-2026-09-29T23:55:00+02:00
+2026-09-29T23:53:00+02:00
