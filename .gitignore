@@ -1,0 +1,133 @@
+# --- Local AI / agent tooling (never release) ---
+.cursor/
+.claude/
+.agents/
+.agent/
+AGENTS.md
+CLAUDE.md
+
+# --- Secrets and credentials ---
+.env
+.env.*
+!.env.example
+credentials
+credentials.*
+**/credentials/**
+*.pem
+*.key
+auth.json
+secrets/
+*_api_key*
+*_API_KEY*
+
+# --- Private prompts / internal notes / submission-only ---
+private/
+prompts/private/
+internal/
+reviewer_notes/
+submission_only/
+cover_letter*
+response_to_reviewers*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+env/
+.envrc
+
+# --- Hugging Face / model caches (keep outside git) ---
+.cache/
+**/huggingface/
+**/transformers_cache/
+**/hf_home/
+*.safetensors
+*.bin
+*.ckpt
+*.pt
+*.pth
+# Explicit model / adapter checkpoints (release only by deliberate choice)
+checkpoints/
+models/checkpoints/
+artifacts/checkpoints/
+**/lora_*/
+**/adapter_model*
+**/adapter_config.json
+
+# --- Experiment tracking ---
+wandb/
+mlruns/
+runs/
+lightning_logs/
+.neptune/
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Temporary / logs ---
+tmp/
+temp/
+*.tmp
+*.log
+*.out
+nohup.out
+
+# --- Raw datasets (license / redistribution not assumed) ---
+data/raw/**
+!data/raw/.gitkeep
+
+# Keep processed tree shape; ignore heavy derived blobs by default
+data/processed/**
+!data/processed/.gitkeep
+!data/processed/**/.gitkeep
+
+# --- Large archives ---
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.rar
+
+# --- OS / misc ---
+*.bak
+*.orig
+core
+core.*

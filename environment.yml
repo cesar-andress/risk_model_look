@@ -1,0 +1,40 @@
+# environment.yml — risk_model_look
+# Intended conda/mamba environment for the replication stack.
+# On the bootstrap machine, conda/mamba were unavailable; see
+# docs/ENVIRONMENT_REPORT.md for the uv/.venv fallback that was actually used.
+#
+# CUDA note: select a pytorch-cuda build compatible with the host driver.
+# Do not paste secrets into this file.
+
+name: risk_model_look
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - pyarrow
+  - scikit-learn
+  - pyyaml
+  - tqdm
+  - pytest
+  - pip:
+      # Pin ranges prefer reproducibility over bleeding edge.
+      # Exact resolved versions belong in ENVIRONMENT_REPORT after install.
+      - torch>=2.4,<2.7
+      - transformers>=4.44,<4.52
+      - tokenizers>=0.19,<0.22
+      - datasets>=2.21,<3.2
+      - accelerate>=0.34,<1.3
+      - peft>=0.12,<0.15
+      - bitsandbytes>=0.43,<0.46
+      - captum>=0.7,<0.8
+      - sentencepiece>=0.2,<0.3
+      - protobuf>=4.25,<6
+      - safetensors>=0.4,<0.5
+      - huggingface_hub>=0.24,<0.28

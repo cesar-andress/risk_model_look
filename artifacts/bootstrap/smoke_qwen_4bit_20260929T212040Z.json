@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "20260929T212040Z",
+  "model_id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "status": "PASS",
+  "error": null,
+  "cuda_available": true,
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "total_vram_bytes": 25243287552,
+  "total_vram_gib": 23.51,
+  "is_loaded_in_4bit": true,
+  "hf_quantizer": "Bnb4BitHfQuantizer",
+  "parameter_dtypes": [
+    "torch.float16",
+    "torch.uint8"
+  ],
+  "allocated_vram_bytes": 5607523840,
+  "reserved_vram_bytes": 5901385728,
+  "peak_allocated_vram_bytes": 5874244608,
+  "allocated_vram_gib": 5.222,
+  "reserved_vram_gib": 5.496,
+  "peak_allocated_vram_gib": 5.471,
+  "logits_shape": [
+    1,
+    38,
+    152064
+  ],
+  "note": "Technical smoke only. Logits/tokens are not scientific results."
+}
