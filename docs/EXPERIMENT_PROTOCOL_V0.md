@@ -34,7 +34,11 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - Cross-split commit intersections: **0**
 - L0–L4 (test): 5480 / 475 / 475 / 475 / 475
 - Paper protocol (§6.1) chronological train≤test: only **10/21** projects under unix timestamps; valid not between train/test (**DOCUMENTATION MISMATCH**)
-- **LOCALIZATION_DENOMINATOR_DECISION: OPEN**
+- **LOCALIZATION_DENOMINATOR_DECISION: CLOSED**
+- **PRIMARY_RQ1_POPULATION:** all gold-positive test commits with valid mapped ground truth (nominal **N=475**)
+- **DO_NOT_CONDITION_PRIMARY_RQ1_ON_PREDICTED_POSITIVE:** primary RQ1 localization must not require `model_predicted_positive` or classification correctness; TP/FN stratification may be secondary later
+- Diff reconstruction (audit): usable exact-unique positive mapping currently **235/475** under documented Git+normalization; remainder escalated (see `docs/DIFF_RECONSTRUCTION_REPORT.md`); `DIFF_RECONSTRUCTION_GATE=FAIL`
+- **CONTEXT_POLICY: OPEN**
 - Pickle schemas / row-level exports: not for git; see `docs/DATASET_EMPIRICAL_PROFILE.md`
 
 ## LINE-LABEL SCOPE (FROZEN FOR JIT-FINE COMPATIBILITY)
@@ -46,18 +50,25 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - Primary evaluation scope for localization compatibility: **added lines** (JIT-Fine `--only_adds`)
 - Changes pickle stores added/deleted texts as **sets** (order not preserved); use line-label `idx` for ordered lines where available
 
-## LOCALIZATION SUBSET (FROZEN INTENT + OPEN DENOMINATOR)
+## LOCALIZATION SUBSET (FROZEN DENOMINATOR)
 
 Measured test populations (do not silently drop):
 
 - L0=5480, L1=475, L2=475, L3=475, L4=475
 
+**LOCALIZATION_DENOMINATOR_DECISION: CLOSED**
+
+- **PRIMARY_RQ1_POPULATION** = all gold-positive test commits with valid mapped ground truth
+- Nominal N = **475**
+- Do **not** condition primary RQ1 on predicted-positive or classification correctness
+- Classification-correctness (TP/FN) stratification may be reported as a **secondary** analysis
+- Exclusions from reconstruction/mapping failures must be explicit, counted, and reported (current exact-unique usable subset under audit: **235**; not a silent replacement of the denominator)
+
 Reproduce JIT-Fine concat test subset only when explicitly comparing to JIT-Fine published localization numbers:
 
 - gold label == 1 **and** model predicts 1 **and** `[ADD]` in tokens;
 - with `--only_adds`, score only added lines
-
-**LOCALIZATION_DENOMINATOR_DECISION: OPEN** for this study’s primary RQ1 population.
+- That conditioning is **compatibility-only**, not the primary RQ1 denominator
 
 ## PRIMARY INPUT FORMAT
 

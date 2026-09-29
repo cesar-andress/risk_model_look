@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-09-29T22:21:19Z",
+  "parent_strategy": "first_parent",
+  "normalization": "punct_space + java_only + drop_blank_and_java_comments",
+  "internal_recovery": "PARTIAL",
+  "internal_recovery_notes": "buggy_changes_with_buggy_line.json has file paths but line texts do not match frozen pickle raw_changed_line/added_code; ngram mirrors line-label added rows only; ordered reconstruction requires Git.",
+  "idx_semantics": "Within each commit, idx is contiguous 0..n-1 over changes_complete_buggy_line_level.pkl rows in DataFrame order (typically all added then deleted). NOT a source line number. Join key in JITFine/concat/run.py deal_with_attns.",
+  "commit_availability_by_split": [
+    {
+      "split": "train",
+      "total": 16374,
+      "commit_object_found": 16374,
+      "commit_object_missing": 0,
+      "repository_unresolved": 0
+    },
+    {
+      "split": "valid",
+      "total": 5465,
+      "commit_object_found": 5465,
+      "commit_object_missing": 0,
+      "repository_unresolved": 0
+    },
+    {
+      "split": "test",
+      "total": 5480,
+      "commit_object_found": 5480,
+      "commit_object_missing": 0,
+      "repository_unresolved": 0
+    }
+  ],
+  "parent_kinds": {
+    "normal": 27317
+  },
+  "set_equivalence_counts": {
+    "MISMATCH": 11109,
+    "DELETED_MATCH_ONLY": 6466,
+    "EXACT_SET_MATCH": 8755,
+    "ADDED_MATCH_ONLY": 987
+  },
+  "set_equivalence_rate_among_ok": 0.3204963941867701,
+  "n_reconstructed_ok": 27317,
+  "multiplicity_commits_with_dup_norm_text": 17373,
+  "multiplicity_test_positive_commits_with_dup": 376,
+  "line_label_commit_class": {
+    "PARTIALLY_MAPPED": 261,
+    "AMBIGUOUS": 149,
+    "FULLY_MAPPED": 65
+  },
+  "line_label_row_status": {
+    "EXACT_UNIQUE": 18217,
+    "AMBIGUOUS_DUPLICATE": 3980,
+    "MISSING_DIFF_LINE": 3907
+  },
+  "positive_label_mapping": {
+    "total_positive_rows": 2060,
+    "exact_unique": 1458,
+    "ambiguous": 308,
+    "missing": 294
+  },
+  "coverage_among_mapped_rows": {
+    "n_mapped_rows": 18217,
+    "file_pct": 100.0,
+    "hunk_pct": 100.0,
+    "old_lineno_pct": 29.071746171158807,
+    "new_lineno_pct": 70.92825382884119
+  },
+  "stable_line_id_unique": true,
+  "n_stable_line_ids": 18217,
+  "n_stable_hunk_ids": 3842,
+  "primary_rq1_nominal_n": 475,
+  "primary_rq1_usable_n": 235,
+  "LOCALIZATION_DENOMINATOR_DECISION": "CLOSED",
+  "PRIMARY_RQ1_POPULATION": "all gold-positive test commits with valid mapped ground truth",
+  "DO_NOT_CONDITION_PRIMARY_RQ1_ON_PREDICTED_POSITIVE": true,
+  "CONTEXT_POLICY": "OPEN",
+  "repo_mapping_counts": {
+    "STRONGLY_CORROBORATED": 21
+  },
+  "verdict": "FAIL",
+  "verdict_reason": "Positive ground-truth line mapping is not essentially complete under reproducible Git reconstruction + documented normalization; set equivalence ~32% EXACT_SET_MATCH.",
+  "internal_recovery_detail": {
+    "buggy_changes_with_buggy_line.json": "file-keyed added/deleted lists + added_buggy_level buckets; texts do NOT match frozen pickle raw_changed_line/added_code",
+    "ngram_onlyadds_txt": "mirrors line-label added rows (commit, idx, label, line) \u2014 no file/hunk/linenos",
+    "changes_sets": "insufficient alone"
+  },
+  "structured_input_feasibility": {
+    "MSG": "YES",
+    "FILE": "PARTIAL",
+    "HUNK": "PARTIAL",
+    "ADD": "PARTIAL",
+    "DEL": "PARTIAL",
+    "CTX": "YES_FROM_GIT_BUT_POLICY_OPEN"
+  },
+  "unavailable_reconstruction_commits": 2,
+  "unavailable_projects": [
+    "opennlp",
+    "parquet-mr"
+  ],
+  "set_equivalence_unavailable": 2,
+  "DIFF_RECONSTRUCTION_GATE": "FAIL"
+}

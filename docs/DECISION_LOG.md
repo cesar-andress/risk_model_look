@@ -203,3 +203,35 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Silently adopt JIT-Fine TP-only subset (rejected).
 - **Reversible:** Yes when orchestrator decides.
 - **Gate affected:** ANALYSIS_GATE, XAI_GATE
+
+## 2026-09-30T00:30:00+02:00 — LOCALIZATION_DENOMINATOR_DECISION CLOSED at N=475
+
+- **Decision:** Freeze `PRIMARY_RQ1_POPULATION` = all gold-positive test commits with valid mapped ground truth; nominal N=475. Do **not** condition primary RQ1 on `model_predicted_positive` or classification correctness. TP/FN stratification may be secondary.
+- **Reason:** Orchestrator methodological freeze; JIT-Fine TP-only subset is compatibility-only.
+- **Alternatives considered:** Primary = predicted-positive ∩ gold-positive (rejected for primary RQ1).
+- **Reversible:** Only with explicit protocol revision.
+- **Gate affected:** ANALYSIS_GATE, XAI_GATE, DIFF_RECONSTRUCTION_GATE
+
+## 2026-09-30T00:30:00+02:00 — Upstream sets insufficient; reconstruct via Git
+
+- **Decision:** Do not use frozen `added_code`/`removed_code` sets as structured decoder input. Reconstruct ordered diffs from Apache Git mirrors under `data/raw/source_repos/` with `first_parent` and documented normalization.
+- **Reason:** Sets discard order, multiplicity, file, hunk, and line numbers; internal JSON texts mismatch pickle labels (PARTIAL internal recovery only).
+- **Alternatives considered:** Trust `buggy_changes_with_buggy_line.json` file keys (rejected: text mismatch); invent new normalization to force 100% set match (rejected).
+- **Reversible:** If authoritative ordered patches appear in a future artifact revision.
+- **Gate affected:** DIFF_RECONSTRUCTION_GATE, TOKEN_LINE_MAPPING_GATE
+
+## 2026-09-30T00:30:00+02:00 — Parent strategy first_parent
+
+- **Decision:** Freeze parent selection as first parent (`commit^1` / first of `rev-list --parents`); root commits vs empty tree via `git mktree`.
+- **Reason:** Standard Git first-parent diff; upstream merge rule not recovered as published extractor; empirical audit uses this reproducibly.
+- **Alternatives considered:** All parents; merge-base (deferred without evidence).
+- **Reversible:** If extraction-source evidence contradicts.
+- **Gate affected:** DIFF_RECONSTRUCTION_GATE
+
+## 2026-09-30T00:30:00+02:00 — Line identity design + DIFF_RECONSTRUCTION_GATE FAIL
+
+- **Decision:** Adopt stable line ID `(commit, file, hunk, change_type, old_lineno, new_lineno, occurrence_index)` and hunk ID `(commit, file, hunk_index)`. Mark `DIFF_RECONSTRUCTION_GATE=FAIL` because positive GT mapping is incomplete (1458/2060 exact unique; usable RQ1 235/475; set EQ ≈32%). Keep `TOKEN_LINE_MAPPING_GATE=IN_PROGRESS`. Keep `CONTEXT_POLICY=OPEN`.
+- **Reason:** Criterion I (essentially complete positive-label map without heuristics) unmet; ambiguity must not be hidden by first-hit matching.
+- **Alternatives considered:** PASS with 99.5% commit reconstruction alone (rejected: RQ1 positives not essentially complete); fuzzy text map (rejected).
+- **Reversible:** Yes if reverse-engineering recovers exact extractor equivalence and remaps positives.
+- **Gate affected:** DIFF_RECONSTRUCTION_GATE, TOKEN_LINE_MAPPING_GATE

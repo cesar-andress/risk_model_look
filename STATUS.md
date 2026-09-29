@@ -9,7 +9,7 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-DATASET schema validation complete. DATASET_GATE PASS. Next: TOKEN_LINE_MAPPING_GATE (not started).
+DIFF_RECONSTRUCTION_GATE closed FAIL. TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — tokenizer offset mapping not started. Escalation required before treating full N=475 as mapped usable.
 
 # Gate status
 
@@ -21,7 +21,8 @@ DATASET schema validation complete. DATASET_GATE PASS. Next: TOKEN_LINE_MAPPING_
 | DATASET_PROVENANCE_GATE | PASS |
 | DATASET_ACQUISITION_GATE | PASS |
 | DATASET_SCHEMA_VALIDATION_GATE | PASS |
-| TOKEN_LINE_MAPPING_GATE | NOT_STARTED |
+| DIFF_RECONSTRUCTION_GATE | FAIL |
+| TOKEN_LINE_MAPPING_GATE | IN_PROGRESS |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
 | XAI_GATE | NOT_STARTED |
@@ -31,34 +32,36 @@ DATASET schema validation complete. DATASET_GATE PASS. Next: TOKEN_LINE_MAPPING_
 
 # Current task
 
-DATASET_SCHEMA_VALIDATION_GATE closed. Do not implement build_dataset.py until orchestrator opens the next gate.
+Escalate incomplete positive-label mapping (235/475 usable under exact-unique rule). Do not implement `build_dataset.py` or tokenizer mapping until reconstruction strategy is resolved.
 
 # Completed work
 
-- Environment, novelty, provenance, acquisition gates.
-- Extracted seven JIT-Fine members; static pickle PASS; schema/split/line-label audit complete.
-- Empirical profile: 27319 commits / 2332 positives / 21 projects; L0–L4 measured.
+- Environment, novelty, provenance, acquisition, schema gates.
+- Diff reconstruction audit: Git mirrors for 21 projects; first-parent diffs; set EQ ~32%; line-label map for 475; contracts and report written.
+- PRIMARY_RQ1_POPULATION frozen at nominal N=475 without predicted-positive conditioning.
 
 # Blockers
 
-- LOCALIZATION_DENOMINATOR_DECISION still OPEN.
-- Change lines stored as sets (order not preserved) — mapping design needed next.
-- Line-label artifact covers test positives only.
+- DIFF_RECONSTRUCTION_GATE FAIL: 308 ambiguous + 294 missing positive label rows; set equivalence incomplete under documented normalization.
+- Upstream set representation destroys order/file/hunk/multiplicity.
+- CONTEXT_POLICY still OPEN.
 
 # Decisions frozen
 
 - Author split membership frozen (no cross-split commit overlap).
 - Commit/line labels are float `{0.0,1.0}`.
 - Primary key = commit hash.
-- No raw redistribution; extracted pickles gitignored.
+- No raw redistribution; extracted pickles and source repos gitignored.
+- LOCALIZATION_DENOMINATOR_DECISION: CLOSED (nominal N=475; no predicted-positive conditioning).
+- Parent strategy: first_parent.
 
 # Decisions pending
 
-- LOCALIZATION_DENOMINATOR_DECISION
-- Line-order / file-path recovery strategy for explanations
+- CONTEXT_POLICY
+- Accept subset RQ1 (N=235) vs further extraction reverse-engineering
 - ApacheJIT / ReDef secondary corpora
 - Journal selection
 
 # Last updated
 
-2026-09-30T00:05:00+02:00
+2026-09-30T00:30:00+02:00

@@ -1,0 +1,3 @@
+metric,value
+commits_with_duplicate_norm_text_in_filtered_diff,17373
+test_positive_commits_with_duplicate_norm_text_in_filtered_diff,376

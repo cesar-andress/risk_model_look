@@ -1,0 +1,12 @@
+metric,value
+commit_PARTIALLY_MAPPED,261
+commit_AMBIGUOUS,149
+commit_FULLY_MAPPED,65
+total_positive_rows,2060
+exact_unique,1458
+ambiguous,308
+missing,294
+row_EXACT_UNIQUE,18217
+row_AMBIGUOUS_DUPLICATE,3980
+row_MISSING_DIFF_LINE,3907
+usable_rq1,235
