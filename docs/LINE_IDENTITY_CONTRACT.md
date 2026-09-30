@@ -1,13 +1,12 @@
 # LINE_IDENTITY_CONTRACT.md
 
-Status: **DESIGNED — uniqueness proven only on successfully mapped reconstructed lines**
+Status: **CANONICAL ID FROZEN FOR GIT DIFF LINES — GT linkage incomplete**
 
 ## Motivation
 
-Upstream `added_code`/`removed_code` are Python `set`s: they destroy order, multiplicity, file, hunk, and line numbers.  
-Stable scientific IDs must come from reconstructed Git diffs, not from line text.
+Upstream `added_code`/`removed_code` are lossy sets. Layer-A JSON restores file identity for labels. Canonical model lines come from Git diffs.
 
-## Preferred machine key (tuple)
+## Preferred machine key (canonical changed line)
 
 ```
 (
@@ -15,29 +14,34 @@ Stable scientific IDs must come from reconstructed Git diffs, not from line text
   canonical_file_path: str,   # path on the new side of the diff (+++), else old side
   hunk_index: int,            # 0-based ordinal of @@ hunk within the commit diff
   change_type: str,           # "added" | "deleted"
-  old_lineno: int | None,     # deleted/context tracking; None for pure adds
-  new_lineno: int | None,     # added tracking; None for pure deletes
-  occurrence_index: int,      # 0-based among identical (change_type, norm_text) in commit
+  old_lineno: int | None,
+  new_lineno: int | None,
+  occurrence_index: int,      # 0-based among identical (change_type, norm/raw) in commit stream
 )
 ```
 
-## Human-readable serialization
+Human-readable:
 
 ```
 {commit_hash}|{canonical_file_path}|h{hunk_index}|{change_type}|old{old_or_NA}|new{new_or_NA}|occ{occurrence_index}
 ```
 
+## RQ1 candidate line ID
+
+Same as above restricted to `change_type == "added"`, plus:
+
+- `ordered_position` within the canonical added stream  
+- `ground_truth_label` when linked from Layer A (`added_buggy` / `added_clean` / unlabeled)
+
 ## Semantics
 
-- **canonical_file_path:** for renames, use the new path (`+++ b/...`) when present; record old path separately in reconstruction metadata (do not collapse).
-- **hunk_index:** ordinal of hunk headers in the deterministic `git diff -U0` stream (not Python object id).
-- **occurrence_index:** disambiguates duplicate identical normalized texts within the same change_type.
+- **canonical_file_path:** for renames, use new path (`+++`); record old path in reconstruction metadata.  
+- **occurrence_index:** disambiguates duplicate identical texts.  
+- Line **text is not** the primary ID.
 
 ## Uniqueness
 
-Among reconstructed filtered lines where mapping succeeded, IDs are unique by construction of `(commit, file, hunk, type, linenos, occ)`.
-
-Audit field: `stable_line_id_unique` in `artifacts/diff_reconstruction/coverage_summary.json`.
+Audited over all canonical changed lines in train/valid/test: **unique** (`stable_line_id_unique: true`, n=5073440).
 
 ## Hunk identity
 
@@ -45,14 +49,6 @@ Audit field: `stable_line_id_unique` in `artifacts/diff_reconstruction/coverage_
 (commit_hash, canonical_file_path, hunk_index)
 ```
 
-Serialized: `{commit}|{file}|h{hunk_index}`
+## Ground-truth linkage status
 
-## Handling gaps
-
-- Missing old/new lineno → use `NA` in serialization; still require file+hunk+occ.
-- Unmapped label rows → **no line ID assigned**; commit excluded from RQ1 usable set until resolved.
-
-## Non-goals
-
-- Do **not** use raw line text as primary ID.
-- Do **not** assign IDs by first fuzzy text match.
+Layer-A → canonical mapping is **incomplete** (see lineage report). Unmapped label rows receive **no** GT-linked line ID until resolved.

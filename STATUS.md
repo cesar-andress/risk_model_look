@@ -9,7 +9,7 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-DIFF_RECONSTRUCTION_GATE closed FAIL. TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — tokenizer offset mapping not started. Escalation required before treating full N=475 as mapped usable.
+GROUND_TRUTH_LINEAGE_GATE and CANONICAL_DIFF_GATE closed **FAIL**. TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS. Nominal RQ1 N=475 retained (not silently reduced).
 
 # Gate status
 
@@ -22,6 +22,8 @@ DIFF_RECONSTRUCTION_GATE closed FAIL. TOKEN_LINE_MAPPING_GATE remains IN_PROGRES
 | DATASET_ACQUISITION_GATE | PASS |
 | DATASET_SCHEMA_VALIDATION_GATE | PASS |
 | DIFF_RECONSTRUCTION_GATE | FAIL |
+| GROUND_TRUTH_LINEAGE_GATE | FAIL |
+| CANONICAL_DIFF_GATE | FAIL |
 | TOKEN_LINE_MAPPING_GATE | IN_PROGRESS |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
@@ -32,36 +34,33 @@ DIFF_RECONSTRUCTION_GATE closed FAIL. TOKEN_LINE_MAPPING_GATE remains IN_PROGRES
 
 # Current task
 
-Escalate incomplete positive-label mapping (235/475 usable under exact-unique rule). Do not implement `build_dataset.py` or tokenizer mapping until reconstruction strategy is resolved.
+Escalate unresolved Layer-A→Git positive mappings (247/2111) and partial A↔B lineage; orchestrator decides whether a high-confidence RQ1 subset is acceptable. Do not tokenize yet.
 
 # Completed work
 
-- Environment, novelty, provenance, acquisition, schema gates.
-- Diff reconstruction audit: Git mirrors for 21 projects; first-parent diffs; set EQ ~32%; line-label map for 475; contracts and report written.
-- PRIMARY_RQ1_POPULATION frozen at nominal N=475 without predicted-positive conditioning.
+- Identified Layer A nested JSON as richest authoritative line-label source (475/475 coverage).
+- Canonical first-parent Git diffs for 27319/27319; root-commit extraction fixed.
+- File-aware exact mapping: 1864/2111 positives mapped; 352 commits POSITIVE_GT_COMPLETE.
 
 # Blockers
 
-- DIFF_RECONSTRUCTION_GATE FAIL: 308 ambiguous + 294 missing positive label rows; set equivalence incomplete under documented normalization.
-- Upstream set representation destroys order/file/hunk/multiplicity.
-- CONTEXT_POLICY still OPEN.
+- GROUND_TRUTH_LINEAGE_GATE FAIL: A↔B PARTIAL; 246 ambiguous + 1 missing Layer-A positives.
+- CANONICAL_DIFF_GATE FAIL: GT↔canonical mapping incomplete (criterion F).
+- CONTEXT_POLICY OPEN.
 
 # Decisions frozen
 
-- Author split membership frozen (no cross-split commit overlap).
-- Commit/line labels are float `{0.0,1.0}`.
-- Primary key = commit hash.
-- No raw redistribution; extracted pickles and source repos gitignored.
-- LOCALIZATION_DENOMINATOR_DECISION: CLOSED (nominal N=475; no predicted-positive conditioning).
-- Parent strategy: first_parent.
+- PRIMARY_RQ1_POPULATION_NOMINAL = 475; no predicted-positive conditioning.
+- CANONICAL_MODEL_INPUT_SOURCE = ordered first-parent Git diff.
+- GROUND_TRUTH_SOURCE = Layer A JSON (intent); mapping incomplete.
+- Set-equivalence vs upstream sets is diagnostic only.
 
 # Decisions pending
 
+- Whether orchestrator accepts a high-confidence RQ1 subset
 - CONTEXT_POLICY
-- Accept subset RQ1 (N=235) vs further extraction reverse-engineering
-- ApacheJIT / ReDef secondary corpora
 - Journal selection
 
 # Last updated
 
-2026-09-30T00:30:00+02:00
+2026-09-30T08:25:00+02:00

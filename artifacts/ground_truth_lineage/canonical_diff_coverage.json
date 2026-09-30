@@ -1,0 +1,28 @@
+{
+  "by_split": [
+    {
+      "split": "train",
+      "total": 16374,
+      "canonical_diff_available": 16374,
+      "missing": 0,
+      "parse_success": 16374
+    },
+    {
+      "split": "valid",
+      "total": 5465,
+      "canonical_diff_available": 5465,
+      "missing": 0,
+      "parse_success": 5465
+    },
+    {
+      "split": "test",
+      "total": 5480,
+      "canonical_diff_available": 5480,
+      "missing": 0,
+      "parse_success": 5480
+    }
+  ],
+  "failures": [],
+  "stable_line_id_unique": true,
+  "n_stable_line_ids": 5073440
+}

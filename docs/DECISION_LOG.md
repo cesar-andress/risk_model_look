@@ -235,3 +235,19 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** PASS with 99.5% commit reconstruction alone (rejected: RQ1 positives not essentially complete); fuzzy text map (rejected).
 - **Reversible:** Yes if reverse-engineering recovers exact extractor equivalence and remaps positives.
 - **Gate affected:** DIFF_RECONSTRUCTION_GATE, TOKEN_LINE_MAPPING_GATE
+
+## 2026-09-30T08:25:00+02:00 — Set-equivalence demoted to diagnostic; Layer A identified
+
+- **Decision:** Whole-commit set equivalence to lossy `added_code`/`removed_code` is **diagnostic only**, not a validity criterion for this study. Identify Layer A nested JSON as richest authoritative line-label source. Freeze `CANONICAL_MODEL_INPUT_SOURCE` = ordered first-parent Git diff; `GROUND_TRUTH_SOURCE` intent = Layer A.
+- **Reason:** Sets are known-lossy; paper does not require replicating JIT-Fine semantic-set inputs; needs authentic ordered diffs + trustworthy line GT.
+- **Alternatives considered:** Keep set EQ as PASS/FAIL criterion (rejected).
+- **Reversible:** No for diagnostic demotion without protocol revision.
+- **Gate affected:** GROUND_TRUTH_LINEAGE_GATE, CANONICAL_DIFF_GATE
+
+## 2026-09-30T08:25:00+02:00 — GROUND_TRUTH_LINEAGE_GATE / CANONICAL_DIFF_GATE FAIL
+
+- **Decision:** Mark both gates **FAIL**. Do **not** redefine RQ1 N from 475 to mapped subset (352 POSITIVE_GT_COMPLETE / 109 FULL). Report unresolved: 246 ambiguous + 1 missing of 2111 Layer-A positives; A↔B PARTIAL (no published flatten script).
+- **Reason:** Orchestrator—not the audit script—decides subset acceptability; essentially-complete positive mapping unmet.
+- **Alternatives considered:** PASS with N=352 (forbidden by gate instructions).
+- **Reversible:** Yes if mapping completes or orchestrator explicitly accepts a subset.
+- **Gate affected:** GROUND_TRUTH_LINEAGE_GATE, CANONICAL_DIFF_GATE, TOKEN_LINE_MAPPING_GATE

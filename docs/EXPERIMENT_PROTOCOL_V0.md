@@ -39,6 +39,9 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - **DO_NOT_CONDITION_PRIMARY_RQ1_ON_PREDICTED_POSITIVE:** primary RQ1 localization must not require `model_predicted_positive` or classification correctness; TP/FN stratification may be secondary later
 - Diff reconstruction (audit): usable exact-unique positive mapping currently **235/475** under documented Git+normalization; remainder escalated (see `docs/DIFF_RECONSTRUCTION_REPORT.md`); `DIFF_RECONSTRUCTION_GATE=FAIL`
 - **CONTEXT_POLICY: OPEN**
+- Ground-truth lineage (audit): richest source = `JITFine/labels for each line/buggy_changes_with_buggy_line.json` (Layer A); A↔B **PARTIAL**; A→Git positives 1864/2111 mapped (246 amb + 1 miss); POSITIVE_GT_COMPLETE=352 (not adopted as new denominator); `GROUND_TRUTH_LINEAGE_GATE=FAIL`; `CANONICAL_DIFF_GATE=FAIL`
+- **CANONICAL_MODEL_INPUT_SOURCE:** ordered first-parent Git diff (`features.parent_hashes[0]`)
+- **GROUND_TRUTH_SOURCE (intent):** Layer A JSON
 - Pickle schemas / row-level exports: not for git; see `docs/DATASET_EMPIRICAL_PROFILE.md`
 
 ## LINE-LABEL SCOPE (FROZEN FOR JIT-FINE COMPATIBILITY)

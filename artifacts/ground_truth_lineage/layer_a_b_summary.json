@@ -1,0 +1,111 @@
+{
+  "json_sha256": "df15a48f70ecbdf6e5f855d4a6d7ba3f864244f6782922e0ee9faa7e4c8c8429",
+  "json_path": "JITFine/labels for each line/buggy_changes_with_buggy_line.json",
+  "json_local": "data/raw/upstream/internal/buggy_changes_with_buggy_line.json",
+  "layer_a_projects": 26,
+  "layer_a_commits": 2456,
+  "coverage_475": {
+    "present": 475,
+    "missing": 0
+  },
+  "a_to_b": {
+    "verdict": "PARTIAL",
+    "added_count_agree_commits": 125,
+    "added_count_disagree_commits": 350,
+    "pos_count_agree_commits": 453,
+    "pos_count_disagree_commits": 22,
+    "a_pos_total_on_475": 2111,
+    "b_pos_total": 2060,
+    "b_pos_match_status": {
+      "EXACT_AFTER_TRANSFORM": 1865,
+      "AMBIGUOUS": 48,
+      "MISSING": 147
+    },
+    "label_agree_on_matched": 1865,
+    "label_disagree_on_matched": 0,
+    "changed_line_eq_preprocess_raw": 6944,
+    "changed_line_rows": 26104
+  },
+  "raw_changed_line": {
+    "relationship": "DETERMINISTIC_TRANSFORM_PARTIAL",
+    "primary": "punct_space(LayerA.text) often equals B.raw_changed_line; underscore\u2192space variant needed sometimes; not 100%"
+  },
+  "changed_line": {
+    "relationship": "DETERMINISTIC_TRANSFORM",
+    "function": "JITFine/my_util.preprocess_code_line",
+    "eq_rate_on_raw": 0.2660128715905608,
+    "note": "Applied to raw_changed_line imperfectly (~26%); intended on original source line before/with different spacing"
+  },
+  "positive_mapping_a_to_git": {
+    "EXACT_OCCURRENCE_CONSTRAINED": 1707,
+    "AMBIGUOUS": 246,
+    "EXACT_DIRECT": 56,
+    "EXACT_FILE_CONSTRAINED": 72,
+    "EXACT_SEQUENCE_DISAMBIGUATED": 29,
+    "MISSING": 1
+  },
+  "a_pos_total_mapped_universe": 2111,
+  "commit_class": {
+    "FULL_GROUND_TRUTH_RECOVERED": 109,
+    "PARTIAL_POSITIVE_LABEL_RECOVERY": 244,
+    "AMBIGUOUS": 122
+  },
+  "positive_gt_complete_commits": 352,
+  "full_line_universe_complete_commits": 109,
+  "path_stats": {
+    "EXACT_PATH": 107273
+  },
+  "file_id_pos": {
+    "FILE_EXACT_FROM_LINEAGE": 1864,
+    "FILE_UNRESOLVED": 247
+  },
+  "parent": {
+    "rule": "features.parent_hashes[0] == git first parent",
+    "n_parents_dist_all": {
+      "1": 27317,
+      "0": 2
+    },
+    "n_parents_dist_475": {
+      "1": 475
+    },
+    "merges_in_475": 0,
+    "root_commits_all": 2
+  },
+  "canonical_diff_by_split": [
+    {
+      "split": "train",
+      "total": 16374,
+      "canonical_diff_available": 16374,
+      "missing": 0,
+      "parse_success": 16374
+    },
+    {
+      "split": "valid",
+      "total": 5465,
+      "canonical_diff_available": 5465,
+      "missing": 0,
+      "parse_success": 5465
+    },
+    {
+      "split": "test",
+      "total": 5480,
+      "canonical_diff_available": 5480,
+      "missing": 0,
+      "parse_success": 5480
+    }
+  ],
+  "canonical_diff_failures": [],
+  "stable_line_id_unique": true,
+  "n_stable_line_ids": 5073440,
+  "PRIMARY_RQ1_POPULATION_NOMINAL": 475,
+  "positive_gt_complete_n": 352,
+  "DO_NOT_CONDITION_PRIMARY_RQ1_ON_PREDICTED_POSITIVE": true,
+  "set_equivalence_diagnostic_only": {
+    "EXACT_SET_MATCH": 8755,
+    "n": 27317,
+    "rate": 0.3205,
+    "note": "LOSSY-UPSTREAM-REPRESENTATION COMPARISON \u2014 NOT canonical validity"
+  },
+  "CANONICAL_MODEL_INPUT_SOURCE": "ordered first-parent Git diff (features.parent_hashes[0])",
+  "GROUND_TRUTH_SOURCE": "JITFine/labels for each line/buggy_changes_with_buggy_line.json (Layer A)"
+}
