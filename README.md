@@ -1,43 +1,66 @@
 # risk_model_look
 
-Replication package (code, configs, scripts, reproducible results) for the empirical study:
+Replication package (code, configs, scripts, docs, and frozen protocol manifests)
+for the empirical study:
 
-**Where Does the Risk Model Look? Faithful and Signed Line-Level Explanations for LLM-Based Just-in-Time Defect Prediction**
+**Where Does the Risk Model Look? Faithful and Signed Line-Level Explanations for
+LLM-Based Just-in-Time Defect Prediction**
 
 ## What this repository is
 
-Public-facing research infrastructure for training and evaluating explanation methods on decoder-only LLM commit-risk classifiers.
+Public-facing research infrastructure for:
+
+- acquiring/validating public JIT-Defects4J / JIT-Fine resources (without
+  redistributing restricted raw dumps by default);
+- training a decoder-only commit-risk classifier (M1: Qwen2.5-Coder-7B QLoRA);
+- evaluating line-level attributions under **Attribution Protocol V1.2** and
+  **Statistical Protocol V1.1**.
 
 ## What this repository is not
 
-- It is **not** the manuscript source. Manuscript LaTeX lives in a separate path: `../paper/` (sibling of this repository root under the study workspace).
-- It does **not** redistribute raw datasets by default (`data/raw/` is gitignored). Dataset license and redistribution rights are **TO VERIFY**.
-- It does **not** yet contain scientific experiment implementations beyond environment/plumbing smoke tests.
+- It does **not** automatically redistribute raw datasets (`data/raw/` is
+  gitignored). Upstream license/redistribution rights must be verified before
+  any public dump.
+- It does **not** ship base LLM weights or LoRA adapters by default.
+- Manuscript LaTeX currently lives in a sibling path `../paper/` (papers
+  monorepo). Integration into `paper/` inside this repository is planned
+  (`docs/PAPER_INTEGRATION_PLAN.md`) but **not yet executed**.
 
 ## Current phase
 
-`T0/T1` — bootstrap and environment. See `STATUS.md`.
+Pre-results hygiene / protocol freeze. See `STATUS.md` and
+`docs/REPOSITORY_AUDIT_REPORT.md`.
 
-## Hard gates (do not skip)
+Attribution/statistics implementation currently lands on branch
+`parallel/attribution-infra` (merge plan: `docs/MERGE_PLAN.md`). Do not assume
+`main` already contains V1.2 until the approved fast-forward completes.
 
-| Gate | Status (see STATUS.md) |
-|------|------------------------|
-| Novelty | UNRESOLVED |
-| Environment | PENDING until smoke tests pass |
-| Dataset | NOT_STARTED |
-| Token–line mapping | NOT_STARTED |
+## Hard constraints
 
-## Quick start (after environment is ready)
+- Do not commit secrets, adapters, or Hugging Face caches.
+- Do not claim unfinished experiments as completed.
+- External protocol timestamp remains PENDING (not external preregistration).
 
-1. Read `STATUS.md` and `docs/NOVELTY_GATE.md`.
-2. Create the Python environment from `environment.yml` (conda/mamba) **or** the documented `uv`/venv fallback in `docs/ENVIRONMENT_REPORT.md`.
-3. Run plumbing tests: `pytest -q`
-4. Run GPU smoke (target machine with NVIDIA GPU): `python scripts/smoke_qwen_4bit.py`
+## Quick start
 
-## Reproduction notes
+1. Create the environment from `environment.yml` (or the fallback in
+   `docs/ENVIRONMENT_REPORT.md`).
+2. `pytest -q` (CPU protocol/unit tests).
+3. Follow `REPRODUCIBILITY.md` for dataset digests, training, and evaluation
+   sequencing (validation rehearsal before TEST attribution).
 
-See `REPRODUCE.md`. Scientific protocols (pre-experimental) are in `docs/EXPERIMENT_PROTOCOL_V0.md`.
+GPU smoke / full training require an NVIDIA machine and are **not** part of the
+default CPU CI path.
 
-## Integrity
+## Dataset restrictions
 
-Unknown facts remain UNKNOWN / TODO / TO VERIFY. Do not invent dataset statistics, DOIs, results, or novelty claims.
+JIT-Defects4J / JIT-Fine materials are obtained via documented acquisition
+scripts and hash checks. Treat redistribution as **restricted until verified**.
+
+## Citation
+
+See `CITATION.cff`. Paper DOI / Zenodo DOI: **TBD** (do not invent).
+
+## License
+
+Code license status: **TBD** (`NOASSERTION` in CITATION.cff until chosen).
