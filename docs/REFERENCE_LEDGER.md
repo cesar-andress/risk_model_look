@@ -254,10 +254,17 @@ No entries were inserted into `paper/refs.bib` in this task.
 - Status: VERIFIED_PUBLISHER
 - Role: localization/plausibility vs faithfulness distinction; comprehensiveness/sufficiency vocabulary
 
-### R13 (retained) — Jacobian Scopes
+### N8 — Liang et al. IST 2026 (PTM/fusion revisit)
 
-- Title: Jacobian Scopes: token-level causal attributions in LLMs
-- Authors (arXiv abs / GitHub cite): Toni J. B. Liu, Baran Zadeoğlu, Nicolas Boullé, Raphaël Sarfati, Christopher J. Earls
-- arXiv: 2601.16407
-- Status: VERIFIED_PREPRINT (abs+html inspected 2026-10-01)
-- Role: IG null/zero baseline caveats for decoder LLMs (attention-sink / OOD path); **not** JIT-specific claims
+- Authors: Yuguo Liang, Guisheng Fan, Huiqun Yu, Wentao Chen, Chengcheng Wu, Zijie Huang
+- Title: Revisiting pre-trained models and feature fusion strategies for just-in-time defect prediction
+- Venue: Information and Software Technology, 2026, volume 197, article/page 108170
+- DOI: **10.1016/j.infsof.2026.108170** (verified Crossref 2026-10-01)
+- Status: VERIFIED_PUBLISHER; FULL_TEXT_UNAVAILABLE / abstract empty in OpenAlex this audit
+- Role: 2026 JIT landscape (PTM + feature fusion); not a novelty collision
+
+### Refresh note (2026-10-01)
+
+SOTA refresh for manuscript Related Work: see `paper/docs/SOTA_REFRESH_REPORT.md`.
+Prior collision conclusion retained (no direct conjunction collision).
+JITEC faithfulness/polarity cells remain UNCLEAR (abstract-only for those absences).
