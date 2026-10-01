@@ -1,0 +1,93 @@
+# M1 attribution methods config v1 — infrastructure only.
+# DO NOT bind to final adapter paths until FULL_TRAINING_GATE completes.
+# DO NOT reference seed-13 intermediate checkpoints.
+
+schema_version: 1
+gate: ATTRIBUTION_INFRASTRUCTURE
+results_gate: ATTRIBUTION_RESULTS_GATE  # NOT_STARTED
+
+model:
+  model_id: Qwen/Qwen2.5-Coder-7B-Instruct
+  revision: c03e6d358207e414f1eca0bb1891e29f1db0e242
+  formulation: M1
+  adapter_path: "RESOLVE_FROM_M1_FINAL_MANIFEST"  # placeholder — not a live path
+  seeds: [13, 42, 73]  # final seeds; adapters unresolved until training finishes
+
+target:
+  name: risk_logit_contrast
+  formula: "s(x) = logit_1(x) - logit_0(x)"
+
+representation:
+  primary: CHANGED_ONLY
+  max_length: 2048
+  prompt_template_version: 1
+  token_map_version: 1
+
+aggregation:
+  # Protocol-configurable until methodological gate freezes a primary.
+  line_reduction_candidates: [SUM, MEAN, MAX_ABS_WITH_SIGN]
+  primary_candidate: SUM
+  frozen: false
+
+ranking_transforms:
+  # Explicit; none silently chosen as sole primary yet.
+  candidates: [SIGNED_DESCENDING, ABS_DESCENDING, POSITIVE_PART_DESCENDING]
+  primary: TBD_PROTOCOL
+
+methods:
+  - id: attention_last
+    family: attention
+    signed: false
+    config:
+      layer_selection: LAST
+      head_aggregation: MEAN
+      query_position_policy: FIRST_ASSISTANT_CLASSIFICATION_TOKEN
+  - id: attention_last4
+    family: attention
+    signed: false
+    config:
+      layer_selection: FINAL_K_MEAN
+      final_k: 4
+      head_aggregation: MEAN
+      query_position_policy: FIRST_ASSISTANT_CLASSIFICATION_TOKEN
+  - id: gradient
+    family: gradient
+    signed: true
+  - id: grad_x_input
+    family: gradient
+    signed: true
+  - id: integrated_gradients
+    family: ig
+    signed: true
+    config:
+      steps: 32
+      baseline_strategies: [ZERO_EMBEDDING, PAD_TOKEN_EMBEDDING]
+      primary_baseline: TBD_PROTOCOL
+  - id: occlusion_line
+    family: occlusion
+    signed: true
+    unit: LINE
+  - id: occlusion_hunk
+    family: occlusion
+    signed: true
+    unit: HUNK
+
+faithfulness:
+  score_spaces: [logit_contrast, probability]
+  primary_space: TBD_PROTOCOL
+  perturbation_fractions: [0.05, 0.10, 0.20, 0.30, 0.50]
+  random_baseline_seeds: [0, 1, 2]
+  length_matched_random: true
+
+polarity:
+  near_zero_epsilon: TBD_PROTOCOL  # must be set explicitly before results
+
+rq1:
+  universe: POLICY_A_COMPLETE_CASE
+  statuses_in_denominator: [RQ1_POSITIVE, RQ1_NEGATIVE]
+  exclude: [NOT_IN_RQ1_UNIVERSE]
+  ifa_indexing: ZERO_BASED_FALSE_ALARM_COUNT
+
+outputs:
+  raw_dir: data/results/attribution/  # gitignored
+  schema: attribution_result_row_v1

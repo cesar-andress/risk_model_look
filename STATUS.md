@@ -4,14 +4,15 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Roots
 
-- Code / replication repository: `/home/cesar/papers/risk_model_look/risk_model_look`
+- Code / replication repository (training): `/home/cesar/papers/risk_model_look/risk_model_look`
+- Parallel engineering worktree: `/home/cesar/papers/risk_model_look/risk_model_look_parallel` (branch `parallel/attribution-infra`)
 - Paper / LaTeX: `/home/cesar/papers/risk_model_look/paper`
 
-# Current phase
+# Current phase (this worktree)
 
-PILOT_TRAINING_GATE closed **PASS** (technical pipeline + ADEQUATE validation ranking on natural-prevalence Stage B).  
-Next: FULL_TRAINING_GATE — do not start until explicitly requested.  
-ATTRIBUTION_GATE = NOT_STARTED.
+ATTRIBUTION_INFRASTRUCTURE_GATE engineering.  
+FULL_TRAINING_GATE status is owned by the **primary training worktree** — do not modify it here.  
+Do not load 7B models or launch GPU attribution while training runs.
 
 # Gate status
 
@@ -34,8 +35,11 @@ ATTRIBUTION_GATE = NOT_STARTED.
 | TOKEN_LINE_MAPPING_GATE | PASS |
 | PILOT_TRAINING_GATE | PASS |
 | PILOT_GATE | PASS |
-| FULL_TRAINING_GATE | NOT_STARTED |
-| TRAINING_GATE | NOT_STARTED |
+| FULL_TRAINING_GATE | (see primary training worktree; do not edit from parallel) |
+| TRAINING_GATE | (see primary training worktree) |
+| ATTRIBUTION_INFRASTRUCTURE_GATE | PASS |
+| ATTRIBUTION_RESULTS_GATE | NOT_STARTED |
+| RQ1_RESULTS_GATE | NOT_STARTED |
 | ATTRIBUTION_GATE | NOT_STARTED |
 | XAI_GATE | NOT_STARTED |
 | ANALYSIS_GATE | NOT_STARTED |
@@ -44,27 +48,26 @@ ATTRIBUTION_GATE = NOT_STARTED.
 
 # Current task
 
-FULL_TRAINING_GATE (not started). Do not run full 16374 training or attribution until requested.
+ATTRIBUTION_INFRASTRUCTURE_GATE — interfaces, metrics, synthetic tests, docs. No scientific attribution results.
 
 # Completed work
 
 - Frozen PRIMARY_RQ1 = complete-case N=413; canonical_v1; token-line mapping PASS.
-- M1 QLoRA pilot: Stage A 32/32 overfit; Stage B N=2048 natural prevalence; full valid 5465.
-- Validation: ROC-AUC≈0.778, PR-AUC≈0.218 (ADEQUATE ranking); hard@0.5 all-negative.
-- TEST_INFERENCE_EXECUTED=NO.
+- M1 QLoRA pilot PASS (see primary tree reports).
+- Parallel worktree attribution infrastructure under development.
 
 # Blockers
 
-- Llama tokenizer ACCESS_BLOCKED (M3 generalization blocked).
+- Llama tokenizer ACCESS_BLOCKED (M3).
 - Historical FAIL gates retained.
-- Pilot hard threshold 0.5 not useful (scores <0.25); imbalance strategy deferred.
+- Final M1 adapters unresolved until FULL_TRAINING_GATE completes in primary tree.
 
 # Decisions frozen
 
 - PRIMARY_RQ1_POLICY=POLICY_A_COMPLETE_CASE; CHANGED_ONLY; max_length 2048; Qwen rev `c03e6d358207…`.
-- Label tokens 15/16; restricted two-class softmax; QLoRA NF4 r=16.
-- Pilot settings are not claimed optimized hyperparameters.
+- M1 explanation target: `s = logit_1 - logit_0`.
+- Occlusion sign: `delta = s(x) - s(x\\R)`; positive supports buggy.
 
 # Last updated
 
-2026-10-01T11:33:14+02:00
+2026-10-01 (parallel attribution infrastructure)

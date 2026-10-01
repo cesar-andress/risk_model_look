@@ -1,0 +1,37 @@
+{
+  "schema_version": "tables_v0",
+  "missing_policy": "NA_or_TBD_never_zero_for_unknown",
+  "tables": {
+    "table1_dataset_cohorts": {
+      "known": {
+        "train": 16374,
+        "valid": 5465,
+        "test": 5480,
+        "original_rq1": 475,
+        "primary_rq1": 413,
+        "rq1_visible_2048": 304
+      },
+      "tbd": ["final_predictive_summaries"]
+    },
+    "table2_predictive_performance": {
+      "columns": ["model", "seed", "split", "pr_auc", "roc_auc", "f1", "threshold"],
+      "rows": "TBD"
+    },
+    "table3_rq1_localization": {
+      "columns": ["method", "ranking_transform", "top1", "top5", "top10", "ifa", "recall_at_20pct_effort", "effort_at_20pct_recall", "n"],
+      "rows": "TBD"
+    },
+    "table4_rq2_faithfulness": {
+      "columns": ["method", "score_space", "fraction", "comprehensiveness", "sufficiency_higher_better"],
+      "rows": "TBD"
+    },
+    "table5_rq3_polarity": {
+      "columns": ["method", "epsilon", "frac_pos", "frac_neg", "frac_near_zero", "sign_agreement"],
+      "rows": "TBD"
+    },
+    "table6_ablations": {
+      "columns": ["factor", "setting", "metric", "value"],
+      "rows": "TBD"
+    }
+  }
+}

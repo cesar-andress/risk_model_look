@@ -299,3 +299,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Tune LR/LoRA/imbalance to lift F1@0.5 (forbidden this gate); proceed to full 16374 train (forbidden until FULL_TRAINING_GATE).
 - **Reversible:** Yes with explicit protocol amendment; do not silently change frozen data/prompt/token IDs.
 - **Gate affected:** PILOT_TRAINING_GATE, FULL_TRAINING_GATE, ATTRIBUTION_GATE
+
+## 2026-10-01 — ATTRIBUTION_INFRASTRUCTURE_GATE (parallel worktree)
+
+- **Decision:** Implement attribution / RQ metric **infrastructure** on branch `parallel/attribution-infra` from committed base `9c93eaa`, without disturbing the primary training worktree. Canonical M1 explanation target = `s = logit_1 - logit_0`. Occlusion sign frozen as `delta = s(x) - s(x\\R)`. IFA indexing aligned with existing guard: `ZERO_BASED_FALSE_ALARM_COUNT`. Line aggregation candidates SUM/MEAN/MAX_ABS_WITH_SIGN (SUM primary *candidate*, not frozen). Adapter paths unresolved until FULL_TRAINING completes. Mark `ATTRIBUTION_RESULTS_GATE` / `RQ1_RESULTS_GATE` = NOT_STARTED. Do not load 7B or produce scientific attribution results in this gate.
+- **Reason:** Parallel engineering while M1 final trains; interfaces and CPU synthetic tests only.
+- **Alternatives considered:** Develop in training worktree (rejected — risk to live run); bind seed-13 intermediate adapters (rejected).
+- **Reversible:** Yes via protocol amendment for metric/method freezes.
+- **Gate affected:** ATTRIBUTION_INFRASTRUCTURE_GATE, ATTRIBUTION_RESULTS_GATE, RQ1_RESULTS_GATE
