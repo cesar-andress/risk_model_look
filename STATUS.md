@@ -16,10 +16,11 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 | ATTRIBUTION_PROTOCOL_AMENDMENT_GATE | PASS (V1.1) |
 | REVIEWER_PROTOCOL_AMENDMENT_GATE | PASS (V1.2 / stats V1.1) |
 | STATISTICAL_PROTOCOL_FREEZE_GATE | PASS (V1; amended by V1.1) |
+| ATTRIBUTION_ENGINEERING_OPTIMIZATION_GATE | PASS |
 | VALIDATION_ATTRIBUTION_REHEARSAL_GATE | NOT_STARTED |
 | ATTRIBUTION_RESULTS_GATE | NOT_STARTED |
 | RQ1_RESULTS_GATE | NOT_STARTED |
-| FULL_TRAINING_GATE | (primary training worktree) |
+| FULL_TRAINING_GATE | (primary training worktree; untouched) |
 
 # Protocol hashes
 
@@ -31,4 +32,4 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Last updated
 
-2026-10-01 (REVIEWER_PROTOCOL_AMENDMENT_GATE)
+2026-10-01 (ATTRIBUTION_ENGINEERING_OPTIMIZATION_GATE)
