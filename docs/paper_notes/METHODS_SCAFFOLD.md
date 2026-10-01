@@ -55,3 +55,15 @@ CHANGED_ONLY / 2048 fully visible complete-case population (\(N=304\)). The
 ## Aggregation
 
 Token→line reduction primary is SUM; MEAN is a length-sensitivity diagnostic.
+
+## Statistical analysis (pre-result freeze)
+
+Commits are the primary inference unit; the three M1 seeds are repeated model
+realizations and are not flattened into independent seed×commit rows.
+Pairwise method comparisons use two-sided Wilcoxon signed-rank tests (Pratt
+zero handling) on commit-level mean paired differences over common-valid seeds
+(minimum two). Family-wise error is controlled by Holm correction within RQ
+families. Confidence intervals use 10 000 commit-cluster percentile bootstrap
+resamples. The primary paired effect size is the matched-pairs rank-biserial
+correlation; Cliff's δ is legacy/secondary only. See
+`docs/STATISTICAL_ANALYSIS_PROTOCOL_V1.md`.

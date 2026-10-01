@@ -1,0 +1,22 @@
+{
+  "STATISTICAL_PROTOCOL_HASH": "22816586bb5688b6595d4cd10c86ead079274aa6b1827a50b2d7b0cf7b090c07",
+  "canonical_sha256": "22816586bb5688b6595d4cd10c86ead079274aa6b1827a50b2d7b0cf7b090c07",
+  "config_path": "configs/stats/attribution_stats_v1.yaml",
+  "frozen_highlights": {
+    "bootstrap_repeats": 10000,
+    "cliffs_delta": "SECONDARY_LEGACY",
+    "effect": "MATCHED_PAIRS_RANK_BISERIAL_CORRELATION",
+    "holm_alpha": 0.05,
+    "min_common_valid_seeds": 2,
+    "scott_knott_primary": false,
+    "unit": "COMMIT",
+    "wilcoxon": "PRATT"
+  },
+  "parent_attribution_protocol": {
+    "hash": "ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e",
+    "protocol_id": "ATTRIBUTION_PROTOCOL_V1_1"
+  },
+  "protocol_id": "STATISTICAL_ANALYSIS_PROTOCOL_V1",
+  "scipy_version_at_freeze": "1.15.3",
+  "validation_errors": []
+}

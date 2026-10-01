@@ -323,3 +323,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Reuse SEGMENT_DELETE for RQ2 (rejected — self-evaluation); shrink RQ234 to 304 (rejected — distinct estimand).
 - **Reversible:** Only via new hashed protocol version.
 - **Gate affected:** ATTRIBUTION_PROTOCOL_AMENDMENT_GATE, ATTRIBUTION_RESULTS_GATE
+
+## 2026-10-01 — STATISTICAL_PROTOCOL_FREEZE_GATE
+
+- **Decision:** Freeze STATISTICAL_ANALYSIS_PROTOCOL_V1 before scientific attribution results. PRIMARY_STATISTICAL_UNIT=COMMIT; min_common_valid_seeds=2; Wilcoxon two-sided Pratt; primary effect=matched-pairs rank-biserial; Cliff's δ secondary legacy only; bootstrap=10000 commit-cluster percentile; Holm FWER α=0.05 by RQ family; RQ endpoints/directions frozen; random perms collapsed before inference; Scott-Knott not primary; parent ATTRIBUTION_PROTOCOL_V1_1 hash ae710257…. Record STATISTICAL_PROTOCOL_HASH in artifacts/statistical_protocol/.
+- **Reason:** Prevent pseudoreplication and result-dependent statistical shopping.
+- **Alternatives considered:** Flatten seed×commit (rejected); Cliff's δ as primary (rejected — unpaired); BH instead of Holm (rejected).
+- **Reversible:** Only via new hashed statistical protocol version.
+- **Gate affected:** STATISTICAL_PROTOCOL_FREEZE_GATE, ATTRIBUTION_RESULTS_GATE, ANALYSIS_GATE

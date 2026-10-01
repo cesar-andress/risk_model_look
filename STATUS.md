@@ -4,26 +4,25 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Roots
 
-- Training worktree: `/home/cesar/papers/risk_model_look/risk_model_look`
-- Parallel worktree: `/home/cesar/papers/risk_model_look/risk_model_look_parallel` (`parallel/attribution-infra`)
-- Paper: `/home/cesar/papers/risk_model_look/paper`
+- Training: `/home/cesar/papers/risk_model_look/risk_model_look`
+- Parallel: `/home/cesar/papers/risk_model_look/risk_model_look_parallel` (`parallel/attribution-infra`)
 
-# Gate status (this worktree)
+# Gate status (parallel worktree)
 
 | Gate | Status |
 |------|--------|
 | ATTRIBUTION_INFRASTRUCTURE_GATE | PASS |
-| ATTRIBUTION_PROTOCOL_FREEZE_GATE | PASS (V1 historical) |
 | ATTRIBUTION_PROTOCOL_AMENDMENT_GATE | PASS (V1.1) |
+| STATISTICAL_PROTOCOL_FREEZE_GATE | PASS |
 | ATTRIBUTION_RESULTS_GATE | NOT_STARTED |
 | RQ1_RESULTS_GATE | NOT_STARTED |
-| FULL_TRAINING_GATE | (owned by primary training worktree) |
+| FULL_TRAINING_GATE | (primary training worktree) |
 
-# Protocol
+# Protocol hashes
 
-- V1 hash: `73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d` (immutable)
-- V1.1: current — see `artifacts/attribution_protocol/CURRENT_PROTOCOL`
+- Attribution V1.1: `ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e`
+- Statistical V1: `22816586bb5688b6595d4cd10c86ead079274aa6b1827a50b2d7b0cf7b090c07`
 
 # Last updated
 
-2026-10-01 (ATTRIBUTION_PROTOCOL_AMENDMENT_GATE / V1.1)
+2026-10-01 (STATISTICAL_PROTOCOL_FREEZE_GATE)
