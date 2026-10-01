@@ -331,3 +331,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Flatten seed×commit (rejected); Cliff's δ as primary (rejected — unpaired); BH instead of Holm (rejected).
 - **Reversible:** Only via new hashed statistical protocol version.
 - **Gate affected:** STATISTICAL_PROTOCOL_FREEZE_GATE, ATTRIBUTION_RESULTS_GATE, ANALYSIS_GATE
+
+## 2026-10-01 — Claude pre-attribution design review archived
+
+- Source: Claude review, verdict **B**.
+- Artefact: `docs/reviews/CLAUDE_DESIGN_REVIEW_2026-10-01.md` (copy also under `paper/docs/`).
+- BLOCKER flagged: **C1** (faithfulness sign / AOPC primary definition).
+- Protocol hashes **unchanged** in this step; no test attribution opened.
+- Recommended next gate: protocol amendment + validation rehearsal (C14) before test attribution.
