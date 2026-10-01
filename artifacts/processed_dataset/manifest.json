@@ -1,0 +1,56 @@
+{
+  "complete_case_ids_sha256": "06dda8d249aec992be64026b105817c6bc1ac78fcaeaf4004ab94724f53505c9",
+  "config": {
+    "ablation_context": 3,
+    "context": 0,
+    "git_source": "canonical_first_parent",
+    "jitfine_extracted": "data/raw/upstream/extracted/data/jitfine",
+    "max_length_ablation": 4096,
+    "max_length_primary": 2048,
+    "message_source": "jitfine",
+    "newline_policy": "strip_only_record_terminator_keep_code_whitespace",
+    "ordering": "jitfine_split_order",
+    "output_dir": "data/processed/canonical_v1",
+    "prompt_template_version": 1,
+    "representation": "CHANGED_ONLY",
+    "rq1_n": 413,
+    "rq1_policy": "POLICY_A_COMPLETE_CASE",
+    "schema_version": 1,
+    "source_repos": "data/raw/source_repos",
+    "stable_line_id": "STABLE_LINE_ID_V1",
+    "structured_format_version": 1,
+    "token_map_version": 1,
+    "tokenizer_primary": "Qwen/Qwen2.5-Coder-7B-Instruct"
+  },
+  "counts": {
+    "test": 5480,
+    "train": 16374,
+    "valid": 5465
+  },
+  "file_sha256": {
+    "test": "8efc20c3841ddf646a516d58b2ebc5f1e2ee66efa6c9788cdaa22d00005a507c",
+    "train": "02e1533c2bbbbe5e6305f2ddc8037dce595a6bbb49c8a5b46e75bb608626a8de",
+    "valid": "eef7351bb63985a8c3a2139700c45835ddcdc3607f50938803fcf3cd909ab496"
+  },
+  "file_sizes": {
+    "test": 290264354,
+    "train": 784668806,
+    "valid": 219655949
+  },
+  "positive_counts": {
+    "test": 475,
+    "train": 1390,
+    "valid": 467
+  },
+  "rq1_complete_case": {
+    "candidates": 13412,
+    "n": 413,
+    "negatives": 11700,
+    "positives": 1712,
+    "unknown": 0
+  },
+  "rq1_excluded_mapping_incomplete": 62,
+  "rq1_primary_commits": 413,
+  "schema_version": 1,
+  "structured_format_version": 1
+}

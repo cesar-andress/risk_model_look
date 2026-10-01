@@ -63,8 +63,14 @@ class DiffLine:
     occurrence_index: int  # 0-based among same (change_type, norm_text) in commit
 
 
-def parse_unified_diff(diff_text: str) -> list[DiffLine]:
-    """Parse `git show -U0` / `git diff -U0` output into ordered changed lines."""
+def parse_unified_diff(
+    diff_text: str, *, include_context: bool = False
+) -> list[DiffLine]:
+    """Parse `git show` / `git diff` into ordered lines.
+
+    Default: added/deleted only. With include_context=True, also emit
+    change_type='context' for lines starting with a space (-U<n> diffs).
+    """
     rows: list[dict[str, Any]] = []
     file_old: str | None = None
     file_new: str | None = None
@@ -125,6 +131,19 @@ def parse_unified_diff(diff_text: str) -> list[DiffLine]:
             old_ln += 1
             continue
         if line.startswith(" "):
+            if include_context:
+                fp = file_new or file_old or ""
+                rows.append(
+                    {
+                        "change_type": "context",
+                        "file_path": fp,
+                        "hunk_index": hunk_idx,
+                        "old_lineno": old_ln,
+                        "new_lineno": new_ln,
+                        "raw_text": line[1:],
+                        "norm_text": normalize_line(line[1:]),
+                    }
+                )
             old_ln += 1
             new_ln += 1
     # occurrence indices

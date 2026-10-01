@@ -9,8 +9,8 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-Residual closure **FAIL** (18498/18615). Complete-case readiness **PASS** (N=413).  
-TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — awaiting orchestrator RQ1 population decision before tokenizer work.
+TOKEN_LINE_MAPPING_GATE closed **PASS**.  
+Next: PILOT_GATE (training) — do not start until explicitly requested.
 
 # Gate status
 
@@ -30,7 +30,7 @@ TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — awaiting orchestrator RQ1 popula
 | POLICY_A_CANONICAL_BRIDGE_GATE | FAIL |
 | POLICY_A_RESIDUAL_CLOSURE_GATE | FAIL |
 | POLICY_A_COMPLETE_CASE_READINESS_GATE | PASS |
-| TOKEN_LINE_MAPPING_GATE | IN_PROGRESS |
+| TOKEN_LINE_MAPPING_GATE | PASS |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
 | XAI_GATE | NOT_STARTED |
@@ -40,30 +40,28 @@ TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — awaiting orchestrator RQ1 popula
 
 # Current task
 
-Orchestrator decision: keep primary RQ1 = full Policy A (with unmapped residual excluded from scores) vs adopt POLICY_A_COMPLETE_CASE (N=413) as primary analysis population. Then TOKEN_LINE_MAPPING.
+PILOT_TRAINING_GATE (not started).
 
 # Completed work
 
-- Residual closure: +31 recovered (18 transform, 13 positional); missing positive recovered; 94 dataset-canonical conflicts; 2060/2060 positives mapped; complete-case bias audit (21/21 projects).
+- Frozen PRIMARY_RQ1 = complete-case N=413 (13412/1712/11700).
+- Built `canonical_v1` JSONL (27319); deterministic.
+- Qwen fast offset mapping 27319/27319; 100/100 sample; label tokens 0/1 single-token.
+- Truncation audits 2048/4096 + CTX3.
 
 # Blockers
 
-- 117 Policy-A rows still without unique canonical ID (94 conflict + 22 ambiguous + 1 unresolved).
-- Historical FAIL gates retained.
-- CONTEXT_POLICY OPEN.
+- Llama tokenizer ACCESS_BLOCKED (M3 generalization blocked).
+- Historical FAIL gates retained (document recovery path).
+- RQ1_VISIBLE_N_2048=304 / _4096=345 under CHANGED_ONLY (explicit truncation scope).
 
 # Decisions frozen
 
-- PRIMARY_RQ1_POLICY = POLICY_A universe definition (18615/2060/16555) unchanged.
-- CANONICAL_MODEL_INPUT_SOURCE = ordered first-parent Git reconstruction.
-- UNKNOWN ≠ NEGATIVE.
-- Stop further speculative reconstruction loops.
-
-# Decisions pending
-
-- Whether POLICY_A_COMPLETE_CASE (413) becomes primary RQ1 population
-- CONTEXT_POLICY
+- PRIMARY_RQ1_POLICY=POLICY_A_COMPLETE_CASE; N=413; ORIGINAL=475; excluded=62 mapping-incomplete.
+- CANONICAL_MODEL_INPUT_SOURCE=ordered first-parent Git; CHANGED_ONLY primary; CTX3 ablation; MAX_LENGTH 2048/4096.
+- STABLE_LINE_ID_V1 includes ordered_position; CONTEXT_POLICY closed (0 / 3).
+- Reconstruction stop rule engaged.
 
 # Last updated
 
-2026-10-01T05:45:00+02:00
+2026-10-01T07:45:00+02:00

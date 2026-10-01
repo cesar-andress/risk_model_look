@@ -1,66 +1,54 @@
 # LINE_IDENTITY_CONTRACT.md
 
-Status: **CANONICAL ID FROZEN — Policy-A bridge incomplete (18467/18615)**
+Status: **STABLE_LINE_ID_V1 FROZEN**
 
 ## Motivation
 
-Upstream `added_code`/`removed_code` are lossy sets. Layer-A JSON restores file identity for labels. Canonical model lines come from Git diffs.
+Upstream `added_code`/`removed_code` are lossy sets. Canonical model lines come from
+ordered first-parent Git reconstruction (CHANGED_ONLY / CTX3 rendering).
 
-## Preferred machine key (canonical changed line)
+## STABLE_LINE_ID_V1 (context-invariant)
 
 ```
 (
-  commit_hash: str,           # 40-hex
-  canonical_file_path: str,   # path on the new side of the diff (+++), else old side
-  hunk_index: int,            # 0-based ordinal of @@ hunk within the commit diff
-  change_type: str,           # "added" | "deleted"
+  commit_hash: str,
+  canonical_file_path: str,
+  change_type: str,           # added | deleted
   old_lineno: int | None,
   new_lineno: int | None,
-  occurrence_index: int,      # 0-based among identical (change_type, norm/raw) in commit stream
+  occurrence_index: int,      # among identical (change_type, norm_text) in U0 filtered stream
+  ordered_position: int       # 0-based in U0 CHANGED_ONLY filtered changed-line stream
 )
 ```
 
 Human-readable:
 
 ```
-{commit_hash}|{canonical_file_path}|h{hunk_index}|{change_type}|old{old_or_NA}|new{new_or_NA}|occ{occurrence_index}
+{commit}|{file}|{change_type}|old{old_or_NA}|new{new_or_NA}|occ{occurrence}|ord{ordered_position}
 ```
 
-## RQ1 candidate line ID
+**Why `ordered_position`:** without it, one duplicate key exists on commit
+`725fd755…` (CR-mangled hunk headers reuse `new_lineno=422`). Hunk index is **not**
+in the line ID because U0 vs U3 hunk boundaries differ.
 
-Same as above restricted to `change_type == "added"` **and** membership in
-\(U_{\mathrm{JITFINE}}\) (Policy A Layer-B row), plus:
+Uniqueness: enforced over the filtered U0 stream used for model input.
 
-- `ordered_position` within the canonical added stream  
-- `ground_truth_label` from Layer-B (`1.0` / `0.0`) when bridged  
-- Source row ID `(commit_id, idx)` from Layer-B (immutable; **not** a lineno)
-
-Canonical Git added lines **outside** Policy A are
-`NOT_IN_RQ1_UNIVERSE` (never `RQ1_NEGATIVE`). See
-`docs/RQ1_CANDIDATE_MASK_CONTRACT.md`.
-
-## Semantics
-
-- **canonical_file_path:** for renames, use new path (`+++`); record old path in reconstruction metadata.  
-- **occurrence_index:** disambiguates duplicate identical texts.  
-- Line **text is not** the primary ID.
-
-## Uniqueness
-
-Audited over all canonical changed lines in train/valid/test: **unique** (`stable_line_id_unique: true`, n=5073440).
-
-## Hunk identity
+## Hunk identity (separate)
 
 ```
-(commit_hash, canonical_file_path, hunk_index)
+hunk_id = (commit, file, representation_variant, hunk_ordinal)
 ```
 
-Do **not** conflate with JIT-Block derived `JITBLOCK_BLOCK_ID` (adjacency
-blocks after sorting recovered linenos).
+U0 and U3 hunks are different objects when Git merges boundaries under context.
 
-## Ground-truth linkage status
+## RQ1 status on lines
 
-Policy-A → canonical bridge (`POLICY_A_CANONICAL_BRIDGE_GATE`): **FAIL** —
-**18467 / 18615** unique mappings; **148** NOT_FOUND; **0** collisions
-(see `docs/POLICY_A_CANONICAL_BRIDGE_REPORT.md`). Unmapped Policy-A rows
-receive **no** GT-linked line ID.
+Within PRIMARY_RQ1_N=413 complete-case commits only:
+
+- `RQ1_POSITIVE` / `RQ1_NEGATIVE` for mapped Policy-A candidates  
+- else `NOT_IN_RQ1_UNIVERSE` (never negative)
+
+## Historical note
+
+Earlier IDs included `hunk_index` in the line key; superseded by V1 above for
+representation invariance.

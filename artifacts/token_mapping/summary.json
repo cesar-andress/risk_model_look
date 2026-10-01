@@ -1,0 +1,33 @@
+{
+  "STABLE_LINE_ID_V1": "(commit,file,change_type,old_lineno,new_lineno,occurrence_index,ordered_position)",
+  "TOKEN_LINE_MAPPING_GATE": "PASS",
+  "TOKEN_MAP_VERSION": 1,
+  "deterministic_build": true,
+  "full_mapping": {
+    "commits": 27319,
+    "commits_err": 0,
+    "commits_ok": 27319,
+    "cross_boundary_same_line_tokens": 2860509,
+    "mapping_error_events": 0
+  },
+  "label_tokens": {
+    "single_token": true,
+    "token_id_0": 15,
+    "token_id_1": 16
+  },
+  "llama": "ACCESS_BLOCKED:OSError",
+  "pre_truncation_rq1": {
+    "candidates": 13412,
+    "negatives": 11700,
+    "positives": 1712,
+    "unmapped": 0
+  },
+  "qwen": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "qwen_fast": true,
+  "rq1_mask": "NOT_IN_RQ1_UNIVERSE_never_negative",
+  "sample_100": {
+    "failures": [],
+    "n_failures": 0,
+    "passed": 100
+  }
+}

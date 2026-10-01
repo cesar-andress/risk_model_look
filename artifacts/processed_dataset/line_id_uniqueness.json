@@ -1,0 +1,7 @@
+{
+  "STABLE_LINE_ID_V1": "(commit,file,change_type,old_lineno,new_lineno,occurrence_index)",
+  "n_lines": 2885638,
+  "n_unique": 2885637,
+  "duplicate_keys": 1,
+  "unique": false
+}

@@ -283,3 +283,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Another fuzzy/heuristic pass (rejected); silent N=413 primary (rejected — orchestrator only).
 - **Reversible:** Only if new authoritative producer evidence appears.
 - **Gate affected:** POLICY_A_RESIDUAL_CLOSURE_GATE, POLICY_A_COMPLETE_CASE_READINESS_GATE, TOKEN_LINE_MAPPING_GATE
+
+## 2026-10-01T07:45:00+02:00 — Complete-case primary RQ1; token-line mapping PASS
+
+- **Decision:** Freeze `PRIMARY_RQ1_POLICY=POLICY_A_COMPLETE_CASE` (N=413; 13412/1712/11700; exclude 62 mapping-incomplete). Freeze CHANGED_ONLY + context 0 / CTX3 ablation / max_length 2048+4096 / STABLE_LINE_ID_V1 with `ordered_position`. Build `canonical_v1` deterministically. Mark `TOKEN_LINE_MAPPING_GATE=PASS` (Qwen fast offsets; 27319/27319; 100/100; label tokens 15/16). Llama ACCESS_BLOCKED. Do not train.
+- **Reason:** Orchestrator stop rule; complete-case is the only fully linked labelled universe; bias documented; tokenizer evidence complete for M1.
+- **Alternatives considered:** Keep N=475 with partial maps (invalid for primary metrics); fuzzy recovery (forbidden).
+- **Reversible:** Only via explicit protocol amendment.
+- **Gate affected:** TOKEN_LINE_MAPPING_GATE, PILOT_GATE, ANALYSIS_GATE
