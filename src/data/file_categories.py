@@ -1,6 +1,7 @@
-"""File-path category scaffold for RQ4 (heuristic NOT frozen).
+"""File-path category scaffold for RQ4.
 
-Default category is UNKNOWN. Do not silently classify by '/test/' alone.
+Protocol V1.1: test-file category status = PENDING_AUDIT.
+Default classifier returns UNKNOWN. Do not silently classify by '/test/' alone.
 """
 
 from __future__ import annotations
@@ -8,10 +9,11 @@ from __future__ import annotations
 from enum import Enum
 from typing import Protocol
 
+TEST_FILE_CATEGORY_STATUS = "PENDING_AUDIT"
+
 
 class FileCategory(str, Enum):
     UNKNOWN = "UNKNOWN"
-    # Reserved for a future audited classifier — not assigned by default:
     PRODUCTION = "PRODUCTION"
     TEST = "TEST"
     OTHER = "OTHER"
@@ -24,6 +26,8 @@ class FileCategoryClassifier(Protocol):
 class DefaultUnknownClassifier:
     """Scaffold classifier: always UNKNOWN until an audited rule is adopted."""
 
+    status = TEST_FILE_CATEGORY_STATUS
+
     def categorize(self, path: str) -> FileCategory:
         _ = path
         return FileCategory.UNKNOWN
@@ -31,3 +35,7 @@ class DefaultUnknownClassifier:
 
 def get_default_classifier() -> FileCategoryClassifier:
     return DefaultUnknownClassifier()
+
+
+def test_file_category_audit_status() -> str:
+    return TEST_FILE_CATEGORY_STATUS

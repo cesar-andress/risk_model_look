@@ -315,3 +315,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** SIGNED primary RQ1 (rejected — bakes polarity); PAD as primary IG baseline (rejected — sensitivity only); MEAN as primary aggregation (rejected — different estimand).
 - **Reversible:** Only via new hashed protocol version + orchestrator approval.
 - **Gate affected:** ATTRIBUTION_PROTOCOL_FREEZE_GATE, ATTRIBUTION_RESULTS_GATE, RQ1_RESULTS_GATE
+
+## 2026-10-01 — ATTRIBUTION_PROTOCOL_AMENDMENT_GATE (V1.1)
+
+- **Decision:** Amend frozen V1 into ATTRIBUTION_PROTOCOL_V1.1 without overwriting V1. Preserve V1 hash `73f0f891…`. Distinguish SEGMENT_DELETE_V1 (occlusion) vs PAYLOAD_BLANK_V1 (primary RQ2). RQ2 fractions {10,20,30,50}% with k=max(1,ceil(fN)). Define deletion/insertion AOPC. RQ2/3/4 cohort = 475 positive TEST (truncated eligible on visible input); RQ1 primary remains N=304. Freeze missingness rules, ATTENTION_TOP2_HUNK_OCCLUSION_SIGN_V1, DIFF_POLARITY_SWAP_V1. Test-file category = PENDING_AUDIT.
+- **Reason:** Completeness gaps that would otherwise force post-hoc operator/cohort choices after results.
+- **Alternatives considered:** Reuse SEGMENT_DELETE for RQ2 (rejected — self-evaluation); shrink RQ234 to 304 (rejected — distinct estimand).
+- **Reversible:** Only via new hashed protocol version.
+- **Gate affected:** ATTRIBUTION_PROTOCOL_AMENDMENT_GATE, ATTRIBUTION_RESULTS_GATE

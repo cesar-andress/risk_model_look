@@ -1,13 +1,10 @@
 # ATTRIBUTION_PROTOCOL_V1.md
 
-Status: **HISTORICALLY FROZEN** — do not overwrite.  
-Superseded for *new* scientific runs by **ATTRIBUTION_PROTOCOL_V1.1**  
-(see `docs/ATTRIBUTION_PROTOCOL_V1_1.md`).
-
-**ATTRIBUTION_PROTOCOL_HASH (V1):** `73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d`  
-
+Status: **FROZEN** (pre-result)  
+Gate: `ATTRIBUTION_PROTOCOL_FREEZE_GATE`  
 Config: `configs/attribution/m1_methods_v1.yaml`  
-Archive: `artifacts/attribution_protocol/v1/`
+**ATTRIBUTION_PROTOCOL_HASH:** `73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d`  
+Manifest: `artifacts/attribution_protocol/protocol_manifest.json`
 
 No scientific M1 attribution results may be produced under a different protocol
 without a new hashed version.

@@ -4,33 +4,26 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Roots
 
-- Code / replication repository (training): `/home/cesar/papers/risk_model_look/risk_model_look`
-- Parallel engineering worktree: `/home/cesar/papers/risk_model_look/risk_model_look_parallel` (branch `parallel/attribution-infra`)
-- Paper / LaTeX: `/home/cesar/papers/risk_model_look/paper`
+- Training worktree: `/home/cesar/papers/risk_model_look/risk_model_look`
+- Parallel worktree: `/home/cesar/papers/risk_model_look/risk_model_look_parallel` (`parallel/attribution-infra`)
+- Paper: `/home/cesar/papers/risk_model_look/paper`
 
-# Current phase (this worktree)
-
-ATTRIBUTION_PROTOCOL_FREEZE_GATE.  
-FULL_TRAINING_GATE is owned by the primary training worktree — do not edit it here.  
-Do not load 7B models or run scientific attribution.
-
-# Gate status
+# Gate status (this worktree)
 
 | Gate | Status |
 |------|--------|
-| TOKEN_LINE_MAPPING_GATE | PASS |
-| PILOT_TRAINING_GATE | PASS |
-| FULL_TRAINING_GATE | (see primary training worktree) |
 | ATTRIBUTION_INFRASTRUCTURE_GATE | PASS |
-| ATTRIBUTION_PROTOCOL_FREEZE_GATE | PASS |
+| ATTRIBUTION_PROTOCOL_FREEZE_GATE | PASS (V1 historical) |
+| ATTRIBUTION_PROTOCOL_AMENDMENT_GATE | PASS (V1.1) |
 | ATTRIBUTION_RESULTS_GATE | NOT_STARTED |
 | RQ1_RESULTS_GATE | NOT_STARTED |
-| ATTRIBUTION_GATE | NOT_STARTED |
+| FULL_TRAINING_GATE | (owned by primary training worktree) |
 
-# Frozen protocol
+# Protocol
 
-See `docs/ATTRIBUTION_PROTOCOL_V1.md` and `artifacts/attribution_protocol/protocol_manifest.json`.
+- V1 hash: `73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d` (immutable)
+- V1.1: current — see `artifacts/attribution_protocol/CURRENT_PROTOCOL`
 
 # Last updated
 
-2026-10-01 (ATTRIBUTION_PROTOCOL_FREEZE_GATE)
+2026-10-01 (ATTRIBUTION_PROTOCOL_AMENDMENT_GATE / V1.1)

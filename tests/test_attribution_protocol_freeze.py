@@ -15,11 +15,15 @@ from src.attribution.integrated_gradients import (
 )
 from src.attribution.toy_model import LinearPathToy
 from src.experiments.protocol_manifest import (
-    PROTOCOL_ID,
+    ATTRIBUTION_PROTOCOL_HASH_V1,
+    PROTOCOL_ID_V1,
+    PROTOCOL_ID_V1_1,
+    V1_CONFIG,
     build_manifest,
     load_protocol_config,
     protocol_hash,
     validate_protocol_config,
+    verify_v1_hash_intact,
     write_manifest,
 )
 from src.metrics.faithfulness import (
@@ -54,14 +58,19 @@ pytestmark = pytest.mark.cpu
 
 
 def test_protocol_config_valid_and_hash_stable(tmp_path) -> None:
-    cfg = load_protocol_config()
-    assert cfg["protocol_id"] == PROTOCOL_ID
+    assert verify_v1_hash_intact()
+    v1 = load_protocol_config(V1_CONFIG)
+    assert v1["protocol_id"] == PROTOCOL_ID_V1
+    assert protocol_hash(v1) == ATTRIBUTION_PROTOCOL_HASH_V1
+    cfg = load_protocol_config()  # current = V1.1
+    assert cfg["protocol_id"] == PROTOCOL_ID_V1_1
     errs = validate_protocol_config(cfg)
     assert errs == []
     h1 = protocol_hash(cfg)
     h2 = protocol_hash(cfg)
     assert h1 == h2
     assert len(h1) == 64
+    assert h1 != ATTRIBUTION_PROTOCOL_HASH_V1
     m = build_manifest(cfg)
     assert m["ATTRIBUTION_PROTOCOL_HASH"] == h1
     path = write_manifest(tmp_path)

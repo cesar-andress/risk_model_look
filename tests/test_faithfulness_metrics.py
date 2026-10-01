@@ -40,8 +40,6 @@ def test_perturbation_curve_defaults() -> None:
     def only(sel):
         return sum(effects[k] for k in sel)
 
-    from src.metrics.faithfulness import FaithfulnessScoreSpace, evaluate_removal_curve, DEFAULT_PERTURBATION_FRACTIONS
-
     curve = evaluate_removal_curve(
         regions,
         score_full=sum(effects.values()),
@@ -50,9 +48,11 @@ def test_perturbation_curve_defaults() -> None:
         space=FaithfulnessScoreSpace.LOGIT_CONTRAST,
     )
     assert curve.fractions == DEFAULT_PERTURBATION_FRACTIONS
+    assert 0.05 not in curve.fractions
     assert 0.2 in curve.comprehensiveness_values
-    assert curve.comprehensiveness_values[0.05] > 0
-    assert 0.05 in curve.sufficiency_error_values
+    assert curve.comprehensiveness_values[0.10] > 0
+    assert 0.10 in curve.sufficiency_error_values
+    assert curve.ks[0.10] == 2  # ceil(0.1*20)=2
 
 
 def test_random_baseline_deterministic() -> None:

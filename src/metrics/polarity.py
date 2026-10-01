@@ -155,3 +155,53 @@ def method_sign_agreement(
     epsilon: float | None = None,
 ) -> dict[str, float | int | str]:
     return sign_agreement(scores_a, scores_b, epsilon=epsilon)
+
+
+def attention_top2_hunk_negative_occlusion_fraction(
+    attention_hunk_scores: Mapping[str, float],
+    occlusion_hunk_deltas: Mapping[str, float],
+) -> dict[str, float | int | str | list[str]]:
+    """RQ3 ATTENTION_TOP2_HUNK_OCCLUSION_SIGN_V1.
+
+    Top-2 hunks by attention (RAW descending). Among those with resolvable
+    occlusion deltas, report fraction classified NEGATIVE under
+    RELATIVE_POLARITY_EPS_V1 applied to the occlusion delta set used.
+    """
+    if not attention_hunk_scores:
+        return {
+            "metric": "ATTENTION_TOP2_HUNK_OCCLUSION_SIGN_V1",
+            "n_top": 0,
+            "top_hunk_ids": [],
+            "fraction_negative_occlusion": 0.0,
+            "n_negative": 0,
+            "n_near_zero": 0,
+            "n_scored": 0,
+        }
+    ranked = sorted(
+        attention_hunk_scores.items(),
+        key=lambda kv: (-float(kv[1]), str(kv[0])),
+    )
+    top2 = [h for h, _ in ranked[:2]]
+    deltas = {h: float(occlusion_hunk_deltas[h]) for h in top2 if h in occlusion_hunk_deltas}
+    # Classify using relative eps over the available top-2 deltas (and note missing)
+    classes = classify_region_scores(deltas) if deltas else {}
+    n_neg = sum(1 for c in classes.values() if c == PolarityClass.NEGATIVE)
+    n_near = sum(1 for c in classes.values() if c == PolarityClass.NEAR_ZERO)
+    n_scored = len(classes)
+    # Fraction among scored non-near-zero? Protocol: fraction of top-2 whose class is NEGATIVE
+    # Near-zero excluded from numerator; denominator is len(top2) with note — report both.
+    return {
+        "metric": "ATTENTION_TOP2_HUNK_OCCLUSION_SIGN_V1",
+        "n_top": len(top2),
+        "top_hunk_ids": top2,
+        "fraction_negative_occlusion": (n_neg / len(top2)) if top2 else 0.0,
+        "fraction_negative_among_scored_non_near_zero": (
+            n_neg / max(1, n_scored - n_near)
+        )
+        if (n_scored - n_near) > 0
+        else 0.0,
+        "n_negative": n_neg,
+        "n_near_zero": n_near,
+        "n_scored": n_scored,
+        "n_missing_occlusion": len(top2) - n_scored,
+    }
