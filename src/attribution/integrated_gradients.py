@@ -109,6 +109,11 @@ def _accumulate_ig(
     raise ValueError(f"Unknown integration rule: {rule}")
 
 
+# V1.2 combined absolute+relative completeness (adversarial review C11).
+IG_COMBINED_ABS_FLOOR = 1e-3
+IG_COMBINED_REL_FACTOR = 0.05
+
+
 def completeness_errors(
     attr_sum: float,
     f_input: float,
@@ -125,6 +130,27 @@ def completeness_errors(
         "E_abs": float(e_abs),
         "E_rel": float(e_rel),
     }
+
+
+def combined_completeness_holds(
+    e_abs: float,
+    target_delta: float,
+    *,
+    abs_floor: float = IG_COMBINED_ABS_FLOOR,
+    rel_factor: float = IG_COMBINED_REL_FACTOR,
+) -> bool:
+    """V1.2: E_abs <= max(1e-3, 0.05 * abs(target_delta))."""
+    thresh = max(float(abs_floor), float(rel_factor) * abs(float(target_delta)))
+    return float(e_abs) <= thresh
+
+
+def combined_completeness_threshold(
+    target_delta: float,
+    *,
+    abs_floor: float = IG_COMBINED_ABS_FLOOR,
+    rel_factor: float = IG_COMBINED_REL_FACTOR,
+) -> float:
+    return max(float(abs_floor), float(rel_factor) * abs(float(target_delta)))
 
 
 def integrated_gradients(
@@ -194,8 +220,21 @@ def integrated_gradients_with_retry(
     integration_rule: IntegrationRule = IntegrationRule.GAUSS_LEGENDRE,
     method_name: str = "integrated_gradients",
     target: TargetDefinition = M1_RISK_LOGIT_CONTRAST,
+    completeness_mode: str = "COMBINED_ABS_REL_TOL_V1_2",
 ) -> AttributionResult:
-    """Protocol adaptive retry: 50 → 100 steps; else IG_NONCONVERGED."""
+    """Adaptive retry: 50 → 100 steps; else IG_NONCONVERGED.
+
+    Default completeness_mode is V1.2 combined abs/rel criterion.
+    Pass completeness_mode=\"RELATIVE_ONLY_V1_1\" for historical relative-only rule.
+    """
+
+    def _converged(meta: dict) -> bool:
+        if completeness_mode == "RELATIVE_ONLY_V1_1":
+            return float(meta["E_rel"]) <= float(rel_tol)
+        return combined_completeness_holds(
+            float(meta["E_abs"]), float(meta["target_delta"])
+        )
+
     first = integrated_gradients(
         embeddings,
         score_fn,
@@ -207,17 +246,26 @@ def integrated_gradients_with_retry(
         method_name=method_name,
         target=target,
     )
-    e_rel = float(first.metadata["E_rel"])
-    if e_rel <= rel_tol:
-        meta = dict(first.metadata)
-        meta.update({"retry_applied": False, "accepted_steps": initial_steps})
+    meta0 = dict(first.metadata)
+    meta0["completeness_mode"] = completeness_mode
+    meta0["combined_threshold"] = combined_completeness_threshold(
+        float(meta0["target_delta"])
+    )
+    if _converged(meta0):
+        meta0.update(
+            {
+                "retry_applied": False,
+                "accepted_steps": initial_steps,
+                "IG_NONCONVERGED": False,
+            }
+        )
         return AttributionResult(
             method_name=first.method_name,
             score_space=first.score_space,
             signed=first.signed,
             target_definition=first.target_definition,
             token_scores=first.token_scores,
-            metadata=meta,
+            metadata=meta0,
         )
     second = integrated_gradients(
         embeddings,
@@ -230,15 +278,20 @@ def integrated_gradients_with_retry(
         method_name=method_name,
         target=target,
     )
-    e_rel2 = float(second.metadata["E_rel"])
     meta = dict(second.metadata)
+    ok = _converged(meta)
     meta.update(
         {
+            "completeness_mode": completeness_mode,
+            "combined_threshold": combined_completeness_threshold(
+                float(meta["target_delta"])
+            ),
             "retry_applied": True,
             "initial_steps": initial_steps,
-            "initial_E_rel": e_rel,
+            "initial_E_rel": float(first.metadata["E_rel"]),
+            "initial_E_abs": float(first.metadata["E_abs"]),
             "accepted_steps": retry_steps,
-            "IG_NONCONVERGED": e_rel2 > rel_tol,
+            "IG_NONCONVERGED": not ok,
         }
     )
     return AttributionResult(
@@ -255,7 +308,13 @@ def completeness_holds(
     result: AttributionResult,
     *,
     rel_tol: float = IG_REL_TOL,
+    mode: str | None = None,
 ) -> bool:
-    return float(result.metadata["E_rel"]) <= rel_tol and not bool(
-        result.metadata.get("IG_NONCONVERGED", False)
+    if bool(result.metadata.get("IG_NONCONVERGED", False)):
+        return False
+    m = mode or str(result.metadata.get("completeness_mode", "COMBINED_ABS_REL_TOL_V1_2"))
+    if m == "RELATIVE_ONLY_V1_1":
+        return float(result.metadata["E_rel"]) <= rel_tol
+    return combined_completeness_holds(
+        float(result.metadata["E_abs"]), float(result.metadata["target_delta"])
     )

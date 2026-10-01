@@ -15,6 +15,7 @@ from src.data.structured_diff import SegmentType
 
 # Categories originate from the token-mapping / structured-diff contract.
 SEMANTIC_CATEGORIES: tuple[str, ...] = (
+    "PROMPT_INSTRUCTION",
     "COMMIT_MESSAGE",
     "FILE_PATH",
     "HUNK_HEADER",

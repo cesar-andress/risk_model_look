@@ -28,12 +28,13 @@ from src.stats.paired import (
     wilcoxon_signed_rank,
 )
 from src.stats.protocol_manifest import (
-    PARENT_ATTR_HASH,
-    PARENT_ATTR_ID,
+    STATISTICAL_PROTOCOL_HASH_V1,
+    V1_CONFIG as STATS_V1_CONFIG,
+    V1_1_CONFIG as STATS_V1_1_CONFIG,
     build_manifest,
     statistical_protocol_hash,
     validate_stats_config,
-    verify_parent_attribution_hash,
+    verify_stats_v1_hash_intact,
     write_manifest,
     load_stats_config,
 )
@@ -44,15 +45,17 @@ pytestmark = pytest.mark.cpu
 
 
 def test_protocol_hash_determinism(tmp_path) -> None:
-    cfg = load_stats_config()
+    assert verify_stats_v1_hash_intact()
+    cfg_v1 = load_stats_config(STATS_V1_CONFIG)
+    assert statistical_protocol_hash(cfg_v1) == STATISTICAL_PROTOCOL_HASH_V1
+    cfg = load_stats_config(STATS_V1_1_CONFIG)
     assert validate_stats_config(cfg) == []
-    assert verify_parent_attribution_hash(cfg)
     h1 = statistical_protocol_hash(cfg)
     h2 = statistical_protocol_hash(cfg)
     assert h1 == h2
     m = build_manifest(cfg)
-    assert m["parent_attribution_protocol"]["hash"] == PARENT_ATTR_HASH
-    assert m["parent_attribution_protocol"]["protocol_id"] == PARENT_ATTR_ID
+    assert m["parent_attribution_protocol"]["protocol_id"] == "ATTRIBUTION_PROTOCOL_V1_2"
+    assert m["STATISTICAL_PROTOCOL_HASH_V1"] == STATISTICAL_PROTOCOL_HASH_V1
     write_manifest(tmp_path)
 
 
