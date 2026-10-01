@@ -251,3 +251,19 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** PASS with N=352 (forbidden by gate instructions).
 - **Reversible:** Yes if mapping completes or orchestrator explicitly accepts a subset.
 - **Gate affected:** GROUND_TRUTH_LINEAGE_GATE, CANONICAL_DIFF_GATE, TOKEN_LINE_MAPPING_GATE
+
+## 2026-10-01T04:50:00+02:00 — JIT-Block audit PASS; set EQ remains diagnostic
+
+- **Decision:** Freeze JIT-Block evidence at `hangters/JIT-Block@d82cc67…` (DOI 10.1111/exsy.13702). Verify 178 exclusions are all non-defective (78 train / 43 valid / 57 test); all 475 positives retained; line-label pickle BYTE_IDENTICAL to JIT-Fine. Mark `JITBLOCK_REPLICATION_AUDIT_GATE=PASS`. Keep historical DIFF/LINEAGE/CANONICAL fails visible.
+- **Reason:** External reconstruction corroborates Git recovery + exclusion claims without replacing our split.
+- **Alternatives considered:** Adopt JIT-Block filtered cohort as primary split (rejected).
+- **Reversible:** Yes with new revision freeze.
+- **Gate affected:** JITBLOCK_REPLICATION_AUDIT_GATE
+
+## 2026-10-01T04:50:00+02:00 — RQ1 universe Policy A; UNKNOWN≠NEGATIVE
+
+- **Decision:** Freeze primary RQ1 candidate universe as \(U_{\mathrm{JITFINE}}\) labelled added rows on all 475 gold-positive test commits (18615 cand / 2060 pos / 16555 neg / 0 unknown). Full-Git effort/IFA invalid while unknowns remain. Policy C usable N=58 for optional full-Git ablation. Policy D (352) not valid for IFA/effort. Implement metric guard refusing UNKNOWN. Mark `RQ1_LABEL_UNIVERSE_GATE=PASS`.
+- **Reason:** Published JIT-DL metrics are defined on the flat labelled pickle, not on all raw-Git lines; coercing missing abl to 0 is unjustified.
+- **Alternatives considered:** Primary N=352 or N=109 (rejected for effort metrics / sample-size chasing).
+- **Reversible:** Only with explicit protocol revision.
+- **Gate affected:** RQ1_LABEL_UNIVERSE_GATE, ANALYSIS_GATE, TOKEN_LINE_MAPPING_GATE

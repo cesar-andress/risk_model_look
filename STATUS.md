@@ -9,7 +9,9 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-GROUND_TRUTH_LINEAGE_GATE and CANONICAL_DIFF_GATE closed **FAIL**. TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS. Nominal RQ1 N=475 retained (not silently reduced).
+JITBLOCK_REPLICATION_AUDIT_GATE and RQ1_LABEL_UNIVERSE_GATE closed **PASS**.  
+TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — tokenizer offset mapping not started.  
+Primary RQ1 scientifically defensible under Policy A (N=475 labelled universe).
 
 # Gate status
 
@@ -24,6 +26,8 @@ GROUND_TRUTH_LINEAGE_GATE and CANONICAL_DIFF_GATE closed **FAIL**. TOKEN_LINE_MA
 | DIFF_RECONSTRUCTION_GATE | FAIL |
 | GROUND_TRUTH_LINEAGE_GATE | FAIL |
 | CANONICAL_DIFF_GATE | FAIL |
+| JITBLOCK_REPLICATION_AUDIT_GATE | PASS |
+| RQ1_LABEL_UNIVERSE_GATE | PASS |
 | TOKEN_LINE_MAPPING_GATE | IN_PROGRESS |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
@@ -34,33 +38,33 @@ GROUND_TRUTH_LINEAGE_GATE and CANONICAL_DIFF_GATE closed **FAIL**. TOKEN_LINE_MA
 
 # Current task
 
-Escalate unresolved Layer-A→Git positive mappings (247/2111) and partial A↔B lineage; orchestrator decides whether a high-confidence RQ1 subset is acceptable. Do not tokenize yet.
+Proceed to TOKEN_LINE_MAPPING_GATE over Policy A universe (\(U_{\mathrm{JITFINE}}\) labelled added lines on 475 commits), without treating full-Git unknowns as negatives.
 
 # Completed work
 
-- Identified Layer A nested JSON as richest authoritative line-label source (475/475 coverage).
-- Canonical first-parent Git diffs for 27319/27319; root-commit extraction fixed.
-- File-aware exact mapping: 1864/2111 positives mapped; 352 commits POSITIVE_GT_COMPLETE.
+- JIT-Block audit: DOI 10.1111/exsy.13702; repo frozen `d82cc67…`; 178 clean exclusions verified; 475/475 positives retained; line-label pickle BYTE_IDENTICAL.
+- RQ1 label universe: Policy A N=475 fully labelled; Policy B invalid; Policy C N=58; Policy D IFA/effort invalid.
+- Metric guard refuses UNKNOWN for IFA/effort metrics.
 
 # Blockers
 
-- GROUND_TRUTH_LINEAGE_GATE FAIL: A↔B PARTIAL; 246 ambiguous + 1 missing Layer-A positives.
-- CANONICAL_DIFF_GATE FAIL: GT↔canonical mapping incomplete (criterion F).
+- Historical FAIL gates remain (set EQ / Layer-A→Git incomplete) — do not erase.
+- Full-Git effort metrics still invalid without Policy C.
 - CONTEXT_POLICY OPEN.
 
 # Decisions frozen
 
 - PRIMARY_RQ1_POPULATION_NOMINAL = 475; no predicted-positive conditioning.
+- Primary RQ1 evaluation universe = JIT-Fine labelled added-line rows (Policy A).
 - CANONICAL_MODEL_INPUT_SOURCE = ordered first-parent Git diff.
-- GROUND_TRUTH_SOURCE = Layer A JSON (intent); mapping incomplete.
-- Set-equivalence vs upstream sets is diagnostic only.
+- UNKNOWN ≠ NEGATIVE; effort/IFA must refuse UNKNOWN.
 
 # Decisions pending
 
-- Whether orchestrator accepts a high-confidence RQ1 subset
 - CONTEXT_POLICY
+- Whether to report Policy C as ablation
 - Journal selection
 
 # Last updated
 
-2026-09-30T08:25:00+02:00
+2026-10-01T04:50:00+02:00

@@ -1,0 +1,69 @@
+{
+  "timestamp": "2026-10-01T02:41:10Z",
+  "publication": {
+    "title": "A code change-oriented approach to just-in-time defect prediction with multiple input semantic fusion",
+    "authors": [
+      "Teng Huang",
+      "Hui-Qun Yu",
+      "Gui-Sheng Fan",
+      "Zi-Jie Huang",
+      "Chen-Yu Wu"
+    ],
+    "venue": "Expert Systems",
+    "year": 2024,
+    "volume_issue": "41(12)",
+    "doi": "10.1111/exsy.13702",
+    "data_availability": "GitHub hangters/JIT-Block (README + ZIP artifacts)"
+  },
+  "repository": {
+    "url": "https://github.com/hangters/JIT-Block",
+    "default_branch": "main",
+    "frozen_sha": "d82cc67f1c696644e9d6d5c80621937aaf36710b",
+    "frozen_timestamp_commit": "change readme / 2024-03-16 push era",
+    "license": "NONE_FOUND (GitHub license field null)",
+    "dataset_license": "NOT_ESTABLISHED"
+  },
+  "artifacts": {
+    "JIT-Defect4J.zip": {
+      "size_bytes": 20265192,
+      "sha256": "1cbb8e43003813a32e960f1860f4ca3611b20701e48bdaa315d4084d7a927bf8",
+      "git_blob_sha1": "705f3e37ad029063c635960804e569f353be2afc",
+      "members": [
+        "changes_complete_buggy_line_level.pkl",
+        "changes_test.pkl",
+        "changes_train.pkl",
+        "changes_valid.pkl",
+        "features_test.pkl",
+        "features_train.pkl",
+        "features_valid.pkl"
+      ],
+      "zip_integrity": "PASS"
+    },
+    "JIT-Block-Defect4J.zip": {
+      "size_bytes": 20122405,
+      "sha256": "a1e45332e782728df03ab564210f8e4734eb673e087441dff4705e7c21857fbd",
+      "git_blob_sha1": "4de8924b59a3349c7a50f322a3c4c1d02c5d8a30",
+      "members": [
+        "JIT-Defect4J_block_test.pkl",
+        "JIT-Defect4J_block_train.pkl",
+        "JIT-Defect4J_block_valid.pkl",
+        "features.pkl"
+      ],
+      "zip_integrity": "PASS"
+    }
+  },
+  "static_pickle_audit_overall": "PASS",
+  "pickle_static_audit": {
+    "data/raw/external/jitblock/extracted/JIT-Block-Defect4J/JIT-Defect4J_block_test.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Block-Defect4J/JIT-Defect4J_block_train.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Block-Defect4J/JIT-Defect4J_block_valid.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Block-Defect4J/features.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Defect4J/changes_complete_buggy_line_level.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Defect4J/changes_test.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Defect4J/changes_train.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Defect4J/changes_valid.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Defect4J/features_test.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Defect4J/features_train.pkl": "PASS",
+    "data/raw/external/jitblock/extracted/JIT-Defect4J/features_valid.pkl": "PASS"
+  }
+}

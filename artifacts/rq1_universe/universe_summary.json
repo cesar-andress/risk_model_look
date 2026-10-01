@@ -1,0 +1,94 @@
+{
+  "PRIMARY_RQ1_POPULATION_NOMINAL": 475,
+  "U_JITFINE": {
+    "definition": "Rows of changes_complete_buggy_line_level.pkl for commit c; with --only_adds restrict to changed_type==added",
+    "commits": 475,
+    "candidate_added_lines": 18615,
+    "positive": 2060,
+    "negative": 16555,
+    "unknown": 0,
+    "evidence": "JITFine/concat/run.py commit_with_codes + deal_with_attns(only_adds)"
+  },
+  "U_JITBLOCK_EVAL": {
+    "definition": "Same byte-identical line-label pickle for localization; commit cohort filtered to 5423 test commits for DP, but all 475 positives retained",
+    "commits_dp_test": 5423,
+    "positives_retained": 475,
+    "candidate_added_lines_on_475": 18615,
+    "positive": 2060,
+    "negative": 16555,
+    "unknown": 0
+  },
+  "U_LAYER_A": {
+    "commits": 475,
+    "candidate_added_lines": 74489,
+    "positive": 2111,
+    "negative": 16954,
+    "unknown": 55424,
+    "missing_abl_semantics": "OUTSIDE_ANNOTATED_CANDIDATE_UNIVERSE_FOR_JITFINE_EVAL (not proven known-clean)"
+  },
+  "U_GIT": {
+    "commits": 475,
+    "candidate_added_java_lines": 166035,
+    "positive_approx_via_A_or_B": 2390,
+    "negative_approx_via_A_or_B": 19403,
+    "unknown": 144242
+  },
+  "delta_2111_vs_2060": {
+    "status": "PARTIALLY_RESOLVED",
+    "explanation": "22 commits where Layer-A added_buggy count != Layer-B label==1 count; total delta +51. JIT-Block eval uses Layer-B pickle (BYTE_IDENTICAL to JIT-Fine).",
+    "commits_disagree": 22,
+    "delta_positives": 51
+  },
+  "policy_A": {
+    "name": "JIT-Fine labelled added-line universe",
+    "usable_N": 475,
+    "label_completeness": "COMPLETE_WITHIN_U",
+    "valid_metrics": [
+      "Top-5",
+      "Top-10",
+      "IFA",
+      "Recall@20%Effort",
+      "Effort@20%Recall"
+    ],
+    "caveat": "U is NOT all raw-Git added lines"
+  },
+  "policy_B": {
+    "name": "Full canonical Git added lines",
+    "usable_N": 0,
+    "label_completeness": "INCOMPLETE",
+    "unknown_lines": 144242,
+    "valid_metrics": [],
+    "invalid_metrics": [
+      "IFA",
+      "Recall@20%Effort",
+      "Effort@20%Recall"
+    ]
+  },
+  "policy_C": {
+    "name": "Complete-label Git commits only",
+    "usable_N": 58,
+    "label_completeness": "COMPLETE_ON_SUBSET",
+    "valid_metrics": [
+      "Top-5",
+      "Top-10",
+      "IFA",
+      "Recall@20%Effort",
+      "Effort@20%Recall"
+    ],
+    "caveat": "Strong selection; N recomputed under Git+.java+A/B linkage"
+  },
+  "policy_D": {
+    "name": "POSITIVE_GT_COMPLETE commits (352)",
+    "usable_N": 352,
+    "label_completeness": "POSITIVES_ONLY",
+    "valid_metrics": [
+      "Top-k_WITH_SCOPE_CAVEAT"
+    ],
+    "invalid_metrics": [
+      "IFA",
+      "Recall@20%Effort",
+      "Effort@20%Recall"
+    ],
+    "reason": "Unknown/ambiguous negatives remain in ranking universe if U=Git or incomplete B"
+  }
+}

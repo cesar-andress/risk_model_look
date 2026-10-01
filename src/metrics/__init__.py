@@ -1,1 +1,1 @@
-"""Package placeholder — scientific implementation deferred past bootstrap."""
+"""Metrics package (guards and future evaluation helpers)."""

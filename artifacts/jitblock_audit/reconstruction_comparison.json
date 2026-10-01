@@ -1,0 +1,45 @@
+{
+  "excluded_summary": {
+    "n_excluded": 178,
+    "by_split": {
+      "train": 78,
+      "valid": 43,
+      "test": 57
+    },
+    "positive_excluded": 0,
+    "all_non_defective": true
+  },
+  "positives_475": {
+    "in_jb_filtered_test": 475,
+    "in_block_test": 475,
+    "missing_from_jb": 0,
+    "missing_from_block": 0
+  },
+  "line_label_pkl": {
+    "classification": "BYTE_IDENTICAL",
+    "sha256": "479b61b138280105573cd4ea38ea6d656850e29f378e9aa63f1c86d195e6e88a",
+    "rows": 26104,
+    "positives": 2060
+  },
+  "block_vs_jb_id_sets": {
+    "union_equal": true,
+    "per_split_equal": {
+      "train": false,
+      "valid": false,
+      "test": false
+    },
+    "note": "Same 27141 commits; slight train/valid/test redistribution vs filtered parallel files"
+  },
+  "changed_block_definition": {
+    "relationship_to_git_hunk": "DERIVED_FROM_LINE_ADJACENCY",
+    "evidence": "Paper \u00a7 reconstruction: sort matched ADD/DEL by recovered line numbers; group continuous segments. Repo has no producer script; consumer treats each block as alternating (kind,text) pairs."
+  },
+  "reconstruction_algorithm_in_repo": "ABSENT_PRODUCER_SCRIPT",
+  "paper_described_steps": [
+    "Git interface with commit hash",
+    "read source files for line numbers of JIT-Defect4J lines",
+    "sort ADD/DEL by line number",
+    "reorganize into changed blocks",
+    "drop commits that fail line-number match (~0.6%)"
+  ]
+}

@@ -198,6 +198,16 @@ Do **not** invent missing author lists or DOIs.
 - DOI: 10.1016/j.jss.2024.112182
 - Status: VERIFIED_PUBLISHER; FULL_TEXT_UNAVAILABLE (publisher block); GitHub method page inspected → METADATA_PARTIAL
 
+### R16 — JIT-Block (methodological prior / reconstruction evidence)
+
+- Authors: Teng Huang, Hui-Qun Yu, Gui-Sheng Fan, Zi-Jie Huang, Chen-Yu Wu
+- Title: A code change-oriented approach to just-in-time defect prediction with multiple input semantic fusion
+- Venue: Expert Systems, 41(12), 2024
+- DOI: **10.1111/exsy.13702** (verified publisher indexing + author PDF)
+- Repository: https://github.com/hangters/JIT-Block @ `d82cc67f1c696644e9d6d5c80621937aaf36710b`
+- Status: VERIFIED_PUBLISHER; VERIFIED_PRIMARY_SOURCE (author PDF + frozen repo artifacts audited 2026-10-01)
+- Notes: Used as external reconstruction / label-universe evidence only; does not replace frozen JIT-Fine train/valid/test split. License NONE_FOUND on GitHub.
+
 ---
 
 No entries were inserted into `paper/refs.bib` in this task.

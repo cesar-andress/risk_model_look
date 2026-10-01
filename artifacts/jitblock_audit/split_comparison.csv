@@ -1,0 +1,12 @@
+split,our_n,jb_filtered_n,block_n,our_pos,jb_pos,block_pos
+train,16374,16296,16284,1390,1390,1390
+valid,5465,5422,5428,467,467,467
+test,5480,5423,5429,475,475,475
+
+metric,value
+our_train_plus_valid,21839
+jb_train_plus_valid,21718
+jb_training_equals_our_train_union_valid_minus_121,1
+our_train_in_jb_train_union_valid,16296
+our_valid_in_jb_train_union_valid,5422
+unexpected_in_jb_tv_not_in_our_tv,0
