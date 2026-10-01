@@ -9,9 +9,9 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-JITBLOCK_REPLICATION_AUDIT_GATE and RQ1_LABEL_UNIVERSE_GATE closed **PASS**.  
-TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — tokenizer offset mapping not started.  
-Primary RQ1 scientifically defensible under Policy A (N=475 labelled universe).
+RQ1_LABEL_UNIVERSE_GATE closed **PASS**.  
+POLICY_A_CANONICAL_BRIDGE_GATE closed **FAIL** (18467/18615; producer ABSENT).  
+TOKEN_LINE_MAPPING_GATE remains **IN_PROGRESS** — tokenizer offset mapping not started.
 
 # Gate status
 
@@ -28,6 +28,7 @@ Primary RQ1 scientifically defensible under Policy A (N=475 labelled universe).
 | CANONICAL_DIFF_GATE | FAIL |
 | JITBLOCK_REPLICATION_AUDIT_GATE | PASS |
 | RQ1_LABEL_UNIVERSE_GATE | PASS |
+| POLICY_A_CANONICAL_BRIDGE_GATE | FAIL |
 | TOKEN_LINE_MAPPING_GATE | IN_PROGRESS |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
@@ -38,33 +39,33 @@ Primary RQ1 scientifically defensible under Policy A (N=475 labelled universe).
 
 # Current task
 
-Proceed to TOKEN_LINE_MAPPING_GATE over Policy A universe (\(U_{\mathrm{JITFINE}}\) labelled added lines on 475 commits), without treating full-Git unknowns as negatives.
+Resolve Policy-A → canonical line-ID residual (148 NOT_FOUND) or obtain orchestrator decision on COMPLETE_POLICY_A subset before tokenization.
 
 # Completed work
 
-- JIT-Block audit: DOI 10.1111/exsy.13702; repo frozen `d82cc67…`; 178 clean exclusions verified; 475/475 positives retained; line-label pickle BYTE_IDENTICAL.
-- RQ1 label universe: Policy A N=475 fully labelled; Policy B invalid; Policy C N=58; Policy D IFA/effort invalid.
-- Metric guard refuses UNKNOWN for IFA/effort metrics.
+- Policy-A bridge audit: paper-faithful Layer-A/Git linkage; 18467 unique maps; 0 collisions; RQ1 mask contract; JIT-Block producer ABSENT documented.
+- Prior: JIT-Block audit PASS; RQ1 universe Policy A PASS.
 
 # Blockers
 
+- 148 Policy-A rows without deterministic Git location (1 positive).
+- JIT-Block producer absent at `d82cc67…`.
 - Historical FAIL gates remain (set EQ / Layer-A→Git incomplete) — do not erase.
-- Full-Git effort metrics still invalid without Policy C.
 - CONTEXT_POLICY OPEN.
 
 # Decisions frozen
 
-- PRIMARY_RQ1_POPULATION_NOMINAL = 475; no predicted-positive conditioning.
-- Primary RQ1 evaluation universe = JIT-Fine labelled added-line rows (Policy A).
-- CANONICAL_MODEL_INPUT_SOURCE = ordered first-parent Git diff.
-- UNKNOWN ≠ NEGATIVE; effort/IFA must refuse UNKNOWN.
+- PRIMARY_RQ1_POLICY = POLICY_A; N=475; 18615/2060/16555/0 unknown within universe.
+- UNKNOWN / full-Git extras ≠ NEGATIVE (`NOT_IN_RQ1_UNIVERSE`).
+- CANONICAL_MODEL_INPUT_SOURCE = ordered first-parent Git reconstruction.
+- N=352 and N=58 not primary.
 
 # Decisions pending
 
+- Whether to accept COMPLETE_POLICY_A_COMMIT_COUNT=403 (or other residual policy)
 - CONTEXT_POLICY
-- Whether to report Policy C as ablation
 - Journal selection
 
 # Last updated
 
-2026-10-01T04:50:00+02:00
+2026-10-01T05:30:00+02:00

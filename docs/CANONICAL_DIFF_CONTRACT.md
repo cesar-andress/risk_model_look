@@ -59,4 +59,15 @@ Label: **LOSSY-UPSTREAM-REPRESENTATION COMPARISON** — not canonical reconstruc
 
 ## Ground-truth linkage
 
-Canonical diffs are available for all commits. File-aware mapping of Layer-A positive labels onto those diffs is **incomplete** (see `GROUND_TRUTH_LINEAGE_REPORT.md`). Canonical input procedure is defined; RQ1 usable population is **not** silently reduced.
+Canonical diffs are available for all commits. Policy-A (Layer-B) → canonical
+line-ID bridge is **incomplete** (18467/18615; see
+`POLICY_A_CANONICAL_BRIDGE_REPORT.md`). Layer-A file-aware lineage remains a
+bridge aid, not the RQ1 label authority. RQ1 usable population is **not**
+silently reduced to the mapped subset.
+
+## Scope separation (frozen)
+
+| Scope | Line set |
+|-------|----------|
+| RQ1 metrics | \(U_{\mathrm{JITFINE}}\) only (`RQ1_POSITIVE` ∪ `RQ1_NEGATIVE`) |
+| RQ2–RQ4 | Full actual model input (may include `NOT_IN_RQ1_UNIVERSE`) |

@@ -1,6 +1,6 @@
 # LINE_IDENTITY_CONTRACT.md
 
-Status: **CANONICAL ID FROZEN FOR GIT DIFF LINES — GT linkage incomplete**
+Status: **CANONICAL ID FROZEN — Policy-A bridge incomplete (18467/18615)**
 
 ## Motivation
 
@@ -28,10 +28,16 @@ Human-readable:
 
 ## RQ1 candidate line ID
 
-Same as above restricted to `change_type == "added"`, plus:
+Same as above restricted to `change_type == "added"` **and** membership in
+\(U_{\mathrm{JITFINE}}\) (Policy A Layer-B row), plus:
 
 - `ordered_position` within the canonical added stream  
-- `ground_truth_label` when linked from Layer A (`added_buggy` / `added_clean` / unlabeled)
+- `ground_truth_label` from Layer-B (`1.0` / `0.0`) when bridged  
+- Source row ID `(commit_id, idx)` from Layer-B (immutable; **not** a lineno)
+
+Canonical Git added lines **outside** Policy A are
+`NOT_IN_RQ1_UNIVERSE` (never `RQ1_NEGATIVE`). See
+`docs/RQ1_CANDIDATE_MASK_CONTRACT.md`.
 
 ## Semantics
 
@@ -49,6 +55,12 @@ Audited over all canonical changed lines in train/valid/test: **unique** (`stabl
 (commit_hash, canonical_file_path, hunk_index)
 ```
 
+Do **not** conflate with JIT-Block derived `JITBLOCK_BLOCK_ID` (adjacency
+blocks after sorting recovered linenos).
+
 ## Ground-truth linkage status
 
-Layer-A → canonical mapping is **incomplete** (see lineage report). Unmapped label rows receive **no** GT-linked line ID until resolved.
+Policy-A → canonical bridge (`POLICY_A_CANONICAL_BRIDGE_GATE`): **FAIL** —
+**18467 / 18615** unique mappings; **148** NOT_FOUND; **0** collisions
+(see `docs/POLICY_A_CANONICAL_BRIDGE_REPORT.md`). Unmapped Policy-A rows
+receive **no** GT-linked line ID.

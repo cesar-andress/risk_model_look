@@ -267,3 +267,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Primary N=352 or N=109 (rejected for effort metrics / sample-size chasing).
 - **Reversible:** Only with explicit protocol revision.
 - **Gate affected:** RQ1_LABEL_UNIVERSE_GATE, ANALYSIS_GATE, TOKEN_LINE_MAPPING_GATE
+
+## 2026-10-01T05:30:00+02:00 — Policy A primary; bridge FAIL; tokenizer waits
+
+- **Decision:** Confirm `PRIMARY_RQ1_POLICY=POLICY_A` (N=475; 18615/2060/16555/0). Reject N=352 and N=58 as primary. Full-Git unknowns stay `NOT_IN_RQ1_UNIVERSE`. Freeze `CANONICAL_MODEL_INPUT_SOURCE` = ordered historical first-parent Git reconstruction. Mark `POLICY_A_CANONICAL_BRIDGE_GATE=FAIL` (18467/18615 unique; 148 NOT_FOUND incl. 1 positive; JIT-Block producer ABSENT). Keep `TOKEN_LINE_MAPPING_GATE=IN_PROGRESS` without tokenizer work until bridge completeness is resolved by orchestrator.
+- **Reason:** Policy A matches published labelled-universe metrics; Git reconstruction preserves files/hunks/linenos/duplicates for the decoder model; incomplete deterministic location recovery and missing producer block a PASS.
+- **Alternatives considered:** Adopt COMPLETE_POLICY_A_COMMIT_COUNT=403 as new N (deferred to orchestrator); fuzzy matching (forbidden); treat unknowns as negative (forbidden).
+- **Reversible:** Yes if residual 148 rows gain deterministic locations or orchestrator accepts an explicit subset.
+- **Gate affected:** POLICY_A_CANONICAL_BRIDGE_GATE, TOKEN_LINE_MAPPING_GATE

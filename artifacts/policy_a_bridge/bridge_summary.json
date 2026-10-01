@@ -1,0 +1,63 @@
+{
+  "CANONICAL_MODEL_INPUT_SOURCE": "ordered_historical_git_first_parent_reconstruction",
+  "INSTRUMENTATION_NOTE": "JIT-Block producer ABSENT at frozen rev; paper-faithful bridge implemented; scientific equivalence checked via released block added-text bags vs Layer-B raw_changed_line bags.",
+  "POLICY_A_CANDIDATES": 18615,
+  "POLICY_A_NEGATIVES": 16555,
+  "POLICY_A_POSITIVES": 2060,
+  "block_bag_comparison": {
+    "BAG_EQ": 342,
+    "BAG_NEQ": 133
+  },
+  "block_test_sha256": "d768de7e2a804fec0b29f574bbaa2658aabc8861f4d23786b83823a656c1b126",
+  "collision_audit": {
+    "collision_ids": 0,
+    "mapped_rows": 18467,
+    "rows_in_collisions": 0,
+    "unique_canonical_ids": 18467,
+    "zero_map": 148
+  },
+  "complete_commits": 403,
+  "incomplete_commits": 72,
+  "jitblock_producer": {
+    "frozen_rev": "d82cc67f1c696644e9d6d5c80621937aaf36710b",
+    "n_files": 12,
+    "producer_status": "ABSENT",
+    "python_files": [
+      "JITBlock/model.py",
+      "JITBlock/my_util.py",
+      "JITBlock/run.py"
+    ],
+    "suspect_producer_paths": []
+  },
+  "layer_b_sha256": "479b61b138280105573cd4ea38ea6d656850e29f378e9aa63f1c86d195e6e88a",
+  "mapped_negatives": 16408,
+  "mapped_positives": 2059,
+  "mapped_rows": 18467,
+  "mapping_status_counts": {
+    "NOT_FOUND": 148,
+    "RECOVERED_EXACT_BY_JITBLOCK": 16635,
+    "RECOVERED_EXACT_SEQUENCE_DISAMBIGUATED": 1832
+  },
+  "path_status_counts": {
+    "PATH_EXACT": 18467
+  },
+  "provenance_counts": {
+    "direct_git_order_prefix_zip": 1,
+    "direct_unique_exact_variant": 4,
+    "direct_unresolved_or_collision": 148,
+    "layer_a_file_constrained": 15248,
+    "layer_a_git_order_sequence": 1377,
+    "layer_a_order_occurrence": 1837
+  },
+  "rq1_mask_over_filtered_git_added": {
+    "NOT_IN_RQ1_UNIVERSE": 87038,
+    "RQ1_NEGATIVE": 16408,
+    "RQ1_POSITIVE": 2059
+  },
+  "text_status_counts": {
+    "JITBLOCK_TRANSFORM_EXACT": 934,
+    "RAW_EXACT": 82,
+    "UPSTREAM_TRANSFORM_EXACT": 17451
+  },
+  "unique_status_mapped": 18467
+}

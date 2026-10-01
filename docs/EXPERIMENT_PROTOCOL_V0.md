@@ -35,16 +35,24 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - L0–L4 (test): 5480 / 475 / 475 / 475 / 475
 - Paper protocol (§6.1) chronological train≤test: only **10/21** projects under unix timestamps; valid not between train/test (**DOCUMENTATION MISMATCH**)
 - **LOCALIZATION_DENOMINATOR_DECISION: CLOSED**
-- **PRIMARY_RQ1_POPULATION:** all gold-positive test commits with valid mapped ground truth (nominal **N=475**)
+- **PRIMARY_RQ1_POLICY = POLICY_A** (frozen)
+- **PRIMARY_RQ1_POPULATION / PRIMARY_RQ1_N:** **475** gold-positive test commits (no predicted-positive conditioning)
+- **PRIMARY_RQ1_CANDIDATES:** **18615** labelled ADDED rows (\(U_{\mathrm{JITFINE}}\))
+- **PRIMARY_RQ1_POSITIVE_LINES:** **2060**
+- **PRIMARY_RQ1_NEGATIVE_LINES:** **16555**
+- **PRIMARY_RQ1_UNKNOWN_WITHIN_UNIVERSE:** **0**
+- Full-Git added lines outside \(U_{\mathrm{JITFINE}}\) are **not** RQ1 negatives (`NOT_IN_RQ1_UNIVERSE`)
 - **DO_NOT_CONDITION_PRIMARY_RQ1_ON_PREDICTED_POSITIVE:** primary RQ1 localization must not require `model_predicted_positive` or classification correctness; TP/FN stratification may be secondary later
 - Diff reconstruction (audit): usable exact-unique positive mapping currently **235/475** under documented Git+normalization; remainder escalated (see `docs/DIFF_RECONSTRUCTION_REPORT.md`); `DIFF_RECONSTRUCTION_GATE=FAIL`
 - **CONTEXT_POLICY: OPEN**
 - Ground-truth lineage (audit): richest source = `JITFine/labels for each line/buggy_changes_with_buggy_line.json` (Layer A); A↔B **PARTIAL**; A→Git positives 1864/2111 mapped (246 amb + 1 miss); POSITIVE_GT_COMPLETE=352 (not adopted as new denominator); `GROUND_TRUTH_LINEAGE_GATE=FAIL`; `CANONICAL_DIFF_GATE=FAIL`
-- **CANONICAL_MODEL_INPUT_SOURCE:** ordered first-parent Git diff (`features.parent_hashes[0]`)
+- **CANONICAL_MODEL_INPUT_SOURCE:** ordered historical first-parent Git reconstruction (`features.parent_hashes[0]`) for all **27319** commits — decoder-model representation; **not** a claim of JIT-Fine set equivalence
 - **GROUND_TRUTH_SOURCE (intent):** Layer A JSON for file-aware lineage; **RQ1 evaluation labels** = Layer-B `changes_complete_buggy_line_level.pkl` (JIT-Fine / JIT-Block BYTE_IDENTICAL)
-- **RQ1_CANDIDATE_UNIVERSE (Policy A, frozen):** \(U_{\mathrm{JITFINE}}\) = labelled added rows of that pickle for each of the 475 gold-positive test commits (18615 candidates; 2060 pos; 16555 neg; 0 unknown). Scope is **not** all raw-Git added lines.
+- **RQ1_CANDIDATE_UNIVERSE (Policy A, frozen):** \(U_{\mathrm{JITFINE}}\) = labelled added rows of that pickle for each of the 475 gold-positive test commits. Scope is **not** all raw-Git added lines.
 - **DO_NOT_TREAT_UNKNOWN_AS_NEGATIVE:** missing `added_buggy_level` / unmapped Git lines are UNKNOWN outside \(U_{\mathrm{JITFINE}}\)
-- JIT-Block (`10.1111/exsy.13702`, repo `hangters/JIT-Block@d82cc67…`): external reconstruction evidence; 178 clean commits removed from DP cohorts; does **not** replace our train/valid/test split
+- Policy-A → canonical line-ID bridge: **18467/18615** unique (`POLICY_A_CANONICAL_BRIDGE_GATE=FAIL`); tokenizer mapping still blocked
+- N=352 (POSITIVE_GT_COMPLETE) and N=58 (Policy C full-Git complete) rejected as **primary** policies
+- JIT-Block (`10.1111/exsy.13702`, repo `hangters/JIT-Block@d82cc67…`): external reconstruction evidence; producer script **ABSENT**; 178 clean commits removed from DP cohorts; does **not** replace our train/valid/test split
 - Pickle schemas / row-level exports: not for git; see `docs/DATASET_EMPIRICAL_PROFILE.md`
 
 ## LINE-LABEL SCOPE (FROZEN FOR JIT-FINE COMPATIBILITY)
