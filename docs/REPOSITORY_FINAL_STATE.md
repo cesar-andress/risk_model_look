@@ -41,7 +41,7 @@ risk_model_look/                 # wrapper (no .git)
 | Ref | Role | Dirty? |
 |-----|------|--------|
 | `main` @ `9c93eaa` | training + dataset history | YES (M1 final WIP) |
-| `parallel/attribution-infra` | attribution V1.2 + stats V1.1 + hygiene docs | (see commit) |
+| `parallel/attribution-infra` @ `7431a59` | attribution V1.2 + stats V1.1 + hygiene docs | clean after hygiene commits |
 | `origin/main` @ `1475896` | remote lagging | — |
 | papers `paper/pre-results-draft` @ `7ae4bb286` | manuscript | — |
 
