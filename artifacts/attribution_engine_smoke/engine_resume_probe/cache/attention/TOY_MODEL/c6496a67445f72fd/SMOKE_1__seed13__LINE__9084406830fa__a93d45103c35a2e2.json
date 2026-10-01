@@ -1,0 +1,27 @@
+{
+  "cache_key": "a93d45103c35a2e2349b0b77aff2abc8a64a94fd356a2c2b5d2e109161e2a00b",
+  "checksum": "e0be39a19b659f92056a7f7f4f27f4e91f7fe1f4cc244bf4cdc00432744f5b1b",
+  "key_fields": {
+    "adapter_hash": "NONE",
+    "commit_id": "SMOKE_1",
+    "configuration_hash": "9084406830fa25088c35b8812493fdd499e5c347a3e336ab87b907be3f321f16",
+    "dataset_version": "JIT_DEFECTS4J_CANONICAL_V1",
+    "granularity": "LINE",
+    "method": "attention",
+    "model_hash": "TOY_MODEL",
+    "perturbation_operator": "NONE",
+    "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+    "renderer_version": "CANONICAL_DIFF_RENDER_V1",
+    "seed": 13,
+    "token_mapping_version": "TOKEN_TO_LINE_MAP_V1"
+  },
+  "metadata": {
+    "missingness_code": "OK",
+    "result_path": "/home/cesar/papers/risk_model_look/risk_model_look_parallel/artifacts/attribution_engine_smoke/engine_resume_probe/results/attribution_run_20261001T221029884256Z/SMOKE_1__attention__LINE.json"
+  },
+  "result_summary": {
+    "max_abs": 0.4372549019607843,
+    "n_regions": 5
+  },
+  "status": "DONE"
+}

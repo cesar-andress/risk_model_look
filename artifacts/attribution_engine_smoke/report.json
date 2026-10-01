@@ -1,0 +1,214 @@
+{
+  "adapter_dir": "/home/cesar/papers/risk_model_look/risk_model_look/artifacts/m1_final/adapters/seed_13/epoch_1",
+  "banner": "ENGINEERING BENCHMARK ONLY \u2014 NOT_SCIENTIFIC_RESULT \u2014 NOT validation rehearsal \u2014 NOT test attribution \u2014 NOT RQ results",
+  "bottlenecks": [
+    "ig_on_cpu_very_slow_vs_gpu",
+    "gpu_occupied_by_active_m1_training_forced_cpu_path"
+  ],
+  "device_policy": "CPU_ONLY_CUDA_VISIBLE_DEVICES_EMPTY_FLOAT32",
+  "errors": [],
+  "examples": [
+    {
+      "attention_mass_sum": 1.0,
+      "attention_note": "last_layer_mean_heads_at_last_prompt_index_SMOKE_first_example_only",
+      "commit_id": "6188186f83762f906d0c81d915d16e6b1c5c4010",
+      "forward_p_buggy": 0.23708155751228333,
+      "gradxinput_abs_mean": 0.001786055373414124,
+      "gradxinput_n_scores": 63,
+      "ig_attr_len": 63,
+      "ig_smoke_steps": 2,
+      "label": "NOT_SCIENTIFIC_RESULT",
+      "n_tokens": 63,
+      "occlusion_note": "token_pad_blank_SMOKE_not_PAYLOAD_BLANK_V1",
+      "occlusion_smoke": [
+        {
+          "delta_s": 0.8576221466064453,
+          "pos": 61
+        },
+        {
+          "delta_s": 1.5046443939208984,
+          "pos": 62
+        }
+      ],
+      "project": "ant-ivy"
+    },
+    {
+      "attention_note": "skipped_after_first_example_SMOKE",
+      "commit_id": "30d4b7bd496feaca6b37d23569fceff1738a643a",
+      "forward_p_buggy": 0.6328327655792236,
+      "gradxinput_abs_mean": 0.0020858174229654233,
+      "gradxinput_n_scores": 63,
+      "ig_attr_len": 63,
+      "ig_smoke_steps": 2,
+      "label": "NOT_SCIENTIFIC_RESULT",
+      "n_tokens": 63,
+      "occlusion_note": "token_pad_blank_SMOKE_not_PAYLOAD_BLANK_V1",
+      "occlusion_smoke": [
+        {
+          "delta_s": 2.4686288833618164,
+          "pos": 61
+        },
+        {
+          "delta_s": 1.1735410690307617,
+          "pos": 62
+        }
+      ],
+      "project": "ant-ivy"
+    },
+    {
+      "attention_note": "skipped_after_first_example_SMOKE",
+      "commit_id": "fed3104bddbcbee6bc4c9f809174745734494e3e",
+      "forward_p_buggy": 0.1632973551750183,
+      "gradxinput_abs_mean": 0.0011942523251202636,
+      "gradxinput_n_scores": 63,
+      "ig_attr_len": 63,
+      "ig_smoke_steps": 2,
+      "label": "NOT_SCIENTIFIC_RESULT",
+      "n_tokens": 63,
+      "occlusion_note": "token_pad_blank_SMOKE_not_PAYLOAD_BLANK_V1",
+      "occlusion_smoke": [
+        {
+          "delta_s": -0.27361297607421875,
+          "pos": 61
+        },
+        {
+          "delta_s": 0.2795581817626953,
+          "pos": 62
+        }
+      ],
+      "project": "ant-ivy"
+    },
+    {
+      "attention_note": "skipped_after_first_example_SMOKE",
+      "commit_id": "de1690f9a49918a64d07e6e830c5e57356fe440b",
+      "forward_p_buggy": 0.45929279923439026,
+      "gradxinput_abs_mean": 0.0012401764212723171,
+      "gradxinput_n_scores": 63,
+      "ig_attr_len": 63,
+      "ig_smoke_steps": 2,
+      "label": "NOT_SCIENTIFIC_RESULT",
+      "n_tokens": 63,
+      "occlusion_note": "token_pad_blank_SMOKE_not_PAYLOAD_BLANK_V1",
+      "occlusion_smoke": [
+        {
+          "delta_s": 0.7047586441040039,
+          "pos": 61
+        },
+        {
+          "delta_s": 2.368250846862793,
+          "pos": 62
+        }
+      ],
+      "project": "ant-ivy"
+    },
+    {
+      "attention_note": "skipped_after_first_example_SMOKE",
+      "commit_id": "dc44824f86345821d779a950cc827a7809a16beb",
+      "forward_p_buggy": 0.5817328691482544,
+      "gradxinput_abs_mean": 0.0010639116907629022,
+      "gradxinput_n_scores": 63,
+      "ig_attr_len": 63,
+      "ig_smoke_steps": 2,
+      "label": "NOT_SCIENTIFIC_RESULT",
+      "n_tokens": 63,
+      "occlusion_note": "token_pad_blank_SMOKE_not_PAYLOAD_BLANK_V1",
+      "occlusion_smoke": [
+        {
+          "delta_s": 0.7318630218505859,
+          "pos": 61
+        },
+        {
+          "delta_s": 2.9757747650146484,
+          "pos": 62
+        }
+      ],
+      "project": "ant-ivy"
+    }
+  ],
+  "ig_steps_smoke": 2,
+  "label": "NOT_SCIENTIFIC_RESULT",
+  "max_length_smoke": 64,
+  "n_examples": 5,
+  "optimization_recommendations": [
+    "Re-run smoke on GPU only after FULL_TRAINING_GATE releases the device.",
+    "Use NF4+device_map=auto for production runner (not CPU bf16).",
+    "Batch occlusion candidates; keep IG at protocol 50 with chunked alphas on GPU.",
+    "Cache embeddings/attributions aggressively across methods per commit.",
+    "Keep MAX_LENGTH=2048 only for scientific runs; smoke used 128 by design."
+  ],
+  "peak_vram_bytes": null,
+  "protocol_note": "IG/occlusion settings are ENGINEERING SMOKE, not V1.2 execution",
+  "rollback_status": {
+    "cuda_hidden": true,
+    "outputs_under": "/home/cesar/papers/risk_model_look/risk_model_look_parallel/artifacts/attribution_engine_smoke",
+    "safe_to_delete_smoke_dir": true,
+    "scientific_protocols_unmodified": true,
+    "training_untouched": true
+  },
+  "split": "validation_positives_only",
+  "throughput": {
+    "backward_per_sec": 0.26189192160699376,
+    "device": "cpu",
+    "engine_first_run_counts": {
+      "DONE": 6,
+      "FAILED": 0,
+      "NONCONVERGED": 0,
+      "OOM": 0,
+      "PENDING": 0,
+      "RUNNING": 0,
+      "SKIPPED": 0
+    },
+    "engine_resume_counts": {
+      "DONE": 6,
+      "FAILED": 0,
+      "NONCONVERGED": 0,
+      "OOM": 0,
+      "PENDING": 0,
+      "RUNNING": 0,
+      "SKIPPED": 0
+    },
+    "fail_run_counts": {
+      "DONE": 2,
+      "FAILED": 1,
+      "NONCONVERGED": 0,
+      "OOM": 0,
+      "PENDING": 0,
+      "RUNNING": 0,
+      "SKIPPED": 0
+    },
+    "failure_then_resume_recovered": true,
+    "forward_per_sec": 0.5283062452129119,
+    "ig_steps_per_sec": 0.17756665326211604,
+    "label": "NOT_SCIENTIFIC_RESULT",
+    "model_load_s": 1.702317214992945,
+    "occlusion_regions_per_sec": 0.3594252915932071,
+    "recover_run_counts": {
+      "DONE": 3,
+      "FAILED": 0,
+      "NONCONVERGED": 0,
+      "OOM": 0,
+      "PENDING": 0,
+      "RUNNING": 0,
+      "SKIPPED": 0
+    },
+    "resume_skips_completed_jobs": true,
+    "timings": {
+      "backward_s": 19.09184509899933,
+      "cache_hits": 6,
+      "cache_misses": 6,
+      "forward_s": 11.357049162994372,
+      "ig_s": 56.31688054197002,
+      "model_load_s": 1.702317214992945,
+      "n_backward": 5,
+      "n_forward": 6,
+      "n_ig_steps": 10,
+      "n_occlusion_regions": 10,
+      "occlusion_s": 27.822193468004116,
+      "resume_skipped": 6,
+      "tokenizer_load_s": 0.13050983400898986
+    },
+    "tokenizer_load_s": 0.13050983400898986,
+    "vram_bytes": null
+  },
+  "vram_note": "GPU intentionally unused (training isolation)"
+}

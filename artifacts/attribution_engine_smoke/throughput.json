@@ -1,0 +1,64 @@
+{
+  "backward_per_sec": 0.26189192160699376,
+  "device": "cpu",
+  "engine_first_run_counts": {
+    "DONE": 6,
+    "FAILED": 0,
+    "NONCONVERGED": 0,
+    "OOM": 0,
+    "PENDING": 0,
+    "RUNNING": 0,
+    "SKIPPED": 0
+  },
+  "engine_resume_counts": {
+    "DONE": 6,
+    "FAILED": 0,
+    "NONCONVERGED": 0,
+    "OOM": 0,
+    "PENDING": 0,
+    "RUNNING": 0,
+    "SKIPPED": 0
+  },
+  "fail_run_counts": {
+    "DONE": 2,
+    "FAILED": 1,
+    "NONCONVERGED": 0,
+    "OOM": 0,
+    "PENDING": 0,
+    "RUNNING": 0,
+    "SKIPPED": 0
+  },
+  "failure_then_resume_recovered": true,
+  "forward_per_sec": 0.5283062452129119,
+  "ig_steps_per_sec": 0.17756665326211604,
+  "label": "NOT_SCIENTIFIC_RESULT",
+  "model_load_s": 1.702317214992945,
+  "occlusion_regions_per_sec": 0.3594252915932071,
+  "recover_run_counts": {
+    "DONE": 3,
+    "FAILED": 0,
+    "NONCONVERGED": 0,
+    "OOM": 0,
+    "PENDING": 0,
+    "RUNNING": 0,
+    "SKIPPED": 0
+  },
+  "resume_skips_completed_jobs": true,
+  "timings": {
+    "backward_s": 19.09184509899933,
+    "cache_hits": 6,
+    "cache_misses": 6,
+    "forward_s": 11.357049162994372,
+    "ig_s": 56.31688054197002,
+    "model_load_s": 1.702317214992945,
+    "n_backward": 5,
+    "n_forward": 6,
+    "n_ig_steps": 10,
+    "n_occlusion_regions": 10,
+    "occlusion_s": 27.822193468004116,
+    "resume_skipped": 6,
+    "tokenizer_load_s": 0.13050983400898986
+  },
+  "tokenizer_load_s": 0.13050983400898986,
+  "vram_bytes": null
+}

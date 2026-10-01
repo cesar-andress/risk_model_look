@@ -1,0 +1,50 @@
+{
+  "commit_id": "SMOKE_3",
+  "experiment_id": "SMOKE_3|13|attention|LINE",
+  "granularity": "LINE",
+  "method": "attention",
+  "missingness_code": "OK",
+  "missingness_policy": "METHOD_SPECIFIC_MISSINGNESS_V1_1",
+  "model_hash": "TOY_MODEL",
+  "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "raw_scores_location": "/home/cesar/papers/risk_model_look/risk_model_look_parallel/artifacts/attribution_engine_smoke/engine_resume_probe/results/attribution_run_20261001T221029884256Z/SMOKE_3__attention__LINE.json",
+  "regions": [
+    {
+      "rank_score": 0.2529411764705882,
+      "raw_score": -0.2529411764705882,
+      "region_id": "R0",
+      "signed_score": -0.2529411764705882
+    },
+    {
+      "rank_score": 0.09607843137254901,
+      "raw_score": 0.09607843137254901,
+      "region_id": "R1",
+      "signed_score": 0.09607843137254901
+    },
+    {
+      "rank_score": 0.19019607843137254,
+      "raw_score": -0.19019607843137254,
+      "region_id": "R2",
+      "signed_score": -0.19019607843137254
+    },
+    {
+      "rank_score": 0.09999999999999998,
+      "raw_score": -0.09999999999999998,
+      "region_id": "R3",
+      "signed_score": -0.09999999999999998
+    },
+    {
+      "rank_score": 0.48823529411764705,
+      "raw_score": -0.48823529411764705,
+      "region_id": "R4",
+      "signed_score": -0.48823529411764705
+    }
+  ],
+  "schema_version": "attribution_unit_result_v1",
+  "seed": 13,
+  "status": "DONE",
+  "summary_metrics": {
+    "max_abs": 0.48823529411764705,
+    "n_regions": 5
+  }
+}

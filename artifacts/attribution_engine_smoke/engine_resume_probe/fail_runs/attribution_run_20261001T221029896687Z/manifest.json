@@ -1,0 +1,37 @@
+{
+  "adapter_hash": "NONE",
+  "branch": "parallel/attribution-infra",
+  "cohort": "engine_smoke_fail",
+  "configuration_hash": "996ca86a45858aa18a640ba933c736dd2e695d87d63e1c59c17f4e3a7af4dd81",
+  "dataset_version": "JIT_DEFECTS4J_CANONICAL_V1",
+  "engine_version": "attribution_engine_v1",
+  "extra": {
+    "batch_size": 8,
+    "force": false
+  },
+  "git_commit": "9da4f0f38cdc9792a1d4f72b2616407147022ced",
+  "git_dirty": "true",
+  "granularity": "LINE",
+  "hardware": {
+    "cuda_visible_devices": "",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "processor": "x86_64",
+    "python": "3.11.15"
+  },
+  "method": "attention",
+  "model_hash": "TOY_MODEL",
+  "model_identifier": "toy_or_unspecified",
+  "model_revision": "NONE",
+  "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "random_seeds": {
+    "model_seed": 13
+  },
+  "run_id": "attribution_run_20261001T221029896687Z",
+  "seed": 13,
+  "software_versions": {
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "statistics_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "timestamp": "2026-10-01T22:10:29+00:00"
+}
