@@ -143,7 +143,7 @@ def test_synthetic_attribution_e2e() -> None:
         "DEL_CLEAN": d_neg.delta,
         "ADD_NEUTRAL": d_zero.delta,
     }
-    agree = sign_agreement(line_scores, occ, epsilon=1e-8)
+    agree = sign_agreement(line_scores, occ)
     assert agree["sign_agreement"] == 1.0
     assert agree["caveat"] == "not_causal_correctness"
 

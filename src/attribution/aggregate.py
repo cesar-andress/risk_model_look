@@ -1,7 +1,8 @@
 """Token→line and category aggregation for attribution scores.
 
-Primary candidate reduction for conservation interpretation: SUM.
-Final methodological choice remains protocol-configurable until frozen.
+PRIMARY (frozen): SUM — additive contribution/mass across tokens.
+SENSITIVITY: MEAN — average importance per token (different question).
+MAX_ABS_WITH_SIGN: exploratory diagnostics only (not primary RQ).
 """
 
 from __future__ import annotations

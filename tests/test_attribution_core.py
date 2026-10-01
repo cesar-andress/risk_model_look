@@ -123,14 +123,22 @@ def test_ig_completeness_toy() -> None:
     def score_fn(e: torch.Tensor) -> torch.Tensor:
         return toy.score(e)
 
+    from src.attribution.integrated_gradients import (
+        IGBaselineStrategy,
+        IntegrationRule,
+        completeness_holds,
+        integrated_gradients,
+    )
+
     res = integrated_gradients(
         emb,
         score_fn,
-        steps=64,
+        steps=32,
         baseline_strategy=IGBaselineStrategy.ZERO_EMBEDDING,
+        integration_rule=IntegrationRule.GAUSS_LEGENDRE,
     )
     assert res.signed is True
-    assert completeness_holds(res, atol=1e-4, rtol=1e-4)
+    assert completeness_holds(res, rel_tol=1e-4)
 
 
 def test_ig_completeness_fails_when_broken() -> None:
@@ -140,6 +148,12 @@ def test_ig_completeness_fails_when_broken() -> None:
     def score_fn(e: torch.Tensor) -> torch.Tensor:
         return toy.score(e)
 
+    from src.attribution.integrated_gradients import (
+        IGBaselineStrategy,
+        completeness_holds,
+        integrated_gradients,
+    )
+
     res = integrated_gradients(
         emb, score_fn, steps=8, baseline_strategy=IGBaselineStrategy.ZERO_EMBEDDING
     )
@@ -148,15 +162,19 @@ def test_ig_completeness_fails_when_broken() -> None:
         score_space=res.score_space,
         signed=res.signed,
         target_definition=res.target_definition,
-        token_scores=[2.0 * x for x in res.token_scores],  # intentionally wrong
+        token_scores=[2.0 * x for x in res.token_scores],
         metadata={
             **dict(res.metadata),
             "sum_attributions": 2.0 * float(res.metadata["sum_attributions"]),
+            "attr_sum": 2.0 * float(res.metadata["attr_sum"]),
+            "E_rel": 1.0,
+            "E_abs": 999.0,
             "completeness_gap": 2.0 * float(res.metadata["sum_attributions"])
             - float(res.metadata["completeness_target"]),
+            "IG_NONCONVERGED": False,
         },
     )
-    assert not completeness_holds(broken, atol=1e-5, rtol=1e-5)
+    assert not completeness_holds(broken, rel_tol=1e-5)
 
 
 def test_signed_occlusion_convention() -> None:

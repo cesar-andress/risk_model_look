@@ -1,57 +1,57 @@
-# Methods scaffold (protocol-aligned notes)
+# Methods notes — ATTRIBUTION_PROTOCOL_V1 (no Results)
 
-Status: structured notes for manuscript Methods. **No Results.**  
-Every statement maps to an already verified protocol / contract in the code repo.
+Protocol-aligned Methods language for the manuscript. Every statement maps to
+the frozen config / `docs/ATTRIBUTION_PROTOCOL_V1.md`.
 
-## Dataset
+## Explanandum and M1
 
-- Primary public data: JIT-Defects4J / JIT-Fine author split (`changes_*.pkl`, features, line labels).
-- Measured sizes: train 16374 / valid 5465 / test 5480; positives 2332.
-- Line labels: test gold-positive commits only (n=475); deleted lines labelled 0.0.
+The M1 risk score explanation target is the risk logit contrast
+\(s(x)=\ell_1(x)-\ell_0(x)\) (RISK_LOGIT_CONTRAST_V1), not a probability or
+full-vocabulary score.
 
-## Canonical diff representation
+## Attention
 
-- Ordered historical first-parent Git reconstruction; primary `CHANGED_ONLY` (context 0); ablation CTX3.
-- Markers: `[MSG] [FILE] [HUNK] [ADD] [DEL] [CTX]`.
-- Max length primary 2048; truncation `WHOLE_SEGMENT_PREFIX_TRUNCATION_V1`.
-- Not equivalent to lossy JIT-Fine `added_code`/`removed_code` sets.
+Attention is evaluated as an internal importance proxy / baseline. Raw
+attention is not presumed to be a faithful explanation; prediction-level
+faithfulness is tested separately (RQ2). Jain & Wallace (2019) and Wiegreffe &
+Pinter (2019) frame this debate; neither paper is treated as a universal
+verdict for this study.
 
-## RQ1 labelled universe
+Primary attention aggregation: last-layer mean-head at the first assistant
+classification-token position, summed to lines. Final-4-layer mean attention is
+a predeclared sensitivity analysis.
 
-- Policy-A complete-case primary: N=413 of 475; candidates 13412 (1712 pos / 11700 neg / 0 unknown).
-- Statuses: `RQ1_POSITIVE` / `RQ1_NEGATIVE` / `NOT_IN_RQ1_UNIVERSE` (never coerced to negative).
+## RQ1 vs RQ3 separation
 
-## Complete-case selection
+Primary RQ1 ranking for signed attributions uses absolute line scores
+(ABS_DESCENDING): localization of influential evidence regardless of polarity.
+Directional / polarity questions are reserved for RQ3. A secondary
+signed-positive ranking is predeclared and must not replace the primary after
+results are observed.
 
-- 62 excluded for GT↔canonical mapping incompleteness (not noise filtering).
-- Bias: incomplete commits tend toward larger diffs / candidate universes (audited).
+## Faithfulness
 
-## Token-to-line mapping
+Primary faithfulness perturbations use the same logit-contrast scalar.
+Restricted binary \(p_{\mathrm{buggy}}\) is a secondary reporting space.
+Localization against line labels (RQ1) is distinct from perturbation
+faithfulness (RQ2), following the ERASER conceptual separation (DeYoung et al.,
+2020).
 
-- Fast tokenizer offsets; `TOKEN_MAP_VERSION=1`; Qwen2.5-Coder-7B-Instruct rev `c03e6d…`.
-- Stable line ID V1 includes `ordered_position`.
+## Integrated Gradients
 
-## M1 formulation
+Primary IG uses an explicit ZERO_EMBEDDING baseline with Gauss–Legendre
+integration (50 steps; adaptive retry to 100 with a relative completeness
+tolerance of 0.05). ZERO_EMBEDDING is treated as a reproducible baseline, not
+an unquestioned semantically neutral reference; PAD-token embedding provides a
+mandatory baseline sensitivity. Baseline dependence will be assessed rather than
+resolved by picking the better-looking setting post hoc.
 
-- Causal next-token classification `"0"`/`"1"`; \(p_{\mathrm{buggy}}=\mathrm{softmax}([\ell_0,\ell_1])_1\).
-- Explanation target: \(s=\ell_1-\ell_0\).
+## RQ1 population
 
-## Attribution methods (infrastructure)
+Primary localization requiring a fully visible candidate universe uses the
+CHANGED_ONLY / 2048 fully visible complete-case population (\(N=304\)). The
+4096 fully visible population (\(N=345\)) is a predeclared ablation.
 
-Attention (explicit classification query position), vanilla gradient, Grad×Input,
-Integrated Gradients (explicit baselines), signed structured occlusion (line/hunk/…).
+## Aggregation
 
-## Localization metrics
-
-Top-1/5/10, IFA (0-based false-alarm count), Recall@20%Effort, Effort@20%Recall;
-ranking transform explicit; RQ1 universe guard active.
-
-## Faithfulness metrics
-
-Comprehensiveness and sufficiency in probability and logit-contrast spaces;
-perturbation curves; seeded / length-matched random controls.
-
-## Numerical model results
-
-Deferred until `FULL_TRAINING_GATE` and `ATTRIBUTION_RESULTS_GATE`. Do not insert
-live training metrics here.
+Token→line reduction primary is SUM; MEAN is a length-sensitivity diagnostic.

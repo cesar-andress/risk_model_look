@@ -211,3 +211,53 @@ Do **not** invent missing author lists or DOIs.
 ---
 
 No entries were inserted into `paper/refs.bib` in this task.
+
+---
+
+## Attribution protocol freeze references (2026-10-01)
+
+### R17 — Integrated Gradients (Sundararajan et al.)
+
+- Authors: Mukund Sundararajan, Ankur Taly, Qiqi Yan
+- Title: Axiomatic Attribution for Deep Networks
+- Venue: ICML 2017 (PMLR 70:3319–3328)
+- arXiv: 1703.01365
+- Status: VERIFIED_PUBLISHER (PMLR); VERIFIED_PREPRINT (arXiv abs)
+- Role: IG method definition / completeness axiom
+
+### R14 (updated) — Jain & Wallace 2019
+
+- Authors: Sarthak Jain, Byron C. Wallace
+- Title: Attention is not Explanation
+- Venue: NAACL 2019
+- DOI: **10.18653/v1/N19-1357** (ACL Anthology verified)
+- arXiv: 1902.10186
+- Status: VERIFIED_PUBLISHER; VERIFIED_PREPRINT
+- Role: methodological context — attention not presumed faithful; not a universal verdict
+
+### R18 — Wiegreffe & Pinter 2019
+
+- Authors: Sarah Wiegreffe, Yuval Pinter
+- Title: Attention is not not Explanation
+- Venue: EMNLP-IJCNLP 2019
+- DOI: **10.18653/v1/D19-1002** (ACL Anthology verified)
+- arXiv: 1908.04626
+- Status: VERIFIED_PUBLISHER; VERIFIED_PREPRINT
+- Role: methodological counterpoint to R14; not a universal verdict
+
+### R19 — ERASER (DeYoung et al. 2020)
+
+- Authors: Jay DeYoung, Sarthak Jain, Nazneen Fatema Rajani, Eric Lehman, Caiming Xiong, Richard Socher, Byron C. Wallace
+- Title: ERASER: A Benchmark to Evaluate Rationalized NLP Models
+- Venue: ACL 2020
+- DOI: **10.18653/v1/2020.acl-main.408** (ACL Anthology verified)
+- Status: VERIFIED_PUBLISHER
+- Role: localization/plausibility vs faithfulness distinction; comprehensiveness/sufficiency vocabulary
+
+### R13 (retained) — Jacobian Scopes
+
+- Title: Jacobian Scopes: token-level causal attributions in LLMs
+- Authors (arXiv abs / GitHub cite): Toni J. B. Liu, Baran Zadeoğlu, Nicolas Boullé, Raphaël Sarfati, Christopher J. Earls
+- arXiv: 2601.16407
+- Status: VERIFIED_PREPRINT (abs+html inspected 2026-10-01)
+- Role: IG null/zero baseline caveats for decoder LLMs (attention-sink / OOD path); **not** JIT-specific claims

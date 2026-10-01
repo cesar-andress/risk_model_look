@@ -24,9 +24,9 @@ def test_comprehensiveness_definition() -> None:
 
 def test_sufficiency_orientations_documented() -> None:
     s = sufficiency(5.0, 4.5)
-    assert s["orientation_raw"] == "lower_is_more_sufficient"
-    assert s["sufficiency_raw_full_minus_region_only"] == pytest.approx(0.5)
-    assert s["sufficiency_higher_better"] == pytest.approx(-0.5)
+    assert s["orientation_raw"] == "closer_to_zero_is_more_sufficient"
+    assert s["SUFF_RAW"] == pytest.approx(0.5)
+    assert s["SUFF_ERROR"] == pytest.approx(0.5)
 
 
 def test_perturbation_curve_defaults() -> None:
@@ -40,6 +40,8 @@ def test_perturbation_curve_defaults() -> None:
     def only(sel):
         return sum(effects[k] for k in sel)
 
+    from src.metrics.faithfulness import FaithfulnessScoreSpace, evaluate_removal_curve, DEFAULT_PERTURBATION_FRACTIONS
+
     curve = evaluate_removal_curve(
         regions,
         score_full=sum(effects.values()),
@@ -50,6 +52,7 @@ def test_perturbation_curve_defaults() -> None:
     assert curve.fractions == DEFAULT_PERTURBATION_FRACTIONS
     assert 0.2 in curve.comprehensiveness_values
     assert curve.comprehensiveness_values[0.05] > 0
+    assert 0.05 in curve.sufficiency_error_values
 
 
 def test_random_baseline_deterministic() -> None:

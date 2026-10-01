@@ -19,14 +19,17 @@ from typing import Sequence
 from src.attribution.base import TargetDefinition
 
 M1_RISK_LOGIT_CONTRAST = TargetDefinition(
-    name="risk_logit_contrast",
+    name="RISK_LOGIT_CONTRAST_V1",
     formula="s(x) = logit_1(x) - logit_0(x)",
     signed=True,
     notes=(
-        "Canonical M1 explanation target. Equivalent to logit(p_buggy/(1-p_buggy)) "
-        "for the restricted two-class softmax over label tokens 0 and 1."
+        "Frozen primary M1 explanation target (ATTRIBUTION_PROTOCOL_V1). "
+        "Equivalent to logit(p_buggy/(1-p_buggy)) for the restricted two-class "
+        "softmax over label tokens 0 and 1. Not probability or full-vocab score."
     ),
 )
+
+RISK_LOGIT_CONTRAST_V1 = M1_RISK_LOGIT_CONTRAST
 
 
 def risk_logit_contrast(logit_0: float, logit_1: float) -> float:

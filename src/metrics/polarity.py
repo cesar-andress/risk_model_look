@@ -1,9 +1,47 @@
-"""RQ3 polarity analysis over signed region scores."""
+"""RQ3 polarity with frozen RELATIVE_POLARITY_EPS_V1."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Mapping, Sequence
+from enum import Enum
+from typing import Mapping
+
+
+class PolarityClass(str, Enum):
+    POSITIVE = "POSITIVE"
+    NEGATIVE = "NEGATIVE"
+    NEAR_ZERO = "NEAR_ZERO"
+
+
+def relative_polarity_epsilon(scores: Mapping[str, float]) -> float:
+    """epsilon = max(1e-8, 1e-6 * M) with M = max|score|; M==0 => all near-zero."""
+    if not scores:
+        return 1e-8
+    m = max(abs(float(v)) for v in scores.values())
+    if m == 0.0:
+        return 0.0  # every score is exactly zero → all NEAR_ZERO under classify
+    return max(1e-8, 1e-6 * m)
+
+
+def classify_polarity(score: float, epsilon: float, *, all_zero_universe: bool = False) -> PolarityClass:
+    if all_zero_universe or epsilon == 0.0:
+        # Protocol: if M == 0, all regions are NEAR_ZERO
+        return PolarityClass.NEAR_ZERO
+    if score > epsilon:
+        return PolarityClass.POSITIVE
+    if score < -epsilon:
+        return PolarityClass.NEGATIVE
+    return PolarityClass.NEAR_ZERO
+
+
+def classify_region_scores(region_scores: Mapping[str, float]) -> dict[str, PolarityClass]:
+    if not region_scores:
+        return {}
+    m = max(abs(float(v)) for v in region_scores.values())
+    if m == 0.0:
+        return {k: PolarityClass.NEAR_ZERO for k in region_scores}
+    eps = relative_polarity_epsilon(region_scores)
+    return {k: classify_polarity(float(v), eps) for k, v in region_scores.items()}
 
 
 @dataclass(frozen=True)
@@ -20,19 +58,26 @@ class PolaritySummary:
 def polarity_summary(
     region_scores: Mapping[str, float],
     *,
-    epsilon: float,
+    epsilon: float | None = None,
     top_k: int = 5,
 ) -> PolaritySummary:
-    """Polarity fractions with explicit near-zero epsilon (required)."""
-    if epsilon < 0:
-        raise ValueError("epsilon must be >= 0")
+    """If epsilon is None, use RELATIVE_POLARITY_EPS_V1 from the score set."""
     items = list(region_scores.items())
     n = len(items)
     if n == 0:
-        return PolaritySummary(0, 0.0, 0.0, 0.0, (), (), epsilon)
-    pos = [(k, v) for k, v in items if v > epsilon]
-    neg = [(k, v) for k, v in items if v < -epsilon]
-    near = [(k, v) for k, v in items if abs(v) <= epsilon]
+        return PolaritySummary(0, 0.0, 0.0, 0.0, (), (), 1e-8)
+    classes = classify_region_scores(region_scores)
+    eps = relative_polarity_epsilon(region_scores) if epsilon is None else float(epsilon)
+    # If caller overrides epsilon, reclassify with that epsilon (except M==0)
+    m = max(abs(float(v)) for v in region_scores.values())
+    if m == 0.0:
+        classes = {k: PolarityClass.NEAR_ZERO for k in region_scores}
+        eps = 0.0
+    elif epsilon is not None:
+        classes = {k: classify_polarity(float(v), eps) for k, v in region_scores.items()}
+    pos = [(k, float(region_scores[k])) for k, c in classes.items() if c == PolarityClass.POSITIVE]
+    neg = [(k, float(region_scores[k])) for k, c in classes.items() if c == PolarityClass.NEGATIVE]
+    near = [k for k, c in classes.items() if c == PolarityClass.NEAR_ZERO]
     pos_sorted = sorted(pos, key=lambda kv: (-kv[1], kv[0]))[:top_k]
     neg_sorted = sorted(neg, key=lambda kv: (kv[1], kv[0]))[:top_k]
     return PolaritySummary(
@@ -42,67 +87,63 @@ def polarity_summary(
         fraction_near_zero=len(near) / n,
         top_positive=tuple(pos_sorted),
         top_negative=tuple(neg_sorted),
-        epsilon=epsilon,
+        epsilon=eps,
     )
-
-
-def _sign(v: float, epsilon: float) -> int:
-    if v > epsilon:
-        return 1
-    if v < -epsilon:
-        return -1
-    return 0
 
 
 def sign_agreement(
     attribution_scores: Mapping[str, float],
     occlusion_deltas: Mapping[str, float],
     *,
-    epsilon: float,
-) -> dict[str, float | int]:
-    """Sign agreement between attribution a_R and occlusion delta_R.
+    epsilon: float | None = None,
+) -> dict[str, float | int | str]:
+    """Strict sign agreement excluding NEAR_ZERO on either side.
 
-    Caveat: this is agreement under the chosen epsilon, not causal correctness.
+    Caveat: agreement ≠ causal correctness.
     """
-    if epsilon < 0:
-        raise ValueError("epsilon must be >= 0")
     keys = sorted(set(attribution_scores) & set(occlusion_deltas))
     if not keys:
         return {
             "n_compared": 0,
+            "n_covered_nonzero": 0,
+            "agreement_coverage": 0.0,
             "sign_agreement": 0.0,
-            "positive_precision_like": 0.0,
+            "positive_agreement": 0.0,
             "negative_agreement": 0.0,
-            "coverage_excluding_near_zero": 0.0,
+            "near_zero_frequency_attr": 0.0,
+            "near_zero_frequency_occ": 0.0,
             "caveat": "not_causal_correctness",
         }
-    agree = 0
-    covered = 0
-    attr_pos = 0
-    attr_pos_agree = 0
-    both_neg = 0
-    for k in keys:
-        sa = _sign(float(attribution_scores[k]), epsilon)
-        sd = _sign(float(occlusion_deltas[k]), epsilon)
-        if sa == 0 or sd == 0:
-            continue
-        covered += 1
-        if sa == sd:
-            agree += 1
-        if sa == 1:
-            attr_pos += 1
-            if sd == 1:
-                attr_pos_agree += 1
-        if sa == -1 and sd == -1:
-            both_neg += 1
+    # Classify each side independently with its own relative epsilon (protocol)
+    attr_cls = classify_region_scores({k: float(attribution_scores[k]) for k in keys})
+    occ_cls = classify_region_scores({k: float(occlusion_deltas[k]) for k in keys})
+    # Optional shared override epsilon for synthetic tests
+    if epsilon is not None:
+        attr_cls = {k: classify_polarity(float(attribution_scores[k]), float(epsilon)) for k in keys}
+        occ_cls = {k: classify_polarity(float(occlusion_deltas[k]), float(epsilon)) for k in keys}
+
+    nz_attr = sum(1 for k in keys if attr_cls[k] == PolarityClass.NEAR_ZERO)
+    nz_occ = sum(1 for k in keys if occ_cls[k] == PolarityClass.NEAR_ZERO)
+    covered = [
+        k
+        for k in keys
+        if attr_cls[k] != PolarityClass.NEAR_ZERO and occ_cls[k] != PolarityClass.NEAR_ZERO
+    ]
+    agree = sum(1 for k in covered if attr_cls[k] == occ_cls[k])
+    pos_pairs = [k for k in covered if attr_cls[k] == PolarityClass.POSITIVE]
+    pos_agree = sum(1 for k in pos_pairs if occ_cls[k] == PolarityClass.POSITIVE)
+    neg_pairs = [k for k in covered if attr_cls[k] == PolarityClass.NEGATIVE]
+    neg_agree = sum(1 for k in neg_pairs if occ_cls[k] == PolarityClass.NEGATIVE)
     return {
         "n_compared": len(keys),
-        "n_covered_nonzero": covered,
-        "sign_agreement": (agree / covered) if covered else 0.0,
-        "positive_precision_like": (attr_pos_agree / attr_pos) if attr_pos else 0.0,
-        "negative_agreement": (both_neg / covered) if covered else 0.0,
-        "coverage_excluding_near_zero": covered / len(keys),
-        "epsilon": epsilon,
+        "n_covered_nonzero": len(covered),
+        "agreement_coverage": len(covered) / len(keys),
+        "sign_agreement": (agree / len(covered)) if covered else 0.0,
+        "positive_agreement": (pos_agree / len(pos_pairs)) if pos_pairs else 0.0,
+        "negative_agreement": (neg_agree / len(neg_pairs)) if neg_pairs else 0.0,
+        "near_zero_frequency_attr": nz_attr / len(keys),
+        "near_zero_frequency_occ": nz_occ / len(keys),
+        "epsilon_rule": "RELATIVE_POLARITY_EPS_V1" if epsilon is None else "OVERRIDE",
         "caveat": "not_causal_correctness",
     }
 
@@ -111,7 +152,6 @@ def method_sign_agreement(
     scores_a: Mapping[str, float],
     scores_b: Mapping[str, float],
     *,
-    epsilon: float,
-) -> dict[str, float | int]:
-    """Pairwise sign agreement between two attribution methods."""
+    epsilon: float | None = None,
+) -> dict[str, float | int | str]:
     return sign_agreement(scores_a, scores_b, epsilon=epsilon)

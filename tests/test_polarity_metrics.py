@@ -13,16 +13,16 @@ pytestmark = pytest.mark.cpu
 
 
 def test_polarity_requires_epsilon() -> None:
-    s = polarity_summary({"a": 1.0, "b": -0.5, "c": 0.001}, epsilon=0.01)
-    assert s.fraction_positive == pytest.approx(1 / 3)
+    s = polarity_summary({"a": 1.0, "b": -0.5, "c": 0.001})
+    # relative eps = 1e-6 * 1.0 → c is POSITIVE (0.001 > 1e-6)
+    assert s.fraction_positive == pytest.approx(2 / 3)
     assert s.fraction_negative == pytest.approx(1 / 3)
-    assert s.fraction_near_zero == pytest.approx(1 / 3)
 
 
 def test_sign_agreement_not_causal_claim() -> None:
     attr = {"L1": 2.0, "L2": -1.0, "L3": 0.0}
     occ = {"L1": 1.5, "L2": -0.2, "L3": 0.01}
-    out = sign_agreement(attr, occ, epsilon=0.05)
+    out = sign_agreement(attr, occ)
     assert out["caveat"] == "not_causal_correctness"
     assert out["sign_agreement"] == 1.0
     assert out["n_covered_nonzero"] == 2

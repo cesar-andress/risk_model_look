@@ -307,3 +307,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Develop in training worktree (rejected — risk to live run); bind seed-13 intermediate adapters (rejected).
 - **Reversible:** Yes via protocol amendment for metric/method freezes.
 - **Gate affected:** ATTRIBUTION_INFRASTRUCTURE_GATE, ATTRIBUTION_RESULTS_GATE, RQ1_RESULTS_GATE
+
+## 2026-10-01 — ATTRIBUTION_PROTOCOL_FREEZE_GATE
+
+- **Decision:** Freeze ATTRIBUTION_PROTOCOL_V1 before any scientific M1 attribution results. Primary RQ1 ranking for signed methods = ABS_DESCENDING; attention = RAW_DESCENDING; secondary SIGNED_POSITIVE_DESCENDING. LINE_REDUCTION primary SUM / sensitivity MEAN. Attention primary ATTENTION_LAST_MEAN_HEAD (proxy, not presumed faithful). Faithfulness primary LOGIT_CONTRAST; secondary restricted binary probability. IG primary ZERO_EMBEDDING + GAUSS_LEGENDRE 50→100 retry (E_rel≤0.05) with PAD sensitivity; pad=`<|endoftext|>` id 151643 (special; not neutral). Polarity RELATIVE_POLARITY_EPS_V1. RQ1 visible N=304 (2048) / ablation 345 (4096). Random RQ1 repeats=100. All three M1 seeds aggregated. Hash recorded in artifacts/attribution_protocol/protocol_manifest.json.
+- **Reason:** Separate where/magnitude (RQ1) from polarity (RQ3) and faithfulness (RQ2); prevent result-dependent methodological shopping.
+- **Alternatives considered:** SIGNED primary RQ1 (rejected — bakes polarity); PAD as primary IG baseline (rejected — sensitivity only); MEAN as primary aggregation (rejected — different estimand).
+- **Reversible:** Only via new hashed protocol version + orchestrator approval.
+- **Gate affected:** ATTRIBUTION_PROTOCOL_FREEZE_GATE, ATTRIBUTION_RESULTS_GATE, RQ1_RESULTS_GATE

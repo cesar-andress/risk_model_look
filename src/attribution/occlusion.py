@@ -126,17 +126,51 @@ class ToyStructuredCommit:
         return ToyStructuredCommit(message=self.message, files=files)
 
 
+EMPTY_HUNK_POLICY = "REMOVE_EMPTY_HUNK"
+EMPTY_FILE_POLICY = "REMOVE_EMPTY_FILE_IF_NO_HUNKS_OR_CHANGED_LINES"
+
+PERTURBATION_RENDERING = {
+    "line_removal": "COMPLETE_SEMANTIC_LINE_SEGMENT",  # marker + payload
+    "hunk_removal": "COMPLETE_HUNK_SEGMENT",
+    "token_zeroing": False,
+    "re_render_re_tokenize": True,
+    "empty_hunk_policy": EMPTY_HUNK_POLICY,
+    "empty_file_policy": EMPTY_FILE_POLICY,
+}
+
+
+def cleanup_empty_structure(commit: ToyStructuredCommit) -> ToyStructuredCommit:
+    """Deterministic cleanup after region removal (protocol freeze).
+
+    - Remove empty hunks (no remaining lines for that hunk_id).
+    - Remove empty file blocks with no hunks / changed lines.
+    """
+    out = commit.clone()
+    cleaned: dict[str, list[dict[str, Any]]] = {}
+    for path, lines in out.files.items():
+        # Drop lines already gone; group by hunk — empty hunks disappear naturally
+        kept = [ln for ln in lines if ln.get("stable_line_id") is not None or ln.get("text") is not None]
+        # If a hunk_id has zero lines, it is absent by construction.
+        if kept:
+            cleaned[path] = kept
+        # else: empty file removed
+    out.files = cleaned
+    return out
+
+
 def remove_region_structured(
     commit: ToyStructuredCommit,
     region: RegionSpec,
 ) -> ToyStructuredCommit:
-    """Clean structured removal by unit type; then caller re-scores."""
+    """Clean structured removal by unit type; then caller re-scores.
+
+    Line occlusion removes the complete semantic line segment (marker+payload
+    in production render). Never zero token IDs.
+    """
     out = commit.clone()
     if region.unit == OcclusionUnit.MESSAGE or region.include_message:
         out.message = ""
     if region.unit == OcclusionUnit.FILE_PATH or region.include_file_paths:
-        # Drop path strings but keep contents under a placeholder file id if needed.
-        # For FILE_PATH unit with explicit file_ids: rename path payload to empty marker.
         renamed: dict[str, list[dict[str, Any]]] = {}
         for path, lines in out.files.items():
             if not region.file_ids or path in region.file_ids:
@@ -160,16 +194,11 @@ def remove_region_structured(
                 ln for ln in out.files[path] if ln.get("stable_line_id") not in drop
             ]
     if region.unit == OcclusionUnit.TOKEN:
-        # Token-level structured occlusion is expressed by tagging token indices
-        # on lines; for toy commits we remove whole lines carrying those tokens.
-        # Production path must re-tokenize after structured edits, not zero IDs.
         raise NotImplementedError(
             "TOKEN unit requires token_map-aware structured edit + re-tokenize; "
             "use LINE/HUNK/MESSAGE/FILE units or a custom remove_fn"
         )
-    # Drop empty files
-    out.files = {p: lines for p, lines in out.files.items() if lines}
-    return out
+    return cleanup_empty_structure(out)
 
 
 def default_toy_scorer(effects: Mapping[str, float]) -> ScoreCallable:
