@@ -1,0 +1,48 @@
+{
+  "POLICY_A_RESIDUAL_CLOSURE_GATE": "FAIL",
+  "complete_commits": 413,
+  "final_mapping": {
+    "collisions": 0,
+    "multi_map": 0,
+    "negatives_mapped": 16438,
+    "positives_mapped": 2060,
+    "unique": 18498,
+    "zero_map": 117
+  },
+  "incomplete_commits": 62,
+  "missing_positive_final": "RECOVERED_SOURCE_TRANSFORM_EXACT",
+  "missing_positive_mapped": true,
+  "recovery_counter": {
+    "AMBIGUOUS": 22,
+    "DATASET_CANONICAL_CONFLICT": 94,
+    "RECOVERED_POSITIONALLY_FORCED": 13,
+    "RECOVERED_SOURCE_TRANSFORM_EXACT": 18,
+    "UNRESOLVED": 1
+  },
+  "recovery_final": {
+    "AMBIGUOUS": 22,
+    "DATASET_CANONICAL_CONFLICT": 94,
+    "RECOVERED_POSITIONALLY_FORCED": 13,
+    "RECOVERED_SOURCE_TRANSFORM_EXACT": 18,
+    "UNRESOLVED": 1
+  },
+  "starting_negative_residual": 147,
+  "starting_positive_residual": 1,
+  "starting_residual": 148,
+  "taxonomy_final": {
+    "FILE_PATH_RECOVERED_NO_TEXT_MATCH": 74,
+    "LINE_PRESENT_BOTH_BLOBS_NOT_IN_DIFF": 6,
+    "LINE_PRESENT_BUT_FILTERED": 18,
+    "LINE_PRESENT_IN_PARENT_ONLY": 24,
+    "NO_RAW_GIT_TEXT_MATCH": 3,
+    "PRESENT_IN_DIFF": 23
+  },
+  "taxonomy_initial_style": {
+    "FILE_PATH_RECOVERED_NO_TEXT_MATCH": 74,
+    "LINE_PRESENT_BOTH_BLOBS_NOT_IN_DIFF": 6,
+    "LINE_PRESENT_BUT_FILTERED": 18,
+    "LINE_PRESENT_IN_PARENT_ONLY": 24,
+    "NO_RAW_GIT_TEXT_MATCH": 3,
+    "PRESENT_IN_DIFF": 23
+  }
+}

@@ -275,3 +275,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Adopt COMPLETE_POLICY_A_COMMIT_COUNT=403 as new N (deferred to orchestrator); fuzzy matching (forbidden); treat unknowns as negative (forbidden).
 - **Reversible:** Yes if residual 148 rows gain deterministic locations or orchestrator accepts an explicit subset.
 - **Gate affected:** POLICY_A_CANONICAL_BRIDGE_GATE, TOKEN_LINE_MAPPING_GATE
+
+## 2026-10-01T05:45:00+02:00 — Residual closure FAIL; complete-case readiness PASS
+
+- **Decision:** Close further reconstruction loops. Mark `POLICY_A_RESIDUAL_CLOSURE_GATE=FAIL` (final unique maps 18498/18615; zero-map 117; positives 2060/2060 including previously missing positive). Mark `POLICY_A_COMPLETE_CASE_READINESS_GATE=PASS` for N=413 complete commits (21/21 projects; size-associated exclusion bias documented). Do **not** auto-promote complete-case to primary. Do not tokenize until orchestrator chooses population policy.
+- **Reason:** Source-approved transforms + positional bijections exhausted deterministic recovery; 94 rows are dataset-canonical conflicts vs first-parent adds; stop rule forbids endless recovery.
+- **Alternatives considered:** Another fuzzy/heuristic pass (rejected); silent N=413 primary (rejected — orchestrator only).
+- **Reversible:** Only if new authoritative producer evidence appears.
+- **Gate affected:** POLICY_A_RESIDUAL_CLOSURE_GATE, POLICY_A_COMPLETE_CASE_READINESS_GATE, TOKEN_LINE_MAPPING_GATE

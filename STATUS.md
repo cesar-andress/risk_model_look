@@ -9,9 +9,8 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-RQ1_LABEL_UNIVERSE_GATE closed **PASS**.  
-POLICY_A_CANONICAL_BRIDGE_GATE closed **FAIL** (18467/18615; producer ABSENT).  
-TOKEN_LINE_MAPPING_GATE remains **IN_PROGRESS** — tokenizer offset mapping not started.
+Residual closure **FAIL** (18498/18615). Complete-case readiness **PASS** (N=413).  
+TOKEN_LINE_MAPPING_GATE remains IN_PROGRESS — awaiting orchestrator RQ1 population decision before tokenizer work.
 
 # Gate status
 
@@ -29,6 +28,8 @@ TOKEN_LINE_MAPPING_GATE remains **IN_PROGRESS** — tokenizer offset mapping not
 | JITBLOCK_REPLICATION_AUDIT_GATE | PASS |
 | RQ1_LABEL_UNIVERSE_GATE | PASS |
 | POLICY_A_CANONICAL_BRIDGE_GATE | FAIL |
+| POLICY_A_RESIDUAL_CLOSURE_GATE | FAIL |
+| POLICY_A_COMPLETE_CASE_READINESS_GATE | PASS |
 | TOKEN_LINE_MAPPING_GATE | IN_PROGRESS |
 | PILOT_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
@@ -39,33 +40,30 @@ TOKEN_LINE_MAPPING_GATE remains **IN_PROGRESS** — tokenizer offset mapping not
 
 # Current task
 
-Resolve Policy-A → canonical line-ID residual (148 NOT_FOUND) or obtain orchestrator decision on COMPLETE_POLICY_A subset before tokenization.
+Orchestrator decision: keep primary RQ1 = full Policy A (with unmapped residual excluded from scores) vs adopt POLICY_A_COMPLETE_CASE (N=413) as primary analysis population. Then TOKEN_LINE_MAPPING.
 
 # Completed work
 
-- Policy-A bridge audit: paper-faithful Layer-A/Git linkage; 18467 unique maps; 0 collisions; RQ1 mask contract; JIT-Block producer ABSENT documented.
-- Prior: JIT-Block audit PASS; RQ1 universe Policy A PASS.
+- Residual closure: +31 recovered (18 transform, 13 positional); missing positive recovered; 94 dataset-canonical conflicts; 2060/2060 positives mapped; complete-case bias audit (21/21 projects).
 
 # Blockers
 
-- 148 Policy-A rows without deterministic Git location (1 positive).
-- JIT-Block producer absent at `d82cc67…`.
-- Historical FAIL gates remain (set EQ / Layer-A→Git incomplete) — do not erase.
+- 117 Policy-A rows still without unique canonical ID (94 conflict + 22 ambiguous + 1 unresolved).
+- Historical FAIL gates retained.
 - CONTEXT_POLICY OPEN.
 
 # Decisions frozen
 
-- PRIMARY_RQ1_POLICY = POLICY_A; N=475; 18615/2060/16555/0 unknown within universe.
-- UNKNOWN / full-Git extras ≠ NEGATIVE (`NOT_IN_RQ1_UNIVERSE`).
+- PRIMARY_RQ1_POLICY = POLICY_A universe definition (18615/2060/16555) unchanged.
 - CANONICAL_MODEL_INPUT_SOURCE = ordered first-parent Git reconstruction.
-- N=352 and N=58 not primary.
+- UNKNOWN ≠ NEGATIVE.
+- Stop further speculative reconstruction loops.
 
 # Decisions pending
 
-- Whether to accept COMPLETE_POLICY_A_COMMIT_COUNT=403 (or other residual policy)
+- Whether POLICY_A_COMPLETE_CASE (413) becomes primary RQ1 population
 - CONTEXT_POLICY
-- Journal selection
 
 # Last updated
 
-2026-10-01T05:30:00+02:00
+2026-10-01T05:45:00+02:00

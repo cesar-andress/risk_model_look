@@ -1,0 +1,48 @@
+{
+  "LARGE_SMD_variables": [
+    "n_candidates",
+    "buggy_density",
+    "git_added",
+    "git_changed",
+    "la"
+  ],
+  "POLICY_A_COMPLETE_CASE_N": 413,
+  "POLICY_A_COMPLETE_CASE_READINESS_GATE": "PASS",
+  "candidates_in_complete": 13412,
+  "candidates_lost_in_incomplete": 5203,
+  "incomplete_n": 62,
+  "incomplete_project_counts": {
+    "ant-ivy": 10,
+    "commons-bcel": 1,
+    "commons-beanutils": 1,
+    "commons-codec": 3,
+    "commons-collections": 1,
+    "commons-configuration": 2,
+    "commons-io": 6,
+    "commons-jcs": 2,
+    "commons-lang": 2,
+    "commons-math": 14,
+    "commons-net": 4,
+    "commons-scxml": 1,
+    "commons-validator": 4,
+    "commons-vfs": 1,
+    "giraph": 2,
+    "gora": 1,
+    "opennlp": 1,
+    "parquet-mr": 6
+  },
+  "metric_validity": {
+    "complete_commits": "ALL_PRIMARY_RQ1_METRICS_VALID_WITHIN_POLICY_A",
+    "incomplete_commits": "PRIMARY_RQ1_METRICS_INVALID_UNTIL_FULL_MAPPING"
+  },
+  "negatives_in_complete": 11700,
+  "negatives_lost_in_incomplete": 4855,
+  "positives_in_complete": 1712,
+  "positives_lost_in_incomplete": 348,
+  "projects_represented": 21,
+  "projects_total": 21,
+  "projects_with_zero_complete": [],
+  "retention_pct_max": 100.0,
+  "retention_pct_min": 50.0,
+  "severe_exclusion_concentration_top2_ge_50pct": false
+}

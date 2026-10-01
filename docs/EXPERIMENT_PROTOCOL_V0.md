@@ -50,7 +50,9 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - **GROUND_TRUTH_SOURCE (intent):** Layer A JSON for file-aware lineage; **RQ1 evaluation labels** = Layer-B `changes_complete_buggy_line_level.pkl` (JIT-Fine / JIT-Block BYTE_IDENTICAL)
 - **RQ1_CANDIDATE_UNIVERSE (Policy A, frozen):** \(U_{\mathrm{JITFINE}}\) = labelled added rows of that pickle for each of the 475 gold-positive test commits. Scope is **not** all raw-Git added lines.
 - **DO_NOT_TREAT_UNKNOWN_AS_NEGATIVE:** missing `added_buggy_level` / unmapped Git lines are UNKNOWN outside \(U_{\mathrm{JITFINE}}\)
-- Policy-A → canonical line-ID bridge: **18467/18615** unique (`POLICY_A_CANONICAL_BRIDGE_GATE=FAIL`); tokenizer mapping still blocked
+- Policy-A → canonical line-ID bridge: **18467/18615** unique (`POLICY_A_CANONICAL_BRIDGE_GATE=FAIL`)
+- Residual closure: final **18498/18615** unique; **2060/2060** positives; zero-map **117**; collisions **0** (`POLICY_A_RESIDUAL_CLOSURE_GATE=FAIL`); stop further speculative reconstruction
+- `POLICY_A_COMPLETE_CASE`: **413** commits (13412 cand / 1712 pos / 11700 neg); readiness **PASS**; **not** auto-primary — orchestrator decides
 - N=352 (POSITIVE_GT_COMPLETE) and N=58 (Policy C full-Git complete) rejected as **primary** policies
 - JIT-Block (`10.1111/exsy.13702`, repo `hangters/JIT-Block@d82cc67…`): external reconstruction evidence; producer script **ABSENT**; 178 clean commits removed from DP cohorts; does **not** replace our train/valid/test split
 - Pickle schemas / row-level exports: not for git; see `docs/DATASET_EMPIRICAL_PROFILE.md`
