@@ -50,8 +50,12 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - **PRIMARY_CONTEXT = 0** (CHANGED_ONLY); **ABLATION_CONTEXT = 3** (CTX3); CONTEXT_POLICY **CLOSED**
 - **MAX_LENGTH** primary **2048** / ablation **4096**; truncation = `WHOLE_SEGMENT_PREFIX_TRUNCATION_V1`
 - Message source: JIT-Fine `msgs`
-- Tokenizer primary: `Qwen/Qwen2.5-Coder-7B-Instruct` (fast offsets); Llama ACCESS_BLOCKED
+- Tokenizer primary: `Qwen/Qwen2.5-Coder-7B-Instruct` revision **`c03e6d358207e414f1eca0bb1891e29f1db0e242`** (fast offsets); Llama ACCESS_BLOCKED
 - `TOKEN_LINE_MAPPING_GATE=PASS`; processed `data/processed/canonical_v1/` (gitignored)
+- `PILOT_TRAINING_GATE=PASS` (M1 QLoRA E2E; Stage A 32/32; Stage B N=2048 natural; full valid 5465; TEST_INFERENCE_EXECUTED=NO)
+- `FULL_TRAINING_GATE=NOT_STARTED`; `ATTRIBUTION_GATE=NOT_STARTED`
+- M1 classification: causal next-token `"0"`/`"1"` (IDs 15/16); `p_buggy=softmax([l0,l1])[1]`; exactly one supervised label/example
+- Pilot QLoRA: NF4 + bf16 + double quant; LoRA r=16 α=16 dropout=0.05; targets q/k/v/o/gate/up/down_proj; lr 2e-4; seed 42 (PILOT settings, not optimized)
 - N=352 and N=58 rejected as primary; reconstruction stop rule engaged
 - Pickle schemas / row-level exports: not for git; see `docs/DATASET_EMPIRICAL_PROFILE.md`
 

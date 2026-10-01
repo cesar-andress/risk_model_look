@@ -81,6 +81,9 @@ env/
 checkpoints/
 models/checkpoints/
 artifacts/checkpoints/
+artifacts/pilot_training/**/stage_*_adapter/
+artifacts/pilot_training/**/adapter_model*
+artifacts/pilot_training/**/adapter_config.json
 **/lora_*/
 **/adapter_model*
 **/adapter_config.json

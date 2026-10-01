@@ -291,3 +291,11 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Keep N=475 with partial maps (invalid for primary metrics); fuzzy recovery (forbidden).
 - **Reversible:** Only via explicit protocol amendment.
 - **Gate affected:** TOKEN_LINE_MAPPING_GATE, PILOT_GATE, ANALYSIS_GATE
+
+## 2026-10-01T11:33:14+02:00 — PILOT_TRAINING_GATE PASS (M1 QLoRA E2E)
+
+- **Decision:** Mark `PILOT_TRAINING_GATE=PASS`. Freeze M1 pilot stack: Qwen rev `c03e6d358207e414f1eca0bb1891e29f1db0e242`, NF4 QLoRA r=16/α=16/dropout=0.05 on q/k/v/o/gate/up/down_proj, causal one-token targets 15/16, restricted two-class softmax, seed 42, max_length 2048, TRAIN+VALID only. Stage A N=32 (16/16) reached 32/32; Stage B N=2048 natural prevalence (174/1874, 21 projects) one pass 128 steps; full valid ROC-AUC≈0.778 PR-AUC≈0.218 (**ADEQUATE** ranking). Hard@0.5 predicts all-negative (max p≈0.24) — diagnostic threshold only, not frozen. Keep `FULL_TRAINING_GATE` / `ATTRIBUTION_GATE` = NOT_STARTED. No test inference.
+- **Reason:** Gate purpose is pipeline correctness, not final paper metrics; Stage A + contracts + full-valid ranking prove M1 works end-to-end without leakage or test contamination.
+- **Alternatives considered:** Tune LR/LoRA/imbalance to lift F1@0.5 (forbidden this gate); proceed to full 16374 train (forbidden until FULL_TRAINING_GATE).
+- **Reversible:** Yes with explicit protocol amendment; do not silently change frozen data/prompt/token IDs.
+- **Gate affected:** PILOT_TRAINING_GATE, FULL_TRAINING_GATE, ATTRIBUTION_GATE

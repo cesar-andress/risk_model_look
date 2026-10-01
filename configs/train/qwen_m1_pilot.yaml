@@ -1,0 +1,96 @@
+# M1 QLoRA pilot — frozen experimental settings (no silent Python defaults)
+# PILOT settings only; not claimed optimized hyperparameters.
+
+model:
+  identifier: Qwen/Qwen2.5-Coder-7B-Instruct
+  immutable_revision: c03e6d358207e414f1eca0bb1891e29f1db0e242
+
+dataset:
+  version: canonical_v1
+  representation: CHANGED_ONLY
+  context: 0
+  prompt_template_version: 1
+  token_map_version: 1
+  truncation: WHOLE_SEGMENT_PREFIX_TRUNCATION_V1
+  max_length: 2048
+  processed_dir: data/processed/canonical_v1
+  # Pilot uses TRAIN + VALIDATION only. Test is forbidden for inference.
+  train_usage: yes
+  valid_usage: yes
+  test_usage: metadata_only_no_inference
+
+label_contract:
+  target_0: "0"
+  target_1: "1"
+  token_id_0: 15
+  token_id_1: 16
+  supervised_positions_per_example: 1
+
+quantization:
+  load_in_4bit: true
+  quant_type: nf4
+  compute_dtype: bfloat16
+  double_quant: true
+
+lora:
+  r: 16
+  alpha: 16
+  dropout: 0.05
+  bias: none
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+training:
+  seed: 42
+  learning_rate: 2.0e-4
+  optimizer: paged_adamw_8bit  # fallback AdamW if unsupported
+  weight_decay: 0.0
+  warmup_ratio: 0.03
+  scheduler: linear
+  max_grad_norm: 1.0
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  effective_batch_size: 16
+  gradient_checkpointing: true
+  gpu: RTX_4090
+
+stage_a:
+  n: 32
+  positives: 16
+  negatives: 16
+  max_optimizer_steps: 100
+  eval_every: 5
+  early_stop_on_32_of_32_twice: true
+  source: train_only
+
+stage_b:
+  n: 2048
+  prevalence: natural  # ~8.49% train positives; no rebalance
+  one_pass: true
+  expected_optimizer_steps: 128
+  source: train_only
+  start_from: fresh_base_plus_fresh_lora  # NOT stage-A adapter
+
+validation:
+  split: valid
+  n: 5465
+  positives: 467
+  full_split: true
+  sample: false
+
+paths:
+  artifacts_dir: artifacts/pilot_training
+  stage_a_ckpt: artifacts/pilot_training/stage_a_adapter
+  stage_b_ckpt: artifacts/pilot_training/stage_b_adapter
+
+prohibitions:
+  test_inference: true
+  imbalance_strategy_search: true
+  full_train_16374: true
+  attribution: true

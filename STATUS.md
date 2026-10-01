@@ -9,8 +9,9 @@ Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Ex
 
 # Current phase
 
-TOKEN_LINE_MAPPING_GATE closed **PASS**.  
-Next: PILOT_GATE (training) — do not start until explicitly requested.
+PILOT_TRAINING_GATE closed **PASS** (technical pipeline + ADEQUATE validation ranking on natural-prevalence Stage B).  
+Next: FULL_TRAINING_GATE — do not start until explicitly requested.  
+ATTRIBUTION_GATE = NOT_STARTED.
 
 # Gate status
 
@@ -31,8 +32,11 @@ Next: PILOT_GATE (training) — do not start until explicitly requested.
 | POLICY_A_RESIDUAL_CLOSURE_GATE | FAIL |
 | POLICY_A_COMPLETE_CASE_READINESS_GATE | PASS |
 | TOKEN_LINE_MAPPING_GATE | PASS |
-| PILOT_GATE | NOT_STARTED |
+| PILOT_TRAINING_GATE | PASS |
+| PILOT_GATE | PASS |
+| FULL_TRAINING_GATE | NOT_STARTED |
 | TRAINING_GATE | NOT_STARTED |
+| ATTRIBUTION_GATE | NOT_STARTED |
 | XAI_GATE | NOT_STARTED |
 | ANALYSIS_GATE | NOT_STARTED |
 | PAPER_GATE | NOT_STARTED |
@@ -40,28 +44,27 @@ Next: PILOT_GATE (training) — do not start until explicitly requested.
 
 # Current task
 
-PILOT_TRAINING_GATE (not started).
+FULL_TRAINING_GATE (not started). Do not run full 16374 training or attribution until requested.
 
 # Completed work
 
-- Frozen PRIMARY_RQ1 = complete-case N=413 (13412/1712/11700).
-- Built `canonical_v1` JSONL (27319); deterministic.
-- Qwen fast offset mapping 27319/27319; 100/100 sample; label tokens 0/1 single-token.
-- Truncation audits 2048/4096 + CTX3.
+- Frozen PRIMARY_RQ1 = complete-case N=413; canonical_v1; token-line mapping PASS.
+- M1 QLoRA pilot: Stage A 32/32 overfit; Stage B N=2048 natural prevalence; full valid 5465.
+- Validation: ROC-AUC≈0.778, PR-AUC≈0.218 (ADEQUATE ranking); hard@0.5 all-negative.
+- TEST_INFERENCE_EXECUTED=NO.
 
 # Blockers
 
 - Llama tokenizer ACCESS_BLOCKED (M3 generalization blocked).
-- Historical FAIL gates retained (document recovery path).
-- RQ1_VISIBLE_N_2048=304 / _4096=345 under CHANGED_ONLY (explicit truncation scope).
+- Historical FAIL gates retained.
+- Pilot hard threshold 0.5 not useful (scores <0.25); imbalance strategy deferred.
 
 # Decisions frozen
 
-- PRIMARY_RQ1_POLICY=POLICY_A_COMPLETE_CASE; N=413; ORIGINAL=475; excluded=62 mapping-incomplete.
-- CANONICAL_MODEL_INPUT_SOURCE=ordered first-parent Git; CHANGED_ONLY primary; CTX3 ablation; MAX_LENGTH 2048/4096.
-- STABLE_LINE_ID_V1 includes ordered_position; CONTEXT_POLICY closed (0 / 3).
-- Reconstruction stop rule engaged.
+- PRIMARY_RQ1_POLICY=POLICY_A_COMPLETE_CASE; CHANGED_ONLY; max_length 2048; Qwen rev `c03e6d358207…`.
+- Label tokens 15/16; restricted two-class softmax; QLoRA NF4 r=16.
+- Pilot settings are not claimed optimized hyperparameters.
 
 # Last updated
 
-2026-10-01T07:45:00+02:00
+2026-10-01T11:33:14+02:00
