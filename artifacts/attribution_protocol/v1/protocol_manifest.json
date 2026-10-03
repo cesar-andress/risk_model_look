@@ -1,0 +1,18 @@
+{
+  "ATTRIBUTION_PROTOCOL_HASH": "73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d",
+  "canonical_sha256": "73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d",
+  "config_path": "configs/attribution/m1_methods_v1.yaml",
+  "frozen_highlights": {
+    "attention_primary": "ATTENTION_LAST_MEAN_HEAD",
+    "faithfulness_space": "LOGIT_CONTRAST",
+    "ig_primary_baseline": "ZERO_EMBEDDING",
+    "ig_steps": 50,
+    "line_reduction": "SUM",
+    "polarity": "RELATIVE_POLARITY_EPS_V1",
+    "rq1_signed_ranking": "ABS_DESCENDING",
+    "rq1_visible_2048": 304,
+    "target": "RISK_LOGIT_CONTRAST_V1"
+  },
+  "protocol_id": "ATTRIBUTION_PROTOCOL_V1",
+  "validation_errors": []
+}

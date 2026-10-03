@@ -1,0 +1,53 @@
+# Test-set attribution execution config (DO NOT RUN until rehearsal accepted).
+# Scientific definitions owned by ATTRIBUTION_PROTOCOL_V1_2 — wiring only.
+
+schema_version: "1"
+config_id: test_execution_v1
+protocol_id: ATTRIBUTION_PROTOCOL_V1_2
+protocol_hash: "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c"
+stats_protocol_id: STATISTICAL_PROTOCOL_V1_1
+stats_hash: "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8"
+
+cohorts:
+  rq1_primary:
+    name: rq1_primary
+    n: 304
+    description: Fully visible Policy-A complete-case commits
+  rq2_rq3_rq4_primary:
+    name: test_positives
+    n: 475
+    description: Defect-inducing TEST commits
+  rq2_on_rq1_subset:
+    name: rq2_on_rq1_primary_subset
+    n: 304
+    required_secondary: true
+  negative_matched_diagnostic:
+    name: negative_matched_diagnostic_v1
+    n: 475
+    reduced_methods: [attention_last_mean_head, grad_x_input, signed_line_occlusion]
+
+seeds: [13, 42, 73]
+granularity: LINE
+
+methods:
+  - attention_last_mean_head
+  - attention_last4_mean
+  - grad_x_input
+  - integrated_gradients
+  - signed_line_occlusion
+
+ig:
+  steps_primary: 50
+  steps_retry: 100
+  baseline: ZERO_EMBEDDING
+
+engine:
+  resume: true
+  dry_run_before_execute: true
+  batch_size: 8
+  output_dir: runs/test_attribution
+  cache_dir: artifacts/attribution_cache
+  results_dir: artifacts/attribution_results
+
+execution_forbidden_until: VALIDATION_ATTRIBUTION_REHEARSAL_GATE_PASS
+notes: "Do not execute during engineering optimization gate."

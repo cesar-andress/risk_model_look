@@ -1,0 +1,666 @@
+# ATTRIBUTION_PROTOCOL_V1.2 — Adversarial-review amendment (pre-result).
+# Parent V1.1 hash: ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e
+# Parent V1 hash:   73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d
+# Do NOT overwrite V1 or V1.1 configs/manifests.
+# Scientific runs after this amendment MUST carry V1.2 hash.
+
+schema_version: '1.2'
+protocol_id: ATTRIBUTION_PROTOCOL_V1_2
+amends: ATTRIBUTION_PROTOCOL_V1_1
+amended_from_hash: ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e
+gate: REVIEWER_PROTOCOL_AMENDMENT
+attribution_infrastructure_gate: PASS
+attribution_protocol_freeze_gate: PASS
+attribution_results_gate: NOT_STARTED
+rq1_results_gate: NOT_STARTED
+model:
+  model_id: Qwen/Qwen2.5-Coder-7B-Instruct
+  revision: c03e6d358207e414f1eca0bb1891e29f1db0e242
+  formulation: M1
+  adapter_path: RESOLVE_FROM_M1_FINAL_MANIFEST
+  seeds:
+  - 13
+  - 42
+  - 73
+  three_seed_policy: ALL_SEEDS_THEN_AGGREGATE
+target:
+  name: RISK_LOGIT_CONTRAST_V1
+  formula: s(x) = logit_1(x) - logit_0(x)
+  forbidden_primary:
+  - probability
+  - full_vocabulary_score
+  - generated_token_likelihood
+  - argmax_class
+representation:
+  primary: CHANGED_ONLY
+  primary_max_length: 2048
+  ablation_max_length: 4096
+  prompt_template_version: 1
+  token_map_version: 1
+  truncation: WHOLE_SEGMENT_PREFIX_TRUNCATION_V1
+cohorts:
+  rq1_primary:
+    name: RQ1_FULLY_VISIBLE_2048
+    n: 304
+    basis: POLICY_A_COMPLETE_CASE_FULLY_VISIBLE_CHANGED_ONLY_2048
+    note: Unchanged from V1; truncated commits excluded from primary RQ1.
+  rq1_complete_case_documented: 413
+  rq1_ablation_4096_fully_visible: 345
+  rq234_primary:
+    name: ALL_POSITIVE_TEST_COMMITS
+    n: 475
+    basis: JIT_FINE_TEST_GOLD_POSITIVE_COMMITS
+    truncated_policy: ELIGIBLE_ON_MODEL_VISIBLE_INPUT
+    note: 'RQ2/RQ3/RQ4 primary cohort is all 475 positive TEST commits.
+
+      Truncated commits remain eligible; evaluations use only model-visible
+
+      regions under WHOLE_SEGMENT_PREFIX_TRUNCATION_V1 (no silent partial RQ1).
+
+      '
+    claim_scope: DEFECT_INDUCING_COMMITS_ONLY
+    do_not_generalize_to_all_test_commits: true
+  rq2_on_rq1_primary_subset:
+    name: RQ2_ON_RQ1_PRIMARY_SUBSET
+    n: 304
+    role: SECONDARY_REQUIRED
+    purpose: within-commit localization vs faithfulness bridge
+  negative_matched_diagnostic:
+    name: NEGATIVE_MATCHED_DIAGNOSTIC_V1
+    n: 475
+    source: clean TEST commits
+    selection:
+      same_project_preferred: true
+      nearest_visible_token_count: true
+      tie_break: commit_id_ASC
+      model_prediction_forbidden: true
+    not_part_of_rq1: true
+    methods_required:
+    - A1_attention_last_mean_head
+    - A3_grad_x_input
+    - A5_signed_line_occlusion
+    - category_ablations
+    methods_not_required:
+    - A4_integrated_gradients_zero
+    - A2_vanilla_gradient
+  post_stratification:
+    name: TP_FN_FP_TN_AFTER_M1_LOCK
+    selection_independent_of_strata: true
+    min_n_for_subgroup: 30
+    below_flag: LOW_POWER_EXPLORATORY
+rq1:
+  universe: POLICY_A_COMPLETE_CASE
+  complete_case_n: 413
+  primary_fully_visible_n_2048: 304
+  ablation_fully_visible_n_4096: 345
+  statuses_in_denominator:
+  - RQ1_POSITIVE
+  - RQ1_NEGATIVE
+  exclude:
+  - NOT_IN_RQ1_UNIVERSE
+  ifa_indexing: ZERO_BASED_FALSE_ALARM_COUNT
+  primary_rank_transform_signed_methods: ABS_DESCENDING
+  primary_rank_transform_attention: RAW_DESCENDING
+  sensitivity_rank_transform_signed_methods: SIGNED_POSITIVE_DESCENDING
+  tie_break:
+  - rank_score_DESC
+  - ordered_position_ASC
+  - stable_line_id_ASC
+  truncated_commits_policy: DO_NOT_SCORE_PARTIAL_CANDIDATE_UNIVERSE_AS_PRIMARY
+  construct:
+    name: LOCALIZATION_PLAUSIBILITY_RELATIVE_TO_LINE_LABELS
+    is_faithfulness: false
+    wording: RQ1 measures localization/plausibility relative to line labels. It does NOT by itself establish
+      explanation faithfulness. A method may faithfully explain a model that relies on non-defect evidence.
+      Any cross-RQ conclusion must consider RQ1 jointly with RQ2.
+    primary_endpoint: RECALL_AT_20_PERCENT_EFFORT
+    secondary_endpoints:
+    - Top-1
+    - Top-5
+    - Top-10
+    - IFA
+    - Effort@20%Recall
+  trivial_baselines:
+    B_LENGTH:
+      definition: rank candidate lines by number of model-visible payload tokens descending
+      role: PRIMARY_TRIVIAL_BASELINE
+    B_ORDER:
+      definition: rank by canonical ordered_position ascending
+      role: PRIMARY_TRIVIAL_BASELINE
+    B_RANDOM:
+      definition: 100 deterministic random permutations (existing)
+      role: PRIMARY_TRIVIAL_BASELINE
+      repeats: 100
+    B_ADD_FIRST:
+      audit_name: ADD_FIRST_BASELINE_AUDIT_V1
+      rule: If all RQ1 candidates are already added lines, mark ADD_FIRST_BASELINE=DEGENERATE_NOT_APPLICABLE;
+        else rank ADD before other change types.
+      status_if_all_added: DEGENERATE_NOT_APPLICABLE
+  length_confound_diagnostic:
+    name: ABS_ATTR_VS_PAYLOAD_TOKEN_COUNT_SPEARMAN
+    unit: COMMIT
+    role: CONFOUND_DIAGNOSTIC
+    interprets_alone_as_invalidation: false
+  signed_hit_diagnostic:
+    name: NEGATIVE_HIT_RATE_AT_K
+    ks:
+    - 5
+    - 10
+    definition: Among labelled-positive lines in absolute top-k, fraction whose signed attribution is
+      NEGATIVE
+    role: RQ3_DIAGNOSTIC
+    does_not_relabel_abs_hit_as_directional_success: true
+aggregation:
+  line_reduction_primary: SUM
+  line_reduction_sensitivity: MEAN
+  line_reduction_exploratory_only:
+  - MAX_ABS_WITH_SIGN
+  frozen: true
+  rationale_sum: SUM preserves additive contribution/mass across tokens; MEAN is average per-token importance
+    (different question).
+attention:
+  interpretation: INTERNAL_IMPORTANCE_PROXY_BASELINE
+  primary_preset: ATTENTION_LAST_MEAN_HEAD
+  sensitivity_preset: ATTENTION_LAST4_MEAN
+  query_position_policy: FIRST_ASSISTANT_CLASSIFICATION_TOKEN
+  primary_config:
+    layer_selection: LAST
+    head_aggregation: MEAN
+    token_to_line: SUM
+  sensitivity_config:
+    layer_selection: FINAL_K_MEAN
+    final_k: 4
+    head_aggregation: MEAN
+    token_to_line: SUM
+  claim_language: Claims must say "the attention configurations evaluated here", not "attention in general".
+methods_primary:
+- id: A0_random_line
+  role: PRIMARY
+  family: random
+  signed: false
+- id: B_LENGTH
+  role: PRIMARY_TRIVIAL_BASELINE
+  family: trivial
+  signed: false
+- id: B_ORDER
+  role: PRIMARY_TRIVIAL_BASELINE
+  family: trivial
+  signed: false
+- id: A1_attention_last_mean_head
+  role: PRIMARY
+  family: attention
+  signed: false
+  preset: ATTENTION_LAST_MEAN_HEAD
+- id: A2_vanilla_gradient
+  role: SECONDARY
+  family: gradient
+  signed: true
+- id: A3_grad_x_input
+  role: PRIMARY
+  family: gradient
+  signed: true
+- id: A4_integrated_gradients_zero
+  role: PRIMARY
+  family: ig
+  signed: true
+  baseline: ZERO_EMBEDDING
+- id: A5_signed_line_occlusion
+  role: PERTURBATION_REFERENCE
+  family: occlusion
+  signed: true
+  unit: LINE
+  perturbation_operator: SEGMENT_DELETE_V1
+  rq2_role: PERTURBATION_REFERENCE
+  rq2_confirmatory_holm_forbidden: true
+  rq1_normal: true
+  rq3_normal: true
+methods_secondary:
+- id: attention_last4_mean
+  role: SECONDARY
+  family: attention
+  preset: ATTENTION_LAST4_MEAN
+- id: integrated_gradients_pad
+  role: SECONDARY
+  family: ig
+  baseline: PAD_TOKEN_EMBEDDING
+- id: signed_positive_rq1_ranking
+  role: SECONDARY
+- id: line_reduction_mean
+  role: SECONDARY
+- id: faithfulness_probability_space
+  role: SECONDARY
+methods_ablation:
+- id: occlusion_hunk
+  role: ABLATION
+  unit: HUNK
+  perturbation_operator: SEGMENT_DELETE_V1
+- id: representation_4096
+  role: ABLATION
+  max_length: 4096
+  fully_visible_n: 345
+- id: DIFF_POLARITY_SWAP_V1
+  role: ABLATION
+  rq: RQ4
+ig:
+  primary_baseline: ZERO_EMBEDDING
+  secondary_baseline: PAD_TOKEN_EMBEDDING
+  primary_baseline_caveat: 'ZERO_EMBEDDING is a canonical/reproducible baseline, NOT assumed semantically
+
+    neutral for decoder LLMs (Jacobian Scopes arXiv:2601.16407; not JIT-specific).
+
+    '
+  pad_token:
+    string: <|endoftext|>
+    token_id: 151643
+    is_special: true
+    equals_bos_token_id: true
+    equals_primary_eos_im_end: false
+    primary_eos_string: <|im_end|>
+    primary_eos_token_id: 151645
+    also_listed_in_generation_eos_ids: true
+    semantically_neutral_claim: false
+  initial_steps: 50
+  retry_steps: 100
+  max_steps_without_orchestrator: 100
+  integration_rule: GAUSS_LEGENDRE
+  completeness:
+    criterion_name: COMBINED_ABS_REL_TOL_V1_2
+    E_abs: abs(attr_sum - target_delta)
+    converged_if: E_abs <= max(1e-3, 0.05 * abs(target_delta))
+    abs_floor_constant: 0.001
+    relative_factor: 0.05
+    record_both:
+    - E_abs
+    - E_rel
+    legacy_relative_only: SUPERSEDED_FOR_V1_2_PRIMARY
+  retry_policy: 'At 50 steps apply COMBINED_ABS_REL_TOL_V1_2. If not converged, retry 100 steps with the
+    SAME criterion. If still fails: IG_NONCONVERGED.'
+  nonconvergence_policy: 'IG_NONCONVERGED remains in other-method analyses; excluded only from analyses
+
+    requiring valid IG; counted and reported; never replaced by another method.
+
+    '
+  result_policy: 'Primary tables use ZERO_EMBEDDING IG unless implementation failure before results.
+
+    PAD is predeclared sensitivity. Do NOT choose the better-looking baseline post hoc.
+
+    '
+  common_complete_case_sensitivity:
+    name: COMMON_COMPLETE_CASE_SENSITIVITY
+    definition: commits where all compared primary methods are valid
+    imputation: false
+perturbation_operators:
+  occlusion_attribution: SEGMENT_DELETE_V1
+  faithfulness_evaluation_primary: PAYLOAD_BLANK_V1
+  rationale: 'Occlusion attribution (A5) uses SEGMENT_DELETE_V1 (remove complete semantic
+
+    segment: marker+payload, then re-render). Primary RQ2 faithfulness must NOT
+
+    reuse the identical operator; PAYLOAD_BLANK_V1 blanks line/hunk payloads while
+
+    retaining structural markers / chat wrapper so Comp/Suff/AOPC are not
+
+    self-evaluating the same deletion operator used to define occlusion scores.
+
+    '
+occlusion:
+  sign_convention: delta_R = s(x) - s(x_without_R)
+  positive_means: supports_buggy_evidence
+  negative_means: suppresses_buggy_evidence
+  sign_inversion_forbidden: true
+  perturbation_operator: SEGMENT_DELETE_V1
+  line_removal: COMPLETE_SEMANTIC_LINE_SEGMENT
+  hunk_removal: COMPLETE_HUNK_SEGMENT
+  token_zeroing_forbidden: true
+  re_render_re_tokenize: true
+  empty_hunk_policy: REMOVE_EMPTY_HUNK
+  empty_file_policy: REMOVE_EMPTY_FILE_IF_NO_HUNKS_OR_CHANGED_LINES
+  retain_valid_chat_wrapper: true
+  rq2_role: PERTURBATION_REFERENCE
+  rq2_confirmatory_superiority_claims_forbidden: true
+faithfulness:
+  primary_score_space: LOGIT_CONTRAST
+  secondary_score_space: RESTRICTED_BINARY_PROBABILITY
+  full_vocabulary_probability_forbidden: true
+  eraser_distinction: localization/plausibility != faithfulness
+  perturbation_operator_primary: PAYLOAD_BLANK_V1
+  perturbation_operator_sensitivity: SEGMENT_DELETE_V1
+  primary_fractions:
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.5
+  primary_budgeting:
+    name: TOKEN_BUDGET_PREFIX_V1
+    unit: MODEL_VISIBLE_PAYLOAD_TOKENS
+    fractions:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.5
+    budget_tokens: max(1, ceil(f*T))
+    selection: smallest_prefix_cumulative_tokens_ge_budget
+    split_semantic_lines_forbidden: true
+    record:
+    - target_token_budget
+    - realized_token_count
+    - overshoot
+  region_fraction_sensitivity:
+    name: REGION_FRACTION_SENSITIVITY
+    rounding: k = max(1, ceil(f * N_regions))
+    role: SENSITIVITY_NOT_PRIMARY
+    preserves_v1_1_intent: true
+  absolute_perturbation_faithfulness:
+    name: ABSOLUTE_PERTURBATION_FAITHFULNESS
+    ABS_PERTURBATION_IMPACT_f: abs(s(x) - s(x_perturbed_f))
+    ranking:
+      signed_methods: ABS_DESCENDING
+      attention: RAW_DESCENDING
+      random_length_baselines: native_deterministic_ranking
+    primary_endpoint: ABS_DELETION_AOPC
+    ABS_DELETION_AOPC: mean_f ABS_PERTURBATION_IMPACT_f over frozen budgets
+    interpretation: Higher = more prediction impact (direction-agnostic)
+    do_not_call: signed_comprehensiveness
+    is_primary_cross_method_rq2_endpoint: true
+  directional_faithfulness:
+    name: DIRECTIONAL_FAITHFULNESS
+    POSITIVE_EVIDENCE_DROP_f: s(x) - s(x_perturbed_f)
+    ranking: SIGNED_POSITIVE_DESCENDING
+    applies_to: SIGNED_METHODS_ONLY
+    role: SECONDARY_RQ3_LINKED
+    attention_comparison_forbidden: true
+  insertion:
+    ABS_INSERTION_GAIN_f: abs(s(x_insert_f) - s(base))
+    role: SECONDARY
+    not_co_primary: true
+  random_control:
+    name: TOKEN_BUDGET_MATCHED_RANDOM_V1
+    match: realized_perturbed_payload_token_count
+    split_regions_forbidden: true
+    record_abs_token_budget_difference: true
+    repeats: 100
+    compare_against_systematically_fewer_tokens: false
+  operator_dependence_diagnostic:
+    name: OPERATOR_DEPENDENCE_DIAGNOSTIC
+    compare: ABS_DELETION_AOPC under PAYLOAD_BLANK_V1 vs SEGMENT_DELETE_V1
+    occlusion_note: Does not eliminate all circularity
+  deletion_curve_region_fraction_legacy_v1_1:
+    role: REGION_FRACTION_SENSITIVITY
+    definition: V1.1 region-count deletion curve retained as sensitivity
+polarity:
+  rule_name: RELATIVE_POLARITY_EPS_V1
+  formula: 'M = max(abs(region_score)); epsilon = max(1e-8, 1e-6 * M);
+
+    if M == 0: all NEAR_ZERO;
+
+    POSITIVE if score > epsilon; NEGATIVE if score < -epsilon; else NEAR_ZERO.
+
+    '
+  apply_independently_to:
+  - attribution_scores
+  - occlusion_deltas
+  sign_agreement_excludes_near_zero_on_either_side: true
+  report:
+  - agreement_coverage
+  - overall_sign_agreement
+  - positive_agreement
+  - negative_agreement
+  - near_zero_frequency
+  rq3_attention_top2_hunks: &id001
+    name: ATTENTION_TOP2_HUNK_OCCLUSION_SIGN_V1
+    definition: 'Take top-2 hunks by primary attention aggregation (SUM of line attention within hunk,
+
+      RAW_DESCENDING). For each, compute signed occlusion delta via SEGMENT_DELETE_V1
+
+      at hunk granularity. Classify with RELATIVE_POLARITY_EPS_V1 on the set of those deltas
+
+      (or per-commit hunk delta set including all hunks if needed for M).
+
+      Report fraction of the top-2 whose class is NEGATIVE (occlusion delta < -eps),
+
+      i.e. attention-highlighted hunks that suppress buggy evidence under occlusion.
+
+      '
+    near_zero_handling: exclude_from_negative_fraction_numerator_and_note_separately
+missingness:
+  name: METHOD_SPECIFIC_MISSINGNESS_V1_1
+  rules:
+  - id: IG_NONCONVERGED
+    effect: exclude_only_from_analyses_requiring_valid_IG; count_and_report; never_replace_method
+  - id: RQ1_TRUNCATED_COMMIT
+    effect: exclude_from_primary_RQ1; eligible_for_RQ2_RQ3_RQ4_on_visible_regions
+  - id: REGION_NOT_MODEL_VISIBLE
+    effect: exclude_from_all_attribution_and_perturbation_for_that_commit_view
+  - id: EMPTY_CANDIDATE_SET_AFTER_VISIBLE_FILTER
+    effect: mark_COMMIT_NO_VISIBLE_CANDIDATES; exclude_from_metrics_requiring_regions; count_and_report
+  - id: ATTENTION_QUERY_INDEX_UNRESOLVED
+    effect: mark_ATTENTION_UNAVAILABLE; exclude_from_attention_analyses; count_and_report
+  - id: OCCLUSION_RENDER_FAILURE
+    effect: mark_OCCLUSION_UNAVAILABLE; exclude_from_occlusion_and_dependent_RQ3_cells; count_and_report
+  prohibited:
+  - silent_imputation
+  - swap_in_alternate_method
+  - drop_without_counting
+rq4:
+  inference_style: ESTIMATION_PLUS_CAUSAL_CATEGORY_ABLATIONS
+  diff_polarity_swap:
+    name: DIFF_POLARITY_SWAP_V1
+    role: EXPLORATORY_STRUCTURAL_SENSITIVITY
+    not_proof_of_shortcut_reliance: true
+    removed_from_rq4_primary_holm: true
+  test_file_category:
+    status: DEFERRED_NOT_REQUIRED
+    TEST_FILE_SUBANALYSIS: DEFERRED_NOT_REQUIRED
+    removed_from_core_paper_protocol: true
+  enrichment:
+    name: ATTRIBUTION_ENRICHMENT_C
+    token_share_C: tokens_in_C / total_model_visible_tokens
+    abs_mass_share_C: abs_mass_C / total_abs_mass
+    formula: abs_mass_share_C / token_share_C if token_share_C > 0
+    interpretation:
+      1: proportional
+      gt1: enriched
+      lt1: depleted
+    gt1_alone_is_not_spurious: true
+  categories_required:
+  - COMMIT_MESSAGE
+  - FILE_PATH
+  - HUNK_HEADER
+  - ADDED_CODE
+  - DELETED_CODE
+  - CONTEXT_CODE
+  - STRUCTURAL_MARKUP
+  - SPECIAL_TOKEN
+  - PROMPT_INSTRUCTION
+  prompt_template_alias: PROMPT_INSTRUCTION
+  category_ablations:
+    minimum:
+    - COMMIT_MESSAGE
+    - FILE_PATH
+    - STRUCTURAL_MARKUP
+    measure_primary: Delta_category = s(x) - s(x_without_category_information)
+    measure_secondary: restricted_binary_probability_change
+    tune_after_results_forbidden: true
+  primary_reports:
+  - category_token_share
+  - category_abs_mass_share
+  - enrichment
+  - category_ablation_Delta_s
+  giant_category_pvalue_matrix: false
+random_baselines:
+  rq1_repeats: 100
+  seed_derivation: DETERMINISTIC_FROM_COMMIT_AND_REPEAT_INDEX
+  faithfulness_seeds_independent: true
+  no_result_dependent_reroll: true
+execution_order_when_results_start:
+- attention
+- gradient
+- grad_x_input
+- line_occlusion
+- integrated_gradients
+prohibited_post_hoc:
+- choose_ranking_by_rq1_results
+- choose_ig_baseline_by_localization_or_faithfulness
+- choose_attention_preset_by_test_attribution
+- replace_2048_primary_with_4096_because_better
+- select_best_m1_seed_by_test_performance
+- absolute_value_comprehensiveness_under_same_name
+- invert_occlusion_sign
+- score_partial_truncated_universe_as_primary_rq1
+- load_or_bind_intermediate_seed13_checkpoints_as_final
+- use_SEGMENT_DELETE_as_primary_RQ2_operator
+- choose_deletion_vs_insertion_AOPC_by_results
+- freeze_test_file_regex_without_audit
+- replace_RQ234_cohort_475_with_304_silently
+- use_signed_drop_as_common_cross_method_rq2_primary
+- compare_attention_on_directional_faithfulness
+- claim_occlusion_wins_rq2_via_holm
+- use_diff_polarity_swap_as_confirmatory_shortcut_proof
+- call_rq1_faithfulness
+- call_enrichment_gt1_spurious_without_perturbation
+- use_wilcoxon_as_primary_for_binary_topk
+- select_methods_by_validation_rehearsal_scores
+- generalize_rq234_beyond_defect_inducing_without_negative_diagnostic
+- impute_failed_ig
+- change_primary_endpoints_after_seeing_test_results
+outputs:
+  raw_dir: data/results/attribution/
+  schema: attribution_result_row_v1
+  must_carry_protocol_hash: true
+  protocol_version_field: ATTRIBUTION_PROTOCOL_V1_2
+attribution_protocol_amendment_gate: PASS
+reviewer_protocol_amendment_gate: IN_PROGRESS
+validation_attribution_rehearsal_gate: NOT_STARTED
+parent_v1_hash: 73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d
+parent_v1_1_hash: ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e
+preserved_from_v1_1:
+  explanation_target: s(x)=logit_1-logit_0
+  rq1_magnitude_ranking: ABS_DESCENDING
+  signed_sensitivity_ranking: SIGNED_POSITIVE_DESCENDING
+  line_aggregation_primary: SUM
+  line_aggregation_sensitivity: MEAN
+  attention_primary: ATTENTION_LAST_MEAN_HEAD
+  attention_sensitivity: ATTENTION_LAST4_MEAN
+  ig_baseline_primary: ZERO_EMBEDDING
+  ig_baseline_sensitivity: PAD_TOKEN_EMBEDDING
+  occlusion_attribution_operator: SEGMENT_DELETE_V1
+  faithfulness_perturbation_operator: PAYLOAD_BLANK_V1
+  polarity: RELATIVE_POLARITY_EPS_V1
+  rq1_primary_n: 304
+  rq1_4096_ablation_n: 345
+  seeds:
+  - 13
+  - 42
+  - 73
+rq3:
+  primary_endpoint:
+    name: SIGNED_VS_ABSOLUTE_DELTA_RECALL20
+    definition: 'For each signed method: Recall@20%Effort(SIGNED_POSITIVE_DESCENDING) - Recall@20%Effort(ABS_DESCENDING)'
+    role: PRIMARY_INFERENTIAL
+  descriptive:
+  - attention_top2_negative_hunk_rate
+  - sign_agreement
+  - NEGATIVE_HIT_RATE_AT_K
+  attention_top2_hunks: *id001
+seed_stability:
+  name: SEED_RANK_STABILITY_V1_2
+  pairs:
+  - - 13
+    - 42
+  - - 13
+    - 73
+  - - 42
+    - 73
+  summary: Spearman rank correlation over line rank scores per commit
+  report:
+  - commit_distribution
+  - bootstrap_CI
+  average_three_seeds_hiding_instability_forbidden: true
+learned_model_sanity:
+  name: BASE_VS_ADAPTER_SANITY_VALIDATION_ONLY
+  split: validation
+  not_a_test_set_result: true
+  subset_of_rehearsal: 16
+  methods:
+  - A1_attention_last_mean_head
+  - A3_grad_x_input
+  no_ig: true
+  no_full_occlusion_suite: true
+  required_minimum_difference: null
+validation_rehearsal:
+  name: ATTRIBUTION_VALIDATION_REHEARSAL_V1
+  n: 64
+  source: positive validation commits
+  selection:
+    deterministic: true
+    coverage:
+    - projects
+    - input_length_quartiles
+    model_prediction_independent: true
+  timing: AFTER_FULL_TRAINING_GATE_BEFORE_ANY_TEST_ATTRIBUTION
+  content:
+  - attention_primary
+  - attention_sensitivity
+  - vanilla_gradient
+  - grad_x_input
+  - ig_zero
+  - ig_pad
+  - line_occlusion
+  - PAYLOAD_BLANK_faithfulness
+  - SEGMENT_DELETE_sensitivity
+  - RQ_metrics_where_supported
+  - caching
+  - stats_plumbing
+  method_selection_by_rehearsal_performance_forbidden: true
+  permitted_changes:
+  - implementation_bugs
+  - oom_engineering
+  - broken_cache_keys
+  - incorrect_tensor_positions
+  - renderer_corruption
+  - numerical_crashes
+  - serialization_errors
+  forbidden_result_driven_changes:
+  - ranking_definition
+  - primary_endpoint
+  - ig_baseline
+  - faithfulness_metric
+  - polarity_epsilon
+  - method_inclusion
+  - statistical_test
+  acceptance:
+  - pipeline_executes
+  - result_schemas_valid
+  - cache_round_trip
+  - no_label_leakage
+  - no_corrupted_perturbations
+  - memory_feasible
+  - missingness_recorded
+  - ig_convergence_logic_executes
+  - stats_pipeline_accepts_outputs
+  no_score_threshold: true
+model_comparator_scope:
+  M2_SEQUENCE_CLASSIFICATION_HEAD: DEFERRED_FROM_CORE
+  ENCODER_BASELINE: REQUIRED
+  SECOND_DECODER: OPTIONAL_IF_ACCESSIBLE_BEFORE_RESULTS
+  llama_access_failure_blocks_core_paper: false
+paper_claim_scope:
+  attention_universal_unfaithful_forbidden: true
+  use_evaluated_attention_configurations_wording: true
+  llms_generally_forbidden_from_one_backbone: true
+  use_qwen_based_decoder_classifier_wording: true
+  rq1_is_not_faithfulness: true
+  rq4_enrichment_alone_is_not_spuriousness: true
+statistical_endpoints:
+  rq1_primary: RECALL_AT_20_PERCENT_EFFORT
+  rq1_primary_contrasts:
+  - A1_attention_last_mean_head_vs_A3_grad_x_input
+  - A1_attention_last_mean_head_vs_A4_integrated_gradients_zero
+  - A1_attention_last_mean_head_vs_A5_signed_line_occlusion
+  rq2_primary: ABS_DELETION_AOPC
+  rq2_primary_contrasts:
+  - A1_attention_last_mean_head_vs_A3_grad_x_input
+  - A1_attention_last_mean_head_vs_A4_integrated_gradients_zero
+  rq2_occlusion_confirmatory_forbidden: true
+  rq3_primary: SIGNED_VS_ABSOLUTE_DELTA_RECALL20
+  topk_wilcoxon_primary_forbidden: true

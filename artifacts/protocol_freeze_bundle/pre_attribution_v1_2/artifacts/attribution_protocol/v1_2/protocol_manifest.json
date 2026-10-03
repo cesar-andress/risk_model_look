@@ -1,0 +1,26 @@
+{
+  "ATTRIBUTION_PROTOCOL_HASH": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "ATTRIBUTION_PROTOCOL_HASH_V1": "73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d",
+  "ATTRIBUTION_PROTOCOL_HASH_V1_1": "ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e",
+  "amends": "ATTRIBUTION_PROTOCOL_V1_1",
+  "canonical_sha256": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "config_path": "configs/attribution/m1_methods_v1_2.yaml",
+  "frozen_highlights": {
+    "encoder_baseline": "REQUIRED",
+    "ig_completeness": "COMBINED_ABS_REL_TOL_V1_2",
+    "m2": "DEFERRED_FROM_CORE",
+    "negative_diagnostic_n": 475,
+    "occlusion_rq2_role": "PERTURBATION_REFERENCE",
+    "rq1_primary_endpoint": "RECALL_AT_20_PERCENT_EFFORT",
+    "rq2_budgeting": "TOKEN_BUDGET_PREFIX_V1",
+    "rq2_primary_endpoint": "ABS_DELETION_AOPC",
+    "target": "RISK_LOGIT_CONTRAST_V1",
+    "validation_rehearsal_n": 64
+  },
+  "protocol_id": "ATTRIBUTION_PROTOCOL_V1_2",
+  "v1_1_config_path": "configs/attribution/m1_methods_v1_1.yaml",
+  "v1_1_hash_intact": true,
+  "v1_config_path": "configs/attribution/m1_methods_v1.yaml",
+  "v1_hash_intact": true,
+  "validation_errors": []
+}

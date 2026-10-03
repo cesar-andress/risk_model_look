@@ -130,6 +130,11 @@ data/processed/**
 !data/processed/.gitkeep
 !data/processed/**/.gitkeep
 
+# Attribution raw result rows (commit schema/aggregates only)
+data/results/attribution/**
+!data/results/attribution/.gitkeep
+!data/results/attribution/**/.gitkeep
+
 # --- Large archives ---
 *.tar
 *.tar.gz

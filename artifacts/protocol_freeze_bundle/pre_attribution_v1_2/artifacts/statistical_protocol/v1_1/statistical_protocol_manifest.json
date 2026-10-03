@@ -1,0 +1,22 @@
+{
+  "STATISTICAL_PROTOCOL_HASH": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "STATISTICAL_PROTOCOL_HASH_V1": "22816586bb5688b6595d4cd10c86ead079274aa6b1827a50b2d7b0cf7b090c07",
+  "canonical_sha256": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "config_path": "configs/stats/attribution_stats_v1_1.yaml",
+  "frozen_highlights": {
+    "occlusion_rq2": "reference_not_confirmatory",
+    "rq1_contrasts": 3,
+    "rq1_primary": "Recall@20%Effort",
+    "rq2_contrasts": 2,
+    "rq2_primary": "ABS_DELETION_AOPC",
+    "rq3_primary": "SIGNED_VS_ABSOLUTE_DELTA_RECALL20",
+    "rq4": "estimation_focused"
+  },
+  "parent_attribution_protocol": {
+    "hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+    "protocol_id": "ATTRIBUTION_PROTOCOL_V1_2"
+  },
+  "protocol_id": "STATISTICAL_ANALYSIS_PROTOCOL_V1_1",
+  "v1_config_path": "configs/stats/attribution_stats_v1.yaml",
+  "validation_errors": []
+}

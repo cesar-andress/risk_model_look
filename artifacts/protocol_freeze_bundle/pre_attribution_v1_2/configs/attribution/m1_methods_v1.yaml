@@ -1,0 +1,235 @@
+# ATTRIBUTION_PROTOCOL_V1 — frozen BEFORE any scientific M1 attribution results.
+# Machine-readable source of truth. Hash via src/experiments/protocol_manifest.py
+# DO NOT bind adapter paths to intermediate training checkpoints.
+# DO NOT change primary vs sensitivity roles after observing results.
+
+schema_version: 1
+protocol_id: ATTRIBUTION_PROTOCOL_V1
+gate: ATTRIBUTION_PROTOCOL_FREEZE
+attribution_infrastructure_gate: PASS
+attribution_results_gate: NOT_STARTED
+rq1_results_gate: NOT_STARTED
+
+model:
+  model_id: Qwen/Qwen2.5-Coder-7B-Instruct
+  revision: c03e6d358207e414f1eca0bb1891e29f1db0e242
+  formulation: M1
+  adapter_path: RESOLVE_FROM_M1_FINAL_MANIFEST
+  seeds: [13, 42, 73]
+  three_seed_policy: ALL_SEEDS_THEN_AGGREGATE  # never select by test performance
+
+target:
+  name: RISK_LOGIT_CONTRAST_V1
+  formula: "s(x) = logit_1(x) - logit_0(x)"
+  forbidden_primary: [probability, full_vocabulary_score, generated_token_likelihood, argmax_class]
+
+representation:
+  primary: CHANGED_ONLY
+  primary_max_length: 2048
+  ablation_max_length: 4096
+  prompt_template_version: 1
+  token_map_version: 1
+  truncation: WHOLE_SEGMENT_PREFIX_TRUNCATION_V1
+
+rq1:
+  universe: POLICY_A_COMPLETE_CASE
+  complete_case_n: 413
+  primary_fully_visible_n_2048: 304
+  ablation_fully_visible_n_4096: 345
+  statuses_in_denominator: [RQ1_POSITIVE, RQ1_NEGATIVE]
+  exclude: [NOT_IN_RQ1_UNIVERSE]
+  ifa_indexing: ZERO_BASED_FALSE_ALARM_COUNT
+  # Primary ranking: WHERE evidence is (magnitude), not polarity
+  primary_rank_transform_signed_methods: ABS_DESCENDING
+  primary_rank_transform_attention: RAW_DESCENDING  # nonnegative; no abs
+  sensitivity_rank_transform_signed_methods: SIGNED_POSITIVE_DESCENDING  # buggy-supporting only; SECONDARY
+  tie_break:
+    - rank_score_DESC
+    - ordered_position_ASC
+    - stable_line_id_ASC
+  truncated_commits_policy: DO_NOT_SCORE_PARTIAL_CANDIDATE_UNIVERSE_AS_PRIMARY
+
+aggregation:
+  line_reduction_primary: SUM
+  line_reduction_sensitivity: MEAN
+  line_reduction_exploratory_only: [MAX_ABS_WITH_SIGN]
+  frozen: true
+  rationale_sum: "SUM preserves additive contribution/mass across tokens; MEAN is average per-token importance (different question)."
+
+attention:
+  interpretation: INTERNAL_IMPORTANCE_PROXY_BASELINE  # not presumed faithful; faithfulness tested in RQ2
+  primary_preset: ATTENTION_LAST_MEAN_HEAD
+  sensitivity_preset: ATTENTION_LAST4_MEAN
+  query_position_policy: FIRST_ASSISTANT_CLASSIFICATION_TOKEN
+  primary_config:
+    layer_selection: LAST
+    head_aggregation: MEAN
+    token_to_line: SUM
+  sensitivity_config:
+    layer_selection: FINAL_K_MEAN
+    final_k: 4
+    head_aggregation: MEAN
+    token_to_line: SUM
+  claim_language: |
+    Attention is an internal importance proxy / baseline.
+    Do not describe raw attention as inherently faithful explanation.
+    Faithfulness is empirical (RQ2). Jain & Wallace 2019 and Wiegreffe & Pinter 2019
+    are methodological context, not a final universal verdict.
+
+methods_primary:
+  - id: A0_random_line
+    role: PRIMARY
+    family: random
+    signed: false
+  - id: A1_attention_last_mean_head
+    role: PRIMARY
+    family: attention
+    signed: false
+    preset: ATTENTION_LAST_MEAN_HEAD
+  - id: A2_vanilla_gradient
+    role: PRIMARY
+    family: gradient
+    signed: true
+  - id: A3_grad_x_input
+    role: PRIMARY
+    family: gradient
+    signed: true
+  - id: A4_integrated_gradients_zero
+    role: PRIMARY
+    family: ig
+    signed: true
+    baseline: ZERO_EMBEDDING
+  - id: A5_signed_line_occlusion
+    role: PRIMARY
+    family: occlusion
+    signed: true
+    unit: LINE
+
+methods_secondary:
+  - id: attention_last4_mean
+    role: SECONDARY
+    family: attention
+    preset: ATTENTION_LAST4_MEAN
+  - id: integrated_gradients_pad
+    role: SECONDARY
+    family: ig
+    baseline: PAD_TOKEN_EMBEDDING
+  - id: signed_positive_rq1_ranking
+    role: SECONDARY
+    note: ranking sensitivity only; not a new attribution method
+  - id: line_reduction_mean
+    role: SECONDARY
+    note: aggregation sensitivity
+  - id: faithfulness_probability_space
+    role: SECONDARY
+    note: restricted binary p_buggy secondary faithfulness
+
+methods_ablation:
+  - id: occlusion_hunk
+    role: ABLATION
+    unit: HUNK
+  - id: representation_4096
+    role: ABLATION
+    max_length: 4096
+    fully_visible_n: 345
+
+ig:
+  primary_baseline: ZERO_EMBEDDING
+  secondary_baseline: PAD_TOKEN_EMBEDDING
+  primary_baseline_caveat: |
+    ZERO_EMBEDDING is a canonical/reproducible baseline, NOT assumed semantically
+    neutral for decoder LLMs. Jacobian Scopes (arXiv:2601.16407) reports null-path
+    OOD / attention-sink distortions; findings are not claimed JIT-specific.
+  pad_token:
+    string: "<|endoftext|>"
+    token_id: 151643
+    is_special: true
+    equals_bos_token_id: true
+    equals_primary_eos_im_end: false
+    primary_eos_string: "<|im_end|>"
+    primary_eos_token_id: 151645
+    also_listed_in_generation_eos_ids: true
+    semantically_neutral_claim: false
+  initial_steps: 50
+  retry_steps: 100
+  max_steps_without_orchestrator: 100
+  integration_rule: GAUSS_LEGENDRE
+  completeness:
+    relative_tolerance: 0.05
+    abs_floor_denominator: 1.0e-6
+  retry_policy: |
+    If E_rel > 0.05 at 50 steps, rerun SAME example at 100 steps.
+    If E_rel <= 0.05 at 100, accept 100-step attribution.
+    Else mark IG_NONCONVERGED for that baseline/example.
+  nonconvergence_policy: |
+    IG_NONCONVERGED remains in other-method analyses; excluded only from analyses
+    requiring valid IG; counted and reported; never replaced by another method.
+  result_policy: |
+    Primary tables use ZERO_EMBEDDING IG unless implementation failure before results.
+    PAD is predeclared sensitivity. If ZERO and PAD disagree substantially, report
+    baseline dependence. Do NOT choose the better-looking baseline post hoc.
+
+occlusion:
+  sign_convention: "delta_R = s(x) - s(x_without_R)"
+  positive_means: supports_buggy_evidence
+  negative_means: suppresses_buggy_evidence
+  sign_inversion_forbidden: true
+  line_removal: COMPLETE_SEMANTIC_LINE_SEGMENT  # marker + payload
+  hunk_removal: COMPLETE_HUNK_SEGMENT
+  token_zeroing_forbidden: true
+  re_render_re_tokenize: true
+  empty_hunk_policy: REMOVE_EMPTY_HUNK
+  empty_file_policy: REMOVE_EMPTY_FILE_IF_NO_HUNKS_OR_CHANGED_LINES
+  retain_valid_chat_wrapper: true
+
+faithfulness:
+  primary_score_space: LOGIT_CONTRAST
+  secondary_score_space: RESTRICTED_BINARY_PROBABILITY  # p_buggy = softmax([l0,l1])[1]
+  full_vocabulary_probability_forbidden: true
+  comprehensiveness: "COMP(R) = s(x) - s(x \\ R)"  # signed; do not abs under this name
+  sufficiency_raw: "SUFF_RAW(R) = s(x) - s(R_only)"  # closer to zero => more sufficient
+  sufficiency_error: "SUFF_ERROR(R) = abs(s(x) - s(R_only))"  # higher is NOT better
+  eraser_distinction: "localization/plausibility != faithfulness"
+  perturbation_fractions: [0.05, 0.10, 0.20, 0.30, 0.50]
+  random_control: LENGTH_OR_CANDIDATE_COUNT_MATCHED
+  random_seeds_independent_of_training: true
+
+polarity:
+  rule_name: RELATIVE_POLARITY_EPS_V1
+  formula: |
+    M = max(abs(region_score)); epsilon = max(1e-8, 1e-6 * M);
+    if M == 0: all NEAR_ZERO;
+    POSITIVE if score > epsilon; NEGATIVE if score < -epsilon; else NEAR_ZERO.
+  apply_independently_to: [attribution_scores, occlusion_deltas]
+  sign_agreement_excludes_near_zero_on_either_side: true
+  report: [agreement_coverage, overall_sign_agreement, positive_agreement, negative_agreement, near_zero_frequency]
+
+random_baselines:
+  rq1_repeats: 100
+  seed_derivation: DETERMINISTIC_FROM_COMMIT_AND_REPEAT_INDEX
+  faithfulness_seeds_independent: true
+  no_result_dependent_reroll: true
+
+execution_order_when_results_start:
+  # Execution order only — must NOT influence which methods are reported.
+  - attention
+  - gradient
+  - grad_x_input
+  - line_occlusion
+  - integrated_gradients
+
+prohibited_post_hoc:
+  - choose_ranking_by_rq1_results
+  - choose_ig_baseline_by_localization_or_faithfulness
+  - choose_attention_preset_by_test_attribution
+  - replace_2048_primary_with_4096_because_better
+  - select_best_m1_seed_by_test_performance
+  - absolute_value_comprehensiveness_under_same_name
+  - invert_occlusion_sign
+  - score_partial_truncated_universe_as_primary_rq1
+  - load_or_bind_intermediate_seed13_checkpoints_as_final
+
+outputs:
+  raw_dir: data/results/attribution/
+  schema: attribution_result_row_v1
+  must_carry_protocol_hash: true

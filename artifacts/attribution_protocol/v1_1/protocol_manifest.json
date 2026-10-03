@@ -1,0 +1,27 @@
+{
+  "ATTRIBUTION_PROTOCOL_HASH": "ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e",
+  "ATTRIBUTION_PROTOCOL_HASH_V1": "73f0f891683f926a39d68b078f6e2770a1b42181ba1a9f56575c5556cba4794d",
+  "amends": "ATTRIBUTION_PROTOCOL_V1",
+  "canonical_sha256": "ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e",
+  "config_path": "configs/attribution/m1_methods_v1_1.yaml",
+  "frozen_highlights": {
+    "diff_polarity_swap": "DIFF_POLARITY_SWAP_V1",
+    "faithfulness_operator": "PAYLOAD_BLANK_V1",
+    "fraction_rounding": "ceil",
+    "occlusion_operator": "SEGMENT_DELETE_V1",
+    "rq1_n": 304,
+    "rq234_n": 475,
+    "rq2_fractions": [
+      0.1,
+      0.2,
+      0.3,
+      0.5
+    ],
+    "target": "RISK_LOGIT_CONTRAST_V1",
+    "test_file_category": "PENDING_AUDIT"
+  },
+  "protocol_id": "ATTRIBUTION_PROTOCOL_V1_1",
+  "v1_config_path": "configs/attribution/m1_methods_v1.yaml",
+  "v1_hash_intact": true,
+  "validation_errors": []
+}

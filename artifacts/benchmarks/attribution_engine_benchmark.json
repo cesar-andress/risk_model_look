@@ -1,0 +1,31 @@
+{
+  "cache": {
+    "cache_read_per_sec": 24221.268049572966,
+    "cache_reads": 100,
+    "cache_write_per_sec": 12712.36319551479,
+    "cache_writes": 100,
+    "read_seconds": 0.004128603002754971,
+    "write_seconds": 0.007866358006140217
+  },
+  "forward_backward": {
+    "forward_backward_iters": 200,
+    "fwd_bwd_per_sec": 9374.104627103166,
+    "seconds": 0.021335370998713188
+  },
+  "ig_path": {
+    "ig_step_per_sec": 88014.0836311375,
+    "ig_steps_total": 1000,
+    "seconds": 0.011361818003933877
+  },
+  "occlusion": {
+    "batch_plan": {
+      "batch_size": 8,
+      "n_batches": 4,
+      "n_items": 32
+    },
+    "occlusion_region_evals": 960,
+    "occlusion_region_per_sec": 148490.50133743577,
+    "seconds": 0.006465059996116906
+  },
+  "toy_model_available": true
+}

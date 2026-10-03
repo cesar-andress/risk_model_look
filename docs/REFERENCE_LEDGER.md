@@ -211,3 +211,60 @@ Do **not** invent missing author lists or DOIs.
 ---
 
 No entries were inserted into `paper/refs.bib` in this task.
+
+---
+
+## Attribution protocol freeze references (2026-10-01)
+
+### R17 — Integrated Gradients (Sundararajan et al.)
+
+- Authors: Mukund Sundararajan, Ankur Taly, Qiqi Yan
+- Title: Axiomatic Attribution for Deep Networks
+- Venue: ICML 2017 (PMLR 70:3319–3328)
+- arXiv: 1703.01365
+- Status: VERIFIED_PUBLISHER (PMLR); VERIFIED_PREPRINT (arXiv abs)
+- Role: IG method definition / completeness axiom
+
+### R14 (updated) — Jain & Wallace 2019
+
+- Authors: Sarthak Jain, Byron C. Wallace
+- Title: Attention is not Explanation
+- Venue: NAACL 2019
+- DOI: **10.18653/v1/N19-1357** (ACL Anthology verified)
+- arXiv: 1902.10186
+- Status: VERIFIED_PUBLISHER; VERIFIED_PREPRINT
+- Role: methodological context — attention not presumed faithful; not a universal verdict
+
+### R18 — Wiegreffe & Pinter 2019
+
+- Authors: Sarah Wiegreffe, Yuval Pinter
+- Title: Attention is not not Explanation
+- Venue: EMNLP-IJCNLP 2019
+- DOI: **10.18653/v1/D19-1002** (ACL Anthology verified)
+- arXiv: 1908.04626
+- Status: VERIFIED_PUBLISHER; VERIFIED_PREPRINT
+- Role: methodological counterpoint to R14; not a universal verdict
+
+### R19 — ERASER (DeYoung et al. 2020)
+
+- Authors: Jay DeYoung, Sarthak Jain, Nazneen Fatema Rajani, Eric Lehman, Caiming Xiong, Richard Socher, Byron C. Wallace
+- Title: ERASER: A Benchmark to Evaluate Rationalized NLP Models
+- Venue: ACL 2020
+- DOI: **10.18653/v1/2020.acl-main.408** (ACL Anthology verified)
+- Status: VERIFIED_PUBLISHER
+- Role: localization/plausibility vs faithfulness distinction; comprehensiveness/sufficiency vocabulary
+
+### N8 — Liang et al. IST 2026 (PTM/fusion revisit)
+
+- Authors: Yuguo Liang, Guisheng Fan, Huiqun Yu, Wentao Chen, Chengcheng Wu, Zijie Huang
+- Title: Revisiting pre-trained models and feature fusion strategies for just-in-time defect prediction
+- Venue: Information and Software Technology, 2026, volume 197, article/page 108170
+- DOI: **10.1016/j.infsof.2026.108170** (verified Crossref 2026-10-01)
+- Status: VERIFIED_PUBLISHER; FULL_TEXT_UNAVAILABLE / abstract empty in OpenAlex this audit
+- Role: 2026 JIT landscape (PTM + feature fusion); not a novelty collision
+
+### Refresh note (2026-10-01)
+
+SOTA refresh for manuscript Related Work: see `paper/docs/SOTA_REFRESH_REPORT.md`.
+Prior collision conclusion retained (no direct conjunction collision).
+JITEC faithfulness/polarity cells remain UNCLEAR (abstract-only for those absences).

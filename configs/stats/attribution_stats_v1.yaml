@@ -1,0 +1,207 @@
+# STATISTICAL_ANALYSIS_PROTOCOL_V1 — frozen BEFORE scientific attribution results.
+# Parent: ATTRIBUTION_PROTOCOL_V1_1 / ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e
+# No choice herein may depend on which method performs best.
+
+schema_version: 1
+protocol_id: STATISTICAL_ANALYSIS_PROTOCOL_V1
+gate: STATISTICAL_PROTOCOL_FREEZE
+parent_attribution_protocol:
+  protocol_id: ATTRIBUTION_PROTOCOL_V1_1
+  hash: ae710257f6ab76e40f12977878c4ec57b2bf59acf2bf5d44d816d2461087670e
+
+scipy_version_at_freeze: "1.15.3"
+
+inference:
+  primary_unit: COMMIT
+  forbidden_units: [COMMIT_X_SEED_AS_INDEPENDENT]
+  note: Three M1 seeds are repeated model realizations; avoid pseudoreplication.
+
+seed_aggregation:
+  model_seeds: [13, 42, 73]
+  pairwise_procedure: |
+    For methods A vs B and each commit:
+    1) identify seeds where BOTH have valid results;
+    2) compute metric difference within each common-valid seed;
+    3) average those paired seed-level differences within the commit.
+  min_common_valid_seeds: 2
+  exclude_commit_if_fewer_common_seeds: true
+  imputation: forbidden
+  always_report: [N_total_candidate, N_included, N_excluded_missingness]
+  descriptive_tables: per_seed_plus_mean_sample_sd_across_seeds
+  inference_distributions: commit_level_only_no_flatten
+
+paired_test:
+  name: WILCOXON_SIGNED_RANK_V1
+  alternative: two-sided
+  zero_method: PRATT
+  all_zero_differences:
+    status: ALL_ZERO_DIFFERENCES
+    p_value: 1.0
+    effect_size: 0.0
+  switch_exact_approx_by_pvalue: forbidden
+
+effect_sizes:
+  primary_paired: MATCHED_PAIRS_RANK_BISERIAL_CORRELATION
+  orientation: |
+    positive = first-listed method has larger raw metric value.
+    Report DIRECTION_OF_BETTER_PERFORMANCE separately for lower-is-better metrics.
+    Never silently flip raw metric signs.
+  secondary_legacy: CLIFFS_DELTA
+  cliffs_delta_role: SECONDARY_LEGACY_EFFECT_SIZE
+  cliffs_delta_determines_conclusions: false
+  also_report_raw: [median_paired_diff, mean_paired_diff, iqr_paired_diff]
+  verbal_small_medium_large_bins: secondary_only_if_used
+
+bootstrap:
+  name: PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1
+  repeats: 10000
+  confidence_level: 0.95
+  percentiles: [2.5, 97.5]
+  resampling_unit: COMMIT
+  cluster_semantics: keep_all_seed_method_obs_for_sampled_commit_together
+  independent_seed_commit_resample: forbidden
+  choose_bca_after_results: forbidden
+  rng_derivation: SHA256(STATISTICAL_PROTOCOL_HASH + RQ + metric + comparison_id)
+
+multiplicity:
+  method: HOLM_FWER_V1
+  alpha: 0.05
+  substitute_bh_after_results: forbidden
+  families:
+    RQ1_PRIMARY: all_inferential_primary_method_comparisons_across_rq1_primary_metrics
+    RQ2_PRIMARY: primary_method_comparisons_for_deletion_aopc_and_insertion_aopc
+    RQ3_PRIMARY: inferential_signed_vs_absolute_comparisons
+    RQ4_PRIMARY: explicitly_inferential_primary_rq4_tests
+    SENSITIVITY: separately_labelled_sensitivity_family
+  mix_primary_and_sensitivity: forbidden
+
+rq1:
+  population_n: 304
+  primary_endpoints:
+    - name: Top-1
+      direction: HIGHER_BETTER
+    - name: Top-5
+      direction: HIGHER_BETTER
+    - name: Top-10
+      direction: HIGHER_BETTER
+    - name: IFA
+      direction: LOWER_BETTER
+    - name: Recall@20%Effort
+      direction: HIGHER_BETTER
+    - name: Effort@20%Recall
+      direction: LOWER_BETTER
+  method_comparisons: all_unordered_pairwise_among_PRIMARY_methods
+  random_baseline: reference_method_included
+  topk_mcnemar: SECONDARY_DIAGNOSTIC
+  random_baseline_collapse: expected_commit_level_metric_from_100_perms_before_inference
+
+rq2:
+  population_n: 475
+  primary_endpoints:
+    - name: DELETION_AOPC
+      direction: HIGHER_BETTER
+      operator: PAYLOAD_BLANK_V1
+      score_space: LOGIT_CONTRAST
+    - name: INSERTION_AOPC
+      direction: HIGHER_BETTER
+      operator: PAYLOAD_BLANK_V1
+      score_space: LOGIT_CONTRAST
+  fraction_level_curves: descriptive_with_bootstrap_ci_not_primary_hypotheses
+  operator_sensitivity_segment_delete: RQ2_SENSITIVITY
+  sufficiency_error:
+    role: SECONDARY
+    direction: LOWER_BETTER
+  sufficiency_raw: directional_descriptive
+
+rq3:
+  attention_polarity_top2:
+    role: ESTIMATION
+    report: [point_estimate, commit_cluster_bootstrap_95ci]
+    null_hypothesis_50pct: forbidden_without_theory
+  signed_vs_absolute:
+    role: PRIMARY_INFERENCE
+    ranking_a: ABS_DESCENDING
+    ranking_b: SIGNED_POSITIVE_DESCENDING
+    metrics: [Top-5, Top-10, Recall@20%Effort]
+    test: WILCOXON_SIGNED_RANK_V1
+    holm_family: RQ3_PRIMARY
+  sign_agreement:
+    role: ESTIMATION
+    report: [coverage, agreement, positive_agreement, negative_agreement, near_zero_frequency, bootstrap_95ci]
+    test_vs_0_5: forbidden
+  kendall_tau:
+    role: SECONDARY
+    unit: COMMIT
+    report: [per_commit_tau_distribution, median, iqr, bootstrap_ci]
+
+rq4:
+  category_mass:
+    role: DESCRIPTIVE_ESTIMATIVE
+    report: [mean_norm_abs_mass, median, iqr, bootstrap_95ci, signed_mass]
+    all_category_pairwise_significance_matrix: forbidden
+  test_file_category:
+    status: PENDING_AUDIT
+    primary_hypothesis_allowed: false
+  prediction_correctness_association:
+    role: PRIMARY
+    measure: POINT_BISERIAL_CORRELATION
+    x: normalized_abs_attribution_mass_on_labelled_positive_added_lines
+    y: binary_prediction_correctness
+    subset: eligible_RQ1_labelled
+    per_seed: true
+    report: [seed_wise_correlation, mean_sd_across_seeds]
+    commit_aggregate_ci: cluster_bootstrap_commits_preserving_seeds
+  continuous_association:
+    role: SECONDARY_CONTINUOUS_ASSOCIATION
+    measure: SPEARMAN
+    y: risk_logit_contrast
+  diff_polarity_swap:
+    delta_swap_logit:
+      role: PRIMARY
+      test: one_sample_wilcoxon_signed_rank_against_zero
+      also_report: [median, mean, rank_biserial, bootstrap_95ci]
+    delta_swap_prob: SECONDARY
+  attribution_distribution_swap:
+    role: SECONDARY
+    distance: L1_normalized_category_mass_vectors
+
+missingness:
+  respect: METHOD_SPECIFIC_MISSINGNESS_V1_1
+  statuses_to_tabulate:
+    - IG_NONCONVERGED
+    - OOM
+    - NO_ELIGIBLE_REGION
+    - NUMERICAL_FAILURE
+  hide_low_coverage_methods: forbidden
+
+minimum_n:
+  threshold: 30
+  below_flag: LOW_POWER_EXPLORATORY
+  strong_confirmatory_claims_below_threshold: forbidden
+
+reporting:
+  p_values: [raw, holm_adjusted]
+  p_zero_style: "p < 0.001"
+  nonsignificant_equals_equivalence: false
+  result_role_tags: [PRIMARY, SECONDARY, SENSITIVITY, EXPLORATORY]
+  change_role_after_seeing_values: forbidden_without_amendment
+  best_method_requires:
+    - directionally_favorable_point_estimate
+    - holm_adjusted_evidence_when_primary_inferential
+    - effect_size_and_ci
+  scott_knott_esd_primary: false
+
+prohibited_post_hoc:
+  - flatten_seed_x_commit_as_independent
+  - impute_attribution_values
+  - switch_wilcoxon_exact_approx_by_pvalue
+  - choose_bca_vs_percentile_after_results
+  - substitute_bh_for_holm_after_results
+  - mix_primary_and_sensitivity_pvalues
+  - redefine_metric_directions
+  - promote_sufficiency_to_primary_after_results
+  - manufacture_50pct_null_for_attention_polarity
+  - treat_random_permutations_as_independent_samples
+  - use_scott_knott_to_rank_favorably
+  - label_best_by_mean_alone
+  - include_test_file_primary_hypothesis_while_PENDING_AUDIT

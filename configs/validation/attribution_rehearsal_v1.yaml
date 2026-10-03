@@ -1,0 +1,18 @@
+# Attribution validation rehearsal cohort + acceptance (V1.2 companion).
+# Do not run until FULL_TRAINING_GATE completes.
+
+schema_version: "1"
+protocol_id: ATTRIBUTION_VALIDATION_REHEARSAL_V1
+parent_attribution_protocol: ATTRIBUTION_PROTOCOL_V1_2
+n: 64
+source_split: validation
+source_label: positive
+selection:
+  deterministic: true
+  coverage: [projects, input_length_quartiles]
+  model_prediction_independent: true
+base_model_sanity:
+  n: 16
+  methods: [A1_attention_last_mean_head, A3_grad_x_input]
+method_selection_by_scores_forbidden: true
+acceptance_technical_only: true

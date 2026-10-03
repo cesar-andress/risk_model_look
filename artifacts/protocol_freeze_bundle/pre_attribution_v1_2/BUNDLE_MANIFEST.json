@@ -1,0 +1,123 @@
+{
+  "EXTERNAL_TIMESTAMP_STATUS": "PENDING",
+  "PROTOCOL_FREEZE_BUNDLE_SHA256": "624eb6cedccc7c4c9bcf12903b6e671ae14d22bc7ae8a7895cb39c13759a32bb",
+  "attribution_v1_2": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "files": [
+    {
+      "nbytes": 6530,
+      "path": "docs/ATTRIBUTION_PROTOCOL_V1.md",
+      "sha256": "4593ba22cbe8ce7eabf1b72155c6292afb8335baffa99bbdab1286cc0e51184a"
+    },
+    {
+      "nbytes": 2435,
+      "path": "docs/ATTRIBUTION_PROTOCOL_V1_1.md",
+      "sha256": "82f46cb870ab2ff0a36088dc25a9d3630871b36b7c33b3a7f323fa5a639f4cdb"
+    },
+    {
+      "nbytes": 3110,
+      "path": "docs/ATTRIBUTION_PROTOCOL_V1_2.md",
+      "sha256": "18e6c6f330f2f78b597ca09a65dfa6e60d192155e8471334f7b389e9fe86bdea"
+    },
+    {
+      "nbytes": 4055,
+      "path": "docs/STATISTICAL_ANALYSIS_PROTOCOL_V1.md",
+      "sha256": "d95d8f61ba502e35a0a7c9e3f5edf1b0a7fb80851459bde420711defb5ab7ae3"
+    },
+    {
+      "nbytes": 1721,
+      "path": "docs/STATISTICAL_ANALYSIS_PROTOCOL_V1_1.md",
+      "sha256": "0679d087e8bc3a6020d04812a0766e8ddcd40e474f47087d410f462165bd9573"
+    },
+    {
+      "nbytes": 1726,
+      "path": "docs/VALIDATION_ATTRIBUTION_REHEARSAL_PROTOCOL.md",
+      "sha256": "f630d77dd1fb621df88720fcd1cf41fcc6b6ec2c41b3d3c35620e7f17823109f"
+    },
+    {
+      "nbytes": 2357,
+      "path": "docs/ADVERSARIAL_REVIEW_RESPONSE.md",
+      "sha256": "9b684b4f4beba93bf55f21eede70fcfefb71e8f23fa66b8b86160615937290ca"
+    },
+    {
+      "nbytes": 30168,
+      "path": "docs/DECISION_LOG.md",
+      "sha256": "d57da140a541a49a9cf097ad262d49cd0c10dab403d2bca464294104417d7ce6"
+    },
+    {
+      "nbytes": 8345,
+      "path": "configs/attribution/m1_methods_v1.yaml",
+      "sha256": "be4b21846cacd48a1fc6544c048ad9527f2dbf31b24cc725650a137f2d788008"
+    },
+    {
+      "nbytes": 13045,
+      "path": "configs/attribution/m1_methods_v1_1.yaml",
+      "sha256": "e7e88bb213e138fc1abcb58914a6f06c304169529286aba142334f1da8f48fdd"
+    },
+    {
+      "nbytes": 22244,
+      "path": "configs/attribution/m1_methods_v1_2.yaml",
+      "sha256": "659dfbda12529bfcb9b9e9dfeda9d6fc7f079726c291c70ff8bb291c55f14577"
+    },
+    {
+      "nbytes": 7181,
+      "path": "configs/stats/attribution_stats_v1.yaml",
+      "sha256": "87f41413949076d0e6bea8e80f051d2d79f7f003d7d7f122fe5c7029b1e16b38"
+    },
+    {
+      "nbytes": 7510,
+      "path": "configs/stats/attribution_stats_v1_1.yaml",
+      "sha256": "704a6096effe2941319d05ef8644cf04f12fce1fc9b7f705fa426cdff9e929a7"
+    },
+    {
+      "nbytes": 578,
+      "path": "configs/validation/attribution_rehearsal_v1.yaml",
+      "sha256": "aa1529a7b6d8387736ba22112b5ffcdaf02a7d47ecd0df74bb35364d0982623e"
+    },
+    {
+      "nbytes": 91,
+      "path": "artifacts/attribution_protocol/CURRENT_PROTOCOL",
+      "sha256": "2ef9f95701f5fd4222bd87e86ab307be4191e43f5f4d668d73f43adcf7edd6c3"
+    },
+    {
+      "nbytes": 1219,
+      "path": "artifacts/attribution_protocol/protocol_manifest.json",
+      "sha256": "adcb9a01ca22eb93563f7b18a1ed3e047dd7b6fa838239868f02a8c8a67ee675"
+    },
+    {
+      "nbytes": 1219,
+      "path": "artifacts/attribution_protocol/v1_2/protocol_manifest.json",
+      "sha256": "adcb9a01ca22eb93563f7b18a1ed3e047dd7b6fa838239868f02a8c8a67ee675"
+    },
+    {
+      "nbytes": 22007,
+      "path": "artifacts/attribution_protocol/v1_2/protocol_canonical.json",
+      "sha256": "f3984a4cfcc3f363f24c734f19fae2387dba7f51a5c0f69382f6f4bf606edf9c"
+    },
+    {
+      "nbytes": 100,
+      "path": "artifacts/statistical_protocol/CURRENT_STATISTICAL_PROTOCOL",
+      "sha256": "e96f9a2380820c787864bfbe01b0740877c199e0c85ba84f5eac8db5a46549b4"
+    },
+    {
+      "nbytes": 964,
+      "path": "artifacts/statistical_protocol/statistical_protocol_manifest.json",
+      "sha256": "967570a7d2785ec2b2c01ca72712f8aaf295cbf3c6c9da9f2f29e330ead57ab1"
+    },
+    {
+      "nbytes": 964,
+      "path": "artifacts/statistical_protocol/v1_1/statistical_protocol_manifest.json",
+      "sha256": "967570a7d2785ec2b2c01ca72712f8aaf295cbf3c6c9da9f2f29e330ead57ab1"
+    },
+    {
+      "nbytes": 7173,
+      "path": "artifacts/statistical_protocol/v1_1/statistical_protocol_canonical.json",
+      "sha256": "058f9bc0da2809419b9911fc76b48ad04368fee925cc171374727efc6759148d"
+    },
+    {
+      "nbytes": 1396,
+      "path": "STATUS.md",
+      "sha256": "626df8952808d4141cc12c17c74a1319c1a9176e721a2a164f13840cb12ff117"
+    }
+  ],
+  "statistical_v1_1": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8"
+}

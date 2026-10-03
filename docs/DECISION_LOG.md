@@ -308,6 +308,52 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Reversible:** Only via explicit protocol amendment labelled sensitivity — cannot replace primary locked results after `M1_TEST_LOCKED`.
 - **Gate affected:** FULL_TRAINING_GATE, ATTRIBUTION_GATE
 
+## 2026-10-01 — ATTRIBUTION_INFRASTRUCTURE_GATE (parallel worktree)
+
+- **Decision:** Implement attribution / RQ metric **infrastructure** on branch `parallel/attribution-infra` from committed base `9c93eaa`, without disturbing the primary training worktree. Canonical M1 explanation target = `s = logit_1 - logit_0`. Occlusion sign frozen as `delta = s(x) - s(x\\R)`. IFA indexing aligned with existing guard: `ZERO_BASED_FALSE_ALARM_COUNT`. Line aggregation candidates SUM/MEAN/MAX_ABS_WITH_SIGN (SUM primary *candidate*, not frozen). Adapter paths unresolved until FULL_TRAINING completes. Mark `ATTRIBUTION_RESULTS_GATE` / `RQ1_RESULTS_GATE` = NOT_STARTED. Do not load 7B or produce scientific attribution results in this gate.
+- **Reason:** Parallel engineering while M1 final trains; interfaces and CPU synthetic tests only.
+- **Alternatives considered:** Develop in training worktree (rejected — risk to live run); bind seed-13 intermediate adapters (rejected).
+- **Reversible:** Yes via protocol amendment for metric/method freezes.
+- **Gate affected:** ATTRIBUTION_INFRASTRUCTURE_GATE, ATTRIBUTION_RESULTS_GATE, RQ1_RESULTS_GATE
+
+## 2026-10-01 — ATTRIBUTION_PROTOCOL_FREEZE_GATE
+
+- **Decision:** Freeze ATTRIBUTION_PROTOCOL_V1 before any scientific M1 attribution results. Primary RQ1 ranking for signed methods = ABS_DESCENDING; attention = RAW_DESCENDING; secondary SIGNED_POSITIVE_DESCENDING. LINE_REDUCTION primary SUM / sensitivity MEAN. Attention primary ATTENTION_LAST_MEAN_HEAD (proxy, not presumed faithful). Faithfulness primary LOGIT_CONTRAST; secondary restricted binary probability. IG primary ZERO_EMBEDDING + GAUSS_LEGENDRE 50→100 retry (E_rel≤0.05) with PAD sensitivity; pad=`<|endoftext|>` id 151643 (special; not neutral). Polarity RELATIVE_POLARITY_EPS_V1. RQ1 visible N=304 (2048) / ablation 345 (4096). Random RQ1 repeats=100. All three M1 seeds aggregated. Hash recorded in artifacts/attribution_protocol/protocol_manifest.json.
+- **Reason:** Separate where/magnitude (RQ1) from polarity (RQ3) and faithfulness (RQ2); prevent result-dependent methodological shopping.
+- **Alternatives considered:** SIGNED primary RQ1 (rejected — bakes polarity); PAD as primary IG baseline (rejected — sensitivity only); MEAN as primary aggregation (rejected — different estimand).
+- **Reversible:** Only via new hashed protocol version + orchestrator approval.
+- **Gate affected:** ATTRIBUTION_PROTOCOL_FREEZE_GATE, ATTRIBUTION_RESULTS_GATE, RQ1_RESULTS_GATE
+
+## 2026-10-01 — ATTRIBUTION_PROTOCOL_AMENDMENT_GATE (V1.1)
+
+- **Decision:** Amend frozen V1 into ATTRIBUTION_PROTOCOL_V1.1 without overwriting V1. Preserve V1 hash `73f0f891…`. Distinguish SEGMENT_DELETE_V1 (occlusion) vs PAYLOAD_BLANK_V1 (primary RQ2). RQ2 fractions {10,20,30,50}% with k=max(1,ceil(fN)). Define deletion/insertion AOPC. RQ2/3/4 cohort = 475 positive TEST (truncated eligible on visible input); RQ1 primary remains N=304. Freeze missingness rules, ATTENTION_TOP2_HUNK_OCCLUSION_SIGN_V1, DIFF_POLARITY_SWAP_V1. Test-file category = PENDING_AUDIT.
+- **Reason:** Completeness gaps that would otherwise force post-hoc operator/cohort choices after results.
+- **Alternatives considered:** Reuse SEGMENT_DELETE for RQ2 (rejected — self-evaluation); shrink RQ234 to 304 (rejected — distinct estimand).
+- **Reversible:** Only via new hashed protocol version.
+- **Gate affected:** ATTRIBUTION_PROTOCOL_AMENDMENT_GATE, ATTRIBUTION_RESULTS_GATE
+
+## 2026-10-01 — STATISTICAL_PROTOCOL_FREEZE_GATE
+
+- **Decision:** Freeze STATISTICAL_ANALYSIS_PROTOCOL_V1 before scientific attribution results. PRIMARY_STATISTICAL_UNIT=COMMIT; min_common_valid_seeds=2; Wilcoxon two-sided Pratt; primary effect=matched-pairs rank-biserial; Cliff's δ secondary legacy only; bootstrap=10000 commit-cluster percentile; Holm FWER α=0.05 by RQ family; RQ endpoints/directions frozen; random perms collapsed before inference; Scott-Knott not primary; parent ATTRIBUTION_PROTOCOL_V1_1 hash ae710257…. Record STATISTICAL_PROTOCOL_HASH in artifacts/statistical_protocol/.
+- **Reason:** Prevent pseudoreplication and result-dependent statistical shopping.
+- **Alternatives considered:** Flatten seed×commit (rejected); Cliff's δ as primary (rejected — unpaired); BH instead of Holm (rejected).
+- **Reversible:** Only via new hashed statistical protocol version.
+- **Gate affected:** STATISTICAL_PROTOCOL_FREEZE_GATE, ATTRIBUTION_RESULTS_GATE, ANALYSIS_GATE
+
+## 2026-10-01 — Claude pre-attribution design review archived
+
+- Source: Claude review, verdict **B**.
+- Artefact: `docs/reviews/CLAUDE_DESIGN_REVIEW_2026-10-01.md` (copy also under `paper/docs/`).
+- BLOCKER flagged: **C1** (faithfulness sign / AOPC primary definition).
+- Protocol hashes **unchanged** in this step; no test attribution opened.
+- Recommended next gate: protocol amendment + validation rehearsal (C14) before test attribution.
+
+## 2026-10-01 — REVIEWER_PROTOCOL_AMENDMENT_GATE (V1.2 / stats V1.1)
+
+- **Decision:** Accept adversarial-review construct fixes as ATTRIBUTION_PROTOCOL_V1_2 and STATISTICAL_ANALYSIS_PROTOCOL_V1_1 before any attribution results. Preserve V1/V1.1 hashes. Primary RQ2 = ABS_DELETION_AOPC (token budget); occlusion = RQ2 reference; RQ1 primary = Recall@20%Effort; validation rehearsal N=64; M2 deferred; encoder required.
+- **Gate affected:** REVIEWER_PROTOCOL_AMENDMENT_GATE, VALIDATION_ATTRIBUTION_REHEARSAL_GATE, ATTRIBUTION_RESULTS_GATE
+- **Hashes:** attr V1.2 `c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c`; stats V1.1 `edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8`
+
 ## 2026-10-03T08:09:02+02:00 — M1_TEST_LOCKED = TRUE; FULL_TRAINING_GATE PASS
 
 - **Decision:** Mark `FULL_TRAINING_GATE=PASS` and `M1_TEST_LOCKED=TRUE`. Record config hash `7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2`, three-seed test aggregates, selected adapter hashes in `artifacts/m1_final/`. No primary M1 hyperparameter change may be justified by test performance hereafter; later changes must be labelled `POST_HOC_SENSITIVITY`.

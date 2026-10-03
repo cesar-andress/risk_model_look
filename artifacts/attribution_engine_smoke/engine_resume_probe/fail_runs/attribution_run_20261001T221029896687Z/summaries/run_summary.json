@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "DONE": 3,
+    "FAILED": 0,
+    "NONCONVERGED": 0,
+    "OOM": 0,
+    "PENDING": 0,
+    "RUNNING": 0,
+    "SKIPPED": 0
+  },
+  "results_jsonl": "/home/cesar/papers/risk_model_look/risk_model_look_parallel/artifacts/attribution_engine_smoke/engine_resume_probe/fail_results/attribution_run_20261001T221029896687Z/method_results.jsonl",
+  "run_dir": "/home/cesar/papers/risk_model_look/risk_model_look_parallel/artifacts/attribution_engine_smoke/engine_resume_probe/fail_runs/attribution_run_20261001T221029896687Z"
+}
