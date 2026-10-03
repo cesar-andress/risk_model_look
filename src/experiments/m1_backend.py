@@ -119,6 +119,43 @@ def verify_frozen_identity(
     }
 
 
+def transformer_layers(model) -> Any:
+    core = model
+    if hasattr(core, "get_base_model"):
+        core = core.get_base_model()
+    if hasattr(core, "model") and hasattr(core.model, "layers"):
+        return core.model.layers
+    raise RuntimeError("cannot locate transformer layers")
+
+
+def _qk_mean_head_scores(
+    attn_mod,
+    hidden: torch.Tensor,
+    pos: Any,
+    attention_mask: torch.Tensor,
+) -> torch.Tensor:
+    """Mean-head softmax(Q K^T) at the classification query (last visible token)."""
+    from transformers.models.qwen2.modeling_qwen2 import apply_rotary_pos_emb
+
+    cos, sin = pos
+    b, t_full, _ = hidden.shape
+    t = int(attention_mask.sum().item())
+    q_idx = t - 1
+    hidden_shape = (b, t_full, -1, attn_mod.head_dim)
+    query_states = attn_mod.q_proj(hidden).view(hidden_shape).transpose(1, 2)
+    key_states = attn_mod.k_proj(hidden).view(hidden_shape).transpose(1, 2)
+    query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin)
+    n_rep = query_states.size(1) // key_states.size(1)
+    if n_rep > 1:
+        key_states = key_states.repeat_interleave(n_rep, dim=1)
+    q_row = query_states[0, :, q_idx, :].to(torch.float32)
+    k_all = key_states[0, :, :t, :].to(torch.float32)
+    scores = torch.matmul(q_row.unsqueeze(1), k_all.transpose(-1, -2)).squeeze(1)
+    scores = scores * float(attn_mod.scaling)
+    weights = torch.softmax(scores, dim=-1)
+    return weights.mean(dim=0)
+
+
 class FrozenM1Bundle:
     def __init__(
         self,
@@ -129,28 +166,68 @@ class FrozenM1Bundle:
         device_map: str | dict[str, Any] = "auto",
         protocol_hash: str = ATTRIBUTION_PROTOCOL_HASH,
         stats_hash: str = STATISTICAL_PROTOCOL_HASH,
+        load_adapter: bool = True,
     ):
         self.repo_root = Path(repo_root)
-        self.ident = resolve_frozen_identity(self.repo_root, seed)
-        self.verification = verify_frozen_identity(
-            self.ident,
-            protocol_hash=protocol_hash,
-            stats_hash=stats_hash,
-            expected_config_hash=self.ident.config_hash,
-        )
+        self.load_adapter = bool(load_adapter)
         self.attn_implementation = attn_implementation
         self.tokenizer = AutoTokenizer.from_pretrained(
             QWEN_MODEL_ID, revision=QWEN_REVISION, trust_remote_code=True
         )
         verify_label_token_ids(self.tokenizer)
-        self.model = load_qlora_from_adapter(
-            str(self.ident.adapter_dir),
-            model_id=QWEN_MODEL_ID,
-            revision=QWEN_REVISION,
-            device_map=device_map,
-            is_trainable=False,
-            attn_implementation=attn_implementation,
-        )
+        if load_adapter:
+            self.ident = resolve_frozen_identity(self.repo_root, seed)
+            self.verification = verify_frozen_identity(
+                self.ident,
+                protocol_hash=protocol_hash,
+                stats_hash=stats_hash,
+                expected_config_hash=self.ident.config_hash,
+            )
+            self.model = load_qlora_from_adapter(
+                str(self.ident.adapter_dir),
+                model_id=QWEN_MODEL_ID,
+                revision=QWEN_REVISION,
+                device_map=device_map,
+                is_trainable=False,
+                attn_implementation=attn_implementation,
+            )
+        else:
+            from src.models.qwen_m1 import load_base_nf4
+
+            man = load_final_manifest(self.repo_root)
+            if str(man["base_model"]["identifier"]) != QWEN_MODEL_ID:
+                raise FrozenM1Mismatch("base model mismatch")
+            if str(man["base_model"]["immutable_revision"]) != QWEN_REVISION:
+                raise FrozenM1Mismatch("base revision mismatch")
+            if protocol_hash != ATTRIBUTION_PROTOCOL_HASH:
+                raise FrozenM1Mismatch("attribution protocol hash mismatch")
+            if stats_hash != STATISTICAL_PROTOCOL_HASH:
+                raise FrozenM1Mismatch("statistical protocol hash mismatch")
+            self.ident = FrozenM1Identity(
+                seed=-1,
+                selected_epoch=-1,
+                adapter_dir=self.repo_root,
+                adapter_sha256="BASE_NO_ADAPTER",
+                config_hash=str(man["scientific_config_hash"]),
+                base_model=QWEN_MODEL_ID,
+                base_revision=QWEN_REVISION,
+            )
+            self.verification = {
+                "seed": None,
+                "adapter_sha256": "BASE_NO_ADAPTER",
+                "config_hash": self.ident.config_hash,
+                "base_revision": QWEN_REVISION,
+                "protocol_hash": protocol_hash,
+                "stats_hash": stats_hash,
+                "verified": True,
+                "load_adapter": False,
+            }
+            self.model = load_base_nf4(
+                model_id=QWEN_MODEL_ID,
+                revision=QWEN_REVISION,
+                device_map=device_map,
+                attn_implementation=attn_implementation,
+            )
         self.model.eval()
         if hasattr(self.model, "enable_input_require_grads"):
             self.model.enable_input_require_grads()
@@ -219,29 +296,55 @@ class FrozenM1Bundle:
         raise ValueError(reduce)
 
     def attention_token_scores(
-        self, input_ids: torch.Tensor, attention_mask: torch.Tensor
+        self,
+        input_ids: torch.Tensor,
+        attention_mask: torch.Tensor,
+        *,
+        layer_selection: str = "LAST",
+        final_k: int = 4,
     ) -> list[float]:
-        """Last-layer mean-head attention at the classification query index.
+        """Mean-head attention at the classification query index.
 
-        Recomputes only the last-layer query-key scores (no
-        ``output_attentions=True``), matching ATTENTION_LAST_MEAN_HEAD without
-        materialising every layer's T×T map.
+        LAST realizes ATTENTION_LAST_MEAN_HEAD. FINAL_K_MEAN with final_k=4
+        realizes ATTENTION_LAST4_MEAN (mean of the last four layers). Query
+        index is the last visible prompt token (first assistant class token).
         """
-        from transformers.models.qwen2.modeling_qwen2 import apply_rotary_pos_emb
+        from src.attribution.attention import LayerSelection, select_layers
 
-        captured: dict[str, Any] = {}
-        last_attn = self.model.get_base_model().model.layers[-1].self_attn
+        layers = transformer_layers(self.model)
+        n_layers = len(layers)
+        if layer_selection in ("LAST", LayerSelection.LAST.value):
+            layer_ids = select_layers(
+                n_layers, layer_selection=LayerSelection.LAST, final_k=1
+            )
+        elif layer_selection in ("FINAL_K_MEAN", LayerSelection.FINAL_K_MEAN.value):
+            layer_ids = select_layers(
+                n_layers,
+                layer_selection=LayerSelection.FINAL_K_MEAN,
+                final_k=final_k,
+            )
+        else:
+            raise ValueError(f"unknown layer_selection {layer_selection}")
+        captured: dict[int, tuple[Any, Any, Any]] = {}
 
-        def _pre(_mod, args, kwargs):
-            hidden = args[0] if args else kwargs.get("hidden_states")
-            pos = None
-            if len(args) > 1:
-                pos = args[1]
-            pos = kwargs.get("position_embeddings", pos)
-            captured["hidden"] = hidden
-            captured["pos"] = pos
+        def _make_pre(idx: int):
+            def _pre(_mod, args, kwargs):
+                hidden = args[0] if args else kwargs.get("hidden_states")
+                pos = None
+                if len(args) > 1:
+                    pos = args[1]
+                pos = kwargs.get("position_embeddings", pos)
+                captured[idx] = (hidden, pos, _mod)
 
-        handle = last_attn.register_forward_pre_hook(_pre, with_kwargs=True)
+            return _pre
+
+        handles = []
+        for idx in layer_ids:
+            handles.append(
+                layers[idx].self_attn.register_forward_pre_hook(
+                    _make_pre(idx), with_kwargs=True
+                )
+            )
         try:
             self.model(
                 input_ids=input_ids,
@@ -250,26 +353,17 @@ class FrozenM1Bundle:
                 use_cache=False,
             )
         finally:
-            handle.remove()
-        hidden = captured.get("hidden")
-        pos = captured.get("pos")
-        if hidden is None or pos is None:
-            raise RuntimeError("failed to capture last-layer attention inputs")
-        cos, sin = pos
-        b, t_full, _ = hidden.shape
-        t = int(attention_mask.sum().item())
-        q_idx = t - 1
-        hidden_shape = (b, t_full, -1, last_attn.head_dim)
-        query_states = last_attn.q_proj(hidden).view(hidden_shape).transpose(1, 2)
-        key_states = last_attn.k_proj(hidden).view(hidden_shape).transpose(1, 2)
-        query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin)
-        n_rep = query_states.size(1) // key_states.size(1)
-        if n_rep > 1:
-            key_states = key_states.repeat_interleave(n_rep, dim=1)
-        q_row = query_states[0, :, q_idx, :].to(torch.float32)
-        k_all = key_states[0, :, :t, :].to(torch.float32)
-        attn = torch.matmul(q_row.unsqueeze(1), k_all.transpose(-1, -2)).squeeze(1)
-        attn = attn * float(last_attn.scaling)
-        weights = torch.softmax(attn, dim=-1)
-        scores = weights.mean(dim=0).detach().cpu().tolist()
-        return scores
+            for h in handles:
+                h.remove()
+        per_layer: list[torch.Tensor] = []
+        for idx in layer_ids:
+            if idx not in captured:
+                raise RuntimeError(f"failed to capture attention inputs layer={idx}")
+            hidden, pos, attn_mod = captured[idx]
+            if hidden is None or pos is None:
+                raise RuntimeError(f"empty attention capture layer={idx}")
+            per_layer.append(
+                _qk_mean_head_scores(attn_mod, hidden, pos, attention_mask)
+            )
+        stacked = torch.stack(per_layer, dim=0)
+        return stacked.mean(dim=0).detach().cpu().tolist()

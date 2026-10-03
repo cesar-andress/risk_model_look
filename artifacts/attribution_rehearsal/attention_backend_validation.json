@@ -1,0 +1,40 @@
+{
+  "LAST4_MEAN_exact_semantics": true,
+  "LAST_MEAN_HEAD_exact_semantics": true,
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PASS": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "head_aggregation": "MEAN",
+  "last4_diffs": [
+    {
+      "max_abs": 0.004286825656890869,
+      "mean_abs": 0.00020819121135996912,
+      "n": 123
+    },
+    {
+      "max_abs": 0.0033694999292492867,
+      "mean_abs": 0.00016725940000849652,
+      "n": 134
+    }
+  ],
+  "last_layer_diffs": [
+    {
+      "max_abs": 0.014969930052757263,
+      "mean_abs": 0.0005682235346100013,
+      "n": 123
+    },
+    {
+      "max_abs": 0.006014997139573097,
+      "mean_abs": 0.00035915850729459147,
+      "n": 134
+    }
+  ],
+  "layer_aggregation_primary": "LAST",
+  "layer_aggregation_sensitivity": "FINAL_K_MEAN k=4",
+  "masking": "softmax over visible keys 0:t inclusive of query; padding excluded",
+  "query_position": "FIRST_ASSISTANT_CLASSIFICATION_TOKEN = last_visible_index",
+  "reference": "eager output_attentions on same adapter, max_len<=384",
+  "tolerance": 0.02
+}

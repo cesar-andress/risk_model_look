@@ -90,6 +90,11 @@ artifacts/m1_final/**/adapter_config.json
 artifacts/attribution_gpu_benchmark/**/*.pt
 artifacts/attribution_gpu_benchmark/**/*.bin
 artifacts/attribution_gpu_benchmark/**/*.safetensors
+artifacts/attribution_rehearsal/cache/
+artifacts/attribution_rehearsal/runs/
+artifacts/attribution_rehearsal/logs/
+artifacts/attribution_rehearsal/job_ledger.json
+artifacts/attribution_rehearsal/base_model_sanity/runs/
 # Row-level predictions / score dumps (not for git)
 data/results/
 **/lora_*/

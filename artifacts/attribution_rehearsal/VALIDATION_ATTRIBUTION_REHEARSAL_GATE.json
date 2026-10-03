@@ -1,0 +1,20 @@
+{
+  "gate": "VALIDATION_ATTRIBUTION_REHEARSAL_GATE",
+  "status": "PASS",
+  "SPLIT": "VALIDATION",
+  "PURPOSE": "REHEARSAL",
+  "NOT_TEST_RESULT": true,
+  "NOT_RQ_RESULT": true,
+  "TEST_ATTRIBUTION_EXECUTED": false,
+  "cohort_n": 64,
+  "cohort_manifest_sha256": "0505d78e375d481993d64656654bb4353bb242dbc2f47bd3f53095d7af09be58",
+  "attribution_protocol": "ATTRIBUTION_PROTOCOL_V1_2",
+  "attribution_protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "statistical_protocol": "STATISTICAL_PROTOCOL_V1_1",
+  "statistical_protocol_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "notes": [
+    "Engineering OOM on seed 73 long sequences recovered in a fresh process.",
+    "IG_NONCONVERGED is recorded under the frozen 50→100 rule; the criterion was not changed.",
+    "This validation-positive cohort has no RQ1 labelled-line universe; empty sets were not relabelled."
+  ]
+}

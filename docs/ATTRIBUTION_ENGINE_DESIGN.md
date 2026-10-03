@@ -115,21 +115,24 @@ Inference stack used in the engineering GPU benchmark:
 
 | | Engineering GPU benchmark | Validation rehearsal N=64 |
 |--|--|--|
-| Path | `artifacts/attribution_gpu_benchmark/` | not started |
-| Label | `NOT_SCIENTIFIC_RESULT` | scientific protocol |
-| Split | validation only, N≤10 | frozen rehearsal cohort |
-| IG steps | 4-step micro + one 50-step runtime | 50 then 100 retry |
-| Purpose | throughput, VRAM, resume | RQ-ready attributions |
+| Path | `artifacts/attribution_gpu_benchmark/` | `artifacts/attribution_rehearsal/` |
+| Label | `NOT_SCIENTIFIC_RESULT` | `SPLIT=VALIDATION PURPOSE=REHEARSAL NOT_TEST_RESULT` |
+| Split | validation only, N≤10 | frozen N=64 validation positives |
+| IG steps | 4-step micro + one 50-step runtime | 50 then 100 retry (`IG_NONCONVERGED` explicit) |
+| Purpose | throughput, VRAM, resume | pipeline qualification before TEST |
 
-Do **not** feed benchmark JSONL into RQ aggregators (guard in
+Do **not** feed benchmark or rehearsal JSONL into TEST RQ aggregators (guard in
 `aggregate_attribution_results.py`).
 
 GPU benchmark (RTX 4090, seed 13 / epoch 2, 2026-10-03): see
-`artifacts/attribution_gpu_benchmark/throughput.json` and
-`cost_projection.json`. Peak VRAM ~16 GiB allocated at 2048 tokens.
-Conservative 3-seed IG@2048 projection is on the order of ~25 GPU-hours
-for RQ1+RQ234 methods combined; the 219-token 50-step timing must not be
-extrapolated as if it were full 2048.
+`artifacts/attribution_gpu_benchmark/throughput.json`.
+
+Validation rehearsal N=64 (three frozen adapters, 2026-10-03): see
+`artifacts/attribution_rehearsal/performance.json` and `cost_projection.json`.
+Observed occupancy mean ~74 regions/commit. IG completeness often hits
+`IG_NONCONVERGED` after the frozen 100-step retry under NF4; that is recorded,
+not used to change the criterion. Conservative TEST projection is on the order
+of ~100 GPU-hours (see rehearsal `cost_projection.json`).
 
 ## Resume
 

@@ -1,0 +1,40 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "adapters": {
+    "13": {
+      "epoch": "epoch_2",
+      "sha256": "a764d2f57e6586cf61b9c38d7dea4bd1b5a2da73fd4b14e5a3f4ee5eb91b02bf"
+    },
+    "42": {
+      "epoch": "epoch_1",
+      "sha256": "dc8d411d7a34383c3a606b855d68363f573f584a4cd0d2e3d9766b8151d60ad0"
+    },
+    "73": {
+      "epoch": "epoch_1",
+      "sha256": "5a964219a58df2d12606356e67fac8081994ebc7dbc34346c16e323377855dcc"
+    }
+  },
+  "freeze_sha256": "02d7b1562b6ee79bd2b1452ca8e06cca0b293f002908608c6a9d0ae879a8fb28",
+  "git_commit": "d6694bd11dd6145769f1acbe54a760f92e85be56",
+  "ig_chunk": 1,
+  "implementation_hashes": {
+    "scripts/run_validation_attribution_rehearsal.py": "24071d5d400150ac17e4ac696305b2c10341441985182dbf3393f1c322a37d32",
+    "src/attribution/gradients.py": "ca02d708435952784099b3cce6bdf888ff0e061ef0600f4766219b59cf3b7391",
+    "src/attribution/integrated_gradients.py": "72e75dfaa8947c2993cd7640243c8ee0090664a5b8c214ff617e3fe52783ae9b",
+    "src/data/token_line_map.py": "1307f38714bccc40e3eb0992abd4d161dcfd751462efdc879e61a7671c014544",
+    "src/experiments/m1_backend.py": "4513116f589d51705ed8744d5f2b89bdaaa14d53ea9e2a3ad519301129b13dff",
+    "src/experiments/rehearsal_pipeline.py": "3c91aae1d61d8467eef44709191dd6ae8a3a14f0dbfbba32d27a761f99c6e373"
+  },
+  "max_length": 2048,
+  "occlusion_batch": 4,
+  "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "seeds": [
+    13,
+    42,
+    73
+  ],
+  "stats_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8"
+}

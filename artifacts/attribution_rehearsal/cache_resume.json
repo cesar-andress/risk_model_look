@@ -1,0 +1,30 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "first": [
+    {
+      "commit_id": "82e9af9c68aa353a19c2b005838458563425660e",
+      "exists": true,
+      "status": "DONE"
+    },
+    {
+      "commit_id": "675270c475e5425eddd4e528b87f88c67dbf6aec",
+      "exists": true,
+      "status": "DONE"
+    },
+    {
+      "commit_id": "0820b701bfe61cac6087aca9da1c9b88afb8784c",
+      "exists": true,
+      "status": "DONE"
+    }
+  ],
+  "recovery": {
+    "original_restored": true,
+    "recomputed_ok": true,
+    "victim": "675270c475e5425eddd4e528b87f88c67dbf6aec"
+  },
+  "second": [],
+  "second_skip_done": 3
+}

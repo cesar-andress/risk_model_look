@@ -1,0 +1,68 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "ig": {
+    "approx_50_step_no_retry": 6,
+    "final_nonconverged": 182,
+    "peak_vram_max": 20.57980251312256,
+    "retries_100": 186,
+    "runtime_s_sum": 13410.316730385879,
+    "steps_per_s_mean": 1.4093626854595669,
+    "total_jobs": 192
+  },
+  "methods": {
+    "attention": {
+      "commits_per_hour": 15981.624785076274,
+      "n": 192,
+      "peak_vram_gib_max": 21.213361263275146,
+      "wall_s_mean": 0.22525869856247027,
+      "wall_s_sum": 43.24967012399429
+    },
+    "attention_last4": {
+      "commits_per_hour": 15893.341879311325,
+      "n": 192,
+      "peak_vram_gib_max": 21.2179274559021,
+      "wall_s_mean": 0.22650994531780574,
+      "wall_s_sum": 43.4899095010187
+    },
+    "grad_x_input": {
+      "commits_per_hour": 7708.56619192515,
+      "n": 192,
+      "peak_vram_gib_max": 20.49774980545044,
+      "wall_s_mean": 0.46701291918217674,
+      "wall_s_sum": 89.66648048297793
+    },
+    "gradient": {
+      "commits_per_hour": 7679.838028031698,
+      "n": 192,
+      "peak_vram_gib_max": 20.49774980545044,
+      "wall_s_mean": 0.46875988619289427,
+      "wall_s_sum": 90.0018981490357
+    },
+    "ig": {
+      "commits_per_hour": 51.5424067825213,
+      "n": 192,
+      "peak_vram_gib_max": 20.57980251312256,
+      "wall_s_mean": 69.84539963742645,
+      "wall_s_sum": 13410.316730385879
+    },
+    "occlusion": {
+      "commits_per_hour": 94.81860626682776,
+      "n": 192,
+      "peak_vram_gib_max": 13.113465785980225,
+      "wall_s_mean": 37.96723176745805,
+      "wall_s_sum": 7289.708499351946
+    }
+  },
+  "occlusion_regions": {
+    "batch": 4,
+    "mean": 73.859375,
+    "median": 67.0,
+    "n_commits": 192,
+    "p95": 182.0,
+    "regions_per_s": 1.9453452770108284,
+    "total_regions": 14181
+  }
+}

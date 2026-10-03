@@ -29,6 +29,10 @@ def aggregate_method_results(jsonl_path: Path) -> dict[str, Any]:
             raise RuntimeError(
                 "refusing to aggregate NOT_SCIENTIFIC_RESULT rows into RQ indexes"
             )
+        if r.get("PURPOSE") == "REHEARSAL" or r.get("NOT_TEST_RESULT") is True:
+            raise RuntimeError(
+                "refusing to aggregate validation rehearsal rows as TEST/RQ results"
+            )
         by_method[r.get("method", "?")].append(r)
         code = r.get("missingness_code") or "OK"
         if code != "OK":

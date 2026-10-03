@@ -1,0 +1,3081 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "n": 64,
+  "rows": [
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 1.0,
+        "FILE_PATH": -0.625,
+        "STRUCTURAL_MARKUP": 0.125
+      },
+      "aopc": 0.25,
+      "commit_id": "82e9af9c68aa353a19c2b005838458563425660e",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.25,
+        "0.3": 0.25,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 5,
+          "n_regions": 1,
+          "overshoot": 1,
+          "target": 4
+        },
+        "0.2": {
+          "actual": 17,
+          "n_regions": 2,
+          "overshoot": 9,
+          "target": 8
+        },
+        "0.3": {
+          "actual": 17,
+          "n_regions": 2,
+          "overshoot": 5,
+          "target": 12
+        },
+        "0.5": {
+          "actual": 28,
+          "n_regions": 3,
+          "overshoot": 9,
+          "target": 19
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.5,
+        "FILE_PATH": 0.5,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.4375,
+      "commit_id": "675270c475e5425eddd4e528b87f88c67dbf6aec",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.375,
+        "0.3": 0.375,
+        "0.5": 0.875
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 49,
+          "n_regions": 3,
+          "overshoot": 11,
+          "target": 38
+        },
+        "0.2": {
+          "actual": 79,
+          "n_regions": 5,
+          "overshoot": 4,
+          "target": 75
+        },
+        "0.3": {
+          "actual": 113,
+          "n_regions": 8,
+          "overshoot": 1,
+          "target": 112
+        },
+        "0.5": {
+          "actual": 189,
+          "n_regions": 16,
+          "overshoot": 3,
+          "target": 186
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": 0.125,
+        "STRUCTURAL_MARKUP": 0.75
+      },
+      "aopc": 0.09375,
+      "commit_id": "0820b701bfe61cac6087aca9da1c9b88afb8784c",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.0,
+        "0.3": 0.125,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 90,
+          "n_regions": 5,
+          "overshoot": 4,
+          "target": 86
+        },
+        "0.2": {
+          "actual": 184,
+          "n_regions": 10,
+          "overshoot": 12,
+          "target": 172
+        },
+        "0.3": {
+          "actual": 260,
+          "n_regions": 19,
+          "overshoot": 2,
+          "target": 258
+        },
+        "0.5": {
+          "actual": 434,
+          "n_regions": 41,
+          "overshoot": 5,
+          "target": 429
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": 1.125
+      },
+      "aopc": 0.3125,
+      "commit_id": "20d867de98e3acc85fb23b88207e9ce384498f06",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.5,
+        "0.3": 0.0,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 106,
+          "n_regions": 9,
+          "overshoot": 6,
+          "target": 100
+        },
+        "0.2": {
+          "actual": 205,
+          "n_regions": 18,
+          "overshoot": 6,
+          "target": 199
+        },
+        "0.3": {
+          "actual": 305,
+          "n_regions": 26,
+          "overshoot": 7,
+          "target": 298
+        },
+        "0.5": {
+          "actual": 499,
+          "n_regions": 41,
+          "overshoot": 3,
+          "target": 496
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.125,
+        "FILE_PATH": -0.25,
+        "STRUCTURAL_MARKUP": -0.375
+      },
+      "aopc": 0.5,
+      "commit_id": "4ad705443258be2483cde74ca49033a9a2b93924",
+      "impacts": {
+        "0.1": 0.5,
+        "0.2": 0.5,
+        "0.3": 0.5,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 18,
+          "n_regions": 1,
+          "overshoot": 14,
+          "target": 4
+        },
+        "0.2": {
+          "actual": 18,
+          "n_regions": 1,
+          "overshoot": 10,
+          "target": 8
+        },
+        "0.3": {
+          "actual": 18,
+          "n_regions": 1,
+          "overshoot": 7,
+          "target": 11
+        },
+        "0.5": {
+          "actual": 18,
+          "n_regions": 1,
+          "overshoot": 0,
+          "target": 18
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.375,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.28125,
+      "commit_id": "fc5fd06047bf751ec1a2ccd37c3efbd7f353cd1c",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.25,
+        "0.3": 0.125,
+        "0.5": 0.625
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 85,
+          "n_regions": 3,
+          "overshoot": 14,
+          "target": 71
+        },
+        "0.2": {
+          "actual": 164,
+          "n_regions": 6,
+          "overshoot": 22,
+          "target": 142
+        },
+        "0.3": {
+          "actual": 217,
+          "n_regions": 9,
+          "overshoot": 4,
+          "target": 213
+        },
+        "0.5": {
+          "actual": 361,
+          "n_regions": 20,
+          "overshoot": 6,
+          "target": 355
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.0,
+        "FILE_PATH": 0.125,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.375,
+      "commit_id": "adf9fc13b37f866d731c73a09071170d50bfa807",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.25,
+        "0.3": 0.5,
+        "0.5": 0.625
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 106,
+          "n_regions": 8,
+          "overshoot": 13,
+          "target": 93
+        },
+        "0.2": {
+          "actual": 193,
+          "n_regions": 14,
+          "overshoot": 8,
+          "target": 185
+        },
+        "0.3": {
+          "actual": 280,
+          "n_regions": 20,
+          "overshoot": 2,
+          "target": 278
+        },
+        "0.5": {
+          "actual": 481,
+          "n_regions": 33,
+          "overshoot": 18,
+          "target": 463
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.5,
+        "FILE_PATH": 0.125,
+        "STRUCTURAL_MARKUP": -0.125
+      },
+      "aopc": 0.40625,
+      "commit_id": "763333c2572c5ebcb8f1d09c32876da987741c54",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.625,
+        "0.3": 0.5,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 120,
+          "n_regions": 8,
+          "overshoot": 7,
+          "target": 113
+        },
+        "0.2": {
+          "actual": 239,
+          "n_regions": 17,
+          "overshoot": 13,
+          "target": 226
+        },
+        "0.3": {
+          "actual": 343,
+          "n_regions": 26,
+          "overshoot": 4,
+          "target": 339
+        },
+        "0.5": {
+          "actual": 569,
+          "n_regions": 46,
+          "overshoot": 4,
+          "target": 565
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.875,
+        "FILE_PATH": 0.125,
+        "STRUCTURAL_MARKUP": 0.25
+      },
+      "aopc": 0.625,
+      "commit_id": "84953524792d205ae889401062a697580ac72ab4",
+      "impacts": {
+        "0.1": 0.625,
+        "0.2": 0.625,
+        "0.3": 0.625,
+        "0.5": 0.625
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 9,
+          "n_regions": 1,
+          "overshoot": 7,
+          "target": 2
+        },
+        "0.2": {
+          "actual": 9,
+          "n_regions": 1,
+          "overshoot": 5,
+          "target": 4
+        },
+        "0.3": {
+          "actual": 9,
+          "n_regions": 1,
+          "overshoot": 3,
+          "target": 6
+        },
+        "0.5": {
+          "actual": 9,
+          "n_regions": 1,
+          "overshoot": 0,
+          "target": 9
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.5,
+        "FILE_PATH": -0.75,
+        "STRUCTURAL_MARKUP": 0.25
+      },
+      "aopc": 0.40625,
+      "commit_id": "ab21f62bfc8ac74c0b1b7e35bb6716d3cabdf8bf",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.25,
+        "0.3": 0.125,
+        "0.5": 1.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 57,
+          "n_regions": 3,
+          "overshoot": 10,
+          "target": 47
+        },
+        "0.2": {
+          "actual": 95,
+          "n_regions": 5,
+          "overshoot": 2,
+          "target": 93
+        },
+        "0.3": {
+          "actual": 145,
+          "n_regions": 7,
+          "overshoot": 6,
+          "target": 139
+        },
+        "0.5": {
+          "actual": 237,
+          "n_regions": 13,
+          "overshoot": 5,
+          "target": 232
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.25,
+        "FILE_PATH": 0.25,
+        "STRUCTURAL_MARKUP": 0.5
+      },
+      "aopc": 0.15625,
+      "commit_id": "c13bf868cda36a6cd2167d155bf1e85994760d6d",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 98,
+          "n_regions": 8,
+          "overshoot": 6,
+          "target": 92
+        },
+        "0.2": {
+          "actual": 183,
+          "n_regions": 16,
+          "overshoot": 0,
+          "target": 183
+        },
+        "0.3": {
+          "actual": 280,
+          "n_regions": 25,
+          "overshoot": 6,
+          "target": 274
+        },
+        "0.5": {
+          "actual": 458,
+          "n_regions": 39,
+          "overshoot": 2,
+          "target": 456
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.5,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": 0.875
+      },
+      "aopc": 0.3125,
+      "commit_id": "b5d58a8a0ce7ba2eda8e016788ee5695b6650286",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.625,
+        "0.3": 0.125,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 104,
+          "n_regions": 10,
+          "overshoot": 2,
+          "target": 102
+        },
+        "0.2": {
+          "actual": 210,
+          "n_regions": 18,
+          "overshoot": 6,
+          "target": 204
+        },
+        "0.3": {
+          "actual": 310,
+          "n_regions": 26,
+          "overshoot": 5,
+          "target": 305
+        },
+        "0.5": {
+          "actual": 516,
+          "n_regions": 45,
+          "overshoot": 8,
+          "target": 508
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -1.0,
+        "FILE_PATH": 0.25,
+        "STRUCTURAL_MARKUP": 0.5
+      },
+      "aopc": 0.4375,
+      "commit_id": "e3b7364d4d48f71f2583f2215da3bde8d890b359",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.625,
+        "0.3": 0.5,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 63,
+          "n_regions": 3,
+          "overshoot": 6,
+          "target": 57
+        },
+        "0.2": {
+          "actual": 113,
+          "n_regions": 6,
+          "overshoot": 0,
+          "target": 113
+        },
+        "0.3": {
+          "actual": 176,
+          "n_regions": 10,
+          "overshoot": 7,
+          "target": 169
+        },
+        "0.5": {
+          "actual": 301,
+          "n_regions": 17,
+          "overshoot": 20,
+          "target": 281
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.625,
+        "FILE_PATH": 0.125,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.375,
+      "commit_id": "453c56cff0dbbc0ecefaa7f20b8df6d11d6d12ec",
+      "impacts": {
+        "0.1": 0.375,
+        "0.2": 0.375,
+        "0.3": 0.375,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 115,
+          "n_regions": 7,
+          "overshoot": 18,
+          "target": 97
+        },
+        "0.2": {
+          "actual": 206,
+          "n_regions": 13,
+          "overshoot": 12,
+          "target": 194
+        },
+        "0.3": {
+          "actual": 303,
+          "n_regions": 22,
+          "overshoot": 12,
+          "target": 291
+        },
+        "0.5": {
+          "actual": 484,
+          "n_regions": 35,
+          "overshoot": 0,
+          "target": 484
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.0,
+        "FILE_PATH": 0.0,
+        "STRUCTURAL_MARKUP": 0.625
+      },
+      "aopc": 0.4375,
+      "commit_id": "3f41cf1609fae7c8848beb0655bcf67132c7a277",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.25,
+        "0.3": 0.75,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 159,
+          "n_regions": 6,
+          "overshoot": 17,
+          "target": 142
+        },
+        "0.2": {
+          "actual": 307,
+          "n_regions": 12,
+          "overshoot": 23,
+          "target": 284
+        },
+        "0.3": {
+          "actual": 437,
+          "n_regions": 18,
+          "overshoot": 12,
+          "target": 425
+        },
+        "0.5": {
+          "actual": 717,
+          "n_regions": 30,
+          "overshoot": 9,
+          "target": 708
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.0,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.09375,
+      "commit_id": "5387e5ef4db8febaf7689bba0d6d0a375b2a88e0",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.0,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 23,
+          "n_regions": 1,
+          "overshoot": 6,
+          "target": 17
+        },
+        "0.2": {
+          "actual": 41,
+          "n_regions": 2,
+          "overshoot": 8,
+          "target": 33
+        },
+        "0.3": {
+          "actual": 66,
+          "n_regions": 4,
+          "overshoot": 16,
+          "target": 50
+        },
+        "0.5": {
+          "actual": 90,
+          "n_regions": 6,
+          "overshoot": 7,
+          "target": 83
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.375,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": 0.125
+      },
+      "aopc": 0.1875,
+      "commit_id": "b5715ec19d7c9b0f96a41cca42c080955c6b3f51",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.25,
+        "0.3": 0.375,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 53,
+          "n_regions": 4,
+          "overshoot": 2,
+          "target": 51
+        },
+        "0.2": {
+          "actual": 109,
+          "n_regions": 10,
+          "overshoot": 8,
+          "target": 101
+        },
+        "0.3": {
+          "actual": 153,
+          "n_regions": 15,
+          "overshoot": 1,
+          "target": 152
+        },
+        "0.5": {
+          "actual": 252,
+          "n_regions": 23,
+          "overshoot": 0,
+          "target": 252
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.0,
+        "FILE_PATH": 0.0,
+        "STRUCTURAL_MARKUP": 0.5
+      },
+      "aopc": 0.25,
+      "commit_id": "83226e162de60bd22551b1a37cc3e513811e1449",
+      "impacts": {
+        "0.1": 0.375,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 136,
+          "n_regions": 6,
+          "overshoot": 10,
+          "target": 126
+        },
+        "0.2": {
+          "actual": 255,
+          "n_regions": 15,
+          "overshoot": 3,
+          "target": 252
+        },
+        "0.3": {
+          "actual": 398,
+          "n_regions": 28,
+          "overshoot": 20,
+          "target": 378
+        },
+        "0.5": {
+          "actual": 640,
+          "n_regions": 53,
+          "overshoot": 11,
+          "target": 629
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -1.375,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": 1.625
+      },
+      "aopc": 0.5625,
+      "commit_id": "33fa40b72d3059b82b920ff6df21a77b6c60b08b",
+      "impacts": {
+        "0.1": 0.375,
+        "0.2": 0.375,
+        "0.3": 0.25,
+        "0.5": 1.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 131,
+          "n_regions": 11,
+          "overshoot": 0,
+          "target": 131
+        },
+        "0.2": {
+          "actual": 264,
+          "n_regions": 25,
+          "overshoot": 2,
+          "target": 262
+        },
+        "0.3": {
+          "actual": 401,
+          "n_regions": 36,
+          "overshoot": 9,
+          "target": 392
+        },
+        "0.5": {
+          "actual": 653,
+          "n_regions": 60,
+          "overshoot": 0,
+          "target": 653
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.625,
+        "FILE_PATH": 1.375,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.125,
+      "commit_id": "f2c2b9f1dd665c518a82baa2d611006f421dda76",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 5,
+          "n_regions": 1,
+          "overshoot": 3,
+          "target": 2
+        },
+        "0.2": {
+          "actual": 5,
+          "n_regions": 1,
+          "overshoot": 1,
+          "target": 4
+        },
+        "0.3": {
+          "actual": 5,
+          "n_regions": 1,
+          "overshoot": 0,
+          "target": 5
+        },
+        "0.5": {
+          "actual": 14,
+          "n_regions": 2,
+          "overshoot": 6,
+          "target": 8
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": -0.875,
+        "STRUCTURAL_MARKUP": 0.25
+      },
+      "aopc": 0.28125,
+      "commit_id": "e33d42eb606710e7cc9ba820d25f725428d4a709",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.75
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 52,
+          "n_regions": 2,
+          "overshoot": 9,
+          "target": 43
+        },
+        "0.2": {
+          "actual": 102,
+          "n_regions": 6,
+          "overshoot": 16,
+          "target": 86
+        },
+        "0.3": {
+          "actual": 129,
+          "n_regions": 8,
+          "overshoot": 0,
+          "target": 129
+        },
+        "0.5": {
+          "actual": 228,
+          "n_regions": 13,
+          "overshoot": 14,
+          "target": 214
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": 0.0,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.28125,
+      "commit_id": "d241f50c47ca90b1dfa8af19e58975b67df22788",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.25,
+        "0.3": 0.25,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 95,
+          "n_regions": 10,
+          "overshoot": 4,
+          "target": 91
+        },
+        "0.2": {
+          "actual": 181,
+          "n_regions": 18,
+          "overshoot": 0,
+          "target": 181
+        },
+        "0.3": {
+          "actual": 277,
+          "n_regions": 28,
+          "overshoot": 6,
+          "target": 271
+        },
+        "0.5": {
+          "actual": 458,
+          "n_regions": 47,
+          "overshoot": 7,
+          "target": 451
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.125,
+        "FILE_PATH": -0.25,
+        "STRUCTURAL_MARKUP": -0.25
+      },
+      "aopc": 0.3125,
+      "commit_id": "5c0f2b236f11cd786c6ec71aa32a15c22b93bc8b",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.5,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 129,
+          "n_regions": 10,
+          "overshoot": 6,
+          "target": 123
+        },
+        "0.2": {
+          "actual": 249,
+          "n_regions": 21,
+          "overshoot": 4,
+          "target": 245
+        },
+        "0.3": {
+          "actual": 374,
+          "n_regions": 32,
+          "overshoot": 7,
+          "target": 367
+        },
+        "0.5": {
+          "actual": 617,
+          "n_regions": 56,
+          "overshoot": 6,
+          "target": 611
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": 0.75,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.5625,
+      "commit_id": "ffd1c38b5d9a025ea2d2b6b60c085be77f0b2024",
+      "impacts": {
+        "0.1": 0.375,
+        "0.2": 0.375,
+        "0.3": 0.375,
+        "0.5": 1.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 18,
+          "n_regions": 1,
+          "overshoot": 11,
+          "target": 7
+        },
+        "0.2": {
+          "actual": 18,
+          "n_regions": 1,
+          "overshoot": 5,
+          "target": 13
+        },
+        "0.3": {
+          "actual": 23,
+          "n_regions": 2,
+          "overshoot": 3,
+          "target": 20
+        },
+        "0.5": {
+          "actual": 37,
+          "n_regions": 3,
+          "overshoot": 5,
+          "target": 32
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.25,
+        "FILE_PATH": 0.25,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.28125,
+      "commit_id": "b832cd9513e1101659e5d36328bd6682ebb2dc63",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.25,
+        "0.3": 0.375,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 37,
+          "n_regions": 3,
+          "overshoot": 4,
+          "target": 33
+        },
+        "0.2": {
+          "actual": 65,
+          "n_regions": 5,
+          "overshoot": 0,
+          "target": 65
+        },
+        "0.3": {
+          "actual": 109,
+          "n_regions": 8,
+          "overshoot": 11,
+          "target": 98
+        },
+        "0.5": {
+          "actual": 164,
+          "n_regions": 12,
+          "overshoot": 1,
+          "target": 163
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": 0.25
+      },
+      "aopc": 0.25,
+      "commit_id": "8bc290db0913fb4f951e49da2748fbfe464f70a8",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.125,
+        "0.3": 0.0,
+        "0.5": 0.625
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 110,
+          "n_regions": 8,
+          "overshoot": 3,
+          "target": 107
+        },
+        "0.2": {
+          "actual": 214,
+          "n_regions": 16,
+          "overshoot": 0,
+          "target": 214
+        },
+        "0.3": {
+          "actual": 328,
+          "n_regions": 24,
+          "overshoot": 7,
+          "target": 321
+        },
+        "0.5": {
+          "actual": 541,
+          "n_regions": 39,
+          "overshoot": 6,
+          "target": 535
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.5,
+        "FILE_PATH": 0.625,
+        "STRUCTURAL_MARKUP": 0.125
+      },
+      "aopc": 0.0625,
+      "commit_id": "61b9b39ee34ca220a9ca4ed793348753c7080ffb",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.0,
+        "0.3": 0.0,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 99,
+          "n_regions": 9,
+          "overshoot": 4,
+          "target": 95
+        },
+        "0.2": {
+          "actual": 190,
+          "n_regions": 19,
+          "overshoot": 1,
+          "target": 189
+        },
+        "0.3": {
+          "actual": 297,
+          "n_regions": 27,
+          "overshoot": 14,
+          "target": 283
+        },
+        "0.5": {
+          "actual": 485,
+          "n_regions": 49,
+          "overshoot": 13,
+          "target": 472
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.75,
+        "FILE_PATH": 0.75,
+        "STRUCTURAL_MARKUP": -0.375
+      },
+      "aopc": 0.46875,
+      "commit_id": "7e85b010fe3c114179ca609b2565f43e12632231",
+      "impacts": {
+        "0.1": 0.5,
+        "0.2": 0.5,
+        "0.3": 0.5,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 5,
+          "n_regions": 1,
+          "overshoot": 3,
+          "target": 2
+        },
+        "0.2": {
+          "actual": 5,
+          "n_regions": 1,
+          "overshoot": 2,
+          "target": 3
+        },
+        "0.3": {
+          "actual": 5,
+          "n_regions": 1,
+          "overshoot": 0,
+          "target": 5
+        },
+        "0.5": {
+          "actual": 14,
+          "n_regions": 2,
+          "overshoot": 7,
+          "target": 7
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 1.125,
+        "FILE_PATH": 0.125,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.03125,
+      "commit_id": "c703b4079cca110438840ef8171312feff381fc3",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.0,
+        "0.3": 0.125,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 27,
+          "n_regions": 2,
+          "overshoot": 1,
+          "target": 26
+        },
+        "0.2": {
+          "actual": 63,
+          "n_regions": 5,
+          "overshoot": 12,
+          "target": 51
+        },
+        "0.3": {
+          "actual": 77,
+          "n_regions": 6,
+          "overshoot": 0,
+          "target": 77
+        },
+        "0.5": {
+          "actual": 130,
+          "n_regions": 12,
+          "overshoot": 3,
+          "target": 127
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.875,
+        "FILE_PATH": 0.0,
+        "STRUCTURAL_MARKUP": 0.875
+      },
+      "aopc": 0.21875,
+      "commit_id": "652b21a897321708451828ebbd894ff7f7012ba6",
+      "impacts": {
+        "0.1": 0.375,
+        "0.2": 0.125,
+        "0.3": 0.25,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 24,
+          "n_regions": 8,
+          "overshoot": 2,
+          "target": 22
+        },
+        "0.2": {
+          "actual": 45,
+          "n_regions": 15,
+          "overshoot": 2,
+          "target": 43
+        },
+        "0.3": {
+          "actual": 66,
+          "n_regions": 22,
+          "overshoot": 2,
+          "target": 64
+        },
+        "0.5": {
+          "actual": 108,
+          "n_regions": 36,
+          "overshoot": 1,
+          "target": 107
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.5,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": 0.625
+      },
+      "aopc": 0.75,
+      "commit_id": "998139059159bbec8e98ec96d946efb94302d2cd",
+      "impacts": {
+        "0.1": 0.625,
+        "0.2": 0.625,
+        "0.3": 0.875,
+        "0.5": 0.875
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 131,
+          "n_regions": 11,
+          "overshoot": 24,
+          "target": 107
+        },
+        "0.2": {
+          "actual": 225,
+          "n_regions": 18,
+          "overshoot": 11,
+          "target": 214
+        },
+        "0.3": {
+          "actual": 326,
+          "n_regions": 27,
+          "overshoot": 5,
+          "target": 321
+        },
+        "0.5": {
+          "actual": 538,
+          "n_regions": 53,
+          "overshoot": 4,
+          "target": 534
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.625,
+        "FILE_PATH": -1.0,
+        "STRUCTURAL_MARKUP": -0.25
+      },
+      "aopc": 0.0,
+      "commit_id": "61c742d6f163ef99db0924a8ee180eb0510bf8fc",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.0,
+        "0.3": 0.0,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 15,
+          "n_regions": 1,
+          "overshoot": 12,
+          "target": 3
+        },
+        "0.2": {
+          "actual": 15,
+          "n_regions": 1,
+          "overshoot": 9,
+          "target": 6
+        },
+        "0.3": {
+          "actual": 15,
+          "n_regions": 1,
+          "overshoot": 6,
+          "target": 9
+        },
+        "0.5": {
+          "actual": 15,
+          "n_regions": 1,
+          "overshoot": 1,
+          "target": 14
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.125,
+        "FILE_PATH": -0.875,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.53125,
+      "commit_id": "a148a36136451f766c02cb0bb5c831d8e29f7c15",
+      "impacts": {
+        "0.1": 0.75,
+        "0.2": 0.125,
+        "0.3": 0.5,
+        "0.5": 0.75
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 114,
+          "n_regions": 7,
+          "overshoot": 1,
+          "target": 113
+        },
+        "0.2": {
+          "actual": 235,
+          "n_regions": 18,
+          "overshoot": 9,
+          "target": 226
+        },
+        "0.3": {
+          "actual": 342,
+          "n_regions": 28,
+          "overshoot": 3,
+          "target": 339
+        },
+        "0.5": {
+          "actual": 570,
+          "n_regions": 56,
+          "overshoot": 6,
+          "target": 564
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.125,
+        "FILE_PATH": 2.0,
+        "STRUCTURAL_MARKUP": 0.25
+      },
+      "aopc": 0.4375,
+      "commit_id": "1282c294a11e637b3830d84ee87a4b3bcf823bc6",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 1.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 8,
+          "target": 4
+        },
+        "0.2": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 5,
+          "target": 7
+        },
+        "0.3": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 2,
+          "target": 10
+        },
+        "0.5": {
+          "actual": 26,
+          "n_regions": 2,
+          "overshoot": 9,
+          "target": 17
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.75,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": -0.375
+      },
+      "aopc": 0.1875,
+      "commit_id": "294c570fcae9ca62e3157a9e7b8293a08e68dae2",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.25,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 40,
+          "n_regions": 3,
+          "overshoot": 6,
+          "target": 34
+        },
+        "0.2": {
+          "actual": 80,
+          "n_regions": 6,
+          "overshoot": 12,
+          "target": 68
+        },
+        "0.3": {
+          "actual": 110,
+          "n_regions": 9,
+          "overshoot": 8,
+          "target": 102
+        },
+        "0.5": {
+          "actual": 173,
+          "n_regions": 15,
+          "overshoot": 3,
+          "target": 170
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.25,
+      "commit_id": "bccee3ba757d0accbe27bc9e09420781214ba631",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.5,
+        "0.3": 0.25,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 103,
+          "n_regions": 13,
+          "overshoot": 12,
+          "target": 91
+        },
+        "0.2": {
+          "actual": 182,
+          "n_regions": 23,
+          "overshoot": 1,
+          "target": 181
+        },
+        "0.3": {
+          "actual": 271,
+          "n_regions": 35,
+          "overshoot": 0,
+          "target": 271
+        },
+        "0.5": {
+          "actual": 455,
+          "n_regions": 62,
+          "overshoot": 3,
+          "target": 452
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.375,
+      "commit_id": "587f5571c6eb5a55b752fd7bfd66c2c535f5e566",
+      "impacts": {
+        "0.1": 0.625,
+        "0.2": 0.375,
+        "0.3": 0.25,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 137,
+          "n_regions": 14,
+          "overshoot": 7,
+          "target": 130
+        },
+        "0.2": {
+          "actual": 268,
+          "n_regions": 27,
+          "overshoot": 9,
+          "target": 259
+        },
+        "0.3": {
+          "actual": 391,
+          "n_regions": 40,
+          "overshoot": 2,
+          "target": 389
+        },
+        "0.5": {
+          "actual": 648,
+          "n_regions": 64,
+          "overshoot": 0,
+          "target": 648
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.75,
+        "FILE_PATH": 0.25,
+        "STRUCTURAL_MARKUP": 0.25
+      },
+      "aopc": 0.28125,
+      "commit_id": "f66b0593a5fd31d5513bab28d3b2650d55d7d777",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.875
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 1,
+          "target": 11
+        },
+        "0.2": {
+          "actual": 33,
+          "n_regions": 3,
+          "overshoot": 11,
+          "target": 22
+        },
+        "0.3": {
+          "actual": 33,
+          "n_regions": 3,
+          "overshoot": 0,
+          "target": 33
+        },
+        "0.5": {
+          "actual": 59,
+          "n_regions": 6,
+          "overshoot": 4,
+          "target": 55
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.375,
+        "FILE_PATH": 0.0,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.25,
+      "commit_id": "312095927a8e0dc3d4f2192575ae2b3f9c1e0fe6",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.125,
+        "0.3": 0.25,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 60,
+          "n_regions": 5,
+          "overshoot": 4,
+          "target": 56
+        },
+        "0.2": {
+          "actual": 117,
+          "n_regions": 10,
+          "overshoot": 6,
+          "target": 111
+        },
+        "0.3": {
+          "actual": 176,
+          "n_regions": 15,
+          "overshoot": 10,
+          "target": 166
+        },
+        "0.5": {
+          "actual": 285,
+          "n_regions": 22,
+          "overshoot": 9,
+          "target": 276
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.625,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": 0.5
+      },
+      "aopc": 0.3125,
+      "commit_id": "4a65642d691405017c330cebed793861350bf8a3",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.5,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 93,
+          "n_regions": 5,
+          "overshoot": 8,
+          "target": 85
+        },
+        "0.2": {
+          "actual": 173,
+          "n_regions": 11,
+          "overshoot": 4,
+          "target": 169
+        },
+        "0.3": {
+          "actual": 270,
+          "n_regions": 17,
+          "overshoot": 16,
+          "target": 254
+        },
+        "0.5": {
+          "actual": 428,
+          "n_regions": 31,
+          "overshoot": 5,
+          "target": 423
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.125,
+        "FILE_PATH": 0.375,
+        "STRUCTURAL_MARKUP": 0.125
+      },
+      "aopc": 0.21875,
+      "commit_id": "85eac97fbf8673f6e6346aca023372bbfedc8cce",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.25,
+        "0.3": 0.125,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 132,
+          "n_regions": 13,
+          "overshoot": 3,
+          "target": 129
+        },
+        "0.2": {
+          "actual": 261,
+          "n_regions": 25,
+          "overshoot": 4,
+          "target": 257
+        },
+        "0.3": {
+          "actual": 391,
+          "n_regions": 40,
+          "overshoot": 5,
+          "target": 386
+        },
+        "0.5": {
+          "actual": 644,
+          "n_regions": 61,
+          "overshoot": 2,
+          "target": 642
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": -0.125
+      },
+      "aopc": 1.75,
+      "commit_id": "e2c6ef476dc69bf0d6306c1f1006bdcc97c0c296",
+      "impacts": {
+        "0.1": 1.75,
+        "0.2": 1.75,
+        "0.3": 1.75,
+        "0.5": 1.75
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 24,
+          "n_regions": 1,
+          "overshoot": 21,
+          "target": 3
+        },
+        "0.2": {
+          "actual": 24,
+          "n_regions": 1,
+          "overshoot": 19,
+          "target": 5
+        },
+        "0.3": {
+          "actual": 24,
+          "n_regions": 1,
+          "overshoot": 16,
+          "target": 8
+        },
+        "0.5": {
+          "actual": 24,
+          "n_regions": 1,
+          "overshoot": 12,
+          "target": 12
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.75,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": 0.5
+      },
+      "aopc": 0.21875,
+      "commit_id": "9642e11aac22ad1790fcafcc6973605581bb4cb5",
+      "impacts": {
+        "0.1": 0.375,
+        "0.2": 0.375,
+        "0.3": 0.0,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 48,
+          "n_regions": 2,
+          "overshoot": 4,
+          "target": 44
+        },
+        "0.2": {
+          "actual": 94,
+          "n_regions": 5,
+          "overshoot": 7,
+          "target": 87
+        },
+        "0.3": {
+          "actual": 138,
+          "n_regions": 9,
+          "overshoot": 8,
+          "target": 130
+        },
+        "0.5": {
+          "actual": 218,
+          "n_regions": 14,
+          "overshoot": 2,
+          "target": 216
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.375,
+        "FILE_PATH": 0.0,
+        "STRUCTURAL_MARKUP": 0.5
+      },
+      "aopc": 0.15625,
+      "commit_id": "7460a856f2be511bd88b2426fefab9585cf953e7",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.0,
+        "0.3": 0.125,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 129,
+          "n_regions": 5,
+          "overshoot": 13,
+          "target": 116
+        },
+        "0.2": {
+          "actual": 240,
+          "n_regions": 9,
+          "overshoot": 9,
+          "target": 231
+        },
+        "0.3": {
+          "actual": 367,
+          "n_regions": 14,
+          "overshoot": 21,
+          "target": 346
+        },
+        "0.5": {
+          "actual": 579,
+          "n_regions": 32,
+          "overshoot": 2,
+          "target": 577
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.25,
+        "FILE_PATH": -0.25,
+        "STRUCTURAL_MARKUP": -0.375
+      },
+      "aopc": 0.375,
+      "commit_id": "cc340ad2eb6a783f6abe8d02f2c32bb02b01505c",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.375,
+        "0.5": 0.875
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 126,
+          "n_regions": 10,
+          "overshoot": 3,
+          "target": 123
+        },
+        "0.2": {
+          "actual": 252,
+          "n_regions": 21,
+          "overshoot": 7,
+          "target": 245
+        },
+        "0.3": {
+          "actual": 367,
+          "n_regions": 30,
+          "overshoot": 0,
+          "target": 367
+        },
+        "0.5": {
+          "actual": 613,
+          "n_regions": 55,
+          "overshoot": 2,
+          "target": 611
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -1.0,
+        "FILE_PATH": -0.25,
+        "STRUCTURAL_MARKUP": -0.125
+      },
+      "aopc": 0.1875,
+      "commit_id": "95650f86eb397f9e0e0446104eddf301fc82b6c4",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.25,
+        "0.3": 0.25,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 10,
+          "n_regions": 1,
+          "overshoot": 7,
+          "target": 3
+        },
+        "0.2": {
+          "actual": 10,
+          "n_regions": 1,
+          "overshoot": 5,
+          "target": 5
+        },
+        "0.3": {
+          "actual": 10,
+          "n_regions": 1,
+          "overshoot": 3,
+          "target": 7
+        },
+        "0.5": {
+          "actual": 19,
+          "n_regions": 2,
+          "overshoot": 8,
+          "target": 11
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.75,
+        "FILE_PATH": 0.375,
+        "STRUCTURAL_MARKUP": -0.375
+      },
+      "aopc": 0.4375,
+      "commit_id": "0955f5db17f6621aac41d8841fbcfc4885673d3a",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.5,
+        "0.3": 0.5,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 34,
+          "n_regions": 3,
+          "overshoot": 0,
+          "target": 34
+        },
+        "0.2": {
+          "actual": 77,
+          "n_regions": 7,
+          "overshoot": 9,
+          "target": 68
+        },
+        "0.3": {
+          "actual": 104,
+          "n_regions": 9,
+          "overshoot": 2,
+          "target": 102
+        },
+        "0.5": {
+          "actual": 175,
+          "n_regions": 17,
+          "overshoot": 6,
+          "target": 169
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.75,
+        "FILE_PATH": 0.375,
+        "STRUCTURAL_MARKUP": -0.375
+      },
+      "aopc": 0.1875,
+      "commit_id": "177eff33cb429de835ce4a8ea00e566be9e66912",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.125,
+        "0.3": 0.25,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 18,
+          "n_regions": 6,
+          "overshoot": 1,
+          "target": 17
+        },
+        "0.2": {
+          "actual": 36,
+          "n_regions": 12,
+          "overshoot": 2,
+          "target": 34
+        },
+        "0.3": {
+          "actual": 51,
+          "n_regions": 17,
+          "overshoot": 0,
+          "target": 51
+        },
+        "0.5": {
+          "actual": 84,
+          "n_regions": 28,
+          "overshoot": 0,
+          "target": 84
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.25,
+        "FILE_PATH": -0.375,
+        "STRUCTURAL_MARKUP": -0.5
+      },
+      "aopc": 0.21875,
+      "commit_id": "352b49daead3b06c985f297965b61559e20a4423",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.0,
+        "0.3": 0.5,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 79,
+          "n_regions": 7,
+          "overshoot": 2,
+          "target": 77
+        },
+        "0.2": {
+          "actual": 154,
+          "n_regions": 13,
+          "overshoot": 0,
+          "target": 154
+        },
+        "0.3": {
+          "actual": 231,
+          "n_regions": 19,
+          "overshoot": 0,
+          "target": 231
+        },
+        "0.5": {
+          "actual": 387,
+          "n_regions": 31,
+          "overshoot": 3,
+          "target": 384
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.125,
+        "FILE_PATH": -0.625,
+        "STRUCTURAL_MARKUP": -0.25
+      },
+      "aopc": 0.25,
+      "commit_id": "178136b642b3cb396fcaa10172b14b67746aee56",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.375,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 7,
+          "target": 5
+        },
+        "0.2": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 3,
+          "target": 9
+        },
+        "0.3": {
+          "actual": 27,
+          "n_regions": 2,
+          "overshoot": 13,
+          "target": 14
+        },
+        "0.5": {
+          "actual": 27,
+          "n_regions": 2,
+          "overshoot": 4,
+          "target": 23
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.25,
+        "FILE_PATH": 0.75,
+        "STRUCTURAL_MARKUP": -0.25
+      },
+      "aopc": 0.125,
+      "commit_id": "ca5da1a157782a2b62f7d7f71850c4b4647c4db0",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.0,
+        "0.3": 0.125,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 33,
+          "n_regions": 3,
+          "overshoot": 2,
+          "target": 31
+        },
+        "0.2": {
+          "actual": 64,
+          "n_regions": 6,
+          "overshoot": 2,
+          "target": 62
+        },
+        "0.3": {
+          "actual": 100,
+          "n_regions": 10,
+          "overshoot": 7,
+          "target": 93
+        },
+        "0.5": {
+          "actual": 155,
+          "n_regions": 17,
+          "overshoot": 1,
+          "target": 154
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.125,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": -0.25
+      },
+      "aopc": 0.09375,
+      "commit_id": "3af0bc51e0a45370f06efd27e20066c163eea941",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 102,
+          "n_regions": 6,
+          "overshoot": 2,
+          "target": 100
+        },
+        "0.2": {
+          "actual": 212,
+          "n_regions": 13,
+          "overshoot": 12,
+          "target": 200
+        },
+        "0.3": {
+          "actual": 310,
+          "n_regions": 19,
+          "overshoot": 10,
+          "target": 300
+        },
+        "0.5": {
+          "actual": 517,
+          "n_regions": 32,
+          "overshoot": 17,
+          "target": 500
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.5,
+        "FILE_PATH": 0.625,
+        "STRUCTURAL_MARKUP": -1.4375
+      },
+      "aopc": 0.25,
+      "commit_id": "a51964468f055a6337876fa810bfc8ae007020f0",
+      "impacts": {
+        "0.1": 0.625,
+        "0.2": 0.0,
+        "0.3": 0.25,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 138,
+          "n_regions": 10,
+          "overshoot": 1,
+          "target": 137
+        },
+        "0.2": {
+          "actual": 279,
+          "n_regions": 20,
+          "overshoot": 5,
+          "target": 274
+        },
+        "0.3": {
+          "actual": 414,
+          "n_regions": 30,
+          "overshoot": 3,
+          "target": 411
+        },
+        "0.5": {
+          "actual": 685,
+          "n_regions": 59,
+          "overshoot": 1,
+          "target": 684
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.625,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": -0.375
+      },
+      "aopc": 0.25,
+      "commit_id": "9176ef6a2e2669ca1e9c44716deed215fce5ecc6",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.25,
+        "0.3": 0.25,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 6,
+          "target": 6
+        },
+        "0.2": {
+          "actual": 12,
+          "n_regions": 1,
+          "overshoot": 1,
+          "target": 11
+        },
+        "0.3": {
+          "actual": 24,
+          "n_regions": 2,
+          "overshoot": 8,
+          "target": 16
+        },
+        "0.5": {
+          "actual": 34,
+          "n_regions": 3,
+          "overshoot": 7,
+          "target": 27
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.25,
+        "FILE_PATH": -0.25,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.4375,
+      "commit_id": "310b5416fc73b127d5989a56e46e02befe3c07b9",
+      "impacts": {
+        "0.1": 0.5,
+        "0.2": 0.5,
+        "0.3": 0.375,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 48,
+          "n_regions": 4,
+          "overshoot": 11,
+          "target": 37
+        },
+        "0.2": {
+          "actual": 84,
+          "n_regions": 6,
+          "overshoot": 10,
+          "target": 74
+        },
+        "0.3": {
+          "actual": 120,
+          "n_regions": 9,
+          "overshoot": 9,
+          "target": 111
+        },
+        "0.5": {
+          "actual": 185,
+          "n_regions": 14,
+          "overshoot": 0,
+          "target": 185
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.5,
+        "FILE_PATH": 0.375,
+        "STRUCTURAL_MARKUP": 0.375
+      },
+      "aopc": 0.125,
+      "commit_id": "83c5f834abca80e9a6110b9c0789656b02c1d557",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.125
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 86,
+          "n_regions": 7,
+          "overshoot": 7,
+          "target": 79
+        },
+        "0.2": {
+          "actual": 163,
+          "n_regions": 14,
+          "overshoot": 5,
+          "target": 158
+        },
+        "0.3": {
+          "actual": 245,
+          "n_regions": 22,
+          "overshoot": 8,
+          "target": 237
+        },
+        "0.5": {
+          "actual": 397,
+          "n_regions": 42,
+          "overshoot": 2,
+          "target": 395
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.375,
+        "FILE_PATH": 1.0,
+        "STRUCTURAL_MARKUP": 1.125
+      },
+      "aopc": 1.0,
+      "commit_id": "81fa7e4074ea62e977835a25110d1bee74d4565f",
+      "impacts": {
+        "0.1": 1.0,
+        "0.2": 1.0,
+        "0.3": 1.0,
+        "0.5": 1.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 116,
+          "n_regions": 10,
+          "overshoot": 12,
+          "target": 104
+        },
+        "0.2": {
+          "actual": 220,
+          "n_regions": 18,
+          "overshoot": 13,
+          "target": 207
+        },
+        "0.3": {
+          "actual": 322,
+          "n_regions": 27,
+          "overshoot": 11,
+          "target": 311
+        },
+        "0.5": {
+          "actual": 522,
+          "n_regions": 46,
+          "overshoot": 5,
+          "target": 517
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.375,
+        "FILE_PATH": 0.625,
+        "STRUCTURAL_MARKUP": 0.0
+      },
+      "aopc": 0.6875,
+      "commit_id": "7ff07e7799577aecaae22e8a5a9346707e676e3e",
+      "impacts": {
+        "0.1": 0.75,
+        "0.2": 0.375,
+        "0.3": 0.375,
+        "0.5": 1.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 8,
+          "n_regions": 1,
+          "overshoot": 1,
+          "target": 7
+        },
+        "0.2": {
+          "actual": 21,
+          "n_regions": 2,
+          "overshoot": 8,
+          "target": 13
+        },
+        "0.3": {
+          "actual": 21,
+          "n_regions": 2,
+          "overshoot": 2,
+          "target": 19
+        },
+        "0.5": {
+          "actual": 36,
+          "n_regions": 4,
+          "overshoot": 5,
+          "target": 31
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.0,
+        "FILE_PATH": 0.375,
+        "STRUCTURAL_MARKUP": -0.25
+      },
+      "aopc": 0.09375,
+      "commit_id": "0aa433359c222fb8e0e5a4f77bd67fc1cbeaa21b",
+      "impacts": {
+        "0.1": 0.125,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 188,
+          "n_regions": 2,
+          "overshoot": 124,
+          "target": 64
+        },
+        "0.2": {
+          "actual": 188,
+          "n_regions": 2,
+          "overshoot": 61,
+          "target": 127
+        },
+        "0.3": {
+          "actual": 224,
+          "n_regions": 3,
+          "overshoot": 34,
+          "target": 190
+        },
+        "0.5": {
+          "actual": 325,
+          "n_regions": 8,
+          "overshoot": 9,
+          "target": 316
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.25,
+        "FILE_PATH": 0.875,
+        "STRUCTURAL_MARKUP": 1.125
+      },
+      "aopc": 0.03125,
+      "commit_id": "c6e75535b2f622a82ece6831d08b02a4054f3a37",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.0,
+        "0.3": 0.125,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 158,
+          "n_regions": 4,
+          "overshoot": 6,
+          "target": 152
+        },
+        "0.2": {
+          "actual": 376,
+          "n_regions": 9,
+          "overshoot": 72,
+          "target": 304
+        },
+        "0.3": {
+          "actual": 457,
+          "n_regions": 11,
+          "overshoot": 1,
+          "target": 456
+        },
+        "0.5": {
+          "actual": 760,
+          "n_regions": 16,
+          "overshoot": 1,
+          "target": 759
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 1.0,
+        "FILE_PATH": -0.875,
+        "STRUCTURAL_MARKUP": 0.125
+      },
+      "aopc": 0.125,
+      "commit_id": "9c95a92a5a515ddc6abe9e8efa0927d9489961cf",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.125,
+        "0.3": 0.125,
+        "0.5": 0.25
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 8,
+          "n_regions": 1,
+          "overshoot": 3,
+          "target": 5
+        },
+        "0.2": {
+          "actual": 20,
+          "n_regions": 2,
+          "overshoot": 11,
+          "target": 9
+        },
+        "0.3": {
+          "actual": 20,
+          "n_regions": 2,
+          "overshoot": 7,
+          "target": 13
+        },
+        "0.5": {
+          "actual": 24,
+          "n_regions": 3,
+          "overshoot": 3,
+          "target": 21
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.25,
+        "FILE_PATH": -0.875,
+        "STRUCTURAL_MARKUP": -0.25
+      },
+      "aopc": 0.0,
+      "commit_id": "e421cd37407acf88a4aa803afca43679a002a882",
+      "impacts": {
+        "0.1": 0.0,
+        "0.2": 0.0,
+        "0.3": 0.0,
+        "0.5": 0.0
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 59,
+          "n_regions": 5,
+          "overshoot": 13,
+          "target": 46
+        },
+        "0.2": {
+          "actual": 112,
+          "n_regions": 9,
+          "overshoot": 20,
+          "target": 92
+        },
+        "0.3": {
+          "actual": 147,
+          "n_regions": 12,
+          "overshoot": 9,
+          "target": 138
+        },
+        "0.5": {
+          "actual": 232,
+          "n_regions": 21,
+          "overshoot": 2,
+          "target": 230
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": 0.25,
+        "FILE_PATH": -0.125,
+        "STRUCTURAL_MARKUP": 0.75
+      },
+      "aopc": 0.40625,
+      "commit_id": "507d9d2061d4ea8c4ed4c26a5aad4f18aa493e67",
+      "impacts": {
+        "0.1": 0.5,
+        "0.2": 0.25,
+        "0.3": 0.375,
+        "0.5": 0.5
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 123,
+          "n_regions": 11,
+          "overshoot": 5,
+          "target": 118
+        },
+        "0.2": {
+          "actual": 242,
+          "n_regions": 21,
+          "overshoot": 6,
+          "target": 236
+        },
+        "0.3": {
+          "actual": 356,
+          "n_regions": 33,
+          "overshoot": 3,
+          "target": 353
+        },
+        "0.5": {
+          "actual": 598,
+          "n_regions": 55,
+          "overshoot": 10,
+          "target": 588
+        }
+      }
+    },
+    {
+      "NOT_RQ_RESULT": true,
+      "NOT_TEST_RESULT": true,
+      "PAYLOAD_BLANK_V1": true,
+      "PURPOSE": "REHEARSAL",
+      "SEGMENT_DELETE_V1": true,
+      "SPLIT": "VALIDATION",
+      "TOKEN_BUDGET_PREFIX_V1": true,
+      "ablations": {
+        "COMMIT_MESSAGE": -0.25,
+        "FILE_PATH": -1.5,
+        "STRUCTURAL_MARKUP": 0.125
+      },
+      "aopc": 0.25,
+      "commit_id": "13bbcec27983c57603c6395e9040940d1e87ac21",
+      "impacts": {
+        "0.1": 0.25,
+        "0.2": 0.25,
+        "0.3": 0.125,
+        "0.5": 0.375
+      },
+      "prefixes": {
+        "0.1": {
+          "actual": 90,
+          "n_regions": 7,
+          "overshoot": 0,
+          "target": 90
+        },
+        "0.2": {
+          "actual": 184,
+          "n_regions": 17,
+          "overshoot": 5,
+          "target": 179
+        },
+        "0.3": {
+          "actual": 274,
+          "n_regions": 26,
+          "overshoot": 6,
+          "target": 268
+        },
+        "0.5": {
+          "actual": 449,
+          "n_regions": 44,
+          "overshoot": 2,
+          "target": 447
+        }
+      }
+    }
+  ]
+}

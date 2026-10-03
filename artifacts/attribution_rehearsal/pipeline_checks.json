@@ -1,0 +1,33 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "rq": {
+    "rq1": 0,
+    "rq2": 64,
+    "rq3": 0,
+    "rq4": 960
+  },
+  "rq1_PASS": true,
+  "rq1_empty_labelled_universe": true,
+  "rq2_PASS": true,
+  "rq3_PASS": true,
+  "rq4_PASS": true,
+  "stats": {
+    "VALIDATION_PIPELINE_CHECK": true,
+    "bootstrap_full_protocol_repeats": 10000,
+    "bootstrap_smoke_repeats": 200,
+    "commit_unit": true,
+    "common_seed_min": 2,
+    "do_not_interpret_as_finding": true,
+    "holm_n": 1,
+    "metric_used_for_code_validation": "RQ1_recall20_if_available_else_polarity_fraction_positive",
+    "n_included": 64,
+    "pairwise_n": 64,
+    "rq1_empty_universe_note": "N=64 validation positives are not the RQ1 labelled-line primary universe; empty eligible-line sets are recorded rather than relabelled.",
+    "wilcoxon_status": "OK",
+    "wilcoxon_zero_method": "pratt"
+  },
+  "stats_PASS": true
+}

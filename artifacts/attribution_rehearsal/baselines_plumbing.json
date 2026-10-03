@@ -1,0 +1,201 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "rows": [
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "DEGENERATE_NOT_APPLICABLE",
+        "n": 5,
+        "n_added": 5,
+        "reason": "all_rq1_candidates_are_added_lines"
+      },
+      "B_LENGTH": [
+        8.0,
+        5.0,
+        12.0,
+        11.0,
+        2.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "82e9af9c68aa353a19c2b005838458563425660e"
+    },
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "APPLICABLE",
+        "n": 41,
+        "n_added": 30,
+        "ranking": "ADD_before_other_change_types",
+        "reason": "mixed_change_types"
+      },
+      "B_LENGTH": [
+        5.0,
+        13.0,
+        12.0,
+        6.0,
+        10.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "675270c475e5425eddd4e528b87f88c67dbf6aec"
+    },
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "APPLICABLE",
+        "n": 113,
+        "n_added": 100,
+        "ranking": "ADD_before_other_change_types",
+        "reason": "mixed_change_types"
+      },
+      "B_LENGTH": [
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        6.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "0820b701bfe61cac6087aca9da1c9b88afb8784c"
+    },
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "APPLICABLE",
+        "n": 104,
+        "n_added": 82,
+        "ranking": "ADD_before_other_change_types",
+        "reason": "mixed_change_types"
+      },
+      "B_LENGTH": [
+        9.0,
+        8.0,
+        9.0,
+        14.0,
+        16.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "20d867de98e3acc85fb23b88207e9ce384498f06"
+    },
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "APPLICABLE",
+        "n": 2,
+        "n_added": 1,
+        "ranking": "ADD_before_other_change_types",
+        "reason": "mixed_change_types"
+      },
+      "B_LENGTH": [
+        18.0,
+        18.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "4ad705443258be2483cde74ca49033a9a2b93924"
+    },
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "APPLICABLE",
+        "n": 55,
+        "n_added": 53,
+        "ranking": "ADD_before_other_change_types",
+        "reason": "mixed_change_types"
+      },
+      "B_LENGTH": [
+        10.0,
+        10.0,
+        26.0,
+        26.0,
+        10.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "fc5fd06047bf751ec1a2ccd37c3efbd7f353cd1c"
+    },
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "APPLICABLE",
+        "n": 78,
+        "n_added": 41,
+        "ranking": "ADD_before_other_change_types",
+        "reason": "mixed_change_types"
+      },
+      "B_LENGTH": [
+        6.0,
+        10.0,
+        6.0,
+        13.0,
+        14.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "adf9fc13b37f866d731c73a09071170d50bfa807"
+    },
+    {
+      "ADD_FIRST": {
+        "ADD_FIRST_BASELINE": "APPLICABLE",
+        "n": 114,
+        "n_added": 71,
+        "ranking": "ADD_before_other_change_types",
+        "reason": "mixed_change_types"
+      },
+      "B_LENGTH": [
+        19.0,
+        19.0,
+        10.0,
+        14.0,
+        14.0
+      ],
+      "B_ORDER": [
+        -0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0
+      ],
+      "B_RANDOM_repeats": 100,
+      "commit_id": "763333c2572c5ebcb8f1d09c32876da987741c54"
+    }
+  ]
+}

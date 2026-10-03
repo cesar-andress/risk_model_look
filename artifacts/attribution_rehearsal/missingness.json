@@ -1,0 +1,81 @@
+{
+  "COMMON_COMPLETE_CASE": {
+    "n": 0,
+    "note": "commits with DONE/OK for all methods and seeds"
+  },
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "by_method_seed": {
+    "attention": {
+      "13": {
+        "DONE": 64
+      },
+      "42": {
+        "DONE": 64
+      },
+      "73": {
+        "DONE": 64
+      }
+    },
+    "attention_last4": {
+      "13": {
+        "DONE": 64
+      },
+      "42": {
+        "DONE": 64
+      },
+      "73": {
+        "DONE": 64
+      }
+    },
+    "grad_x_input": {
+      "13": {
+        "DONE": 64
+      },
+      "42": {
+        "DONE": 64
+      },
+      "73": {
+        "DONE": 64
+      }
+    },
+    "gradient": {
+      "13": {
+        "DONE": 64
+      },
+      "42": {
+        "DONE": 64
+      },
+      "73": {
+        "DONE": 64
+      }
+    },
+    "ig": {
+      "13": {
+        "DONE": 1,
+        "IG_NONCONVERGED": 63
+      },
+      "42": {
+        "DONE": 4,
+        "IG_NONCONVERGED": 60
+      },
+      "73": {
+        "DONE": 5,
+        "IG_NONCONVERGED": 59
+      }
+    },
+    "occlusion": {
+      "13": {
+        "DONE": 64
+      },
+      "42": {
+        "DONE": 64
+      },
+      "73": {
+        "DONE": 64
+      }
+    }
+  }
+}

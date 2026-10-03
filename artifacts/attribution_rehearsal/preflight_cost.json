@@ -1,0 +1,25 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "approx_gpu_hours_from_n6_conservative_ig2048": 5.263157894736842,
+  "backwards_gxi_grad": 384,
+  "disk_note": "per-commit JSON under artifacts/attribution_rehearsal/runs (gitignored)",
+  "engineering_only": true,
+  "forwards_attention_like": 576,
+  "ig_evaluations_100_if_all_retry": 19200,
+  "ig_evaluations_50_nominal": 9600,
+  "methods": [
+    "attention",
+    "attention_last4",
+    "grad_x_input",
+    "gradient",
+    "ig",
+    "occlusion"
+  ],
+  "n_commits": 64,
+  "n_jobs": 1152,
+  "n_seeds": 3,
+  "perturbation_count_unknown_until_run": true
+}

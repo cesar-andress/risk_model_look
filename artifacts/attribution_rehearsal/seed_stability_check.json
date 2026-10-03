@@ -1,0 +1,24 @@
+{
+  "NOT_RQ_RESULT": true,
+  "NOT_TEST_RESULT": true,
+  "PURPOSE": "REHEARSAL",
+  "SPLIT": "VALIDATION",
+  "interpretation_forbidden": true,
+  "pairs": {
+    "13_42": {
+      "computation_valid": true,
+      "n_commits_aligned": 63,
+      "n_finite_rho": 63
+    },
+    "13_73": {
+      "computation_valid": true,
+      "n_commits_aligned": 63,
+      "n_finite_rho": 63
+    },
+    "42_73": {
+      "computation_valid": true,
+      "n_commits_aligned": 63,
+      "n_finite_rho": 63
+    }
+  }
+}
