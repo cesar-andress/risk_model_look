@@ -39,10 +39,21 @@ def _git_info(repo_root: Path) -> dict[str, str]:
 
 
 def file_sha256(path: Path | None) -> str:
-    if path is None or not Path(path).is_file():
+    if path is None:
+        return "NONE"
+    p = Path(path)
+    if p.is_dir():
+        for name in ("adapter_model.safetensors", "pytorch_model.bin"):
+            cand = p / name
+            if cand.is_file():
+                p = cand
+                break
+        else:
+            return "NONE"
+    if not p.is_file():
         return "NONE"
     h = hashlib.sha256()
-    with open(path, "rb") as f:
+    with open(p, "rb") as f:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()

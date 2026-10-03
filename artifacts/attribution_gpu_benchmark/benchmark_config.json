@@ -1,0 +1,25 @@
+{
+  "banner": "ENGINEERING BENCHMARK ONLY \u2014 NOT_SCIENTIFIC_RESULT \u2014 NOT validation rehearsal \u2014 NOT test attribution \u2014 NOT RQ results",
+  "commit_ids": [
+    "0037eb17d11eda573c02c93a5a7cbc09122fda8e",
+    "003f022df47bfb1370514aca3b2cee1a9116f3d7",
+    "004c170b12af4c089c35709b2820b9f860a66640",
+    "005f41f13651577bb7e647604abad7ed061c160d",
+    "0031a91ba7b5b580b28fab5cb60d683c93e9fae8",
+    "006fcd885a981242ba3a737ac3b5912f10de5206"
+  ],
+  "label": "NOT_SCIENTIFIC_RESULT",
+  "n_examples": 6,
+  "n_lines": [
+    5,
+    12,
+    60,
+    79,
+    240,
+    123
+  ],
+  "primary_max_length": 2048,
+  "seed": 13,
+  "selected_epoch": 2,
+  "split": "valid"
+}

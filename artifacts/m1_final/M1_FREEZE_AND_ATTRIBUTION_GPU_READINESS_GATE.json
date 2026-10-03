@@ -1,7 +1,8 @@
 {
   "gate": "M1_FREEZE_AND_ATTRIBUTION_GPU_READINESS_GATE",
-  "status": "IN_PROGRESS",
+  "status": "PASS",
   "opened_at": "2026-10-03T08:09:34+02:00",
+  "closed_at": "2026-10-03T08:20:00+02:00",
   "covers": [
     "M1 final provenance",
     "repository consolidation",
@@ -13,5 +14,6 @@
     "scientific XAI evaluation"
   ],
   "ATTRIBUTION_RESULTS_GATE": "NOT_STARTED",
-  "VALIDATION_ATTRIBUTION_REHEARSAL": "NOT_STARTED"
+  "VALIDATION_ATTRIBUTION_REHEARSAL": "NOT_STARTED",
+  "parallel_worktree": "INTEGRATED_PENDING_CLEANUP"
 }

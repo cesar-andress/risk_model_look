@@ -77,10 +77,14 @@ def load_base_nf4(
     model_id: str = QWEN_MODEL_ID,
     revision: str = QWEN_REVISION,
     device_map: str | dict[str, Any] = "auto",
+    attn_implementation: str | None = None,
 ):
     """Load frozen NF4 base without LoRA."""
     from transformers import AutoModelForCausalLM
 
+    kwargs: dict[str, Any] = {}
+    if attn_implementation is not None:
+        kwargs["attn_implementation"] = attn_implementation
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
         revision=revision,
@@ -88,6 +92,7 @@ def load_base_nf4(
         device_map=device_map,
         torch_dtype=torch.bfloat16,
         trust_remote_code=True,
+        **kwargs,
     )
     if hasattr(model, "config"):
         model.config.use_cache = False
@@ -135,11 +140,17 @@ def load_qlora_from_adapter(
     revision: str = QWEN_REVISION,
     device_map: str | dict[str, Any] = "auto",
     is_trainable: bool = False,
+    attn_implementation: str | None = None,
 ):
     """Reload NF4 base + saved LoRA adapter."""
     from peft import PeftModel
 
-    base = load_base_nf4(model_id=model_id, revision=revision, device_map=device_map)
+    base = load_base_nf4(
+        model_id=model_id,
+        revision=revision,
+        device_map=device_map,
+        attn_implementation=attn_implementation,
+    )
     model = PeftModel.from_pretrained(base, adapter_dir, is_trainable=is_trainable)
     if is_trainable:
         if hasattr(model, "enable_input_require_grads"):

@@ -1,0 +1,46 @@
+{
+  "RQ1_N304_3seeds_gpu_hours": {
+    "attention": 0.034036354421711795,
+    "grad_x_input": 0.0675216260591866,
+    "ig_100_retry_case": 2.186869273199312,
+    "ig_100_retry_projected_2048": 19.202666666666666,
+    "ig_50": 1.093434636599656,
+    "ig_50_projected_2048": 9.601333333333333,
+    "occlusion": 0.07280219233362004
+  },
+  "RQ234_N475_3seeds_gpu_hours": {
+    "attention": 0.05318180378392468,
+    "grad_x_input": 0.10550254071747907,
+    "ig_100_retry_case": 3.416983239373925,
+    "ig_100_retry_projected_2048": 30.004166666666666,
+    "ig_50": 1.7084916196869624,
+    "ig_50_projected_2048": 15.002083333333333,
+    "occlusion": 0.11375342552128132
+  },
+  "assumptions": [
+    "Times measured on RTX 4090, NF4 + LoRA seed 13 ep2, SDPA, max_len=2048.",
+    "IG 50-step projection uses measured 50-step example (chunk=4) scaled linearly; 100-step = 2x.",
+    "Occlusion uses SEGMENT_DELETE_V1 re-render+score; mean_regions from this tiny sample, default 20 if needed.",
+    "RQ1 N=304 (all methods); RQ2/3/4 N=475 positives (faithfulness-heavy: IG+occlusion).",
+    "Does not include CPU post-processing, I/O, or completeness retries beyond 100-step case.",
+    "NOT a scientific runtime guarantee.",
+    "IG 50-step wall was measured on a short validation prompt (219 tokens). GxI at ~2036 tokens was ~0.76s; linear 50-step projection at full 2048 is ~38s/commit, not 4.3s.",
+    "Occlusion mean_regions=5 from this 6-commit sample; RQ1 typical line counts are higher \u2014 scale regions/sec accordingly.",
+    "Host fingerprint recorded in gpu_environment.json is local lab hardware, not a secret."
+  ],
+  "label": "NOT_SCIENTIFIC_RESULT",
+  "measured": {
+    "attention_s_per_commit": 0.13435403061202025,
+    "gradxinput_s_per_commit": 0.26653273444415765,
+    "ig100_s_per_commit": 8.632378709997283,
+    "ig100_s_per_commit_projected_2048_from_gxi": 75.8,
+    "ig50_s_per_commit": 4.316189354998642,
+    "ig50_s_per_commit_projected_2048_from_gxi": 37.9,
+    "ig50_s_per_commit_short_219tok": 4.316189354998642,
+    "ig_steps_per_s": 11.584292506095515,
+    "mean_regions_sample": 5.0,
+    "occlusion_regions_per_s": 17.398743445281113
+  },
+  "three_seed_total_gpu_hours_best_case_ig50": 3.2487241991238216,
+  "three_seed_total_gpu_hours_conservative_ig50_2048": 25.05021460950387
+}

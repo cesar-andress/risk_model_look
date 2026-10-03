@@ -1,0 +1,27 @@
+{
+  "cache_key": "ed5d4c03198ac54f05eb784fe4ff56afd879c10d4b187f3c6329fd3f31c31f36",
+  "checksum": "6bc90ee5c1f7b9153bfd40cb2e8b7955cd7ba75e4fcb1d65defa0f3cd4a93892",
+  "key_fields": {
+    "adapter_hash": "NONE",
+    "commit_id": "003f022df47bfb1370514aca3b2cee1a9116f3d7",
+    "configuration_hash": "9084406830fa25088c35b8812493fdd499e5c347a3e336ab87b907be3f321f16",
+    "dataset_version": "JIT_DEFECTS4J_CANONICAL_V1",
+    "granularity": "LINE",
+    "method": "attention",
+    "model_hash": "NONE",
+    "perturbation_operator": "NONE",
+    "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+    "renderer_version": "CANONICAL_DIFF_RENDER_V1",
+    "seed": 13,
+    "token_mapping_version": "TOKEN_TO_LINE_MAP_V1"
+  },
+  "metadata": {
+    "missingness_code": "OK",
+    "result_path": "/home/cesar/papers/risk_model_look/risk_model_look/artifacts/attribution_gpu_benchmark/engine_probe/fail_results/attribution_run_20261003T061932540704Z/003f022df47bfb1370514aca3b2cee1a9116f3d7__attention__LINE.json"
+  },
+  "result_summary": {
+    "n_scores": 319,
+    "n_tokens": 319
+  },
+  "status": "DONE"
+}

@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "DONE": 3,
+    "FAILED": 0,
+    "NONCONVERGED": 0,
+    "OOM": 0,
+    "PENDING": 0,
+    "RUNNING": 0,
+    "SKIPPED": 0
+  },
+  "results_jsonl": "/home/cesar/papers/risk_model_look/risk_model_look/artifacts/attribution_gpu_benchmark/engine_probe/fail_results/attribution_run_20261003T061932540704Z/method_results.jsonl",
+  "run_dir": "/home/cesar/papers/risk_model_look/risk_model_look/artifacts/attribution_gpu_benchmark/engine_probe/fail_runs/attribution_run_20261003T061932540704Z"
+}

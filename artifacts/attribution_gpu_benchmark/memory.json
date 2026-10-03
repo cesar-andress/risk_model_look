@@ -1,0 +1,215 @@
+{
+  "by_row_peak_gib": [
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "forward",
+      "peak_allocated_gib": 5.510434627532959
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "attention",
+      "peak_allocated_gib": 6.504050254821777
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 6.511119842529297
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "forward",
+      "peak_allocated_gib": 5.529768466949463
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "attention",
+      "peak_allocated_gib": 6.967489719390869
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 6.966939926147461
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "forward",
+      "peak_allocated_gib": 5.598202228546143
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "attention",
+      "peak_allocated_gib": 9.091477394104004
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 1024,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 9.084152698516846
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "forward",
+      "peak_allocated_gib": 5.52439546585083
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "attention",
+      "peak_allocated_gib": 6.516810894012451
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 6.510732650756836
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "forward",
+      "peak_allocated_gib": 5.529768466949463
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "attention",
+      "peak_allocated_gib": 6.967489719390869
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 6.966939926147461
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "forward",
+      "peak_allocated_gib": 5.598202228546143
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "attention",
+      "peak_allocated_gib": 9.091477394104004
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 9.084152698516846
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "forward",
+      "peak_allocated_gib": 5.695234775543213
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "attention",
+      "peak_allocated_gib": 10.650710105895996
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 10.638331890106201
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "forward",
+      "peak_allocated_gib": 5.9713134765625
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "attention",
+      "peak_allocated_gib": 15.164398193359375
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 15.143284797668457
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "forward",
+      "peak_allocated_gib": 5.974303245544434
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "attention",
+      "peak_allocated_gib": 15.147465705871582
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "grad_x_input",
+      "peak_allocated_gib": 15.120034217834473
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "ig_micro_4step",
+      "peak_allocated_gib": 6.519050121307373
+    },
+    {
+      "batch_or_chunk": 4,
+      "input_length_cap": 2048,
+      "method": "ig_micro_4step",
+      "peak_allocated_gib": 9.575890064239502
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "ig_micro_4step",
+      "peak_allocated_gib": 6.977721214294434
+    },
+    {
+      "batch_or_chunk": 4,
+      "input_length_cap": 2048,
+      "method": "ig_micro_4step",
+      "peak_allocated_gib": 11.477566719055176
+    },
+    {
+      "batch_or_chunk": 4,
+      "input_length_cap": 2048,
+      "method": "ig_protocol_50_engineering_runtime",
+      "peak_allocated_gib": 9.597511768341064
+    },
+    {
+      "batch_or_chunk": 1,
+      "input_length_cap": 2048,
+      "method": "occlusion_segment_delete",
+      "peak_allocated_gib": 5.520644664764404
+    },
+    {
+      "batch_or_chunk": 2,
+      "input_length_cap": 2048,
+      "method": "occlusion_segment_delete",
+      "peak_allocated_gib": 5.539937973022461
+    },
+    {
+      "batch_or_chunk": 4,
+      "input_length_cap": 2048,
+      "method": "occlusion_segment_delete",
+      "peak_allocated_gib": 5.616366386413574
+    }
+  ],
+  "label": "NOT_SCIENTIFIC_RESULT"
+}

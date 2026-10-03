@@ -83,18 +83,43 @@ def _accumulate_ig(
     *,
     steps: int,
     rule: IntegrationRule,
+    interpolation_chunk: int = 1,
 ) -> Tensor:
-    """Return attribution tensor (B,T,D) without completeness metadata."""
+    """Return attribution tensor (B,T,D) without completeness metadata.
+
+    ``interpolation_chunk`` only groups Gauss–Legendre nodes for throughput.
+    Nodes, weights, baseline, and the integral are unchanged. Chunk>1 requires
+    ``score_fn`` to accept a stacked batch of interpolants with the same B=1
+    layout expanded on dim 0, returning the **sum** of per-row scores so that
+    autograd yields per-row gradients.
+    """
     x = embeddings.detach()
     delta = x - baseline
     if rule == IntegrationRule.GAUSS_LEGENDRE:
         alphas, weights = gauss_legendre_unit_interval(steps)
         total = torch.zeros_like(x)
-        for a, w in zip(alphas, weights):
-            x_a = (baseline + float(a) * delta).requires_grad_(True)
-            s = score_fn(x_a)
-            (g,) = torch.autograd.grad(s, x_a, retain_graph=False)
-            total = total + float(w) * g
+        chunk = int(interpolation_chunk)
+        if chunk < 1:
+            raise ValueError("interpolation_chunk must be >= 1")
+        if chunk == 1:
+            for a, w in zip(alphas, weights):
+                x_a = (baseline + float(a) * delta).requires_grad_(True)
+                s = score_fn(x_a)
+                (g,) = torch.autograd.grad(s, x_a, retain_graph=False)
+                total = total + float(w) * g
+            return delta * total
+        if x.size(0) != 1:
+            raise ValueError("interpolation_chunk>1 currently supports B=1 embeddings")
+        i = 0
+        while i < steps:
+            sl = slice(i, min(i + chunk, steps))
+            pts = [baseline + float(a) * delta for a in alphas[sl]]
+            stacked = torch.cat(pts, dim=0).detach().requires_grad_(True)
+            s = score_fn(stacked)
+            (g,) = torch.autograd.grad(s, stacked, retain_graph=False)
+            for j, w in enumerate(weights[sl]):
+                total = total + float(w) * g[j : j + 1]
+            i += chunk
         return delta * total
     if rule == IntegrationRule.RIEMANN:
         total_grad = torch.zeros_like(x)
@@ -164,6 +189,7 @@ def integrated_gradients(
     integration_rule: IntegrationRule = IntegrationRule.GAUSS_LEGENDRE,
     method_name: str = "integrated_gradients",
     target: TargetDefinition = M1_RISK_LOGIT_CONTRAST,
+    interpolation_chunk: int = 1,
 ) -> AttributionResult:
     if steps < 1:
         raise ValueError("steps must be >= 1")
@@ -175,7 +201,12 @@ def integrated_gradients(
         explicit_baseline=explicit_baseline,
     )
     attr = _accumulate_ig(
-        x, baseline, score_fn, steps=steps, rule=integration_rule
+        x,
+        baseline,
+        score_fn,
+        steps=steps,
+        rule=integration_rule,
+        interpolation_chunk=interpolation_chunk,
     )
     token_scores = attr[0].sum(dim=-1).detach().cpu()
     with torch.no_grad():
@@ -184,6 +215,7 @@ def integrated_gradients(
     errs = completeness_errors(float(token_scores.sum()), f_x, f_b)
     meta: dict[str, Any] = {
         "steps": steps,
+        "interpolation_chunk": int(interpolation_chunk),
         "baseline_strategy": baseline_strategy.value,
         "integration_rule": integration_rule.value,
         "f_input": f_x,
@@ -221,6 +253,7 @@ def integrated_gradients_with_retry(
     method_name: str = "integrated_gradients",
     target: TargetDefinition = M1_RISK_LOGIT_CONTRAST,
     completeness_mode: str = "COMBINED_ABS_REL_TOL_V1_2",
+    interpolation_chunk: int = 1,
 ) -> AttributionResult:
     """Adaptive retry: 50 → 100 steps; else IG_NONCONVERGED.
 
@@ -245,6 +278,7 @@ def integrated_gradients_with_retry(
         integration_rule=integration_rule,
         method_name=method_name,
         target=target,
+        interpolation_chunk=interpolation_chunk,
     )
     meta0 = dict(first.metadata)
     meta0["completeness_mode"] = completeness_mode
@@ -277,6 +311,7 @@ def integrated_gradients_with_retry(
         integration_rule=integration_rule,
         method_name=method_name,
         target=target,
+        interpolation_chunk=interpolation_chunk,
     )
     meta = dict(second.metadata)
     ok = _converged(meta)

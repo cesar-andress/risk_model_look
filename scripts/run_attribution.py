@@ -54,11 +54,24 @@ def build_parser() -> argparse.ArgumentParser:
         default=[],
         help="Optional explicit commit id (repeatable). Default: synthetic cohort sizes.",
     )
+    p.add_argument(
+        "--backend",
+        default="toy",
+        choices=["toy", "frozen_m1"],
+        help="toy = synthetic CPU executor; frozen_m1 = selected QLoRA adapter",
+    )
+    p.add_argument(
+        "--scientific",
+        action="store_true",
+        help="Allow unlabeled scientific payloads. Default stamps NOT_SCIENTIFIC_RESULT.",
+    )
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if "test" in args.cohort.lower() and args.backend == "frozen_m1":
+        raise SystemExit("TEST attribution is blocked in this runner path")
     if args.protocol_hash != ATTRIBUTION_PROTOCOL_HASH and not args.dry_run:
         print(
             f"WARNING: protocol-hash != frozen V1.2\n"
@@ -92,7 +105,32 @@ def main(argv: list[str] | None = None) -> int:
         ig_steps=args.ig_steps,
         commit_ids=list(args.commit_id),
     )
-    engine = AttributionEngine(cfg, repo_root=REPO_ROOT)
+    executor = None
+    if args.backend == "frozen_m1" and not args.dry_run:
+        from src.experiments.frozen_executor import (
+            index_valid_by_commit,
+            make_frozen_m1_executor,
+        )
+        from src.experiments.m1_backend import FrozenM1Bundle
+
+        bundle = FrozenM1Bundle(
+            repo_root=REPO_ROOT,
+            seed=args.seed,
+            protocol_hash=args.protocol_hash,
+            stats_hash=args.stats_hash,
+        )
+        cfg.model_identifier = bundle.ident.base_model
+        cfg.model_revision = bundle.ident.base_revision
+        cfg.adapter_path = str(bundle.ident.adapter_dir)
+        cfg.model_checkpoint = str(bundle.ident.adapter_dir)
+        records = index_valid_by_commit(REPO_ROOT)
+        executor = make_frozen_m1_executor(
+            bundle,
+            records=records,
+            max_length=2048,
+            scientific=bool(args.scientific),
+        )
+    engine = AttributionEngine(cfg, repo_root=REPO_ROOT, executor=executor)
     summary = engine.run()
     if not args.dry_run:
         print(json_dumps(summary))

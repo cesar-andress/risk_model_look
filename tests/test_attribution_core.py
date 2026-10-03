@@ -141,6 +141,38 @@ def test_ig_completeness_toy() -> None:
     assert completeness_holds(res, rel_tol=1e-4)
 
 
+def test_ig_interpolation_chunk_matches_sequential() -> None:
+    toy = LinearPathToy(dim=4)
+    emb = torch.tensor([[[1.0, 2.0, 3.0, 4.0], [0.5, -1.0, 0.0, 2.0]]])
+
+    def score_fn(e: torch.Tensor) -> torch.Tensor:
+        return toy.score(e)
+
+    from src.attribution.integrated_gradients import (
+        IGBaselineStrategy,
+        IntegrationRule,
+        integrated_gradients,
+    )
+
+    a = integrated_gradients(
+        emb,
+        score_fn,
+        steps=8,
+        baseline_strategy=IGBaselineStrategy.ZERO_EMBEDDING,
+        integration_rule=IntegrationRule.GAUSS_LEGENDRE,
+        interpolation_chunk=1,
+    )
+    b = integrated_gradients(
+        emb,
+        score_fn,
+        steps=8,
+        baseline_strategy=IGBaselineStrategy.ZERO_EMBEDDING,
+        integration_rule=IntegrationRule.GAUSS_LEGENDRE,
+        interpolation_chunk=4,
+    )
+    assert a.token_scores == pytest.approx(b.token_scores, abs=1e-5, rel=1e-5)
+
+
 def test_ig_completeness_fails_when_broken() -> None:
     toy = LinearPathToy(dim=4)
     emb = torch.tensor([[[1.0, 1.0, 1.0, 1.0]]])

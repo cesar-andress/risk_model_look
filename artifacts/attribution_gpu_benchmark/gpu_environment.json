@@ -1,0 +1,44 @@
+{
+  "adapter": {
+    "adapter_dir": "/home/cesar/papers/risk_model_look/risk_model_look/artifacts/m1_final/adapters/seed_13/epoch_2",
+    "adapter_sha256": "a764d2f57e6586cf61b9c38d7dea4bd1b5a2da73fd4b14e5a3f4ee5eb91b02bf",
+    "base_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "config_hash": "7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2",
+    "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+    "seed": 13,
+    "selected_epoch": 2,
+    "stats_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+    "verified": true
+  },
+  "attn_implementation": "sdpa_plus_last_layer_attention_hook",
+  "base_model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "base_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "cuda": "12.4",
+  "device": "cuda:0",
+  "dtype": "bfloat16_compute_nf4_weights",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "host": "cesar-System-Product-Name",
+  "label": "NOT_SCIENTIFIC_RESULT",
+  "model_load_s": 2.1832899499931955,
+  "parameter_audit": {
+    "all_intended_families_present": false,
+    "lora_family_trainable_tensors": {
+      "down_proj": 0,
+      "gate_proj": 0,
+      "k_proj": 0,
+      "o_proj": 0,
+      "q_proj": 0,
+      "up_proj": 0,
+      "v_proj": 0
+    },
+    "n_trainable_tensors": 0,
+    "no_non_lora_trainable_strict": true,
+    "total_params": 4393342464,
+    "trainable_params": 0,
+    "trainable_pct": 0.0
+  },
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "quantization": "nf4_double_quant",
+  "tokenizer_reload_s": 0.11131562999798916,
+  "torch": "2.6.0+cu124"
+}

@@ -1,0 +1,37 @@
+{
+  "adapter_hash": "NONE",
+  "branch": "main",
+  "cohort": "gpu_engine_fail_valid_only",
+  "configuration_hash": "cb3ab99ac4c6a2c54fa39a9fcaa5ae1aa1d50117668e5e1aeb17dc63c3381c15",
+  "dataset_version": "JIT_DEFECTS4J_CANONICAL_V1",
+  "engine_version": "attribution_engine_v1",
+  "extra": {
+    "batch_size": 8,
+    "force": false
+  },
+  "git_commit": "e65dcfbe7aa6715de0273903671bbeae72e64253",
+  "git_dirty": "true",
+  "granularity": "LINE",
+  "hardware": {
+    "cuda_visible_devices": "",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "processor": "x86_64",
+    "python": "3.11.15"
+  },
+  "method": "attention",
+  "model_hash": "NONE",
+  "model_identifier": "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "random_seeds": {
+    "model_seed": 13
+  },
+  "run_id": "attribution_run_20261003T061932540704Z",
+  "seed": 13,
+  "software_versions": {
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "statistics_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "timestamp": "2026-10-03T06:19:32+00:00"
+}

@@ -25,6 +25,10 @@ def aggregate_method_results(jsonl_path: Path) -> dict[str, Any]:
     by_method: dict[str, list[dict[str, Any]]] = defaultdict(list)
     missing: dict[str, int] = defaultdict(int)
     for r in rows:
+        if r.get("label") == "NOT_SCIENTIFIC_RESULT":
+            raise RuntimeError(
+                "refusing to aggregate NOT_SCIENTIFIC_RESULT rows into RQ indexes"
+            )
         by_method[r.get("method", "?")].append(r)
         code = r.get("missingness_code") or "OK"
         if code != "OK":

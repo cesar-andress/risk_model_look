@@ -1,0 +1,38 @@
+{
+  "PASS": true,
+  "ig_chunk_1_vs_4": [
+    {
+      "commit_id": "0037eb17d11eda573c02c93a5a7cbc09122fda8e",
+      "max_abs_diff": 0.0070343017578125,
+      "mean_abs_diff": 0.0010675858689225427,
+      "n": 219
+    },
+    {
+      "commit_id": "003f022df47bfb1370514aca3b2cee1a9116f3d7",
+      "max_abs_diff": 0.013427734375,
+      "mean_abs_diff": 0.0011872106398160929,
+      "n": 319
+    }
+  ],
+  "label": "NOT_SCIENTIFIC_RESULT",
+  "max_abs_diff_ig": 0.013427734375,
+  "max_abs_diff_occlusion": 0.0,
+  "occlusion_seq_vs_batched": [
+    {
+      "batch_size": 2,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "n": 5,
+      "tolerance_abs": 0.15
+    },
+    {
+      "batch_size": 4,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "n": 5,
+      "tolerance_abs": 0.15
+    }
+  ],
+  "tolerance_abs_ig": 0.02,
+  "tolerance_abs_occlusion": 0.15
+}

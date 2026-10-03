@@ -85,7 +85,57 @@ and **does not** load a model or write run dirs.
 
 ---
 
-## Cost estimator
+## Frozen M1 GPU backend
+
+`src/experiments/m1_backend.py` loads the **selected** QLoRA adapter from
+`artifacts/m1_final/final_model_manifest.json`.
+
+Before any forward it verifies:
+
+- base model id + immutable revision `c03e6d358207e414f1eca0bb1891e29f1db0e242`
+- adapter `adapter_model.safetensors` SHA-256
+- scientific config hash
+- Attribution Protocol V1.2 / Statistical Protocol V1.1 hashes
+
+Mismatch raises `FrozenM1Mismatch` (hard fail). TEST records are refused.
+
+CLI: `scripts/run_attribution.py --backend frozen_m1 --seed 13 ...`
+(default payloads are stamped `NOT_SCIENTIFIC_RESULT` unless `--scientific`).
+
+Inference stack used in the engineering GPU benchmark:
+
+- NF4 weights, bf16 compute, double quant
+- SDPA for forwards/backwards
+- last-layer attention via Q/K recompute (no `output_attentions=True`)
+- gradient checkpointing for Grad×Input / IG
+- IG Gauss–Legendre 50 (chunk=1 selected; chunk=4 is faster but NF4-noisy)
+- occlusion `SEGMENT_DELETE_V1` with padded batched scoring (batch 4)
+
+## ENGINEERING BENCHMARK vs SCIENTIFIC ATTRIBUTION REHEARSAL
+
+| | Engineering GPU benchmark | Validation rehearsal N=64 |
+|--|--|--|
+| Path | `artifacts/attribution_gpu_benchmark/` | not started |
+| Label | `NOT_SCIENTIFIC_RESULT` | scientific protocol |
+| Split | validation only, N≤10 | frozen rehearsal cohort |
+| IG steps | 4-step micro + one 50-step runtime | 50 then 100 retry |
+| Purpose | throughput, VRAM, resume | RQ-ready attributions |
+
+Do **not** feed benchmark JSONL into RQ aggregators (guard in
+`aggregate_attribution_results.py`).
+
+GPU benchmark (RTX 4090, seed 13 / epoch 2, 2026-10-03): see
+`artifacts/attribution_gpu_benchmark/throughput.json` and
+`cost_projection.json`. Peak VRAM ~16 GiB allocated at 2048 tokens.
+Conservative 3-seed IG@2048 projection is on the order of ~25 GPU-hours
+for RQ1+RQ234 methods combined; the 219-token 50-step timing must not be
+extrapolated as if it were full 2048.
+
+## Resume
+
+`--resume` skips `DONE` / `NONCONVERGED` ledger units. Adapter directories
+are hashed via `adapter_model.safetensors` (not `"NONE"`).
+
 
 `src/experiments/attribution_cost.py` estimates pass counts for planner use
 before expensive launches.
