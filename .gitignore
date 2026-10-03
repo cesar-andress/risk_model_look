@@ -95,6 +95,9 @@ artifacts/attribution_rehearsal/runs/
 artifacts/attribution_rehearsal/logs/
 artifacts/attribution_rehearsal/job_ledger.json
 artifacts/attribution_rehearsal/base_model_sanity/runs/
+artifacts/test_attribution/raw/
+artifacts/test_attribution/logs/
+artifacts/test_attribution/cache/
 # Row-level predictions / score dumps (not for git)
 data/results/
 **/lora_*/

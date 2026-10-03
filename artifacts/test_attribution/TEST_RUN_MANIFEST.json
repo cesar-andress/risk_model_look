@@ -1,0 +1,33 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "adapter_hashes": {
+    "13": "a764d2f57e6586cf61b9c38d7dea4bd1b5a2da73fd4b14e5a3f4ee5eb91b02bf",
+    "42": "dc8d411d7a34383c3a606b855d68363f573f584a4cd0d2e3d9766b8151d60ad0",
+    "73": "5a964219a58df2d12606356e67fac8081994ebc7dbc34346c16e323377855dcc"
+  },
+  "base_model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+  "branch": "main",
+  "dataset_identity": "JIT_DEFECTS4J_CANONICAL_V1/test.jsonl",
+  "execution_freeze_hash": "22532bd734e5a1581b8639edf4eb634e55e09bbcdbc8a9186d6dc9a0efe5c0ab",
+  "git_commit": "1ebb6d1649510718b31618dc583606c7e11ebf97",
+  "gpu": null,
+  "ig_chunk": 1,
+  "model_config_hash": "7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2",
+  "occlusion_batch": 4,
+  "offline": true,
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "renderer_version": "CANONICAL_DIFF_RENDER_V1",
+  "run_id": "TEST_ATTR_20261003T153336+0000",
+  "seeds": [
+    13,
+    42,
+    73
+  ],
+  "start": "2026-10-03T15:33:36+00:00",
+  "stats_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "token_map_version": "TOKEN_TO_LINE_MAP_V1"
+}

@@ -1,0 +1,10 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "candidates": 13412,
+  "negatives": 11700,
+  "positives": 1712,
+  "unknown_contamination_count": 0
+}
