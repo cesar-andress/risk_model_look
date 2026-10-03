@@ -134,12 +134,22 @@ def load_qlora_from_adapter(
     model_id: str = QWEN_MODEL_ID,
     revision: str = QWEN_REVISION,
     device_map: str | dict[str, Any] = "auto",
+    is_trainable: bool = False,
 ):
-    """Reload NF4 base + saved LoRA adapter for inference."""
+    """Reload NF4 base + saved LoRA adapter."""
     from peft import PeftModel
 
     base = load_base_nf4(model_id=model_id, revision=revision, device_map=device_map)
-    return PeftModel.from_pretrained(base, adapter_dir)
+    model = PeftModel.from_pretrained(base, adapter_dir, is_trainable=is_trainable)
+    if is_trainable:
+        if hasattr(model, "enable_input_require_grads"):
+            model.enable_input_require_grads()
+        if hasattr(model, "gradient_checkpointing_enable"):
+            model.gradient_checkpointing_enable(
+                gradient_checkpointing_kwargs={"use_reentrant": False}
+            )
+        model.train()
+    return model
 
 
 def parameter_audit(model) -> dict[str, Any]:

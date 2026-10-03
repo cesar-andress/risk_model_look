@@ -1,0 +1,13 @@
+{
+  "epoch": 2,
+  "examples_per_sec": 0.7998935150036122,
+  "final_loss": 0.19680356266551458,
+  "initial_loss": 0.03763783938393317,
+  "max_grad_norm_obs": 5.656643867492676,
+  "median_grad_norm": 0.6949600577354431,
+  "nan_inf": false,
+  "peak_allocated_gib": 13.07563829421997,
+  "peak_reserved_gib": 17.181640625,
+  "seconds": 20470.224714756012,
+  "steps": 1024
+}

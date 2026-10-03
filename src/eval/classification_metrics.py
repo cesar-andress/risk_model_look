@@ -1,4 +1,4 @@
-"""Classification metrics for M1 pilot (validation only)."""
+"""Classification metrics for M1 (pilot + final)."""
 
 from __future__ import annotations
 
@@ -34,7 +34,32 @@ def confusion_at_threshold(
     return {"tp": tp, "tn": tn, "fp": fp, "fn": fn}
 
 
+def mcc_from_cm(cm: dict[str, int]) -> float:
+    tp, tn, fp, fn = cm["tp"], cm["tn"], cm["fp"], cm["fn"]
+    num = tp * tn - fp * fn
+    den = (tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)
+    if den <= 0:
+        return 0.0
+    return float(num / np.sqrt(den))
+
+
 def metrics_at_threshold(
+    y_true: np.ndarray, y_score: np.ndarray, threshold: float = 0.5
+) -> dict[str, Any]:
+    """Backward-compatible subset used by pilot."""
+    full = metrics_at_threshold_full(y_true, y_score, threshold)
+    return {
+        "threshold": full["threshold"],
+        "precision": full["precision"],
+        "recall": full["recall"],
+        "f1": full["f1"],
+        "balanced_accuracy": full["balanced_accuracy"],
+        "positive_prediction_rate": full["positive_prediction_rate"],
+        "confusion_matrix": full["confusion_matrix"],
+    }
+
+
+def metrics_at_threshold_full(
     y_true: np.ndarray, y_score: np.ndarray, threshold: float = 0.5
 ) -> dict[str, Any]:
     cm = confusion_at_threshold(y_true, y_score, threshold)
@@ -51,7 +76,9 @@ def metrics_at_threshold(
         "precision": float(prec),
         "recall": float(rec),
         "f1": float(f1),
+        "specificity": float(spec),
         "balanced_accuracy": float(bal_acc),
+        "mcc": mcc_from_cm(cm),
         "positive_prediction_rate": float(pos_rate),
         "confusion_matrix": cm,
     }
@@ -71,6 +98,7 @@ def score_distribution(y_score: np.ndarray) -> dict[str, float]:
         "p95": float(qs[3]),
         "p99": float(qs[4]),
         "max": float(np.max(y_score)),
+        "mean": float(np.mean(y_score)),
     }
 
 
@@ -93,20 +121,29 @@ def class_score_stats(y_true: np.ndarray, y_score: np.ndarray) -> dict[str, Any]
 
 
 def best_f1_threshold(y_true: np.ndarray, y_score: np.ndarray) -> dict[str, Any]:
-    """Diagnostic-only: threshold maximizing F1 on the given split."""
-    # Dense grid on unique scores + endpoints
-    uniq = np.unique(y_score)
-    candidates = np.unique(
-        np.concatenate([[0.0, 1.0], uniq, (uniq[:-1] + uniq[1:]) / 2 if len(uniq) > 1 else uniq])
-    )
-    best = None
-    for t in candidates:
-        m = metrics_at_threshold(y_true, y_score, float(t))
-        if best is None or m["f1"] > best["f1"]:
-            best = m
-    assert best is not None
-    best["note"] = "PILOT_DIAGNOSTIC_ONLY"
-    return best
+    """Pilot diagnostic (kept for compatibility). Prefer select_threshold_max_f1."""
+    from src.train.m1_final import select_threshold_max_f1
+
+    m = select_threshold_max_f1(y_true, y_score)
+    m["note"] = "PILOT_DIAGNOSTIC_ONLY"
+    return m
+
+
+def ranking_metrics(y_true: np.ndarray, y_score: np.ndarray) -> dict[str, Any]:
+    y_true = np.asarray(y_true, dtype=int)
+    y_score = np.asarray(y_score, dtype=float)
+    dist = score_distribution(y_score)
+    return {
+        "n": int(len(y_true)),
+        "positives": int((y_true == 1).sum()),
+        "roc_auc": _safe_auc(y_true, y_score),
+        "pr_auc": _safe_ap(y_true, y_score),
+        "brier": brier_score(y_true, y_score),
+        "score_mean": dist["mean"],
+        "score_median": dist["median"],
+        "score_distribution": dist,
+        "score_by_true_class": class_score_stats(y_true, y_score),
+    }
 
 
 def compute_classification_metrics(
@@ -135,4 +172,22 @@ def compute_classification_metrics(
         "score_by_true_class": class_score_stats(y_true, y_score),
         "both_hard_classes_at_0_5": hard_both,
         "threshold_diagnostic_max_f1": best_f1_threshold(y_true, y_score),
+    }
+
+
+def full_split_metrics(
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+    *,
+    threshold: float,
+) -> dict[str, Any]:
+    """Continuous + thresholded metrics for final reporting."""
+    base = ranking_metrics(y_true, y_score)
+    at_t = metrics_at_threshold_full(y_true, y_score, threshold)
+    at_05 = metrics_at_threshold_full(y_true, y_score, 0.5)
+    at_05["note"] = "FIXED_0.5_DIAGNOSTIC"
+    return {
+        **base,
+        "at_threshold": at_t,
+        "at_0_5_diagnostic": at_05,
     }

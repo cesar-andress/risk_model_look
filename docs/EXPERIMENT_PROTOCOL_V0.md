@@ -53,9 +53,12 @@ Anything marked **TO VERIFY FROM PRIMARY SOURCE** must be confirmed against the 
 - Tokenizer primary: `Qwen/Qwen2.5-Coder-7B-Instruct` revision **`c03e6d358207e414f1eca0bb1891e29f1db0e242`** (fast offsets); Llama ACCESS_BLOCKED
 - `TOKEN_LINE_MAPPING_GATE=PASS`; processed `data/processed/canonical_v1/` (gitignored)
 - `PILOT_TRAINING_GATE=PASS` (M1 QLoRA E2E; Stage A 32/32; Stage B N=2048 natural; full valid 5465; TEST_INFERENCE_EXECUTED=NO)
-- `FULL_TRAINING_GATE=NOT_STARTED`; `ATTRIBUTION_GATE=NOT_STARTED`
+- `FULL_TRAINING_GATE=IN_PROGRESS`; seeds `{13,42,73}`; epochs=2; `PRIMARY_TRAINING_CLASS_POLICY=NATURAL_PREVALENCE`
+- Checkpoint selection = validation PR-AUC; threshold = validation F1 (ties: F1→recall→lower t); freeze threshold before one-shot test per seed
+- `M1_TEST_LOCKED=FALSE` until all three seeds' test evaluations complete
+- `ATTRIBUTION_GATE=NOT_STARTED`
 - M1 classification: causal next-token `"0"`/`"1"` (IDs 15/16); `p_buggy=softmax([l0,l1])[1]`; exactly one supervised label/example
-- Pilot QLoRA: NF4 + bf16 + double quant; LoRA r=16 α=16 dropout=0.05; targets q/k/v/o/gate/up/down_proj; lr 2e-4; seed 42 (PILOT settings, not optimized)
+- Pilot/Final QLoRA: NF4 + bf16 + double quant; LoRA r=16 α=16 dropout=0.05; targets q/k/v/o/gate/up/down_proj; lr 2e-4; optimizer paged_adamw_8bit
 - N=352 and N=58 rejected as primary; reconstruction stop rule engaged
 - Pickle schemas / row-level exports: not for git; see `docs/DATASET_EMPIRICAL_PROFILE.md`
 

@@ -1,0 +1,10 @@
+{
+  "class_policy": "NATURAL_PREVALENCE",
+  "scientific_config_hash": "7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2",
+  "seeds": [
+    13,
+    42,
+    73
+  ],
+  "training_yaml_sha256": "22a2be2ebaf05134816703591acd7d4870ad66f09da1e7b2e15753e7f9878f93"
+}

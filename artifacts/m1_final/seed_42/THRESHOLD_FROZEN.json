@@ -1,0 +1,16 @@
+{
+  "NOTE": "Threshold frozen BEFORE test. Do not change after test.",
+  "class_policy": "NATURAL_PREVALENCE",
+  "config_hash": "7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2",
+  "frozen_at": "2026-10-02T16:15:21+02:00",
+  "seed": 42,
+  "selected_epoch": 1,
+  "threshold": 0.1529143899679184,
+  "validation_balanced_accuracy": 0.7129142877707828,
+  "validation_f1": 0.3934169278996865,
+  "validation_pr_auc": 0.317946227360909,
+  "validation_precision": 0.31025957972805934,
+  "validation_recall": 0.5374732334047109,
+  "validation_roc_auc": 0.8339179354825442,
+  "validation_specificity": 0.8883553421368547
+}

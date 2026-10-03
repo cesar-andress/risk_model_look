@@ -299,3 +299,19 @@ Non-trivial bootstrap decisions. Format: datetime | decision | reason | alternat
 - **Alternatives considered:** Tune LR/LoRA/imbalance to lift F1@0.5 (forbidden this gate); proceed to full 16374 train (forbidden until FULL_TRAINING_GATE).
 - **Reversible:** Yes with explicit protocol amendment; do not silently change frozen data/prompt/token IDs.
 - **Gate affected:** PILOT_TRAINING_GATE, FULL_TRAINING_GATE, ATTRIBUTION_GATE
+
+## 2026-10-01T13:50:00+02:00 — FULL_TRAINING_GATE opened; natural prevalence + threshold policy frozen
+
+- **Decision:** Set `FULL_TRAINING_GATE=IN_PROGRESS`. Freeze `PRIMARY_TRAINING_CLASS_POLICY=NATURAL_PREVALENCE` (no oversample/undersample/class weights/focal for primary M1). Freeze final seeds `{13,42,73}` before any final run. Freeze checkpoint selection = validation PR-AUC; threshold = validation F1 at distinct scores (ties: F1 → recall → lower t). Threshold for each seed frozen before that seed's single test evaluation. Qwen rev `c03e6d358207…`; 2 epochs; QLoRA pilot settings unchanged.
+- **Reason:** Pilot ADEQUATE ranking under natural prevalence; 0.5 hard-fail is calibration/thresholding, not pipeline failure. Changing class prevalence to force scores above 0.5 is not justified for primary M1.
+- **Alternatives considered:** Oversampling / class weights / focal (deferred to optional POST_HOC_SENSITIVITY only if later scientifically necessary).
+- **Reversible:** Only via explicit protocol amendment labelled sensitivity — cannot replace primary locked results after `M1_TEST_LOCKED`.
+- **Gate affected:** FULL_TRAINING_GATE, ATTRIBUTION_GATE
+
+## 2026-10-03T08:09:02+02:00 — M1_TEST_LOCKED = TRUE; FULL_TRAINING_GATE PASS
+
+- **Decision:** Mark `FULL_TRAINING_GATE=PASS` and `M1_TEST_LOCKED=TRUE`. Record config hash `7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2`, three-seed test aggregates, selected adapter hashes in `artifacts/m1_final/`. No primary M1 hyperparameter change may be justified by test performance hereafter; later changes must be labelled `POST_HOC_SENSITIVITY`.
+- **Reason:** All three frozen seeds completed with validation PR-AUC checkpoint selection, validation F1 thresholds frozen before one-shot test, consistent config hash, finite metrics.
+- **Alternatives considered:** None; lock is mandatory after first test view.
+- **Reversible:** No for primary results; sensitivity analyses only as explicitly labelled non-primary.
+- **Gate affected:** FULL_TRAINING_GATE, ATTRIBUTION_GATE

@@ -1,0 +1,101 @@
+# M1 final training — frozen protocol (FULL_TRAINING_GATE)
+
+# PRIMARY settings. Do not alter after test lock.
+
+model:
+  identifier: Qwen/Qwen2.5-Coder-7B-Instruct
+  immutable_revision: c03e6d358207e414f1eca0bb1891e29f1db0e242
+
+dataset:
+  version: canonical_v1
+  representation: CHANGED_ONLY
+  context: 0
+  prompt_template_version: 1
+  token_map_version: 1
+  truncation: WHOLE_SEGMENT_PREFIX_TRUNCATION_V1
+  max_length: 2048
+  processed_dir: data/processed/canonical_v1
+  train_n: 16374
+  train_positives: 1390
+  valid_n: 5465
+  valid_positives: 467
+  test_n: 5480
+  test_positives: 475
+  # Classifier uses complete commit-level splits (not RQ1-filtered).
+  rq1_filter_for_classifier: false
+
+class_policy:
+  name: NATURAL_PREVALENCE
+  oversample: false
+  undersample: false
+  class_weights: false
+  focal_loss: false
+
+label_contract:
+  target_0: "0"
+  target_1: "1"
+  token_id_0: 15
+  token_id_1: 16
+  supervised_positions_per_example: 1
+  risk_score: restricted_two_class_softmax
+
+quantization:
+  load_in_4bit: true
+  quant_type: nf4
+  compute_dtype: bfloat16
+  double_quant: true
+
+lora:
+  r: 16
+  alpha: 16
+  dropout: 0.05
+  bias: none
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+training:
+  seeds: [13, 42, 73]
+  epochs: 2
+  learning_rate: 2.0e-4
+  optimizer: paged_adamw_8bit  # required; stop if unavailable
+  weight_decay: 0.0
+  warmup_ratio: 0.03
+  scheduler: linear
+  max_grad_norm: 1.0
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  effective_batch_size: 16
+  gradient_checkpointing: true
+  gpu: RTX_4090
+
+selection:
+  checkpoint_metric: validation_pr_auc
+  checkpoint_tie_break:
+    - higher_validation_roc_auc
+    - earlier_epoch
+  threshold_metric: validation_f1
+  threshold_tie_break:
+    - higher_f1
+    - higher_recall
+    - lower_threshold
+  threshold_search: distinct_validation_scores
+
+paths:
+  artifacts_dir: artifacts/m1_final
+  results_dir: data/results/m1_final
+  encoded_cache_dir: data/processed/canonical_v1/m1_encoded_cache
+  adapters_dir: artifacts/m1_final/adapters
+
+prohibitions:
+  imbalance_strategy_search: true
+  post_hoc_calibration_fit: true
+  attribution: true
+  m2_m3_encoders: true
+  test_before_threshold_freeze: true
+  seed_replacement_after_results: true

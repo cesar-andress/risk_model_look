@@ -84,6 +84,14 @@ artifacts/checkpoints/
 artifacts/pilot_training/**/stage_*_adapter/
 artifacts/pilot_training/**/adapter_model*
 artifacts/pilot_training/**/adapter_config.json
+artifacts/m1_final/adapters/
+artifacts/m1_final/**/adapter_model*
+artifacts/m1_final/**/adapter_config.json
+artifacts/attribution_gpu_benchmark/**/*.pt
+artifacts/attribution_gpu_benchmark/**/*.bin
+artifacts/attribution_gpu_benchmark/**/*.safetensors
+# Row-level predictions / score dumps (not for git)
+data/results/
 **/lora_*/
 **/adapter_model*
 **/adapter_config.json

@@ -1,0 +1,14 @@
+{
+  "adapter_hashes": {
+    "README.md": "e59389a701ff601f0d805fc2fffec8a9795a72820f71942bdd5fd627aff8d1b7",
+    "adapter_config.json": "79f2163ac64f4e26c480ac4609d5c30b6658d360ea8190151b997d949f8249e0",
+    "adapter_model.safetensors": "b6faf261de10541b81b66defd33cd087e03f2eb0898193a23a56efa04cf74203"
+  },
+  "brier": 0.06855114599842745,
+  "epoch": 2,
+  "pr_auc": 0.30935844759700304,
+  "roc_auc": 0.8475610801065607,
+  "score_mean": 0.0584989168271987,
+  "score_median": 0.016153713688254356,
+  "validation_seconds": 2275.8816974163055
+}

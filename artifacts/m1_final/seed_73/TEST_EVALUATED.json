@@ -1,0 +1,79 @@
+{
+  "NOTE": "Single test evaluation. Configuration locked for this seed.",
+  "config_hash": "7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2",
+  "evaluated_at": "2026-10-03T07:55:41+02:00",
+  "metrics": {
+    "at_0_5_diagnostic": {
+      "balanced_accuracy": 0.5027582943372417,
+      "confusion_matrix": {
+        "fn": 472,
+        "fp": 4,
+        "tn": 5001,
+        "tp": 3
+      },
+      "f1": 0.012448132780082987,
+      "mcc": 0.04345679618010872,
+      "note": "FIXED_0.5_DIAGNOSTIC",
+      "positive_prediction_rate": 0.0012773722627737226,
+      "precision": 0.42857142857142855,
+      "recall": 0.00631578947368421,
+      "specificity": 0.9992007992007992,
+      "threshold": 0.5
+    },
+    "at_threshold": {
+      "balanced_accuracy": 0.6814417161785583,
+      "confusion_matrix": {
+        "fn": 238,
+        "fp": 681,
+        "tn": 4324,
+        "tp": 237
+      },
+      "f1": 0.3402727925340991,
+      "mcc": 0.2734116434190049,
+      "positive_prediction_rate": 0.1675182481751825,
+      "precision": 0.2581699346405229,
+      "recall": 0.49894736842105264,
+      "specificity": 0.8639360639360639,
+      "threshold": 0.14635677635669708
+    },
+    "brier": 0.07124327328033907,
+    "n": 5480,
+    "positives": 475,
+    "pr_auc": 0.24708445685305025,
+    "roc_auc": 0.8076332088963668,
+    "score_by_true_class": {
+      "0": {
+        "max": 0.53125,
+        "mean": 0.06517247591580783,
+        "median": 0.037353515625,
+        "min": 6.628036499023438e-05,
+        "n": 5005,
+        "std": 0.07943179025245027
+      },
+      "1": {
+        "max": 0.5,
+        "mean": 0.163477783203125,
+        "median": 0.1328125,
+        "min": 0.004608154296875,
+        "n": 475,
+        "std": 0.10448444412669437
+      }
+    },
+    "score_distribution": {
+      "max": 0.53125,
+      "mean": 0.07369346514235448,
+      "median": 0.0419921875,
+      "min": 6.628036499023438e-05,
+      "p01": 0.00012302398681640625,
+      "p05": 0.0002307891845703125,
+      "p95": 0.26953125,
+      "p99": 0.376953125
+    },
+    "score_mean": 0.07369346514235448,
+    "score_median": 0.0419921875
+  },
+  "n": 5480,
+  "seed": 73,
+  "selected_epoch": 1,
+  "threshold": 0.14635677635669708
+}

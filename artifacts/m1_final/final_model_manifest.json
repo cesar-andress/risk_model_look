@@ -1,0 +1,451 @@
+{
+  "aggregate_test": {
+    "balanced_accuracy": {
+      "mean": 0.6841025641025641,
+      "n": 3,
+      "std": 0.008334261595360791
+    },
+    "brier": {
+      "mean": 0.07218625828694103,
+      "n": 3,
+      "std": 0.0014797557336471187
+    },
+    "f1": {
+      "mean": 0.3415986495034318,
+      "n": 3,
+      "std": 0.003732883627651016
+    },
+    "mcc": {
+      "mean": 0.27557590181716535,
+      "n": 3,
+      "std": 0.006128534830043518
+    },
+    "pr_auc": {
+      "mean": 0.2489187019890923,
+      "n": 3,
+      "std": 0.0033376353598489547
+    },
+    "precision": {
+      "mean": 0.25784855117357774,
+      "n": 3,
+      "std": 0.002172562144270904
+    },
+    "recall": {
+      "mean": 0.5066666666666667,
+      "n": 3,
+      "std": 0.025116533569366023
+    },
+    "roc_auc": {
+      "mean": 0.8088467322151532,
+      "n": 3,
+      "std": 0.006687645622583953
+    },
+    "threshold": {
+      "mean": 0.14099465062220892,
+      "n": 3,
+      "std": 0.01532147902639086
+    }
+  },
+  "base_model": {
+    "identifier": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "immutable_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "label_token_id_0": 15,
+    "label_token_id_1": 16,
+    "risk_score": "restricted_two_class_softmax",
+    "tokenizer_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242"
+  },
+  "class_policy": {
+    "class_weights": false,
+    "focal_loss": false,
+    "name": "NATURAL_PREVALENCE",
+    "oversample": false,
+    "undersample": false
+  },
+  "dataset": {
+    "context": 0,
+    "max_length": 2048,
+    "processed_dir": "data/processed/canonical_v1",
+    "prompt_template_version": 1,
+    "representation": "CHANGED_ONLY",
+    "rq1_filter_for_classifier": false,
+    "test_n": 5480,
+    "test_positives": 475,
+    "token_map_version": 1,
+    "train_n": 16374,
+    "train_positives": 1390,
+    "truncation": "WHOLE_SEGMENT_PREFIX_TRUNCATION_V1",
+    "valid_n": 5465,
+    "valid_positives": 467,
+    "version": "canonical_v1"
+  },
+  "freeze_written_at": "2026-10-03T08:09:34+02:00",
+  "git_commit_used_for_training": "9c93eaab01882fa3c3ea997854fa2d01a4ee14de",
+  "git_commit_used_for_training_note": "Primary worktree HEAD while --all-seeds ran; freeze commit may be later.",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_from_training_yaml": "RTX_4090",
+    "host": "cesar-System-Product-Name",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35"
+  },
+  "max_sequence_length": 2048,
+  "optimizer": "paged_adamw_8bit",
+  "per_seed": {
+    "13": {
+      "TEST_EVALUATED": true,
+      "adapter_config_sha256": "432e504d02188d6d3fe538c609bfc5723d1214a8e88f54f41f7330d40b55dcfa",
+      "adapter_dir": "artifacts/m1_final/adapters/seed_13/epoch_2",
+      "adapter_model_sha256": "a764d2f57e6586cf61b9c38d7dea4bd1b5a2da73fd4b14e5a3f4ee5eb91b02bf",
+      "adapter_readme_sha256": "e59389a701ff601f0d805fc2fffec8a9795a72820f71942bdd5fd627aff8d1b7",
+      "completed_at": "2026-10-02T03:07:34+02:00",
+      "epochs": [
+        {
+          "adapter_model_sha256": "30c4d92051d0d3196aa5036dc987a7dd58b3a601d44cd5d735ed7b1073283e71",
+          "brier": 0.06648173333975874,
+          "epoch": 1,
+          "pr_auc": 0.32019098139808433,
+          "roc_auc": 0.8471662755037775
+        },
+        {
+          "adapter_model_sha256": "a764d2f57e6586cf61b9c38d7dea4bd1b5a2da73fd4b14e5a3f4ee5eb91b02bf",
+          "brier": 0.06713924263832723,
+          "epoch": 2,
+          "pr_auc": 0.3339726717670882,
+          "roc_auc": 0.858780128753857
+        }
+      ],
+      "hash_verified": true,
+      "leakage_regression": {
+        "n_checked": 100,
+        "n_leaked": 0,
+        "verdict": "PASS"
+      },
+      "seed": 13,
+      "selected_epoch": 2,
+      "test": {
+        "balanced_accuracy": 0.6934423471265576,
+        "brier": 0.07389175301441117,
+        "evaluated_at": "2026-10-02T03:21:36+02:00",
+        "f1": 0.3458134785568414,
+        "mcc": 0.2824929199057233,
+        "n": 5480,
+        "note": "Single test evaluation. Configuration locked for this seed.",
+        "positives": 475,
+        "pr_auc": 0.25277120670957554,
+        "precision": 0.25553319919517103,
+        "recall": 0.5347368421052632,
+        "roc_auc": 0.8160580472159419,
+        "selected_epoch": 2,
+        "specificity": 0.8521478521478522,
+        "threshold": 0.12371278554201126
+      },
+      "test_locked_at": "2026-10-02T03:21:36+02:00",
+      "training_health": [
+        {
+          "epoch": 1,
+          "examples_per_sec": 0.7752200154291914,
+          "final_loss": 0.3230273436356256,
+          "initial_loss": 3.009972410975024,
+          "max_grad_norm_obs": 7.22367000579834,
+          "median_grad_norm": 0.5111100971698761,
+          "nan_inf": false,
+          "peak_allocated_gib": 13.07621955871582,
+          "peak_reserved_gib": 21.40234375,
+          "seconds": 21121.745664596558,
+          "steps": 1024
+        },
+        {
+          "epoch": 2,
+          "examples_per_sec": 0.7557783683427338,
+          "final_loss": 0.19583262703260967,
+          "initial_loss": 0.23056236664706375,
+          "max_grad_norm_obs": 2.620574951171875,
+          "median_grad_norm": 0.5978741645812988,
+          "nan_inf": false,
+          "peak_allocated_gib": 13.07607364654541,
+          "peak_reserved_gib": 17.1953125,
+          "seconds": 21665.08157134056,
+          "steps": 1024
+        }
+      ],
+      "validation": {
+        "balanced_accuracy_at_frozen_threshold": 0.7344573803825599,
+        "f1_at_frozen_threshold": 0.4208885424785659,
+        "n": 5465,
+        "positives": 467,
+        "pr_auc": 0.3339726717670882,
+        "precision_at_frozen_threshold": 0.33088235294117646,
+        "recall_at_frozen_threshold": 0.5781584582441114,
+        "roc_auc": 0.858780128753857,
+        "threshold": 0.12371278554201126
+      }
+    },
+    "42": {
+      "TEST_EVALUATED": true,
+      "adapter_config_sha256": "432e504d02188d6d3fe538c609bfc5723d1214a8e88f54f41f7330d40b55dcfa",
+      "adapter_dir": "artifacts/m1_final/adapters/seed_42/epoch_1",
+      "adapter_model_sha256": "dc8d411d7a34383c3a606b855d68363f573f584a4cd0d2e3d9766b8151d60ad0",
+      "adapter_readme_sha256": "e59389a701ff601f0d805fc2fffec8a9795a72820f71942bdd5fd627aff8d1b7",
+      "completed_at": "2026-10-02T16:15:21+02:00",
+      "epochs": [
+        {
+          "adapter_model_sha256": "dc8d411d7a34383c3a606b855d68363f573f584a4cd0d2e3d9766b8151d60ad0",
+          "brier": 0.06733682106575549,
+          "epoch": 1,
+          "pr_auc": 0.317946227360909,
+          "roc_auc": 0.8339179354825442
+        },
+        {
+          "adapter_model_sha256": "4f07ed5c73181483ac985e4de63dfcbb7bb68c2740961dfdf9a34b245064cf5d",
+          "brier": 0.06802905868215676,
+          "epoch": 2,
+          "pr_auc": 0.31138620069567263,
+          "roc_auc": 0.8460769746870911
+        }
+      ],
+      "hash_verified": true,
+      "leakage_regression": {
+        "n_checked": 100,
+        "n_leaked": 0,
+        "verdict": "PASS"
+      },
+      "seed": 42,
+      "selected_epoch": 1,
+      "test": {
+        "balanced_accuracy": 0.6774236290025764,
+        "brier": 0.07142374856607284,
+        "evaluated_at": "2026-10-02T16:29:45+02:00",
+        "f1": 0.3387096774193548,
+        "mcc": 0.27082314212676784,
+        "n": 5480,
+        "note": "Single test evaluation. Configuration locked for this seed.",
+        "positives": 475,
+        "pr_auc": 0.24690044240465114,
+        "precision": 0.25984251968503935,
+        "recall": 0.4863157894736842,
+        "roc_auc": 0.802848940533151,
+        "selected_epoch": 1,
+        "specificity": 0.8685314685314686,
+        "threshold": 0.1529143899679184
+      },
+      "test_locked_at": "2026-10-02T16:29:45+02:00",
+      "training_health": [
+        {
+          "epoch": 1,
+          "examples_per_sec": 0.7879116499800343,
+          "final_loss": 0.3258048156498471,
+          "initial_loss": 3.4009178036358207,
+          "max_grad_norm_obs": 5.807744979858398,
+          "median_grad_norm": 0.5074054300785065,
+          "nan_inf": false,
+          "peak_allocated_gib": 19.347602367401123,
+          "peak_reserved_gib": 22.12109375,
+          "seconds": 20781.517826795578,
+          "steps": 1024
+        },
+        {
+          "epoch": 2,
+          "examples_per_sec": 0.7766720546464058,
+          "final_loss": 0.1973371314607058,
+          "initial_loss": 0.1758424579657003,
+          "max_grad_norm_obs": 4.145642280578613,
+          "median_grad_norm": 0.6703405976295471,
+          "nan_inf": false,
+          "peak_allocated_gib": 13.072182178497314,
+          "peak_reserved_gib": 15.765625,
+          "seconds": 21082.257179260254,
+          "steps": 1024
+        }
+      ],
+      "validation": {
+        "balanced_accuracy_at_frozen_threshold": 0.7129142877707828,
+        "f1_at_frozen_threshold": 0.3934169278996865,
+        "n": 5465,
+        "positives": 467,
+        "pr_auc": 0.317946227360909,
+        "precision_at_frozen_threshold": 0.31025957972805934,
+        "recall_at_frozen_threshold": 0.5374732334047109,
+        "roc_auc": 0.8339179354825442,
+        "threshold": 0.1529143899679184
+      }
+    },
+    "73": {
+      "TEST_EVALUATED": true,
+      "adapter_config_sha256": "79f2163ac64f4e26c480ac4609d5c30b6658d360ea8190151b997d949f8249e0",
+      "adapter_dir": "artifacts/m1_final/adapters/seed_73/epoch_1",
+      "adapter_model_sha256": "5a964219a58df2d12606356e67fac8081994ebc7dbc34346c16e323377855dcc",
+      "adapter_readme_sha256": "e59389a701ff601f0d805fc2fffec8a9795a72820f71942bdd5fd627aff8d1b7",
+      "completed_at": "2026-10-03T07:41:04+02:00",
+      "epochs": [
+        {
+          "adapter_model_sha256": "5a964219a58df2d12606356e67fac8081994ebc7dbc34346c16e323377855dcc",
+          "brier": 0.06740447115321757,
+          "epoch": 1,
+          "pr_auc": 0.32022122335131575,
+          "roc_auc": 0.8443829351869229
+        },
+        {
+          "adapter_model_sha256": "b6faf261de10541b81b66defd33cd087e03f2eb0898193a23a56efa04cf74203",
+          "brier": 0.06855114599842745,
+          "epoch": 2,
+          "pr_auc": 0.30935844759700304,
+          "roc_auc": 0.8475610801065607
+        }
+      ],
+      "hash_verified": true,
+      "leakage_regression": {
+        "n_checked": 100,
+        "n_leaked": 0,
+        "verdict": "PASS"
+      },
+      "seed": 73,
+      "selected_epoch": 1,
+      "test": {
+        "balanced_accuracy": 0.6814417161785583,
+        "brier": 0.07124327328033907,
+        "evaluated_at": "2026-10-03T07:55:41+02:00",
+        "f1": 0.3402727925340991,
+        "mcc": 0.2734116434190049,
+        "n": 5480,
+        "note": "Single test evaluation. Configuration locked for this seed.",
+        "positives": 475,
+        "pr_auc": 0.24708445685305025,
+        "precision": 0.2581699346405229,
+        "recall": 0.49894736842105264,
+        "roc_auc": 0.8076332088963668,
+        "selected_epoch": 1,
+        "specificity": 0.8639360639360639,
+        "threshold": 0.14635677635669708
+      },
+      "test_locked_at": "2026-10-03T07:55:41+02:00",
+      "training_health": [
+        {
+          "epoch": 1,
+          "examples_per_sec": 0.7882898756513858,
+          "final_loss": 0.333867260525459,
+          "initial_loss": 6.795900807250291,
+          "max_grad_norm_obs": 5.500913143157959,
+          "median_grad_norm": 0.5136038959026337,
+          "nan_inf": false,
+          "peak_allocated_gib": 13.076218605041504,
+          "peak_reserved_gib": 22.404296875,
+          "seconds": 20771.5467441082,
+          "steps": 1024
+        },
+        {
+          "epoch": 2,
+          "examples_per_sec": 0.7998935150036122,
+          "final_loss": 0.19680356266551458,
+          "initial_loss": 0.03763783938393317,
+          "max_grad_norm_obs": 5.656643867492676,
+          "median_grad_norm": 0.6949600577354431,
+          "nan_inf": false,
+          "peak_allocated_gib": 13.07563829421997,
+          "peak_reserved_gib": 17.181640625,
+          "seconds": 20470.224714756012,
+          "steps": 1024
+        }
+      ],
+      "validation": {
+        "balanced_accuracy_at_frozen_threshold": 0.7121735203717461,
+        "f1_at_frozen_threshold": 0.3952380952380952,
+        "n": 5465,
+        "positives": 467,
+        "pr_auc": 0.32022122335131575,
+        "precision_at_frozen_threshold": 0.31399747793190413,
+        "recall_at_frozen_threshold": 0.5331905781584583,
+        "roc_auc": 0.8443829351869229,
+        "threshold": 0.14635677635669708
+      }
+    }
+  },
+  "provenance_notes": [
+    "Original command: scripts/run_m1_final.py --all-seeds --final-test (PID 2454911).",
+    "That process terminated after seed 42 completed TEST; seed 73 epoch 1 had started but did not finish under the original PID.",
+    "Seed 73 was restarted independently with: scripts/run_m1_final.py --seed 73 --final-test (PID 104646, start ~2026-10-02T18:58:56+02:00).",
+    "The same frozen configuration / scientific_config_hash was used for the restart.",
+    "While saving seed 42 adapters, Hugging Face lookup of Qwen/Qwen2.5-Coder-7B-Instruct/config.json failed with DNS NameResolutionError; PEFT warned and assumed the vocabulary was not modified.",
+    "Vocabulary was not modified; label token IDs remain 15/16.",
+    "Adapter weight files are gitignored due to size; hashes in this manifest and checkpoint_hashes.json are the identity lock.",
+    "These notes are operational provenance only and are not scientific interpretations."
+  ],
+  "qlora": {
+    "alpha": 16,
+    "bias": "none",
+    "dropout": 0.05,
+    "r": 16,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "quantization": {
+    "compute_dtype": "bfloat16",
+    "double_quant": true,
+    "load_in_4bit": true,
+    "quant_type": "nf4"
+  },
+  "schema": "m1_final_model_manifest_v1",
+  "scientific_config_hash": "7f51052379822e8261bbd738f164035474029e75c2c1eda997c3f5dcfec418c2",
+  "seeds": [
+    13,
+    42,
+    73
+  ],
+  "selection": {
+    "checkpoint_metric": "validation_pr_auc",
+    "checkpoint_tie_break": [
+      "higher_validation_roc_auc",
+      "earlier_epoch"
+    ],
+    "threshold_metric": "validation_f1",
+    "threshold_search": "distinct_validation_scores",
+    "threshold_tie_break": [
+      "higher_f1",
+      "higher_recall",
+      "lower_threshold"
+    ]
+  },
+  "software_versions_recorded_at_freeze": {
+    "accelerate": "1.2.1",
+    "bitsandbytes": "0.45.5",
+    "cuda_compiled": "12.4",
+    "peft": "0.14.0",
+    "python": "3.11.15",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.50.3"
+  },
+  "status": "FROZEN",
+  "trainable_parameter_count": {
+    "note": "Same LoRA r/alpha/dropout/target_modules as frozen final YAML; confirmed again at GPU bind.",
+    "source": "artifacts/pilot_training/m1_pilot_summary.json parameter_audit",
+    "total_params": 4393342464,
+    "trainable_params": 40370176
+  },
+  "training": {
+    "effective_batch_size": 16,
+    "epochs": 2,
+    "gpu": "RTX_4090",
+    "gradient_accumulation_steps": 16,
+    "gradient_checkpointing": true,
+    "learning_rate": 0.0002,
+    "max_grad_norm": 1.0,
+    "optimizer": "paged_adamw_8bit",
+    "per_device_train_batch_size": 1,
+    "scheduler": "linear",
+    "seeds": [
+      13,
+      42,
+      73
+    ],
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0
+  },
+  "training_yaml": "configs/train/qwen_m1_final.yaml",
+  "training_yaml_sha256": "22a2be2ebaf05134816703591acd7d4870ad66f09da1e7b2e15753e7f9878f93",
+  "training_yaml_sha256_recomputed": "22a2be2ebaf05134816703591acd7d4870ad66f09da1e7b2e15753e7f9878f93"
+}
