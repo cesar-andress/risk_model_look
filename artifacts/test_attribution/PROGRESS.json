@@ -1,0 +1,15 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "block": "positive_475",
+  "index": 113,
+  "last_job": "e875e6d59875be86fb8de8df7642c370b652eb76",
+  "last_status": "NONCONVERGED",
+  "method": "ig",
+  "planned": 475,
+  "seed": 42,
+  "state": "running",
+  "updated": "2026-10-04T21:53:45+00:00"
+}
