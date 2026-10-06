@@ -21,9 +21,10 @@
       "bootstrap_seed": 402802077,
       "contrast": "attention_vs_grad_x_input",
       "family": "RQ1_PRIMARY",
+      "low_power_exploratory": false,
       "n_excluded": 0,
       "n_included": 304,
-      "p_holm": 1.0,
+      "p_holm": 0.6346210157258283,
       "p_raw": 0.5001417948603211,
       "rank_biserial": 0.11956015282825459,
       "wilcoxon_status": "OK"
@@ -34,22 +35,23 @@
       "SCIENTIFIC_RESULT": true,
       "SPLIT": "TEST",
       "bootstrap": {
-        "ci_high": 0.02383298642755878,
-        "ci_low": -0.031445124947494685,
+        "ci_high": 0.5,
+        "ci_low": 0.0,
         "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
-        "n_commits": 304,
-        "point": -0.0037008688064782266,
+        "n_commits": 2,
+        "point": 0.25,
         "repeats": 10000
       },
       "bootstrap_repeats": 10000,
       "bootstrap_seed": 247067092,
       "contrast": "attention_vs_ig",
       "family": "RQ1_PRIMARY",
-      "n_excluded": 0,
-      "n_included": 304,
-      "p_holm": 1.0,
-      "p_raw": 0.775220980235662,
-      "rank_biserial": -0.030879625896960413,
+      "low_power_exploratory": true,
+      "n_excluded": 302,
+      "n_included": 2,
+      "p_holm": 0.6346210157258283,
+      "p_raw": 0.31731050786291415,
+      "rank_biserial": 1.0,
       "wilcoxon_status": "OK"
     },
     {
@@ -69,6 +71,7 @@
       "bootstrap_seed": 2033840925,
       "contrast": "attention_vs_occlusion",
       "family": "RQ1_PRIMARY",
+      "low_power_exploratory": false,
       "n_excluded": 0,
       "n_included": 304,
       "p_holm": 0.10621325463136139,
@@ -95,8 +98,8 @@
       "n_commits_with_ge2_seeds": 304
     },
     "ig": {
-      "mean_recall20_rq1_304": 0.3581942949042613,
-      "n_commits_with_ge2_seeds": 304
+      "mean_recall20_rq1_304": 0.25,
+      "n_commits_with_ge2_seeds": 2
     },
     "occlusion": {
       "mean_recall20_rq1_304": 0.31453164647620435,

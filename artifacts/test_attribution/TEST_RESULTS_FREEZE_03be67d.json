@@ -9,15 +9,11 @@
     "rq1_304": "9ace82fe33a44076754f4b7531faa6580c2354d62cb0ed211a6bfa21e5e5bb68",
     "rq1_4096": "7551f19a8c861392a2e73a4b2219bbf6eabfd100740e7b3489499ea1ec735f0e"
   },
-  "correction": "IG_VALID_SEED_MASK_METHOD_SPECIFIC_MISSINGNESS_V1_1",
-  "created": "2026-10-06T05:14:34+00:00",
+  "created": "2026-10-06T03:15:14+00:00",
   "execution_freeze_hash": "22532bd734e5a1581b8639edf4eb634e55e09bbcdbc8a9186d6dc9a0efe5c0ab",
-  "freeze_sha256": "a707e8e7016eb94eafe57c6e793e60fbd5cb9269eb6329cd79938e84e74b1a19",
-  "git_commit": "03be67df9d9da1ee78d42c538c8f58d8c7dd3686",
+  "freeze_sha256": "8caad443f4a69d7040ae7e966053e12f83f33ce9dc11eb2ea029818ecc68ec95",
+  "git_commit": "e8d05d9ec18e2dc6a45a26d11b515a0924ef0635",
   "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
-  "raw_attribution_unchanged": true,
   "stats_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
-  "supersedes_commit": "03be67df9d9da1ee78d42c538c8f58d8c7dd3686",
-  "supersedes_freeze_sha256": "8caad443f4a69d7040ae7e966053e12f83f33ce9dc11eb2ea029818ecc68ec95",
   "test_run_manifest_hash": "f948e886fb0c897cf630098ed66cae98fb5c5aad12682052b44326ef765fc4d6"
 }

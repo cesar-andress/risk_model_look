@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT))
 from src.cohorts import seed_rank_spearman
 from src.experiments.engine_constants import ATTRIBUTION_PROTOCOL_HASH, STATISTICAL_PROTOCOL_HASH
 from src.experiments.rehearsal_pipeline import sha256_json
+from src.experiments.missingness_validity import attribution_job_is_valid, faith_aopc_is_valid
 from src.experiments.test_io import TEST_BANNER
 from src.stats.bootstrap import BOOTSTRAP_REPEATS, derive_bootstrap_seed, paired_commit_bootstrap_percentile
 from src.stats.multiplicity import holm_adjust
@@ -110,14 +111,16 @@ def main() -> int:
                     missing[method][seed][code] += 1
                 if u.get("wall_s") is not None:
                     walls[method].append(float(u["wall_s"]))
+                valid = attribution_job_is_valid(u, method)
                 rec20 = (u.get("rq1") or {}).get("recall_at_20pct_effort")
-                if rec20 is not None:
+                if valid and rec20 is not None:
                     recall[method][cid][seed] = float(rec20)
-                if u.get("rq3_signed_vs_abs_delta_recall20") is not None:
+                if valid and u.get("rq3_signed_vs_abs_delta_recall20") is not None:
                     rq3_delta[method][cid][seed] = float(u["rq3_signed_vs_abs_delta_recall20"])
-                ls = u.get("line_scores_sum") or {}
-                ranked = sorted(ls, key=lambda k: (-abs(float(ls[k])), k))
-                ranks[method][seed][cid] = {sid: i for i, sid in enumerate(ranked)}
+                if valid:
+                    ls = u.get("line_scores_sum") or {}
+                    ranked = sorted(ls, key=lambda k: (-abs(float(ls[k])), k))
+                    ranks[method][seed][cid] = {sid: i for i, sid in enumerate(ranked)}
                 if method == "occlusion" and u.get("n_regions") is not None:
                     occ_regions.append(int(u["n_regions"]))
                 if method == "ig":
@@ -134,7 +137,7 @@ def main() -> int:
                 f = load_json(
                     OUT / "raw" / "positive_475" / "faithfulness" / f"seed_{seed}" / method / f"{cid}.json"
                 )
-                if f and f.get("aopc") is not None and f.get("missingness_code") == "OK":
+                if faith_aopc_is_valid(f, method, u):
                     aopc[method][cid][seed] = float(f["aopc"])
                 if method == "attention" and f and f.get("ablations"):
                     for cat, val in f["ablations"].items():
@@ -162,33 +165,44 @@ def main() -> int:
         ("attention", "occlusion", "RQ1_PRIMARY", "recall_at_20pct_effort"),
     ]:
         pa, pb = recall.get(a) or {}, recall.get(b) or {}
-        common = [c for c in rq1 if len(pa.get(c, {})) >= 2 and len(pb.get(c, {})) >= 2]
-        if a == "attention" and b == "ig" and len(common) == 0:
-            contrasts.append(_stamp({"contrast": f"{a}_vs_{b}", "status": "NOT_ESTIMABLE", "reason": "IG missingness / no common-valid seeds>=2", "family": fam}))
-            continue
-        if not pa or not pb or not common:
-            contrasts.append(_stamp({"contrast": f"{a}_vs_{b}", "status": "NOT_ESTIMABLE", "reason": "insufficient paired commits", "family": fam}))
-            continue
+        per_a = {c: pa.get(c, {}) for c in rq1}
+        per_b = {c: pb.get(c, {}) for c in rq1}
         report = analyze_pairwise_commit_methods(
             method_a=a,
             method_b=b,
             metric=metric,
             metric_direction="HIGHER_BETTER",
-            per_commit_a={c: pa[c] for c in common},
-            per_commit_b={c: pb[c] for c in common},
+            per_commit_a=per_a,
+            per_commit_b=per_b,
             family=fam,
             role="PRIMARY",
         )
+        if report.n_included == 0 or report.wilcoxon_status == "EMPTY":
+            contrasts.append(
+                _stamp(
+                    {
+                        "contrast": f"{a}_vs_{b}",
+                        "status": "NOT_ESTIMABLE",
+                        "reason": "IG missingness / no common-valid seeds>=2"
+                        if b == "ig"
+                        else "insufficient paired commits",
+                        "family": fam,
+                        "n_included": report.n_included,
+                        "n_excluded": report.n_excluded,
+                        "low_power_exploratory": True,
+                    }
+                )
+            )
+            continue
         seed = derive_bootstrap_seed(STATISTICAL_PROTOCOL_HASH, "RQ1", metric, f"{a}__{b}")
-        dmap = {}
         from src.stats.paired import build_pairwise_commit_diffs
 
-        inc = build_pairwise_commit_diffs({c: pa[c] for c in common}, {c: pb[c] for c in common})
+        inc = build_pairwise_commit_diffs(per_a, per_b)
         dmap = {c.commit_id: c.diff for c in inc.commit_diffs}
         ids = list(dmap)
 
-        def stat(sample):
-            xs = [dmap[i] for i in sample if i in dmap]
+        def stat(sample, _dmap=dmap):
+            xs = [_dmap[i] for i in sample if i in _dmap]
             return float(sum(xs) / len(xs)) if xs else 0.0
 
         boot = paired_commit_bootstrap_percentile(ids, stat, rng_seed=seed, repeats=BOOTSTRAP_REPEATS)
@@ -199,6 +213,7 @@ def main() -> int:
                     "family": fam,
                     "n_included": report.n_included,
                     "n_excluded": report.n_excluded,
+                    "low_power_exploratory": report.low_power_exploratory,
                     "wilcoxon_status": report.wilcoxon_status,
                     "p_raw": report.p_raw,
                     "rank_biserial": report.rank_biserial,
@@ -220,8 +235,19 @@ def main() -> int:
     rq2_contrasts = []
     for a, b in (("attention", "grad_x_input"), ("attention", "ig")):
         pa, pb = aopc.get(a) or {}, aopc.get(b) or {}
-        common = [c for c in pos if len(pa.get(c, {})) >= 2 and len(pb.get(c, {})) >= 2]
-        if not common:
+        per_a = {c: pa.get(c, {}) for c in pos}
+        per_b = {c: pb.get(c, {}) for c in pos}
+        report = analyze_pairwise_commit_methods(
+            method_a=a,
+            method_b=b,
+            metric="ABS_DELETION_AOPC",
+            metric_direction="HIGHER_BETTER",
+            per_commit_a=per_a,
+            per_commit_b=per_b,
+            family="RQ2_PRIMARY",
+            role="PRIMARY",
+        )
+        if report.n_included == 0 or report.wilcoxon_status == "EMPTY":
             rq2_contrasts.append(
                 _stamp(
                     {
@@ -229,24 +255,17 @@ def main() -> int:
                         "status": "NOT_ESTIMABLE",
                         "reason": "insufficient paired AOPC (IG missingness allowed)",
                         "family": "RQ2_PRIMARY",
+                        "n_included": report.n_included,
+                        "n_excluded": report.n_excluded,
+                        "low_power_exploratory": True,
                     }
                 )
             )
             continue
-        report = analyze_pairwise_commit_methods(
-            method_a=a,
-            method_b=b,
-            metric="ABS_DELETION_AOPC",
-            metric_direction="HIGHER_BETTER",
-            per_commit_a={c: pa[c] for c in common},
-            per_commit_b={c: pb[c] for c in common},
-            family="RQ2_PRIMARY",
-            role="PRIMARY",
-        )
         seed = derive_bootstrap_seed(STATISTICAL_PROTOCOL_HASH, "RQ2", "ABS_DELETION_AOPC", f"{a}__{b}")
         from src.stats.paired import build_pairwise_commit_diffs
 
-        inc = build_pairwise_commit_diffs({c: pa[c] for c in common}, {c: pb[c] for c in common})
+        inc = build_pairwise_commit_diffs(per_a, per_b)
         dmap = {c.commit_id: c.diff for c in inc.commit_diffs}
         ids = list(dmap)
 
@@ -262,6 +281,7 @@ def main() -> int:
                     "family": "RQ2_PRIMARY",
                     "n_included": report.n_included,
                     "n_excluded": report.n_excluded,
+                    "low_power_exploratory": report.low_power_exploratory,
                     "wilcoxon_status": report.wilcoxon_status,
                     "p_raw": report.p_raw,
                     "rank_biserial": report.rank_biserial,
@@ -306,6 +326,7 @@ def main() -> int:
                     "mean_delta_recall20": float(sum(vals) / len(vals)),
                     "wilcoxon_status": w.status,
                     "p_raw": w.p_value,
+                    "low_power_exploratory": w.low_power_exploratory,
                     "confirmatory": method == "grad_x_input",
                 }
             )
@@ -412,6 +433,15 @@ def main() -> int:
     )
     _write(OUT / "TEST_RESULT_INTEGRITY.json", integrity)
 
+    prev_freeze_path = OUT / "TEST_RESULTS_FREEZE.json"
+    prev_archive = OUT / "TEST_RESULTS_FREEZE_03be67d.json"
+    previous_freeze_sha256 = None
+    if prev_freeze_path.is_file():
+        prev_obj = json.loads(prev_freeze_path.read_text(encoding="utf-8"))
+        previous_freeze_sha256 = prev_obj.get("freeze_sha256")
+        if not prev_archive.is_file():
+            prev_archive.write_text(prev_freeze_path.read_text(encoding="utf-8"), encoding="utf-8")
+
     freeze = _stamp(
         {
             "test_run_manifest_hash": file_hash(OUT / "TEST_RUN_MANIFEST.json"),
@@ -426,6 +456,10 @@ def main() -> int:
             "execution_freeze_hash": EXPECTED_FREEZE,
             "git_commit": os.popen(f"git -C {ROOT} rev-parse HEAD").read().strip(),
             "created": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+            "raw_attribution_unchanged": True,
+            "correction": "IG_VALID_SEED_MASK_METHOD_SPECIFIC_MISSINGNESS_V1_1",
+            "supersedes_freeze_sha256": previous_freeze_sha256,
+            "supersedes_commit": "03be67df9d9da1ee78d42c538c8f58d8c7dd3686",
         }
     )
     freeze["freeze_sha256"] = sha256_json(freeze)

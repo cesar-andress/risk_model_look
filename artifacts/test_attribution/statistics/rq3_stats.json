@@ -11,6 +11,7 @@
       "SPLIT": "TEST",
       "confirmatory": true,
       "contrast": "SIGNED_VS_ABSOLUTE_DELTA_RECALL20",
+      "low_power_exploratory": false,
       "mean_delta_recall20": 0.0025379015916686953,
       "method": "grad_x_input",
       "n": 304,
@@ -24,6 +25,7 @@
       "SCIENTIFIC_RESULT": true,
       "SPLIT": "TEST",
       "confirmatory": false,
+      "low_power_exploratory": false,
       "mean_delta_recall20": -0.014389788132939315,
       "method": "gradient",
       "n": 304,
@@ -36,6 +38,7 @@
       "SCIENTIFIC_RESULT": true,
       "SPLIT": "TEST",
       "confirmatory": false,
+      "low_power_exploratory": false,
       "mean_delta_recall20": 0.00012129486297442949,
       "method": "occlusion",
       "n": 304,
@@ -48,10 +51,11 @@
       "SCIENTIFIC_RESULT": true,
       "SPLIT": "TEST",
       "confirmatory": false,
-      "mean_delta_recall20": -0.04422428993333445,
+      "low_power_exploratory": true,
+      "mean_delta_recall20": -0.25,
       "method": "ig",
-      "n": 304,
-      "p_raw": 0.13405504238537674,
+      "n": 2,
+      "p_raw": 0.31731050786291415,
       "wilcoxon_status": "OK"
     }
   ]

@@ -74,19 +74,19 @@
     },
     "ig": {
       "13_42": {
-        "mean_rho": 0.35254081893619693,
-        "n_aligned": 473,
-        "n_rho": 473
+        "mean_rho": 0.3333333333333334,
+        "n_aligned": 1,
+        "n_rho": 1
       },
       "13_73": {
-        "mean_rho": 0.377702525666251,
-        "n_aligned": 473,
-        "n_rho": 473
+        "mean_rho": null,
+        "n_aligned": 0,
+        "n_rho": 0
       },
       "42_73": {
-        "mean_rho": 0.38024917428969823,
-        "n_aligned": 473,
-        "n_rho": 473
+        "mean_rho": 0.28053706472276485,
+        "n_aligned": 2,
+        "n_rho": 2
       }
     },
     "occlusion": {
