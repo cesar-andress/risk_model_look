@@ -1,20 +1,20 @@
 # Fresh-clone reproduction report
 
 Date: 2026-10-06  
-Clone: `/tmp/rml_fresh_clone_20261006`  
+Clone: `/tmp/rml_fresh_clone_20261006b`  
 Remote: `git@github.com-ucjc:cesar-andress/risk_model_look.git` branch `main`  
-HEAD: `8779c8f4f81faa88ec4c9cff7cb14a04363e4373`  
+HEAD: `f1844b9857fd3196d6a4631cc60b229bb393b74e`  
 No files were copied from the working tree into the clone.
 
 ## Commands (as written in README / REPRODUCIBILITY.md)
 
 ```bash
-git clone --branch main --single-branch <origin> /tmp/rml_fresh_clone_20261006
-cd /tmp/rml_fresh_clone_20261006
+git clone --branch main --single-branch <origin> /tmp/rml_fresh_clone_20261006b
+cd /tmp/rml_fresh_clone_20261006b
 python3.11 scripts/print_headline_from_tracked.py
 ```
 
-Headline printer: **PASS** (stdlib + tracked JSON/CSV only). Runtime ~1.4 s.  
+Headline printer: **PASS** (stdlib + tracked JSON/CSV only). Runtime ~0.02 s.  
 `artifacts/test_attribution/raw/` absent, as expected.
 
 Bare `python3.11 -m pytest -m "cpu or not gpu" -q` **fails collection** (`ModuleNotFoundError: torch`). That is documented in `environment.yml` / `docs/ENVIRONMENT_REPORT.md`, not an undocumented local file.
