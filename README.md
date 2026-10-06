@@ -6,7 +6,9 @@ Replication package for:
 
 Author: César Andrés (ORCID 0009-0001-8968-3404), CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela.
 
-Target venue: Empirical Software Engineering (EMSE). Version: 1.0.0 (release candidate; tag not created in this tree state until the atomic release task). No DOI yet.
+Target venue: Empirical Software Engineering (EMSE). Version: **1.0.0**.  
+Zenodo DOI: [10.5281/zenodo.23196604](https://doi.org/10.5281/zenodo.23196604)  
+(Concept DOI for all versions: [10.5281/zenodo.23196603](https://doi.org/10.5281/zenodo.23196603).)
 
 ## What this repository is
 
@@ -58,7 +60,13 @@ Tracked derived summaries in `artifacts/` are project outputs for reproduction o
 
 ## Citation
 
-See `CITATION.cff`. No paper/Zenodo DOI is minted yet.
+See `CITATION.cff`. Prefer the version DOI for this release:
+
+```
+Andrés, C. (2026). When Validity Criteria Disagree: Evaluating Line-Level
+Explanations for Just-in-Time Defect Prediction — Replication Package
+(v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23196604
+```
 
 ## Licensing
 
@@ -75,4 +83,3 @@ might obtain when reproducing the study.
 | **F. Derived compact result artifacts** tracked under `artifacts/**` (CSV/JSON summaries, freeze manifests) | **Yes** — author-owned study outputs released under MIT with this package |
 
 See also `THIRD_PARTY_NOTICES.md` and `docs/ZENODO_RELEASE_PLAN.md`.
-Do not invent a Zenodo DOI; none is minted yet.

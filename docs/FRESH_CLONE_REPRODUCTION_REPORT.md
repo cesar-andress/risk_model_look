@@ -37,7 +37,8 @@ No GPU scientific run. No raw data download required for this path.
 ## Licensing / release metadata present
 
 - `LICENSE` MIT; `THIRD_PARTY_NOTICES.md`; README Licensing table  
-- `CITATION.cff` / `.zenodo.json` version **1.0.0**, date **2026-10-06**, **no DOI**  
+- `CITATION.cff` / `.zenodo.json` version **1.0.0**, date **2026-10-06**  
+  (post-release tip on `main` also records Zenodo DOI `10.5281/zenodo.23196604`)  
 - Stale `STATUS.md` / `REPRODUCE.md` absent  
 
 ## Freeze identifiers

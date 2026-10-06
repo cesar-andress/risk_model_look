@@ -140,3 +140,9 @@ Author decision: **MIT** for author-owned software and tracked author-owned comp
 result artifacts. Upstream JIT-Fine / JIT-Defects4J raw dumps, third-party model
 weights, and the manuscript are **not** relicensed. See `LICENSE`, README
 Licensing, `THIRD_PARTY_NOTICES.md`, and `docs/ZENODO_RELEASE_PLAN.md`.
+
+## Zenodo publication (2026-10-06)
+
+- Git tag: `v1.0.0`
+- Version DOI: **10.5281/zenodo.23196604** (verified via Zenodo API / doi.org)
+- Concept DOI: **10.5281/zenodo.23196603**

@@ -15,6 +15,10 @@ Venue: EMSE. Empirical execution is closed. Do not start new GPU scientific runs
 
 See `THIRD_PARTY_NOTICES.md` and the Licensing section of `README.md`.
 
+Published archive: Zenodo DOI
+[10.5281/zenodo.23196604](https://doi.org/10.5281/zenodo.23196604)
+(v1.0.0; concept DOI [10.5281/zenodo.23196603](https://doi.org/10.5281/zenodo.23196603)).
+
 ## Existing-data path (clone of origin/main, no GPU, no raw jobs)
 
 ```bash

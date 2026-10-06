@@ -1,6 +1,6 @@
 {
   "title": "When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction — Replication Package",
-  "description": "Author-owned software, configs, protocol freeze manifests, and compact tracked result summaries for a study of line-level attributions for a decoder-only just-in-time defect-risk classifier. Record-level license MIT applies to those author-owned materials. Raw JIT-Defects4J / JIT-Fine dumps, base LLM weights, LoRA adapters, and the manuscript PDF/LaTeX are not part of this deposit and are not relicensed. NUMERICAL_GATE = FAIL. No DOI until Zenodo mints one.",
+  "description": "Author-owned software, configs, protocol freeze manifests, and compact tracked result summaries for a study of line-level attributions for a decoder-only just-in-time defect-risk classifier. Record-level license MIT applies to those author-owned materials. Raw JIT-Defects4J / JIT-Fine dumps, base LLM weights, LoRA adapters, and the manuscript PDF/LaTeX are not part of this deposit and are not relicensed. NUMERICAL_GATE = FAIL. Zenodo version DOI: 10.5281/zenodo.23196604 (concept DOI: 10.5281/zenodo.23196603).",
   "upload_type": "software",
   "license": "mit",
   "creators": [
@@ -20,6 +20,13 @@
   ],
   "version": "1.0.0",
   "publication_date": "2026-10-06",
-  "related_identifiers": [],
-  "notes": "Mixed-scope package: MIT covers author-owned software and tracked author-owned compact artifacts only. See README.md Licensing and THIRD_PARTY_NOTICES.md. Do not invent a DOI. Manuscript reuse is separate from this software license."
+  "related_identifiers": [
+    {
+      "relation": "isIdenticalTo",
+      "identifier": "https://github.com/cesar-andress/risk_model_look/tree/v1.0.0",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Mixed-scope package: MIT covers author-owned software and tracked author-owned compact artifacts only. See README.md Licensing and THIRD_PARTY_NOTICES.md. Published Zenodo record DOI 10.5281/zenodo.23196604. Manuscript reuse is separate from this software license."
 }
