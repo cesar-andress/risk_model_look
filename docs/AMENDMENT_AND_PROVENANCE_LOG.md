@@ -58,3 +58,11 @@ MEAN token-to-line reduction: **PRE_SPECIFIED_DIAGNOSTIC** in Attribution Protoc
 ## Planned-but-unreported accounting
 
 See manuscript Appendix `app:planned`. Secondary Top-k/IFA/Effort@20%Recall aggregated from frozen job `rq1` fields (no new rankings).
+
+## Licensing (2026-10-06)
+
+Author decision: **MIT** for author-owned software and tracked author-owned compact
+result artifacts. Upstream JIT-Fine / JIT-Defects4J raw dumps, third-party model
+weights, and the manuscript are **not** relicensed. See `LICENSE`, README
+Licensing, `THIRD_PARTY_NOTICES.md`, and `docs/ZENODO_RELEASE_PLAN.md`.
+No Zenodo DOI minted; no `v1.0.0` tag in this step.

@@ -1,21 +1,25 @@
 {
-  "title": "When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction (replication package)",
-  "description": "Code, frozen protocols, and documentation for evaluating line-level attributions of one NF4-quantized Qwen2.5-Coder just-in-time defect classifier on public JIT-Defects4J / JIT-Fine resources. No DOI is minted in this pre-v1.0.0 draft.",
+  "title": "When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction — Replication Package",
+  "description": "Author-owned software, configs, protocol freeze manifests, and compact tracked result summaries for an EMSE study of line-level attributions for a decoder-only just-in-time defect-risk classifier. Record-level license MIT applies to those author-owned materials. Raw JIT-Defects4J / JIT-Fine dumps, base LLM weights, LoRA adapters, and the manuscript PDF/LaTeX are not part of this deposit and are not relicensed. NUMERICAL_GATE = FAIL. No DOI until Zenodo mints one.",
+  "upload_type": "software",
+  "license": "mit",
   "creators": [
     {
       "name": "Andrés, César",
-      "affiliation": "CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela",
-      "orcid": "0009-0001-8968-3404"
+      "orcid": "0009-0001-8968-3404",
+      "affiliation": "CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela"
     }
   ],
   "keywords": [
     "just-in-time defect prediction",
     "explainable AI",
-    "line-level attribution",
-    "empirical software engineering"
+    "faithfulness",
+    "Integrated Gradients",
+    "large language models",
+    "software engineering",
+    "Empirical Software Engineering"
   ],
-  "license": "other-closed",
-  "upload_type": "software",
-  "publication_date": "2026-10-06",
-  "notes": "PRE-v1.0.0. Zenodo deposit is NOT published. Do not invent a DOI."
+  "version": "0.9.0-pre-release",
+  "related_identifiers": [],
+  "notes": "Mixed-scope package: MIT covers author-owned software and tracked author-owned compact artifacts only. See README.md Licensing and THIRD_PARTY_NOTICES.md. Do not invent a DOI. Manuscript reuse is separate from this software license."
 }

@@ -1,26 +1,33 @@
 cff-version: 1.2.0
-title: "When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction"
-message: "If you use this software or replication materials, please cite this work."
-type: software
+message: "If you use this software, please cite it using these metadata."
+title: "When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction — Replication Package"
 authors:
   - family-names: Andrés
     given-names: César
     orcid: "https://orcid.org/0009-0001-8968-3404"
     affiliation: "CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela"
+version: "0.9.0-pre-release"
+date-released: "2026-10-01"
+# No DOI until Zenodo/GitHub Release actually mint one. Do not invent a DOI.
+# license: MIT applies to author-owned software and tracked author-owned
+# compact result artifacts in this repository. Third-party datasets, model
+# weights, and the manuscript are not covered by this field (see README.md
+# Licensing and THIRD_PARTY_NOTICES.md).
+license: MIT
 repository-code: "https://github.com/cesar-andress/risk_model_look"
 url: "https://github.com/cesar-andress/risk_model_look"
 abstract: >-
-  Replication package (code, configs, protocols, and documentation) for evaluating
-  line-level attributions of a decoder-only just-in-time defect-risk classifier on
-  public JIT-Defects4J / JIT-Fine resources. Empirical results are versioned
-  separately when frozen; this citation entry does not claim a paper DOI.
+  Replication package (code, configs, protocols, and frozen compact result
+  summaries) for an EMSE study evaluating line-level attributions for a
+  decoder-only just-in-time defect-risk classifier on public JIT resources.
+  NUMERICAL_GATE = FAIL. Raw upstream datasets and base model weights are not
+  redistributed; obtain them under their own terms.
 keywords:
   - just-in-time defect prediction
   - explainable AI
   - faithfulness
+  - Integrated Gradients
   - large language models
   - software engineering
-license: "NOASSERTION"
-version: "0.9.0-pre-v1.0.0"
-date-released: "2026-10-01"
-# doi:  # intentionally omitted until Zenodo/journal DOI exists
+  - Empirical Software Engineering
+type: software

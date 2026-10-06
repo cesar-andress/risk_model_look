@@ -2,6 +2,19 @@
 
 Venue: EMSE. Empirical execution is closed. Do not start new GPU scientific runs.
 
+## Licensing (reproduction context)
+
+| Layer | How to obtain | License note |
+|-------|---------------|--------------|
+| Author-owned code + docs in this clone | This repository | **MIT** (`LICENSE`) |
+| Frozen compact outputs under tracked `artifacts/**` | This repository | Author-owned; released under **MIT** with the package |
+| Upstream JIT-Defects4J / JIT-Fine raw data | External distributors | **Not** redistributed / **not** relicensed here |
+| Base model weights (Qwen pin) | Hugging Face / upstream | Upstream model license |
+| LoRA adapters / bulk raw attribution jobs | Local-only / not default clone | Not part of the default MIT code deposit |
+| Manuscript LaTeX/PDF | Private sibling `../paper/` | **Not** covered by this MIT software license |
+
+See `THIRD_PARTY_NOTICES.md` and the Licensing section of `README.md`.
+
 ## Existing-data path (clone of origin/main, no GPU, no raw jobs)
 
 ```bash
@@ -26,7 +39,7 @@ Tracked inputs include:
 
 ## GPU path (only if reproducing jobs from scratch)
 
-M1 QLoRA (`scripts/run_m1_final.py`) then `scripts/run_test_attribution.py`. Hardware used originally: NVIDIA RTX 4090. Do not train a second decoder.
+M1 QLoRA (`scripts/run_m1_final.py`) then `scripts/run_test_attribution.py`. Hardware used originally: NVIDIA RTX 4090. Do not train a second decoder. Obtain base weights and (if used) adapters under their own terms; they are outside the MIT software grant for this repository.
 
 ## Environment
 
@@ -38,4 +51,4 @@ M1 QLoRA (`scripts/run_m1_final.py`) then `scripts/run_test_attribution.py`. Har
 
 ## Paper build
 
-Private sibling `../paper/`: `make pdf`.
+Private sibling `../paper/`: `make pdf`. Manuscript reuse is separate from the MIT software license.

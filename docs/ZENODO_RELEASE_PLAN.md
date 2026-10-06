@@ -1,7 +1,27 @@
 # ZENODO_RELEASE_PLAN.md
 
 **Status:** preparation only — **no DOI created, no upload**.  
-**Date:** 2026-10-01
+**Updated:** 2026-10-06 (SUPERPROMPT 33 — MIT for author-owned software)
+
+---
+
+## License (author decision)
+
+| Scope | License |
+|-------|---------|
+| Author-owned software (`src/`, `scripts/`, `tests/`, `configs/`, author docs) | **MIT** (`LICENSE`) |
+| Tracked author-owned compact result artifacts under `artifacts/**` | **MIT** (with the package) |
+| Upstream JIT-Fine / JIT-Defects4J raw dumps | **Not redistributed; not relicensed** |
+| Third-party model weights / dependencies | Upstream licenses |
+| Manuscript / publisher article | **Not** under MIT; not in this deposit |
+
+Record-level Zenodo field: `license: mit` is honest **only** because the planned
+deposit excludes raw third-party data, model weights, adapters, and the
+manuscript. If those were added later, re-evaluate before upload
+(`MIXED_LICENSE_METADATA_CONFLICT` if a single global MIT would misrepresent
+the payload).
+
+**Do not invent a Zenodo DOI.**
 
 ---
 
@@ -11,52 +31,66 @@
 
 - Source code (`src/`, `scripts/`, `tests/`)
 - Configs (`configs/`)
-- Documentation (`docs/`, `README.md`, `REPRODUCIBILITY.md`)
+- Documentation (`docs/`, `README.md`, `REPRODUCIBILITY.md`, `THIRD_PARTY_NOTICES.md`)
+- `LICENSE` (MIT), `CITATION.cff`, `.zenodo.json`
 - Protocol freeze manifests + SHA-256 digests
 - Small CSV/JSON audit summaries already tracked under `artifacts/**` (non-weight)
-- Paper LaTeX sources (after integration) + TBD macros
-- Result **tables/aggregates** after evaluation completes (not raw per-token dumps)
 
 ### NO (exclude)
 
-- `data/raw/**` if redistribution prohibited / unverified (default)
+- `data/raw/**` (raw JIT dumps — gitignored; upstream terms)
 - Full `data/processed/**` blobs (JSONL, pkl caches)
 - Model base weights (Qwen) — re-download from upstream revision pin
-- LoRA adapters / checkpoints (`.safetensors`) unless license + size explicitly approved
+- LoRA adapters / checkpoints (`.safetensors`)
+- Manuscript LaTeX / PDF / publisher-formatted article (private sibling `../paper/`)
 - Secrets, `.env`, API keys
 - Agent/tooling dirs (`.cursor/`, etc.)
 - Training logs / wandb
+- Bulk TEST attribution raw jobs (`artifacts/test_attribution/raw/`)
 
 ---
 
-## Metadata draft (placeholders)
+## Metadata draft
 
 | Field | Draft |
 |-------|-------|
-| Title | Where Does the Risk Model Look? Faithful and Signed Line-Level Explanations for LLM-Based Just-in-Time Defect Prediction — Replication Package |
-| Creators | César Andrés (ORCID 0009-0001-8968-3404) — confirm coauthors before deposit |
-| Description | Code, configs, protocols, and reproducibility materials for evaluating line-level attributions of a decoder-only JIT defect-risk classifier on public JIT-Defects4J / JIT-Fine resources. Raw dataset redistributed only as permitted by upstream licenses. |
+| Title | When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction — Replication Package |
+| Creators | César Andrés (ORCID 0009-0001-8968-3404) |
+| Description | See `.zenodo.json` |
 | Keywords | just-in-time defect prediction; explainable AI; faithfulness; Integrated Gradients; large language models; software engineering |
-| Related publication | TBD (DOI of paper when available) |
-| License | TBD — prefer permissive code license (MIT/Apache-2.0) after legal check; dataset remains under upstream terms |
-| Version | v0.1.0-pre-results (draft) |
+| Related publication | TBD (DOI of paper when available — never invent) |
+| License | **mit** (author-owned software + tracked compact artifacts only) |
+| Version | 0.9.0-pre-release until `v1.0.0` is authorized |
 
-**Do not invent a Zenodo DOI.**
+---
+
+## Future release order (do not reorder)
+
+1. Final artifact-aware Claude review
+2. Authorize release
+3. Tag `v1.0.0`
+4. GitHub Release
+5. Zenodo deposition
+6. Receive real DOI from Zenodo
+7. Update citation/release metadata with the real DOI if required
+
+No circular/fake DOI workflow. No tag/Release/Zenodo until Claude authorizes.
 
 ---
 
 ## Pre-upload checklist
 
-- [ ] `main` contains attribution V1.2 + stats V1.1 + training entrypoints
-- [ ] Large-file audit clean for tracked paths
-- [ ] LICENSE chosen and added
-- [ ] CITATION.cff filled
-- [ ] Dataset redistribution statement verified
-- [ ] Results frozen (post-experiment) or clearly marked pre-results
-- [ ] Owner approval for public visibility
+- [x] LICENSE = MIT (author-owned software)
+- [x] README licensing scope + `THIRD_PARTY_NOTICES.md`
+- [x] CITATION.cff `license: MIT` (no DOI)
+- [x] `.zenodo.json` `license: mit` with mixed-scope notes
+- [x] Dataset redistribution statement verified (raw dumps not tracked)
+- [x] Results freeze documented (two hashes; NUMERICAL_GATE = FAIL)
+- [ ] Owner approval after Claude artifact-aware review
+- [ ] Tag `v1.0.0` / GitHub Release / Zenodo (blocked until authorized)
 
 ---
 
 ## Upload action
 
-**Not performed.** Requires separate owner-authorized gate.
+**Not performed.** Requires separate owner-authorized gate after Claude review.

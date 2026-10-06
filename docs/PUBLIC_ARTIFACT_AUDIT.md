@@ -1,24 +1,30 @@
 # PUBLIC_ARTIFACT_AUDIT.md
 
 Date: 2026-10-06  
-HEAD: see git after commit  
-Task: EMSE minor-fix closure / release-gate bundle
+Task: SUPERPROMPT 33 — MIT license scoping (pre-release; no tag/Zenodo)  
+Public HEAD: see git after commit on `main`
 
 ## Checks
 
 | Check | Result |
 |-------|--------|
 | Secrets / credentials in tracked files | NONE found in release-facing README/CITATION/.zenodo/LICENSE |
-| Raw third-party dataset redistribution | NO (`data/raw/` gitignored; README states upstream terms) |
-| Fake / placeholder DOI | NO |
-| Large accidental caches/adapters staged | NO |
-| Localhost reproduction dependency | NO (headline printer uses tracked JSON) |
-| Freeze hash documentation | YES (README distinguishes freeze_sha256 vs file SHA-256) |
-| License | NOASSERTION — human decision still required for SPDX |
-| Fresh-clone headline path | PASS (see FRESH_CLONE_REPRODUCTION_REPORT.md) |
-| Non-GPU tests | 230 passed |
+| Raw third-party dataset redistribution | NO (`data/raw/**` gitignored; only `.gitkeep` + README tracked) |
+| Model weights / LoRA adapters tracked | NO (`*.safetensors` gitignored; none in `git ls-files`) |
+| Manuscript TeX/PDF in public repo | NO (private sibling `../paper/`) |
+| Fake / placeholder DOI | NO (`CITATION.cff` / `.zenodo.json` have no DOI) |
+| Large accidental caches staged | NO |
+| Localhost-only reproduction dependency | NO (headline printer uses tracked JSON) |
+| Freeze hash documentation | YES (README: scientific `885540b8…` vs file-byte `aff72921…`) |
+| License (author-owned software) | **MIT** (`LICENSE`); scope documented in README + `THIRD_PARTY_NOTICES.md` |
+| Zenodo record license | `mit` — honest for planned software-only deposit excluding raw data/weights/manuscript |
+| Mixed-license metadata conflict | NO (payload scoped; exclusions documented) |
+| Fresh-clone headline path | PASS (see `FRESH_CLONE_REPRODUCTION_REPORT.md`) |
+| Non-GPU tests | see FRESH_CLONE report / this gate run |
 
-## License decision still required
+## Licensing scope (summary)
 
-Author must choose an SPDX license for author-owned code/docs before Zenodo displays a reuse grant.
-Third-party JIT data remain under upstream terms either way.
+- MIT covers author-owned software and tracked author-owned compact result artifacts.
+- Upstream JIT-Fine / JIT-Defects4J dumps are **not** redistributed and **not** relicensed.
+- Third-party model weights and dependencies remain under upstream terms.
+- Manuscript is **not** under MIT.

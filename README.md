@@ -60,9 +60,19 @@ Tracked derived summaries in `artifacts/` are project outputs for reproduction o
 
 See `CITATION.cff`. No paper/Zenodo DOI is minted yet.
 
-## License
+## Licensing
 
-`LICENSE`, `CITATION.cff`, and `.zenodo.json` currently record **NOASSERTION** / `other-closed`.
-No SPDX identifier for author-owned code has been chosen yet (see `docs/ZENODO_RELEASE_PLAN.md`: TBD after legal check).
-Until an explicit license is asserted, no reuse grant for the repository code is implied.
-Third-party data remain under upstream terms regardless of that decision.
+This is a **mixed-scope** package. The MIT grant does **not** cover everything you
+might obtain when reproducing the study.
+
+| Material | Covered by MIT (`LICENSE`)? |
+|----------|-----------------------------|
+| **A. Author-owned software** (`src/`, `scripts/`, `tests/`, `configs/`, author docs in this repo) | **Yes** — MIT, Copyright (c) 2026 César Andrés |
+| **B. Third-party datasets** (JIT-Fine / JIT-Defects4J upstream dumps) | **No** — not relicensed; subject to upstream terms |
+| **C. Raw JIT-Fine / JIT-Defects4J material** | **Not redistributed** here (`data/raw/**` gitignored except placeholders/README) |
+| **D. Third-party model weights / software** (e.g. Qwen base; PyPI/conda deps) | **No** — respective upstream licenses |
+| **E. Manuscript / article** (private sibling `../paper/`) | **No** — not under this MIT software license; reuse by authors/publisher |
+| **F. Derived compact result artifacts** tracked under `artifacts/**` (CSV/JSON summaries, freeze manifests) | **Yes** — author-owned study outputs released under MIT with this package |
+
+See also `THIRD_PARTY_NOTICES.md` and `docs/ZENODO_RELEASE_PLAN.md`.
+Do not invent a Zenodo DOI; none is minted yet.
