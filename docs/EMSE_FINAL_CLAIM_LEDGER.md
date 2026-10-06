@@ -36,7 +36,7 @@ STATUS: SUPPORTED
 
 ## L3. Order baseline
 
-CLAIM: All three methods have higher Recall@20 than canonical order (CIs exclude 0).  
+CLAIM: Under primary SUM aggregation, all three methods have higher Recall@20 than canonical order (CIs exclude 0); attention/GxI vs order under MEAN have CIs containing 0.  
 TYPE: PROTOCOL-OWED  
 N: 304  
 Att−order 0.070122 [0.031718, 0.108251] rrb=0.3785  
@@ -63,7 +63,7 @@ STATUS: SUPPORTED as association, not mechanism.
 
 ## L6. MEAN aggregation
 
-CLAIM: MEAN token-to-line aggregation lowers Attention Recall@20 (0.355→0.291) and GxI (0.331→0.290); occlusion SUM=MEAN (line-level operator). MEAN vs length remains negative (Attention Δ=−0.104).  
+CLAIM: MEAN token-to-line aggregation lowers Attention Recall@20 (0.354→0.291) and GxI (0.331→0.290); occlusion SUM=MEAN (line-level operator). MEAN vs length remains negative (Attention Δ=−0.104).  
 TYPE: PRE_SPECIFIED_DIAGNOSTIC (construct sensitivity in Attribution Protocol V1.2)  
 SAFE WORDING: Switching SUM→MEAN does not make methods outperform length.  
 STATUS: SUPPORTED  

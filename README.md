@@ -6,7 +6,7 @@ Replication package for:
 
 Author: César Andrés (ORCID 0009-0001-8968-3404), CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela.
 
-Target venue: Empirical Software Engineering (EMSE). Version: pre-v1.0.0. No DOI.
+Target venue: Empirical Software Engineering (EMSE). Version: 1.0.0 (release candidate; tag not created in this tree state until the atomic release task). No DOI yet.
 
 ## What this repository is
 

@@ -34,11 +34,11 @@ Lines: RQ1 universe only (not `NOT_IN_RQ1_UNIVERSE`), ranked by `ranking_score(�
 Aggregator: Pearson correlation of ranks (Spearman) per seed pair; then **commit-level mean over pairs with ≥2 finite pairs**; then mean across commits.  
 Length-adjusted variant: OLS residual of attribution ranks on payload-token length ranks.
 
-| Method | Raw mean ρ | Length-adj. | N commits |
-|--------|------------|-------------|-----------|
+| Method | Raw mean ρ | Length-adj. | N commits (length-adj.) |
+|--------|------------|-------------|-------------------------|
 | Attention | 0.608 | 0.430 | 202 |
 | Grad×Input | 0.119 | 0.087 | 202 |
-| Occlusion | 0.023 | 0.020 | 189 |
+| Occlusion | 0.023 | 0.020 | 199 (raw mean uses 189) |
 
 ## Why Grad×Input / occlusion look weaker in B
 

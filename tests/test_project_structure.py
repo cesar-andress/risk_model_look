@@ -34,16 +34,20 @@ def test_required_directories_exist() -> None:
 def test_required_files_exist() -> None:
     required = [
         "README.md",
-        "REPRODUCE.md",
-        "STATUS.md",
+        "REPRODUCIBILITY.md",
+        "LICENSE",
+        "CITATION.cff",
         "environment.yml",
         ".gitignore",
-        "docs/EXPERIMENT_PROTOCOL_V0.md",
+        "THIRD_PARTY_NOTICES.md",
         "docs/REFERENCE_LEDGER.md",
         "docs/NOVELTY_GATE.md",
         "docs/DECISION_LOG.md",
         "docs/DATA_PROVENANCE.md",
         "docs/ENVIRONMENT_REPORT.md",
+        "docs/AMENDMENT_AND_PROVENANCE_LOG.md",
+        "docs/PUBLIC_ARTIFACT_AUDIT.md",
+        "docs/PUBLIC_RELEASE_TREE_MANIFEST.md",
         "scripts/smoke_qwen_4bit.py",
     ]
     missing = [p for p in required if not (ROOT / p).is_file()]
@@ -73,3 +77,8 @@ def test_gitignore_protects_sensitive_paths() -> None:
     text = (ROOT / ".gitignore").read_text(encoding="utf-8")
     for needle in [".cursor/", ".claude/", ".agents/", ".env", "data/raw/**", "wandb/"]:
         assert needle in text, f".gitignore missing pattern: {needle}"
+
+
+def test_stale_root_status_files_removed() -> None:
+    assert not (ROOT / "STATUS.md").exists()
+    assert not (ROOT / "REPRODUCE.md").exists()

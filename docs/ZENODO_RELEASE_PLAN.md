@@ -60,7 +60,7 @@ the payload).
 | Keywords | just-in-time defect prediction; explainable AI; faithfulness; Integrated Gradients; large language models; software engineering |
 | Related publication | TBD (DOI of paper when available — never invent) |
 | License | **mit** (author-owned software + tracked compact artifacts only) |
-| Version | 0.9.0-pre-release until `v1.0.0` is authorized |
+| Version | **1.0.0** (metadata ready; tag/upload not performed in SP34) |
 
 ---
 

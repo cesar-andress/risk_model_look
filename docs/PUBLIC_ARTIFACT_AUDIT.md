@@ -1,30 +1,33 @@
 # PUBLIC_ARTIFACT_AUDIT.md
 
 Date: 2026-10-06  
-Task: SUPERPROMPT 33 — MIT license scoping (pre-release; no tag/Zenodo)  
-Public HEAD: see git after commit on `main`
+Task: SUPERPROMPT 34 — final release candidate  
+Public candidate HEAD: fill after commit on `main`
+
+## Scope
+
+- **Current tracked tree:** full `git ls-files` scan for secret/credential patterns
+- **Git history:** `git grep` over recent commits for private-key / token patterns
+- **Release-tree hygiene:** see `docs/PUBLIC_RELEASE_TREE_MANIFEST.md`
 
 ## Checks
 
 | Check | Result |
 |-------|--------|
-| Secrets / credentials in tracked files | NONE found in release-facing README/CITATION/.zenodo/LICENSE |
-| Raw third-party dataset redistribution | NO (`data/raw/**` gitignored; only `.gitkeep` + README tracked) |
-| Model weights / LoRA adapters tracked | NO (`*.safetensors` gitignored; none in `git ls-files`) |
-| Manuscript TeX/PDF in public repo | NO (private sibling `../paper/`) |
-| Fake / placeholder DOI | NO (`CITATION.cff` / `.zenodo.json` have no DOI) |
-| Large accidental caches staged | NO |
-| Localhost-only reproduction dependency | NO (headline printer uses tracked JSON) |
-| Freeze hash documentation | YES (README: scientific `885540b8…` vs file-byte `aff72921…`) |
-| License (author-owned software) | **MIT** (`LICENSE`); scope documented in README + `THIRD_PARTY_NOTICES.md` |
-| Zenodo record license | `mit` — honest for planned software-only deposit excluding raw data/weights/manuscript |
-| Mixed-license metadata conflict | NO (payload scoped; exclusions documented) |
-| Fresh-clone headline path | PASS (see `FRESH_CLONE_REPRODUCTION_REPORT.md`) |
-| Non-GPU tests | see FRESH_CLONE report / this gate run |
+| Secrets / credentials (tracked tree) | **0** findings |
+| Secrets / credentials (history sample patterns) | **0** findings |
+| Raw third-party dataset redistribution | **NO** (`data/raw/**` gitignored except README/`.gitkeep`) |
+| Model weights / LoRA adapters tracked | **NO** |
+| Manuscript TeX/PDF in public repo | **NO** |
+| Fake / placeholder DOI | **NO** |
+| Accidental large tracked blobs (>5 MiB) | **NO** |
+| Stale root `STATUS.md` / `REPRODUCE.md` | **REMOVED** |
+| Internal venue/attack/process docs | **REMOVED** (manifest) |
+| Version metadata | **1.0.0** / date **2026-10-06** (no DOI; tag not created yet) |
+| License | **MIT** (scoped; see README + `THIRD_PARTY_NOTICES.md`) |
+| Freeze JSON rewritten | **NO** |
+| Fresh-clone env from `environment.yml` | see `FRESH_CLONE_REPRODUCTION_REPORT.md` |
 
-## Licensing scope (summary)
+## Expected release exclusions
 
-- MIT covers author-owned software and tracked author-owned compact result artifacts.
-- Upstream JIT-Fine / JIT-Defects4J dumps are **not** redistributed and **not** relicensed.
-- Third-party model weights and dependencies remain under upstream terms.
-- Manuscript is **not** under MIT.
+Raw JIT dumps, base weights, adapters, caches, `.env`, and private manuscript sources remain out of the public tree.

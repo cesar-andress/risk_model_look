@@ -27,12 +27,20 @@ Acquisition metadata: `artifacts/data_acquisition/`.
 
 ## Redistribution
 
-Dataset/code license evidence remains **NONE_FOUND**.  
-Raw redistribution: **NOT_ESTABLISHED**.  
-Derived redistribution: **NOT_ESTABLISHED**.
+- **Raw upstream dumps** (e.g. JIT-Fine `data.zip`, extract trees, `*.pkl`):
+  **not redistributed** and **not relicensed** by this repository. Obtain them
+  from the authoritative upstream under upstream terms. Dataset/code license
+  evidence in the upstream tree remains as found there (`NONE_FOUND` in our
+  acquisition audit).
+- **Author-created compact derived summaries** tracked under `artifacts/**`
+  (CSV/JSON tables and freeze manifests that do **not** embed upstream source
+  text) are included under this repository’s documented **MIT** scope for
+  author-owned materials (see root `README.md` Licensing and
+  `THIRD_PARTY_NOTICES.md`). That grant does **not** convey rights over the
+  upstream datasets.
 
-Users must obtain the archive from the authoritative upstream source.  
 Do **not** commit `data.zip`, extract trees, or `*.pkl` into this repository.  
-Do **not** upload the raw archive to our Zenodo/GitHub release packages unless permission is later established.
+Do **not** upload the raw archive to Zenodo/GitHub release packages unless
+permission is later established.
 
 Schema validation and extraction are separate gates and are not performed by the acquisition script.

@@ -1,8 +1,9 @@
 # LENGTH_STABILITY_DENOMINATOR_AUDIT.md
 
 Date (UTC): 2026-10-06  
-Diagnostic: EMSE POST-HOC length association and length-adjusted seed stability  
-Script: `scripts/emse_final_diagnostics.py` (`MIN_LINES_RHO = 5`)
+Diagnostic: POST-HOC length association and length-adjusted seed stability  
+Script: `scripts/emse_final_diagnostics.py` (`MIN_LINES_RHO = 5`)  
+Canonical artifact: `artifacts/emse_final/emse_final_diagnostics.json` → `seed_stability`
 
 ## Starting N
 
@@ -22,9 +23,18 @@ Counted 2026-10-06 from the same tokenizer, 2048 encoding, and RQ1 status filter
 
 Spearman of attribution vs payload-token length additionally requires non-zero variance in both vectors; the reported `n_commits=202` matches step 2.
 
-## Occlusion stability N=189
+## Occlusion stability denominators
 
-Occlusion uses the same ≥5-line RQ1 universe, but a commit enters the commit-mean only if **≥2 seed-pairs** have finite rank correlation (constant residual ranks after OLS, missing occlusion jobs, or mismatched IDs drop pairs). That leaves **189** commits for occlusion raw/adjusted means.
+Same ≥5-line RQ1 universe (202) as Attention/Grad×Input, but occlusion seed-pair
+support is thinner:
+
+| Quantity | `n_commits` in diagnostics | Notes |
+|----------|----------------------------|-------|
+| Occlusion **length-adjusted** mean ρ | **199** | Canonical denominator for the length-residualized stability column |
+| Occlusion **raw** mean ρ | **189** | Stricter: commit enters the commit-mean only if ≥2 seed-pairs have finite rank correlation (constant ranks / missing jobs / ID mismatches drop pairs) |
+
+Manuscript Table (stability) reports occlusion length-adjusted **N=199** alongside
+the raw and length-adjusted means from this diagnostic object.
 
 ## Why 304 ≠ 202
 
@@ -33,4 +43,5 @@ Length correlation and residualized seed stability are undefined or noisy on 1�
 
 ## Manuscript rule
 
-State both: primary RQ1 **N=304**; length/stability diagnostic **N=202** (102 commits have fewer than five RQ1 candidates).
+State both: primary RQ1 **N=304**; length/stability diagnostic **N=202** for
+Attention/Grad×Input; occlusion length-adjusted **N=199** (raw **N=189**).

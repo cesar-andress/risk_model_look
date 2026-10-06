@@ -6,8 +6,8 @@ authors:
     given-names: César
     orcid: "https://orcid.org/0009-0001-8968-3404"
     affiliation: "CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela"
-version: "0.9.0-pre-release"
-date-released: "2026-10-01"
+version: "1.0.0"
+date-released: "2026-10-06"
 # No DOI until Zenodo/GitHub Release actually mint one. Do not invent a DOI.
 # license: MIT applies to author-owned software and tracked author-owned
 # compact result artifacts in this repository. Third-party datasets, model
@@ -18,7 +18,7 @@ repository-code: "https://github.com/cesar-andress/risk_model_look"
 url: "https://github.com/cesar-andress/risk_model_look"
 abstract: >-
   Replication package (code, configs, protocols, and frozen compact result
-  summaries) for an EMSE study evaluating line-level attributions for a
+  summaries) for a study evaluating line-level attributions for a
   decoder-only just-in-time defect-risk classifier on public JIT resources.
   NUMERICAL_GATE = FAIL. Raw upstream datasets and base model weights are not
   redistributed; obtain them under their own terms.
@@ -29,5 +29,4 @@ keywords:
   - Integrated Gradients
   - large language models
   - software engineering
-  - Empirical Software Engineering
 type: software

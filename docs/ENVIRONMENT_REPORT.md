@@ -9,7 +9,7 @@ Machine-observed environment at bootstrap. No secrets recorded.
 ## Platform
 
 - OS: Linux-6.8.0-138-generic-x86_64-with-glibc2.35
-- Host path for code root: `/home/cesar/papers/risk_model_look/risk_model_look`
+- Host path for code root (bootstrap machine): `<REPO_ROOT>`
 
 ## GPU / driver
 
@@ -27,7 +27,7 @@ Machine-observed environment at bootstrap. No secrets recorded.
 - Available system interpreters: 3.10 / 3.11 / 3.12 under `/usr/bin`
 - conda: **not found**
 - mamba: **not found**
-- uv: 0.11.16 (`/home/cesar/.local/bin/uv`)
+- uv: 0.11.16 (user-local install on the bootstrap machine)
 - Working environment: `.venv` via `uv venv --python 3.11` (Python 3.11.15)
 
 ## Installed stack (working `.venv`)

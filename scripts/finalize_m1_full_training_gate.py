@@ -209,57 +209,19 @@ ATTRIBUTION_GATE = NOT_STARTED — do not start automatically.
 
 {_ts()}
 """
-    # Keep richer STATUS — read template from existing and only patch key fields via write of full known structure
-    (ROOT / "STATUS.md").write_text(
-        Path(ROOT / "STATUS.md").read_text(encoding="utf-8")  # will replace below
-        , encoding="utf-8"
-    )
-    # Overwrite with complete STATUS
-    (ROOT / "STATUS.md").write_text(
-        f"""# Project
+    # Historical root STATUS.md was removed for public release hygiene.
+    # Persist a compact lock note under docs/ if this script is re-run.
+    (ROOT / "docs/M1_FULL_TRAINING_GATE_LOCK_NOTE.md").write_text(
+        f"""# M1 full-training gate lock note
 
-Working title: Where Does the Risk Model Look? Faithful and Signed Line-Level Explanations for LLM-Based Just-in-Time Defect Prediction
-
-# Roots
-
-- Code / replication repository: `/home/cesar/papers/risk_model_look/risk_model_look`
-- Paper / LaTeX: `/home/cesar/papers/risk_model_look/paper`
-
-# Current phase
-
-FULL_TRAINING_GATE closed **PASS**. `M1_TEST_LOCKED=TRUE`.  
-Next: ATTRIBUTION_GATE — do not start until explicitly requested.
-
-# Gate status
-
-| Gate | Status |
-|------|--------|
-| NOVELTY_GATE | PASS |
-| ENVIRONMENT_GATE | PASS |
-| DATASET_GATE | PASS |
-| TOKEN_LINE_MAPPING_GATE | PASS |
-| PILOT_TRAINING_GATE | PASS |
-| PILOT_GATE | PASS |
-| FULL_TRAINING_GATE | PASS |
-| TRAINING_GATE | PASS |
-| M1_TEST_LOCKED | TRUE |
-| ATTRIBUTION_GATE | NOT_STARTED |
-| XAI_GATE | NOT_STARTED |
-| ANALYSIS_GATE | NOT_STARTED |
-| PAPER_GATE | NOT_STARTED |
-| RELEASE_GATE | NOT_STARTED |
-
-# Locked M1
+FULL_TRAINING_GATE = PASS. M1_TEST_LOCKED = TRUE.
 
 - Config hash: `{cfg_hash}`
 - Seeds: {{13,42,73}}; class policy NATURAL_PREVALENCE
 - Test ROC-AUC: {out['aggregate']['roc_auc']['mean']:.4f} ± {out['aggregate']['roc_auc']['std']:.4f}
 - Test PR-AUC: {out['aggregate']['pr_auc']['mean']:.4f} ± {out['aggregate']['pr_auc']['std']:.4f}
 - PERFORMANCE_SANITY_REVIEW_REQUIRED: {str(sanity_warn).upper()}
-
-# Last updated
-
-{_ts()}
+- Written: {_ts()}
 """,
         encoding="utf-8",
     )
