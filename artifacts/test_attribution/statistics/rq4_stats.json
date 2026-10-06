@@ -1,0 +1,22 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "category_ablations": {
+    "COMMIT_MESSAGE": {
+      "mean_ablation_delta": 0.04899364406779657,
+      "n": 472
+    },
+    "FILE_PATH": {
+      "mean_ablation_delta": -0.03672316384180789,
+      "n": 472
+    },
+    "STRUCTURAL_MARKUP": {
+      "mean_ablation_delta": 0.3160310734463276,
+      "n": 472
+    }
+  },
+  "estimation_only": true,
+  "holm_family": null
+}

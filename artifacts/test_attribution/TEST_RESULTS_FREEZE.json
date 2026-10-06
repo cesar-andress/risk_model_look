@@ -1,0 +1,19 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "cohort_hashes": {
+    "clean_475": "495dbef66107ee52e82b7d54367ae7322dbc27673e4757b2c13a9b12fe06536a",
+    "pos_475": "ddd7592af5c57ae7d422ad3d4c0fcb7987673a8a6bfcfd6ff24a57d1b9767663",
+    "rq1_304": "9ace82fe33a44076754f4b7531faa6580c2354d62cb0ed211a6bfa21e5e5bb68",
+    "rq1_4096": "7551f19a8c861392a2e73a4b2219bbf6eabfd100740e7b3489499ea1ec735f0e"
+  },
+  "created": "2026-10-06T03:15:14+00:00",
+  "execution_freeze_hash": "22532bd734e5a1581b8639edf4eb634e55e09bbcdbc8a9186d6dc9a0efe5c0ab",
+  "freeze_sha256": "8caad443f4a69d7040ae7e966053e12f83f33ce9dc11eb2ea029818ecc68ec95",
+  "git_commit": "e8d05d9ec18e2dc6a45a26d11b515a0924ef0635",
+  "protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "stats_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "test_run_manifest_hash": "f948e886fb0c897cf630098ed66cae98fb5c5aad12682052b44326ef765fc4d6"
+}

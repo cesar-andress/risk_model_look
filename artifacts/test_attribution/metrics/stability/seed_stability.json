@@ -1,0 +1,110 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "pairs_by_method": {
+    "attention": {
+      "13_42": {
+        "mean_rho": 0.6067820558087776,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.6325708385605935,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.6324015315108371,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    },
+    "attention_last4": {
+      "13_42": {
+        "mean_rho": 0.6103091436451981,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.688090001281081,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.6511581288742246,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    },
+    "grad_x_input": {
+      "13_42": {
+        "mean_rho": 0.18923099994646486,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.1781427528166863,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.14021635576828964,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    },
+    "gradient": {
+      "13_42": {
+        "mean_rho": 0.21741223922125963,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.22425320278896335,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.20791913523029432,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    },
+    "ig": {
+      "13_42": {
+        "mean_rho": 0.35254081893619693,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.377702525666251,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.38024917428969823,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    },
+    "occlusion": {
+      "13_42": {
+        "mean_rho": 0.24311563647663667,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.25709707269703225,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.3274763143484003,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    }
+  }
+}

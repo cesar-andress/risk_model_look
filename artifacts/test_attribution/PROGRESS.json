@@ -3,13 +3,13 @@
   "POST_TEST_TUNING_ALLOWED": false,
   "SCIENTIFIC_RESULT": true,
   "SPLIT": "TEST",
-  "block": "positive_475",
-  "index": 114,
-  "last_job": "58d613bd8d20a77f4da8c1ee49cf4028c011a2a7",
-  "last_status": "NONCONVERGED",
-  "method": "ig",
+  "block": "K",
+  "index": 475,
+  "last_job": "3d921068b225994b20a31eef703d889cdabb05b4",
+  "last_status": "DONE",
+  "method": "occlusion",
   "planned": 475,
-  "seed": 42,
-  "state": "running",
-  "updated": "2026-10-04T21:55:39+00:00"
+  "seed": 73,
+  "state": "block_complete",
+  "updated": "2026-10-06T03:15:04+00:00"
 }

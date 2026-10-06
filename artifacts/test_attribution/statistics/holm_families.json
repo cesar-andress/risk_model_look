@@ -1,0 +1,25 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "families": {
+    "RQ1_PRIMARY": [
+      "attention_vs_grad_x_input_Recall@20%Effort",
+      "attention_vs_ig_Recall@20%Effort",
+      "attention_vs_occlusion_Recall@20%Effort"
+    ],
+    "RQ2_PRIMARY": [
+      "attention_vs_grad_x_input_ABS_DELETION_AOPC",
+      "attention_vs_ig_ABS_DELETION_AOPC"
+    ],
+    "RQ3_PRIMARY": [
+      "SIGNED_VS_ABSOLUTE_DELTA_RECALL20"
+    ],
+    "RQ4_PRIMARY": []
+  },
+  "hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "membership_frozen_before_unadjusted_p": true,
+  "occlusion_excluded_from_rq2_confirmatory": true,
+  "protocol": "STATISTICAL_PROTOCOL_V1_1"
+}

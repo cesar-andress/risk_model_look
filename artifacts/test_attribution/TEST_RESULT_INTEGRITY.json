@@ -1,0 +1,82 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "PASS": true,
+  "POST_TEST_TUNING_ALLOWED": false,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "cohort_pass": true,
+  "duplicate_check": "unit paths unique by pop/seed/method/cid",
+  "expected_pos_jobs_per_method": 1425,
+  "missingness": {
+    "attention": {
+      "13": {
+        "DONE": 475
+      },
+      "42": {
+        "DONE": 475
+      },
+      "73": {
+        "DONE": 475
+      }
+    },
+    "attention_last4": {
+      "13": {
+        "DONE": 475
+      },
+      "42": {
+        "DONE": 475
+      },
+      "73": {
+        "DONE": 475
+      }
+    },
+    "grad_x_input": {
+      "13": {
+        "DONE": 475
+      },
+      "42": {
+        "DONE": 475
+      },
+      "73": {
+        "DONE": 475
+      }
+    },
+    "gradient": {
+      "13": {
+        "DONE": 475
+      },
+      "42": {
+        "DONE": 475
+      },
+      "73": {
+        "DONE": 475
+      }
+    },
+    "ig": {
+      "13": {
+        "DONE": 9,
+        "IG_NONCONVERGED": 466
+      },
+      "42": {
+        "DONE": 29,
+        "IG_NONCONVERGED": 446
+      },
+      "73": {
+        "DONE": 25,
+        "IG_NONCONVERGED": 450
+      }
+    },
+    "occlusion": {
+      "13": {
+        "DONE": 475
+      },
+      "42": {
+        "DONE": 475
+      },
+      "73": {
+        "DONE": 475
+      }
+    }
+  },
+  "validation_contamination": false
+}
