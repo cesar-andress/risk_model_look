@@ -14,4 +14,16 @@ Public provenance trail (not a Results narrative).
 | EMSE final-analysis lock | `docs/EMSE_FINAL_ANALYSIS_LOCK.md` commit `aba73ea63f3534acc292e4e4640dfa53ec22bcf6` SHA-256 `7e54a8f394be36b0958cf7d8b9bf8e36121930b9d981b0bcce0e2496557e81dd` |
 | Venue | EMSE; TOSEM track closed |
 
+## Encoder baseline (required, not executed)
+
+| Field | Value |
+|-------|--------|
+| Governance class | **PRE_SPECIFIED_BUT_UNDERSPECIFIED_LIMITATION** |
+| Chronology | `ENCODER_BASELINE = REQUIRED` in ATTRIBUTION_PROTOCOL_V1.2 (commit `3fa90ded…`, before TEST). Identity left as “CodeBERT or UniXcoder — subject to later protocol verification” (EXPERIMENT_PROTOCOL_V0). No executable recipe was frozen before outcomes. |
+| Not | POST_OUTCOME_PROTOCOL_DEVIATION (the recipe was never completed after seeing TEST rankings). |
+| Also | Outcome-blind non-execution of a **required** comparator: TEST proceeded without it because the recipe was missing, not because results looked unfavourable. |
+| Action | Do not invent CodeBERT/UniXcoder training now. |
+
+See `docs/ENCODER_BASELINE_RESOLUTION.md`.
+
 Raw TEST attribution jobs were not overwritten. Scientific definitions of RQ1/RQ2/RQ3 estimands were not changed. IG was not rerun.

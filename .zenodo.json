@@ -1,0 +1,21 @@
+{
+  "title": "When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction (replication package)",
+  "description": "Code, frozen protocols, and documentation for evaluating line-level attributions of one NF4-quantized Qwen2.5-Coder just-in-time defect classifier on public JIT-Defects4J / JIT-Fine resources. No DOI is minted in this pre-v1.0.0 draft.",
+  "creators": [
+    {
+      "name": "Andrés, César",
+      "affiliation": "Universidad Camilo José Cela",
+      "orcid": "0009-0001-8968-3404"
+    }
+  ],
+  "keywords": [
+    "just-in-time defect prediction",
+    "explainable AI",
+    "line-level attribution",
+    "empirical software engineering"
+  ],
+  "license": "other-closed",
+  "upload_type": "software",
+  "publication_date": "2026-10-06",
+  "notes": "PRE-v1.0.0. Zenodo deposit is NOT published. Do not invent a DOI."
+}

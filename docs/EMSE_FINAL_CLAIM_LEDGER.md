@@ -52,7 +52,7 @@ N: 304
 Att−rand 0.042455 [0.015402, 0.070607] rrb=0.0477  
 GxI−rand 0.019022 [−0.001382, 0.039382] rrb=0.0620  
 Occ−rand 0.002493 [−0.022134, 0.027099] rrb=−0.1134  
-SAFE WORDING: Evidence that methods beat random localization is mixed and method-dependent; do not collapse to a single significance star.  
+SAFE WORDING: Under primary SUM aggregation, Attention exceeds the random localization baseline (CI excludes 0; Wilcoxon–Pratt does not); Grad×Input and occlusion do not. That SUM advantage does not persist under post-hoc MEAN aggregation (Attention mean R@20 0.291 vs random 0.312). Do not write aggregation-independent “Attention beats random.”  
 STATUS: PARTIALLY_SUPPORTED
 
 ## L5. Length association
@@ -94,7 +94,7 @@ STATUS: SUPPORTED (gate FAIL); POST-HOC descriptive for estimand-level change.
 ## L10. Seed stability
 
 CLAIM: On RQ1 lines ≥5, mean cross-seed ρ Attention 0.608 (length-adjusted 0.430); GxI 0.119 (0.087); occlusion 0.023 (0.020). Attention remains most stable after length adjustment.  
-TYPE: POST-HOC DIAGNOSTIC (raw stability also in TEST `seed_stability.json` on a broader line set).  
+TYPE: POST-HOC DIAGNOSTIC (RQ1 ≥5-line universe, $N=202$; see `docs/SEED_STABILITY_RECONCILIATION.md` and `docs/LENGTH_STABILITY_DENOMINATOR_AUDIT.md`). Broader TEST all-line `seed_stability.json` is a different analysis ($n_{\mathrm{aligned}}\approx473$).  
 STATUS: SUPPORTED as ranking instability, not as non-estimability of population means.
 
 ## L11. Occlusion agreement

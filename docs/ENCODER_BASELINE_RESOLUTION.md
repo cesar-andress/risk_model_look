@@ -8,8 +8,8 @@ Lock: `docs/EMSE_FINAL_ANALYSIS_LOCK.md` (`aba73ea`)
 
 **PRE_SPECIFIED_BUT_UNDERSPECIFIED**
 
-Protocol-obligation outcome: **DOCUMENTED_PROTOCOL_LIMITATION**  
-Does **not** BLOCKS_SUBMISSION if the manuscript states that the encoder comparator was required in protocol but never given an executable identity/recipe, and is therefore a limitation rather than a completed baseline.
+Protocol-obligation outcome: **PRE_SPECIFIED_BUT_UNDERSPECIFIED_LIMITATION** (also documented as a protocol limitation).  
+A **required** comparator was not executed because its executable recipe was never specified before TEST outcomes. This is not a post-outcome cancellation of an already-run recipe.
 
 ## What was specified (before TEST outcomes)
 
