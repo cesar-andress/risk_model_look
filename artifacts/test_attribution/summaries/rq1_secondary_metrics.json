@@ -1,0 +1,31 @@
+{
+  "source": "Frozen TEST attribution jobs: unit['rq1'] fields already stored at TEST scoring. Commit-mean over seeds with >=2 valid jobs, then mean over rq1_primary_304. No new rankings.",
+  "N": 304,
+  "methods": {
+    "attention": {
+      "top1": 0.423,
+      "top5": 0.76,
+      "top10": 0.87,
+      "ifa": 4.12,
+      "effort_at_20pct_recall": 0.453,
+      "recall_at_20pct_effort": 0.354
+    },
+    "grad_x_input": {
+      "top1": 0.443,
+      "top5": 0.729,
+      "top10": 0.854,
+      "ifa": 4.41,
+      "effort_at_20pct_recall": 0.478,
+      "recall_at_20pct_effort": 0.331
+    },
+    "occlusion": {
+      "top1": 0.407,
+      "top5": 0.695,
+      "top10": 0.821,
+      "ifa": 5.01,
+      "effort_at_20pct_recall": 0.51,
+      "recall_at_20pct_effort": 0.315
+    }
+  },
+  "rounding": "three decimals except IFA two decimals, matching manuscript tables"
+}

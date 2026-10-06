@@ -1,0 +1,11 @@
+{
+  "n_positive_test": 475,
+  "n_rq2_att_gxi": 472,
+  "n_excluded": 3,
+  "reason": "Attention PAYLOAD_BLANK faithfulness missingness_code=OOM on all three seeds; Grad\u00d7Input AOPC present. Excluded by min_common_valid_seeds=2 for the planned Attention vs Grad\u00d7Input AOPC contrast.",
+  "commit_ids": [
+    "e21d4d436b51d88f9554751982cd7b8552854c49",
+    "ab1ee1b68b15234b62a840c4b1f6d2485d771450",
+    "c4193c6e4ad3e5f526df5d1e0748abffcfd08bb2"
+  ]
+}

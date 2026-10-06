@@ -6,14 +6,14 @@ authors:
   - family-names: Andrés
     given-names: César
     orcid: "https://orcid.org/0009-0001-8968-3404"
-    affiliation: "Universidad Camilo José Cela"
+    affiliation: "CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela"
 repository-code: "https://github.com/cesar-andress/risk_model_look"
 url: "https://github.com/cesar-andress/risk_model_look"
 abstract: >-
   Replication package (code, configs, protocols, and documentation) for evaluating
   line-level attributions of a decoder-only just-in-time defect-risk classifier on
   public JIT-Defects4J / JIT-Fine resources. Empirical results are versioned
-  separately when frozen; this citation entry does not invent a paper DOI.
+  separately when frozen; this citation entry does not claim a paper DOI.
 keywords:
   - just-in-time defect prediction
   - explainable AI

@@ -52,7 +52,7 @@ N: 304
 Att−rand 0.042455 [0.015402, 0.070607] rrb=0.0477  
 GxI−rand 0.019022 [−0.001382, 0.039382] rrb=0.0620  
 Occ−rand 0.002493 [−0.022134, 0.027099] rrb=−0.1134  
-SAFE WORDING: Under primary SUM aggregation, Attention exceeds the random localization baseline (CI excludes 0; Wilcoxon–Pratt does not); Grad×Input and occlusion do not. That SUM advantage does not persist under post-hoc MEAN aggregation (Attention mean R@20 0.291 vs random 0.312). Do not write aggregation-independent “Attention beats random.”  
+SAFE WORDING: Under primary SUM aggregation, the mean paired Attention−random Recall difference has a bootstrap CI excluding 0 (Wilcoxon–Pratt p=0.616, rrb=0.048). Grad×Input and occlusion CIs include 0. Occlusion mean Δ is slightly positive while rrb is negative. MEAN Attention R@20 is 0.291 vs random 0.312. Nine baseline contrasts are protocol-owed and not Holm-controlled. Do not write aggregation-independent “Attention beats random.”  
 STATUS: PARTIALLY_SUPPORTED
 
 ## L5. Length association
@@ -64,7 +64,7 @@ STATUS: SUPPORTED as association, not mechanism.
 ## L6. MEAN aggregation
 
 CLAIM: MEAN token-to-line aggregation lowers Attention Recall@20 (0.355→0.291) and GxI (0.331→0.290); occlusion SUM=MEAN (line-level operator). MEAN vs length remains negative (Attention Δ=−0.104).  
-TYPE: POST-HOC CONSTRUCT SENSITIVITY  
+TYPE: PRE_SPECIFIED_DIAGNOSTIC (construct sensitivity in Attribution Protocol V1.2)  
 SAFE WORDING: Switching SUM→MEAN does not make methods outperform length.  
 STATUS: SUPPORTED  
 Structural-baseline lesson survives: YES (outcome A).

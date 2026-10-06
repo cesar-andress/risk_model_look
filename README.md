@@ -1,63 +1,55 @@
 # risk_model_look
 
-Replication package (code, configs, scripts, docs, and frozen protocol manifests)
-for the empirical study:
+Replication package for:
 
 **When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction**
 
+Author: César Andrés (ORCID 0009-0001-8968-3404), CRIA-BDHS / Escuela Politécnica Superior de Tecnología y Ciencia, Universidad Camilo José Cela.
+
+Target venue: Empirical Software Engineering (EMSE). Version: pre-v1.0.0. No DOI.
+
 ## What this repository is
 
-Public-facing research infrastructure for:
+Public code, configs, frozen protocols, tests, and **tracked result summaries** for:
 
-- acquiring/validating public JIT-Defects4J / JIT-Fine resources (without
-  redistributing restricted raw dumps by default);
-- training a decoder-only commit-risk classifier (M1: Qwen2.5-Coder-7B QLoRA);
-- evaluating line-level attributions under **Attribution Protocol V1.2** and
-  **Statistical Protocol V1.1**.
+- public JIT-Defects4J / JIT-Fine resources (without redistributing restricted raw dumps);
+- one NF4 Qwen2.5-Coder-7B QLoRA classifier;
+- line-level attributions under Attribution Protocol V1.2 and Statistical Protocol V1.1.
 
 ## What this repository is not
 
-- It does **not** automatically redistribute raw datasets (`data/raw/` is
-  gitignored). Upstream license/redistribution rights must be verified before
-  any public dump.
-- It does **not** ship base LLM weights or LoRA adapters by default.
-- Manuscript LaTeX currently lives in a sibling path `../paper/` (papers
-  monorepo). Integration into `paper/` inside this repository is planned
-  (`docs/PAPER_INTEGRATION_PLAN.md`) but **not yet executed**.
+- It does not redistribute raw datasets by default (`data/raw/` is gitignored).
+- It does not ship base LLM weights or LoRA adapters.
+- Manuscript LaTeX lives in the private sibling `../paper/`.
+- Bulk TEST attribution jobs (`artifacts/test_attribution/raw/`) are gitignored.
 
-## Current phase
+## Headline numbers without GPU
 
-Empirical study closed for EMSE. See `docs/FINAL_VENUE_DECISION.md`,
-`docs/EMSE_FINAL_ANALYSIS_LOCK.md`, and `docs/AMENDMENT_AND_PROVENANCE_LOG.md`.
-Attribution infrastructure is on `main`. A pre-existing worktree
-`parallel/attribution-infra` is historical; do not use it for new work.
+From a clone of `main`, using Python 3.11 from `environment.yml` (or `.venv`):
+
+```bash
+python3 -m pytest -m "cpu or not gpu" -q
+python3 scripts/print_headline_from_tracked.py
+```
+
+That printer reads only tracked JSON/CSV under `artifacts/` (RQ1 summary, RQ2 stats, seed stability, EMSE freeze). It does **not** require raw jobs or a GPU.
+
+Final evidence freeze SHA-256: `885540b87acee8190babe5592c20ed3bc456868da41866a7a047abbff53d4a78`  
+(`artifacts/emse_final/EMSE_FINAL_RESULTS_FREEZE.json`). NUMERICAL_GATE = FAIL.
 
 ## Hard constraints
 
 - Do not commit secrets, adapters, or Hugging Face caches.
 - Do not claim unfinished experiments as completed.
-- External protocol timestamp remains PENDING (not external preregistration).
-
-## Quick start
-
-1. Create the environment from `environment.yml` (or the fallback in
-   `docs/ENVIRONMENT_REPORT.md`).
-2. `pytest -q` (CPU protocol/unit tests).
-3. Follow `REPRODUCIBILITY.md` for dataset digests, training, and evaluation
-   sequencing (validation rehearsal before TEST attribution).
-
-GPU smoke / full training require an NVIDIA machine and are **not** part of the
-default CPU CI path.
 
 ## Dataset restrictions
 
-JIT-Defects4J / JIT-Fine materials are obtained via documented acquisition
-scripts and hash checks. Treat redistribution as **restricted until verified**.
+Treat upstream JIT-Defects4J / JIT-Fine redistribution as restricted until verified.
 
 ## Citation
 
-See `CITATION.cff`. Paper DOI / Zenodo DOI: **TBD** (do not invent).
+See `CITATION.cff`. No paper/Zenodo DOI is minted yet.
 
 ## License
 
-Code license status: **TBD** (`NOASSERTION` in CITATION.cff until chosen).
+`LICENSE` is `NOASSERTION` until a SPDX identifier is chosen for v1.0.0.
