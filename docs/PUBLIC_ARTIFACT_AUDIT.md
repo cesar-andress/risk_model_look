@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Task: SUPERPROMPT 34 — final release candidate  
-Public candidate HEAD: `9cb86a8e768b46e80160163a288820592fa3ec28`
+Public candidate HEAD: `ed01acc7dba490a18023d84ede531e844a86533d` (content RC `9cb86a8`)
 
 ## Scope
 

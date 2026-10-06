@@ -4,7 +4,8 @@ Date: 2026-10-06
 Task: SUPERPROMPT 34 — definitive release-candidate gate  
 Clone: `/tmp/rml_fresh_clone_sp34`  
 Remote: `git@github.com-ucjc:cesar-andress/risk_model_look.git` branch `main`  
-Candidate HEAD: `9cb86a8e768b46e80160163a288820592fa3ec28`  
+Candidate HEAD (content): `9cb86a8e768b46e80160163a288820592fa3ec28`  
+Tip after this report commit: `ed01acc7dba490a18023d84ede531e844a86533d` (docs-only; re-verified 231 passed)  
 No files were copied from the working tree into the clone.
 
 ## Clean environment (not the project `.venv`)
