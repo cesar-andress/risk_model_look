@@ -1,0 +1,50 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "NUMERICAL_GATE": "FAIL",
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "TOSEM_GATE_STATUS": "TOSEM_GATE_FAIL_NUMERICAL_RQ2",
+  "attribution_protocol_hash": "c6496a67445f72fd93fcab6641a69483f2b85283a9b1582158d780ca9c3ee62c",
+  "cpu_n_rq1_baselines": 304,
+  "created": "2026-10-06T09:59:13+00:00",
+  "derived_hashes": {
+    "cpu_reanalysis_json": "7ad83f93ffe84ac86fb5f64139d2c4e2138e49cf380de33ed9d5dc4f8fee899b",
+    "numerical_env_json": "630271184be0872fcf315c24d7256c93fcad07d9a44b6293d8499a09dca065b3",
+    "numerical_rows_jsonl": "6727ca16ac47e824250531c559fa1ede98d18e64ca3a75a3ee1b9ddcd7529ef1",
+    "numerical_summary_json": "7f044d3cd14b800f8d761b6c3ac849ae48e33cf2fa35601f090c3977b40e807d",
+    "tp_fn_json": "95dac38beb2a75d0d761e11d91b857cfde6e6d6e61d6ae2f9e0a9aa8444aee05"
+  },
+  "distinctions": {
+    "FORENSIC_CORRECTED_TEST_RESULTS": "artifacts/test_attribution/TEST_RESULTS_FREEZE.json",
+    "NEW_PROSPECTIVE_NUMERICAL_ROBUSTNESS_RESULT": "artifacts/tosem_extension/numerical_summary.json",
+    "ORIGINAL_TEST_RESULTS": "artifacts/test_attribution/TEST_RESULTS_FREEZE_03be67d.json",
+    "PROTOCOL_OWED_COMPLETION_RESULTS": "artifacts/tosem_extension/cpu_reanalysis.json"
+  },
+  "extension_protocol_lock_commit": "840bb45eda317908d7f953e67f27dafbad1c5cf6",
+  "extension_protocol_lock_path": "docs/TOSEM_EXTENSION_PROTOCOL_LOCK.md",
+  "extension_protocol_lock_predates_new_gpu": true,
+  "extension_protocol_lock_sha256": "855415e785b41d3a6a233b33fb624da76cc35f48f7beedbe13b16498aca31540",
+  "freeze_sha256": "5e5c67e068a668f046ca2c1efe04a6b03f1a147bb3f09ded54a1b9710561df9b",
+  "ig_rerun": false,
+  "ig_validity_rules_changed": false,
+  "new_gpu_experiments": [
+    "nf4_bf16_vs_nf4_fp32_compute_s_and_rq2_aopc",
+    "rq2_token_matched_random_aopc_1_repeat"
+  ],
+  "numerical_population_n": 472,
+  "original_primary_statistics_affected": false,
+  "parent_corrected_freeze_sha256": "a707e8e7016eb94eafe57c6e793e60fbd5cb9269eb6329cd79938e84e74b1a19",
+  "parent_corrective_commit": "b9e59faa71435f31a656fd52b87481ec7e14a39c",
+  "protocol_audit_path": "docs/TOSEM_EXTENSION_PROTOCOL_AUDIT.md",
+  "raw_data_changed": {
+    "cpu_reanalysis_derived": true,
+    "numerical_path_new_scores": true,
+    "original_attribution_jobs": false,
+    "token_matched_random_aopc": true
+  },
+  "schema": "TOSEM_EXTENSION_RESULTS_FREEZE_V1",
+  "scientific_definitions_changed": false,
+  "second_decoder_executed": false,
+  "statistical_protocol_hash": "edbe4dcaf02e64f339c698315fb0f502b379a4a7403c57f3111944c31c7e11a8",
+  "superseded_freeze_sha256_provenance_only": "8caad443f4a69d7040ae7e966053e12f83f33ce9dc11eb2ea029818ecc68ec95"
+}

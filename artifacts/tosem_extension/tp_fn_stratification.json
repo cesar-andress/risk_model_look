@@ -1,0 +1,68 @@
+{
+  "by_method": {
+    "attention": {
+      "rq1_recall20": {
+        "mean_fn": 0.4117671579628102,
+        "mean_tp": 0.23227010139612675,
+        "median_fn": 0.3333333333333333,
+        "median_tp": 0.16666666666666666,
+        "n_fn": 207,
+        "n_tp": 97,
+        "point_biserial": -0.23393592547332764
+      },
+      "rq2_aopc": {
+        "mean_fn": 0.21490318118948826,
+        "mean_tp": 0.24693362193362195,
+        "median_fn": 0.17708333333333334,
+        "median_tp": 0.20833333333333334,
+        "n_fn": 241,
+        "n_tp": 231,
+        "point_biserial": 0.11918678632640842
+      }
+    },
+    "grad_x_input": {
+      "rq1_recall20": {
+        "mean_fn": 0.379399883083458,
+        "mean_tp": 0.22790414575866685,
+        "median_fn": 0.3333333333333333,
+        "median_tp": 0.19047619047619047,
+        "n_fn": 207,
+        "n_tp": 97,
+        "point_biserial": -0.22096011882445507
+      },
+      "rq2_aopc": {
+        "mean_fn": 0.19627420470262794,
+        "mean_tp": 0.2377136752136752,
+        "median_fn": 0.16666666666666666,
+        "median_tp": 0.20833333333333334,
+        "n_fn": 241,
+        "n_tp": 234,
+        "point_biserial": 0.15863792379750188
+      }
+    },
+    "occlusion": {
+      "rq1_recall20": {
+        "mean_fn": 0.3677273433312082,
+        "mean_tp": 0.20101093256913372,
+        "median_fn": 0.3333333333333333,
+        "median_tp": 0.1111111111111111,
+        "n_fn": 207,
+        "n_tp": 97,
+        "point_biserial": -0.22939569537025123
+      },
+      "rq2_aopc": {
+        "mean_fn": 0.23167358229598894,
+        "mean_tp": 0.25084579772079774,
+        "median_fn": 0.20833333333333334,
+        "median_tp": 0.21875,
+        "n_fn": 241,
+        "n_tp": 234,
+        "point_biserial": 0.06793993453011571
+      }
+    }
+  },
+  "created": "2026-10-06T06:11:10.040151+00:00",
+  "note": "Gold-positive TEST commits only. TP = predicted_label 1 at frozen seed threshold; FN = 0. Majority across >=2 seeds. Does not alter primary cohorts.",
+  "protocol_secondary": "prediction_correctness_association POINT_BISERIAL SECONDARY_ESTIMATION",
+  "role": "POST-HOC ROBUSTNESS"
+}

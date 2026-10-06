@@ -1,0 +1,408 @@
+{
+  "NOT_VALIDATION_REHEARSAL": true,
+  "SCIENTIFIC_RESULT": true,
+  "SPLIT": "TEST",
+  "created": "2026-10-06T06:01:28.535824+00:00",
+  "enrichment_attention_rq1": {
+    "ADDED_CODE": {
+      "mean": 0.6527608606796215,
+      "n": 304
+    },
+    "COMMIT_MESSAGE": {
+      "mean": 2.2045030536055488,
+      "n": 304
+    },
+    "DELETED_CODE": {
+      "mean": 0.7305690615499129,
+      "n": 277
+    },
+    "FILE_PATH": {
+      "mean": 4.278255112427914,
+      "n": 304
+    },
+    "HUNK_HEADER": {
+      "mean": 0.6650634506239402,
+      "n": 304
+    },
+    "SPECIAL_TOKEN": {
+      "mean": 3.187135636260216,
+      "n": 304
+    },
+    "STRUCTURAL_MARKUP": {
+      "mean": 0.7139780465825828,
+      "n": 304
+    }
+  },
+  "ig_small_n": {
+    "n_rq1": 2,
+    "n_rq2": 3,
+    "note": "Exact Wilcoxon on N=2/3 is essentially uninformative for confirmatory inference; frozen Holm provenance is retained and not replaced.",
+    "role": "EXPLORATORY SMALL-N DIAGNOSTIC"
+  },
+  "lock_commit": "840bb45eda317908d7f953e67f27dafbad1c5cf6",
+  "lock_sha256": "855415e785b41d3a6a233b33fb624da76cc35f48f7beedbe13b16498aca31540",
+  "matched_clean_done_counts": {
+    "attention_13": 475,
+    "attention_42": 475,
+    "attention_73": 475,
+    "grad_x_input_13": 475,
+    "grad_x_input_42": 475,
+    "grad_x_input_73": 475,
+    "occlusion_13": 475,
+    "occlusion_42": 475,
+    "occlusion_73": 475
+  },
+  "matched_clean_note": "Cheap attribution only; no gold RQ1 labels on clean commits; matching rule unchanged.",
+  "negative_hit_rate": {
+    "grad_x_input": {
+      "at10": {
+        "mean": 0.46787077426390405,
+        "n": 262
+      },
+      "at5": {
+        "mean": 0.4683874139626349,
+        "n": 226
+      }
+    },
+    "gradient": {
+      "at10": {
+        "mean": 0.5637882236227825,
+        "n": 272
+      },
+      "at5": {
+        "mean": 0.5727802037845704,
+        "n": 229
+      }
+    },
+    "occlusion": {
+      "at10": {
+        "mean": 0.2677335835281572,
+        "n": 258
+      },
+      "at5": {
+        "mean": 0.2865804160324709,
+        "n": 219
+      }
+    }
+  },
+  "original_rq2_att_gxi": {
+    "NOT_VALIDATION_REHEARSAL": true,
+    "POST_TEST_TUNING_ALLOWED": false,
+    "SCIENTIFIC_RESULT": true,
+    "SPLIT": "TEST",
+    "bootstrap": {
+      "ci_high": 0.02169403248587572,
+      "ci_low": 0.008011122881355932,
+      "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+      "n_commits": 472,
+      "point": 0.01485257768361582,
+      "repeats": 10000
+    },
+    "bootstrap_repeats": 10000,
+    "bootstrap_seed": 1481252785,
+    "contrast": "attention_vs_grad_x_input_ABS_DELETION_AOPC",
+    "family": "RQ2_PRIMARY",
+    "low_power_exploratory": false,
+    "n_excluded": 3,
+    "n_included": 472,
+    "p_holm": 0.00014363054376269053,
+    "p_raw": 7.181527188134527e-05,
+    "rank_biserial": 0.22405055170644086,
+    "wilcoxon_status": "OK"
+  },
+  "parent_freeze_sha256": "a707e8e7016eb94eafe57c6e793e60fbd5cb9269eb6329cd79938e84e74b1a19",
+  "project_clustered_rq2_att_gxi": {
+    "ci_high": 0.024664848777953073,
+    "ci_low": 0.008050179834747484,
+    "n_commits": 472,
+    "n_projects": 21,
+    "point": 0.014852577683615817,
+    "replaces_primary": false,
+    "role": "PROJECT-CLUSTERED SENSITIVITY"
+  },
+  "rank_biserial_planned": {
+    "rq1_att_gxi": 0.11956015282825459,
+    "rq1_att_ig": 1.0,
+    "rq1_att_occ": 0.19317906957994033,
+    "rq2_att_gxi": 0.22405055170644086,
+    "rq2_att_ig": 1.0
+  },
+  "rq1_4096": {
+    "attention_mean_recall20": 0.37139144541259905,
+    "contrast": {
+      "bootstrap": {
+        "ci_high": 0.06463522674311689,
+        "ci_low": 0.0018333133465854596,
+        "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+        "n_commits": 288,
+        "point": 0.032884662708081935,
+        "repeats": 10000
+      },
+      "family": "SENSITIVITY",
+      "low_power_exploratory": false,
+      "mean_diff": null,
+      "n_excluded": 57,
+      "n_included": 288,
+      "p_raw": 0.14933127140369587,
+      "rank_biserial": 0.19105046017137417,
+      "role": "SENSITIVITY",
+      "wilcoxon_status": "OK"
+    },
+    "grad_x_input_mean_recall20": 0.3385067827045166,
+    "n_attention": 288,
+    "n_gxi": 288
+  },
+  "rq1_baselines": {
+    "B_LENGTH_mean_recall20": 0.39451224688884073,
+    "B_ORDER_mean_recall20": 0.2843718816686319,
+    "B_RANDOM_mean_recall20": 0.3120383124353343,
+    "N": 304,
+    "contrasts_vs_methods": {
+      "attention_vs_B_LENGTH": {
+        "bootstrap": {
+          "ci_high": -0.0033136757314070815,
+          "ci_low": -0.07690698991025774,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": -0.040018820791057834,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 0.14659086439420246,
+        "rank_biserial": -0.19051454138702462,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "attention_vs_B_ORDER": {
+        "bootstrap": {
+          "ci_high": 0.10819659529603437,
+          "ci_low": 0.03173009681806223,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": 0.07012154442915094,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 1.1374784261765856e-06,
+        "rank_biserial": 0.37849079025549615,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "attention_vs_B_RANDOM": {
+        "bootstrap": {
+          "ci_high": 0.07079301949094426,
+          "ci_low": 0.014464088222046458,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": 0.04245511366244853,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 0.6159140888469415,
+        "rank_biserial": 0.04774831840255784,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "grad_x_input_vs_B_LENGTH": {
+        "bootstrap": {
+          "ci_high": -0.02707720870986463,
+          "ci_low": -0.10113143139242517,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": -0.06345146420177991,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 0.00655288700723823,
+        "rank_biserial": -0.25215106732348114,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "grad_x_input_vs_B_ORDER": {
+        "bootstrap": {
+          "ci_high": 0.08062951223210268,
+          "ci_low": 0.012398752567700904,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": 0.046688901018428874,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 4.6246372335955705e-05,
+        "rank_biserial": 0.2862057103543172,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "grad_x_input_vs_B_RANDOM": {
+        "bootstrap": {
+          "ci_high": 0.039657656458744125,
+          "ci_low": -0.0018761736091164936,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": 0.01902247025172646,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 0.40090601859882435,
+        "rank_biserial": 0.06198534069314994,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "occlusion_vs_B_LENGTH": {
+        "bootstrap": {
+          "ci_high": -0.0359400978514902,
+          "ci_low": -0.12451205522754122,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": -0.07998060041263663,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 0.0021532498042693272,
+        "rank_biserial": -0.2964148973198747,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "occlusion_vs_B_ORDER": {
+        "bootstrap": {
+          "ci_high": 0.05552784062524227,
+          "ci_low": 0.004960014463566814,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": 0.030159764807572164,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 0.00011632753654669202,
+        "rank_biserial": 0.3036579457364341,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      },
+      "occlusion_vs_B_RANDOM": {
+        "bootstrap": {
+          "ci_high": 0.027289536526252444,
+          "ci_low": -0.02118368711182885,
+          "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+          "n_commits": 304,
+          "point": 0.002493334040869736,
+          "repeats": 10000
+        },
+        "family": "SENSITIVITY",
+        "low_power_exploratory": false,
+        "mean_diff": null,
+        "n_excluded": 0,
+        "n_included": 304,
+        "p_raw": 0.08840920268008655,
+        "rank_biserial": -0.11341356739963201,
+        "role": "BASELINE",
+        "wilcoxon_status": "OK"
+      }
+    },
+    "n_commits_scored": 304
+  },
+  "rq2_on_rq1_304": {
+    "bootstrap": {
+      "ci_high": 0.025664747807017545,
+      "ci_low": 0.00839501096491228,
+      "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+      "n_commits": 304,
+      "point": 0.017064144736842105,
+      "repeats": 10000
+    },
+    "family": "SENSITIVITY",
+    "low_power_exploratory": false,
+    "mean_diff": null,
+    "n_excluded": 0,
+    "n_included": 304,
+    "p_raw": 0.00014929818157582135,
+    "rank_biserial": 0.2671936758893281,
+    "role": "SECONDARY_REQUIRED",
+    "wilcoxon_status": "OK"
+  },
+  "rq3_family_audit": "MANUSCRIPT_WORDING_ERROR",
+  "seed_stability_non_ig": {
+    "attention": {
+      "13_42": {
+        "mean_rho": 0.6067820558087776,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.6325708385605935,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.6324015315108371,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    },
+    "grad_x_input": {
+      "13_42": {
+        "mean_rho": 0.18923099994646486,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.1781427528166863,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.14021635576828964,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    },
+    "occlusion": {
+      "13_42": {
+        "mean_rho": 0.24311563647663667,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "13_73": {
+        "mean_rho": 0.25709707269703225,
+        "n_aligned": 473,
+        "n_rho": 473
+      },
+      "42_73": {
+        "mean_rho": 0.3274763143484003,
+        "n_aligned": 473,
+        "n_rho": 473
+      }
+    }
+  }
+}

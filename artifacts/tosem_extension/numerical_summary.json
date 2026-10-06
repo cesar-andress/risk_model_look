@@ -1,0 +1,63 @@
+{
+  "NUMERICAL_GATE": "FAIL",
+  "affects_original_primary_statistics": false,
+  "ci_excludes_zero": true,
+  "created": "2026-10-06T09:58:37.061932+00:00",
+  "discrepancy": {
+    "max": 0.13707351684570312,
+    "mean": 0.042798221448047014,
+    "median": 0.03705596923828125,
+    "n": 1416,
+    "p90": 0.08874797821044922,
+    "p95": 0.10205936431884766
+  },
+  "exceeds_median_discrepancy": false,
+  "fp32_rq2_att_minus_gxi": {
+    "bootstrap": {
+      "ci_high": 0.02198519140987073,
+      "ci_low": 0.008461699516928128,
+      "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+      "n_commits": 472,
+      "point": 0.015196705436975941,
+      "repeats": 10000
+    },
+    "n_included": 472,
+    "p_raw": 3.042277971767199e-05,
+    "rank_biserial": 0.22249675140467431,
+    "wilcoxon_status": "OK"
+  },
+  "lock_commit": "840bb45eda317908d7f953e67f27dafbad1c5cf6",
+  "original_point": 0.01485257768361582,
+  "population_n": 472,
+  "same_direction": true,
+  "token_matched_random": {
+    "attention_vs_random": {
+      "bootstrap": {
+        "ci_high": 0.039129259357344626,
+        "ci_low": 0.02489406779661017,
+        "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+        "n_commits": 472,
+        "point": 0.03186793785310735,
+        "repeats": 10000
+      },
+      "n_included": 472,
+      "p_raw": 1.2941567931005473e-15,
+      "rank_biserial": 0.4399873914546601,
+      "wilcoxon_status": "OK"
+    },
+    "gxi_vs_random": {
+      "bootstrap": {
+        "ci_high": 0.023702330508474576,
+        "ci_low": 0.010504943502824857,
+        "method": "PAIRED_COMMIT_BOOTSTRAP_PERCENTILE_V1",
+        "n_commits": 472,
+        "point": 0.017015360169491525,
+        "repeats": 10000
+      },
+      "n_included": 472,
+      "p_raw": 2.4515049273123543e-06,
+      "rank_biserial": 0.2618877668843029,
+      "wilcoxon_status": "OK"
+    }
+  }
+}

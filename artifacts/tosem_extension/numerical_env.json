@@ -1,0 +1,13 @@
+{
+  "cuda": "12.4",
+  "torch": "2.6.0+cu124",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "lock_commit": "840bb45eda317908d7f953e67f27dafbad1c5cf6",
+  "score": "logit_contrast l1-l0",
+  "paths": [
+    "canonical_nf4_bf16_compute",
+    "nf4_fp32_compute"
+  ],
+  "deterministic_algorithms": true
+}
