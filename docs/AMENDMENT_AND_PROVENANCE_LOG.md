@@ -39,11 +39,17 @@ Pre-result IG validity used a non-method-specific mask. Corrected TEST freeze `a
 
 ## RQ3 family
 
-Planned signed-versus-absolute ΔRecall@20 for signed methods. Estimable confirmatory member at N=304: Grad×Input. IG remains a family member at N=2 (LOW_POWER_EXPLORATORY). Occlusion signed vs absolute is not a distinct line-level contrast.
+Planned signed-versus-absolute ΔRecall@20 for signed methods. Estimable confirmatory member at N=304: Grad×Input. IG remains a family member at N=2 (LOW_POWER_EXPLORATORY). Signed occlusion vs absolute was computed and is reported descriptively outside the confirmatory family (Δ≈0, not confirmatory). SUM=MEAN for occlusion concerns aggregation, not sign.
 
 ## 475 → 472
 
-Primary RQ2 cohort is 475 defect-inducing TEST commits. Planned Attention vs Grad×Input AOPC uses N=472 because three commits have attention PAYLOAD_BLANK `missingness_code=OOM` on all seeds: `e21d4d43…`, `ab1ee1b6…`, `c4193c6e…`.
+Primary RQ2 cohort is 475 defect-inducing TEST commits. Planned Attention vs Grad×Input AOPC uses N=472 because three commits have attention PAYLOAD_BLANK `missingness_code=OOM` on all seeds:
+
+- `e21d4d436b51d88f9554751982cd7b8552854c49`
+- `ab1ee1b68b15234b62a840c4b1f6d2485d771450`
+- `c4193c6e4ad3e5f526df5d1e0748abffcfd08bb2`
+
+Source: `artifacts/test_attribution/summaries/rq2_excluded_3.json`.
 
 ## MEAN aggregation vs length–attribution correlation
 
