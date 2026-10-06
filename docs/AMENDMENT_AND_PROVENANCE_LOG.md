@@ -47,7 +47,7 @@ Primary RQ2 cohort is 475 defect-inducing TEST commits. Planned Attention vs Gra
 
 ## MEAN aggregation vs length–attribution correlation
 
-MEAN token-to-line reduction: **PRE_SPECIFIED_DIAGNOSTIC** (Attribution Protocol V1.2). Length–attribution Spearman on RQ1 ≥5 lines: **POST_HOC_DIAGNOSTIC**.
+MEAN token-to-line reduction: **PRE_SPECIFIED_DIAGNOSTIC** in Attribution Protocol V1.2 (`line_reduction_sensitivity: MEAN` before TEST). The later analysis lock labelled MEAN as POST-HOC construct sensitivity; that lock file is not rewritten (its SHA-256 is frozen). The manuscript follows the earlier protocol: MEAN is a pre-specified construct sensitivity. Length–attribution Spearman on RQ1 ≥5 lines: **POST_HOC_DIAGNOSTIC**.
 
 ## Planned-but-unreported accounting
 
