@@ -1,0 +1,33 @@
+{
+  "NUMERICAL_GATE": "FAIL",
+  "context4096_resolution": "DIFFERENT_DENOMINATORS_BOTH_VALID",
+  "created": "2026-10-06T11:00:53+00:00",
+  "emse_final_analysis_lock_commit": "aba73ea63f3534acc292e4e4640dfa53ec22bcf6",
+  "emse_final_analysis_lock_sha256": "7e54a8f394be36b0958cf7d8b9bf8e36121930b9d981b0bcce0e2496557e81dd",
+  "encoder_resolution": "DOCUMENTED_PROTOCOL_LIMITATION",
+  "file_sha256": {
+    "amendment": "a28aec1164c838a9e365cd09bac2561c420708a3b7f42284b92d1cda87707754",
+    "c4096": "e79dcc567cef3f7c2cf8e16fb518daf44eac539d3137111d8b5c88a3f71ba070",
+    "claim": "38b194194df43d19955fe0e80efc79f257feecad640956579fa98c30352e6d22",
+    "diagnostics": "691bd0035612595fd31471873e0501410453858f0b5d0bf22f43a103ff62ee2f",
+    "emse_req": "fa47ce8ea0a263c8ac4c53c4e728fe761bdeabad673cd5ec24a60ade4e4053db",
+    "encoder": "41f18cf8d47205a3312dcd2c7b18f07d5098ba17fc7b43dcb0f4164714e5e024",
+    "fig_localization": null,
+    "float32": "ce4f245d29b74ea3d4d4390bef07ca0cd9828599ec87f3538401a4f38c773745",
+    "lock": "7e54a8f394be36b0958cf7d8b9bf8e36121930b9d981b0bcce0e2496557e81dd",
+    "operator": "7e8a3193a780f264a5934275e14856add32b3fb0efe28e0ea75800384b8bb7ef",
+    "script": "14c54a586175d13096e257cf00a650430c698c9ee35b179be1a10e258ef99a3f",
+    "tab_rq1": null,
+    "tab_rq2": null,
+    "tab_stability": null,
+    "venue": "5314f7d024ad190cb11dbe1d4b25f09fded542ad1b5281d199d59ab58ce9a63c"
+  },
+  "float32_provenance": "SCORING_ONLY",
+  "freeze_sha256": "885540b87acee8190babe5592c20ed3bc456868da41866a7a047abbff53d4a78",
+  "new_gpu": false,
+  "operator_resolution": "DOCUMENTED_PROTOCOL_LIMITATION",
+  "parent_corrected_test_freeze_sha256": "a707e8e7016eb94eafe57c6e793e60fbd5cb9269eb6329cd79938e84e74b1a19",
+  "parent_tosem_extension_freeze_sha256": "5e5c67e068a668f046ca2c1efe04a6b03f1a147bb3f09ded54a1b9710561df9b",
+  "schema": "EMSE_FINAL_RESULTS_FREEZE_V1",
+  "venue": "EMSE"
+}

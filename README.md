@@ -3,8 +3,7 @@
 Replication package (code, configs, scripts, docs, and frozen protocol manifests)
 for the empirical study:
 
-**Where Does the Risk Model Look? Faithful and Signed Line-Level Explanations for
-LLM-Based Just-in-Time Defect Prediction**
+**When Validity Criteria Disagree: Evaluating Line-Level Explanations for Just-in-Time Defect Prediction**
 
 ## What this repository is
 
@@ -28,12 +27,10 @@ Public-facing research infrastructure for:
 
 ## Current phase
 
-Pre-results hygiene / protocol freeze. See `STATUS.md` and
-`docs/REPOSITORY_AUDIT_REPORT.md`.
-
-Attribution/statistics implementation currently lands on branch
-`parallel/attribution-infra` (merge plan: `docs/MERGE_PLAN.md`). Do not assume
-`main` already contains V1.2 until the approved fast-forward completes.
+Empirical study closed for EMSE. See `docs/FINAL_VENUE_DECISION.md`,
+`docs/EMSE_FINAL_ANALYSIS_LOCK.md`, and `docs/AMENDMENT_AND_PROVENANCE_LOG.md`.
+Attribution infrastructure is on `main`. A pre-existing worktree
+`parallel/attribution-infra` is historical; do not use it for new work.
 
 ## Hard constraints
 
